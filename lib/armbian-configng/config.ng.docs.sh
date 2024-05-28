@@ -303,17 +303,6 @@ Utility for configuring your board, divided into four main sections:
 - Software - system and 3rd party software install.
 
 
-
-To Configure and change global sytem settings, run the following command: \`./armbian-configng\`
-
-***
-## Screenshots
-![edit-boot-env-2024-04-03 10-06-58](https://github.com/armbian/configng/assets/2831630/448f0515-0854-4a8a-8421-53c8b72bb5c5)
-![BT-connect-2024-04-03 10-06-58](https://github.com/armbian/configng/assets/2831630/fef037ce-346d-4d70-9025-90f69fbdf5d3)
-Following was updated on:
-$current_date.
-
-***
 EOF
 
     # Use jq to parse the JSON
@@ -359,7 +348,19 @@ Development test brances are available for testing. To clone the development bra
 
 ~~~
 git clone https://github.com/armbian/configng.git
+cd configng
+./armbian-configng
 ~~~
+
+***
+## Screenshots
+![edit-boot-env-2024-04-03 10-06-58](https://github.com/armbian/configng/assets/2831630/448f0515-0854-4a8a-8421-53c8b72bb5c5)
+![BT-connect-2024-04-03 10-06-58](https://github.com/armbian/configng/assets/2831630/fef037ce-346d-4d70-9025-90f69fbdf5d3)
+
+Following was updated on:
+$current_date.
+
+***
 
 ***
 
