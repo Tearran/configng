@@ -27,7 +27,7 @@ echo "Sorting data\nUpdating documentation" | show_infobox ;
 
 ######################################
 # Generate the README.md file   
-echo "$(see_jobs_list)" > "$script_dir/../README.md" 
+echo "$(see_full_list)" > "$script_dir/../README.md" 
 echo "Updating Readme.md" | show_infobox
 
 
@@ -65,6 +65,19 @@ EOF
 
 echo "Updating WIKI Command line options" | show_infobox
 cat << EOF > "$doc_dir/Command.md"
+
+## CLI options
+Command ine options.
+
+Use:
+
+    armbian-config --help
+
+Outputs:
+~~~
+$(see_cli_list)
+~~~
+
 ## Legacy options
 deprecated
 
@@ -73,9 +86,9 @@ Use:
     armbian-config main=Help
 
 Outputs:
-
+~~~
 $(see_cli_legacy)
-
+~~~
 EOF
 }
 
@@ -277,7 +290,7 @@ done
 
 }
 
-function see_jobs_list() {
+function see_full_list() {
 
     cat << EOF
 
@@ -340,22 +353,38 @@ EOF
 
 cat << EOF
 ***
-## Quick start
-Run the following commands:
-
-    echo "deb [signed-by=/usr/share/keyrings/armbian.gpg] https://armbian.github.io/configng stable main" \
-    | sudo tee /etc/apt/sources.list.d/armbian-development.list > /dev/null
-    
-    armbian-configng --dev
-
-If all goes well you should see the Text-Based User Inerface (TUI)
 
 ## Development
 Development test brances are available for testing. To clone the development branch, run the following commands:
 
 ~~~
 git clone https://github.com/armbian/configng.git
-cd configng
+~~~
+
+***
+
+## CLI options
+Command ine options.
+
+Use:
+
+    armbian-config --help
+
+Outputs:
+~~~
+$(see_cli_list)
+~~~
+
+## Legacy options
+deprecated
+
+Use:
+
+    armbian-config main=Help
+
+Outputs:
+~~~
+$(see_cli_legacy)
 ~~~
 
 
@@ -445,8 +474,8 @@ function see_cli_list() {
     cat << EOF
 Usage:  $script_name [option] [arguments]
 
- --help      -  Display this help message.
- main=Help   -  Display Legacy cli commands. deprecated."
+    --help      -  Display this help message.
+    main=Help   -  Display Legacy cli commands. deprecated."
 
 EOF
     # TODO: Migrate More features. 
@@ -455,7 +484,7 @@ EOF
         .menu[] | 
         .sub[] | 
         select(.id | startswith("H") | not) |
-       " --cli " + .id + "  -  " + .description
+       "    --cli " + .id + "  -  " + .description
     ' $json_file
 }
 
@@ -471,10 +500,10 @@ module_options+=(
 function see_cli_legacy() {
         local script_name=$(basename "$0")
         cat << EOF 
-    Legacy help commands are deprecated.
-    Please use 'armbian-config --help' for more information.
+Legacy help commands are deprecated.
+Please use 'armbian-config --help' for more information.
 
-    Usage:  $script_name main=[arguments] selection=[options]
+Usage:  $script_name main=[arguments] selection=[options]
 
 EOF
         cat << EOF

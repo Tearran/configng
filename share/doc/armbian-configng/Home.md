@@ -16,7 +16,7 @@ To Configure and change global sytem settings, run the following command: `./arm
 ![edit-boot-env-2024-04-03 10-06-58](https://github.com/armbian/configng/assets/2831630/448f0515-0854-4a8a-8421-53c8b72bb5c5)
 ![BT-connect-2024-04-03 10-06-58](https://github.com/armbian/configng/assets/2831630/fef037ce-346d-4d70-9025-90f69fbdf5d3)
 Following was updated on:
-Tue May 28 02:57:31 PM MST 2024.
+Tue May 28 03:11:30 PM MST 2024.
 
 ***
 - ## **System** 
@@ -79,21 +79,68 @@ Tue May 28 02:57:31 PM MST 2024.
 
 
 ***
-## Quick start
-Run the following commands:
-
-    echo "deb [signed-by=/usr/share/keyrings/armbian.gpg] https://armbian.github.io/configng stable main"     | sudo tee /etc/apt/sources.list.d/armbian-development.list > /dev/null
-    
-    armbian-configng --dev
-
-If all goes well you should see the Text-Based User Inerface (TUI)
 
 ## Development
 Development test brances are available for testing. To clone the development branch, run the following commands:
 
 ~~~
 git clone https://github.com/armbian/configng.git
-cd configng
+~~~
+
+***
+
+## CLI options
+Command ine options.
+
+Use:
+
+    armbian-config --help
+
+Outputs:
+~~~
+Usage:  armbian-configng [option] [arguments]
+
+    --help      -  Display this help message.
+    main=Help   -  Display Legacy cli commands. deprecated."
+
+    --cli S01  -  Enable Armbina kernal upgrades
+    --cli S02  -  Disable Armbina kernal upgrades
+    --cli S03  -  Edit the boot enviroment (WIP)
+    --cli S04  -  Install Linux headers
+    --cli S05  -  Remove Linux headers
+    --cli BT0  -  Install Bluetooth support
+    --cli BT1  -  Remove Bluetooth support
+    --cli BT3  -  Bluetooth Discover
+    --cli IR0  -  Install Infrared support
+    --cli IR1  -  Uninstall Infrared support
+    --cli N00  -  Manage wifi network connections
+    --cli N01  -  Advanced Edit /etc/network/interface
+    --cli N02  -  Disconect and forget all wifi connections (Advanced)
+    --cli N03  -  Toggle system IPv6/IPv4 internet protical
+    --cli L00  -  Change Globla timezone (WIP)
+    --cli L01  -  Change Locales reconfigure the language and charitorset
+    --cli L02  -  Change Keyboard layout
+    --cli L03  -  Change APT mirrors
+    --cli I00  -  Update Application Repository
+    --cli I01  -  CLI System Monitor
+~~~
+
+## Legacy options
+deprecated
+
+Use:
+
+    armbian-config main=Help
+
+Outputs:
+~~~
+Legacy help commands are deprecated.
+Please use 'armbian-config --help' for more information.
+
+Usage:  armbian-configng main=[arguments] selection=[options]
+
+    armbian-configng main=System selection=Headers          -  Install headers:                                        
+    armbian-configng main=System selection=Headers_remove   -  Remove headers:                                 
 ~~~
 
 
