@@ -344,23 +344,41 @@ cat << EOF
 ***
 
 ## Development
-Development test brances are available for testing. To clone the development branch, run the following commands:
+
+To clone this development branch, run the following commands:
 
 ~~~
-git clone https://github.com/armbian/configng.git
+git clone https://github.com/Tearran/configng.git
 cd configng
 ./armbian-configng
 ~~~
 
-***
-## Screenshots
-![edit-boot-env-2024-04-03 10-06-58](https://github.com/armbian/configng/assets/2831630/448f0515-0854-4a8a-8421-53c8b72bb5c5)
-![BT-connect-2024-04-03 10-06-58](https://github.com/armbian/configng/assets/2831630/fef037ce-346d-4d70-9025-90f69fbdf5d3)
+## Install latest upstream 
+dowload .deb package: 
 
-Following was updated on:
-$current_date.
+~~~
+{
+latest_release=\$(curl -s https://api.github.com/repos/armbian/configng/releases/latest)
+deb_url=\$(echo "\$latest_release" | jq -r '.assets[] | select(.name | endswith(".deb")) | .browser_download_url')
+curl -LO "\$deb_url"
+deb_file=\$(echo "\$deb_url" | awk -F"/" '{print \$NF}')
+sudo dpkg -i "\$deb_file"
+sudo dpkg --configure -a
+sudo apt --fix-broken install
+}
+~~~
 
 ***
+
+## CLI options
+Command ine options.
+
+Use:
+
+    armbian-config --help
+
+Outputs:
+~~~
 
 ***
 
@@ -396,6 +414,8 @@ $(see_cli_legacy)
 >
 
 EOF
+
+exit 0 ;
 
 }
 
