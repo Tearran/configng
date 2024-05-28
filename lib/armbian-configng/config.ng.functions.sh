@@ -445,6 +445,7 @@ function generate_menu() {
             # If it doesn't, execute the command
             [[ -n "$debug" ]] &&  echo "$OPTION"
             execute_command "$OPTION"
+            #show_message <<< "$OPTION"
         fi
     fi
 
@@ -737,3 +738,83 @@ see_current_apt() {
         return 1  # The package lists are not up-to-date
     fi
 }
+
+
+module_options+=(
+["Headers_install,author"]="https://github.com/Tearran"
+["Headers_install,ref_link"]="https://github.com/armbian/config/blob/master/debian-config-jobs#L160"
+["Headers_install,feature"]="Headers_install"
+["Headers_install,desc"]="Install kernel headers"
+["Headers_install,example"]="if ! is_package_manager_running; then,  if [[ -f /etc/armbian-release ]]; then,    INSTALL_PKG="linux-headers-${BRANCH}-${LINUXFAMILY}";,    else,    INSTALL_PKG="linux-headers-$(uname -r | sed 's/'-$(dpkg --print-architecture)'//')";,  fi,  debconf-apt-progress -- apt-get -y install ${INSTALL_PKG},fi"
+["Headers_install,status"]="Pending Review"
+["Headers_install,doc_link"]="https://github.com/armbian/config/wiki#System"
+)
+#
+# @description Install kernel headers
+#
+function Headers_install () {
+	if ! is_package_manager_running; then
+	  if [[ -f /etc/armbian-release ]]; then
+	    INSTALL_PKG="linux-headers-${BRANCH}-${LINUXFAMILY}";
+	    else
+	    INSTALL_PKG="linux-headers-$(uname -r | sed 's/'-$(dpkg --print-architecture)'//')";
+	  fi
+	  debconf-apt-progress -- apt-get -y install ${INSTALL_PKG}
+	fi
+}
+
+module_options+=(
+["Headers_remove,author"]="https://github.com/Tearran"
+["Headers_remove,ref_link"]="https://github.com/armbian/config/blob/master/debian-config-jobs#L160"
+["Headers_remove,feature"]="Headers_remove"
+["Headers_remove,desc"]="Remove Linux headers"
+["Headers_remove,example"]="if ! is_package_manager_running; then,	REMOVE_PKG="linux-headers-*",	if [[ -n $(dpkg -l | grep linux-headers) ]]; then,		debconf-apt-progress -- apt-get -y purge ${REMOVE_PKG},		rm -rf /usr/src/linux-headers*,	else,		debconf-apt-progress -- apt-get -y install ${INSTALL_PKG},	fi,	# cleanup,	apt clean,	debconf-apt-progress -- apt -y autoremove,fi"
+["Headers_remove,status"]="Pending Review"
+["Headers_remove,doc_link"]="https://github.com/armbian/config/wiki#System"
+)
+#
+# @description Remove Linux headers
+#
+function Headers_remove () {
+	if ! is_package_manager_running; then
+		REMOVE_PKG="linux-headers-*"
+		if [[ -n $(dpkg -l | grep linux-headers) ]]; then
+			debconf-apt-progress -- apt-get -y purge ${REMOVE_PKG}
+			rm -rf /usr/src/linux-headers*
+		else
+			debconf-apt-progress -- apt-get -y install ${INSTALL_PKG}
+		fi
+		# cleanup
+		apt clean
+		debconf-apt-progress -- apt -y autoremove
+	fi
+}
+
+module_options+=(
+["sanitize_input,author"]="https://github.com/Tearran"
+["sanitize_input,ref_link"]="https://github.com/armbian/config/blob/master/debian-config-jobs#L160"
+["sanitize_input,feature"]="Headers_remove"
+["sanitize_input,desc"]="Remove Linux headers"
+["sanitize_input,example"]="if ! is_package_manager_running; then,	REMOVE_PKG=\"linux-headers-*\",	if [[ -n $(dpkg -l | grep linux-headers) ]]; then,		debconf-apt-progress -- apt-get -y purge ${REMOVE_PKG},		rm -rf /usr/src/linux-headers*,	else,		debconf-apt-progress -- apt-get -y install ${INSTALL_PKG},	fi,	# cleanup,	apt clean,	debconf-apt-progress -- apt -y autoremove,fi"
+["sanitize_input,status"]="Pending Review"
+["sanitize_input,doc_link"]="https://github.com/armbian/config/wiki#System"
+)
+#
+# sanitize input cli
+#
+sanitize_input() {
+    local sanitized_input=()
+    for arg in "$@"; do
+        if [[ $arg =~ ^[a-zA-Z0-9_=]+$ ]]; then
+            sanitized_input+=("$arg")
+        else
+            echo "Invalid argument: $arg"
+            exit 1
+        fi
+    done
+    echo "${sanitized_input[@]}"
+}
+
+
+
+	

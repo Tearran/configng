@@ -9,8 +9,7 @@
                     "id": "S01",
                     "description": "Enable Armbina kernal upgrades",
                     "command": [
-                        	"get_user_continue \"This will allow apt to update boot critical items\n\n  Continue?\" process_input",
-                        	"set_safe_boot unhold"
+                        "set_safe_boot unhold"
                     ],
                     "show": true,
                     "status": "WIP",
@@ -22,7 +21,6 @@
                     "id": "S02",
                     "description": "Disable Armbina kernal upgrades",
                     "command": [
-                        "get_user_continue \"This will apt hold boot critical items\n\n  Continue?\" process_input",
                         "set_safe_boot freeze"
                     ],
                     "show": true,
@@ -43,6 +41,30 @@
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
+                },
+                {
+                    "id": "S04",
+                    "description": "Install Linux headers",
+                    "command": [
+                        "Headers_install"
+                    ],
+                    "show": true,
+                    "status": "Pending Review",
+                    "doc_link": "https://github.com/armbian/config/wiki#System",
+                    "src_reference": "https://github.com/armbian/config/blob/master/debian-config-jobs#L160",
+                    "author": "https://github.com/Tearran"
+                },
+                {
+                    "id": "S05",
+                    "description": "Remove Linux headers",
+                    "command": [
+                        "Headers_remove"
+                    ],
+                    "show": true,
+                    "status": "Pending Review",
+                    "doc_link": "https://github.com/armbian/config/wiki#System",
+                    "src_reference": "https://github.com/armbian/config/blob/master/debian-config-jobs#L160",
+                    "author": "https://github.com/Tearran"
                 }
             ]
         },

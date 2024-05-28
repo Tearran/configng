@@ -16,16 +16,20 @@ To Configure and change global sytem settings, run the following command: `./arm
 ![edit-boot-env-2024-04-03 10-06-58](https://github.com/armbian/configng/assets/2831630/448f0515-0854-4a8a-8421-53c8b72bb5c5)
 ![BT-connect-2024-04-03 10-06-58](https://github.com/armbian/configng/assets/2831630/fef037ce-346d-4d70-9025-90f69fbdf5d3)
 Following was updated on:
-Fri Apr 12 01:33:08 AM MST 2024.
+Tue May 28 02:57:31 PM MST 2024.
 
 ***
 - ## **System** 
-  - **S01** - Description: Enable Armbian kernal upgrades
+  - **S01** - Description: Enable Armbina kernal upgrades
     - Status: [WIP](https://github.com/armbian/configng/wiki/Menu#s01)
-  - **S02** - Description: Disable Armbian kernal upgrades
+  - **S02** - Description: Disable Armbina kernal upgrades
     - Status: [WIP](https://github.com/armbian/configng/wiki/Menu#s02)
   - **S03** - Description: Edit the boot enviroment (WIP)
     - Status: [WIP](https://github.com/armbian/configng/wiki/Menu#s03)
+  - **S04** - Description: Install Linux headers
+    - Status: [Pending Review](https://github.com/armbian/config/wiki#System)
+  - **S05** - Description: Remove Linux headers
+    - Status: [Pending Review](https://github.com/armbian/config/wiki#System)
 
 
 - ## **Network** 
@@ -50,9 +54,9 @@ Fri Apr 12 01:33:08 AM MST 2024.
 
 
 - ## **Localisation** 
-  - **L00** - Description: Change Global timezone (WIP)
+  - **L00** - Description: Change Globla timezone (WIP)
     - Status: [review](https://github.com/armbian/configng/wiki/Menu#l00)
-  - **L01** - Description: Change Locales reconfigure the language and character set
+  - **L01** - Description: Change Locales reconfigure the language and charitorset
     - Status: [review](https://github.com/armbian/configng/wiki/Menu#l01)
   - **L02** - Description: Change Keyboard layout
     - Status: [review](https://github.com/armbian/configng/wiki/Menu#l02)
@@ -68,7 +72,7 @@ Fri Apr 12 01:33:08 AM MST 2024.
 
 
 - ## **Help** 
-  - **H00** - Description: About This system. (WIP)
+  - **H00** - Description: About This systme. (WIP)
     - Status: [review](https://github.com/armbian/configng/wiki/Menu#h00)
   - **H02** - Description: List of Config function(WIP)
     - Status: [review](https://github.com/armbian/configng/wiki/Menu#h02)

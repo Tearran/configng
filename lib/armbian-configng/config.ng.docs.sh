@@ -27,15 +27,14 @@ echo "Sorting data\nUpdating documentation" | show_infobox ;
 
 ######################################
 # Generate the README.md file   
-echo "$(see_jobs_list)" > "$script_dir/README.md" 
+echo "$(see_jobs_list)" > "$script_dir/../README.md" 
 echo "Updating Readme.md" | show_infobox
 
 
 ######################################
 
 
-cp  "$script_dir/README.md" "$doc_dir/Home.md"
-cd "$script_dir" && cp ./README.md "../README.md"
+cp  "$script_dir/../README.md" "$doc_dir/Home.md"
 echo "README.md has been updated." | show_infobox
 
 ######################################
@@ -55,7 +54,7 @@ EOF
 echo "Updating WIKI HowTo" | show_infobox
 cat << EOF > "$doc_dir/Menu.md"
 
-# Armbian-config Menu list.
+# Menu list.
 armbian-config jobs list.
 
 $(see_jq_menu_list)
@@ -64,10 +63,20 @@ EOF
 
 ######################################
 
-# show_infobox <<< $( echo "$(generate_json_options)" > "$script_dir/docs/config-helpers.json" )
-# Print a message indicating that README.md has been updated
-# echo "Documents have been updated." | show_infobox
+echo "Updating WIKI Command line options" | show_infobox
+cat << EOF > "$doc_dir/Command.md"
+## Legacy options
+deprecated
 
+Use:
+
+    armbian-config main=Help
+
+Outputs:
+
+$(see_cli_legacy)
+
+EOF
 }
 
 
@@ -419,4 +428,74 @@ jq -r '
     "\n~~~\n"
 ' $json_file
 }
+module_options+=(
+    ["see_cli_list,author"]="Tearran"
+    ["see_cli_list,ref_link"]=""
+    ["see_cli_list,feature"]="see_cli_list"
+    ["see_cli_list,desc"]="Generate a Help message for cli commands."
+    ["see_cli_list,example"]="see_cli_list"
+    ["see_cli_list,status"]="review"
+    ["see_cli_list,doc_link"]=""
+)
+#
+# See command line options
+#
+function see_cli_list() {
+    local script_name=$(basename "$0")
+    cat << EOF
+Usage:  $script_name [option] [arguments]
 
+ --help      -  Display this help message.
+ main=Help   -  Display Legacy cli commands. deprecated."
+
+EOF
+    # TODO: Migrate More features. 
+    #echo " main=help   -  Display Legacy cli commands."
+    jq -r --arg script_name "$script_name" '
+        .menu[] | 
+        .sub[] | 
+        select(.id | startswith("H") | not) |
+       " --cli " + .id + "  -  " + .description
+    ' $json_file
+}
+
+module_options+=(
+    ["see_cli_legacy,author"]="Tearran"
+    ["see_cli_legacy,ref_link"]=""
+    ["see_cli_legacy,feature"]="see_cli_legacy"
+    ["see_cli_legacy,desc"]="Generate a Help message legacy cli commands."
+    ["see_cli_legacy,example"]="see_cli_legacy"
+    ["see_cli_legacy,status"]="review"
+    ["see_cli_legacy,doc_link"]=""
+)
+function see_cli_legacy() {
+        local script_name=$(basename "$0")
+        cat << EOF 
+    Legacy help commands are deprecated.
+    Please use 'armbian-config --help' for more information.
+
+    Usage:  $script_name main=[arguments] selection=[options]
+
+EOF
+        cat << EOF
+    $script_name main=System selection=Headers          -  Install headers:                                        
+    $script_name main=System selection=Headers_remove   -  Remove headers:                                 
+
+EOF
+
+# TODO Migrate following features
+
+# $script_name main=System   selection=Firmware         -  Update, upgrade and reboot:                
+# $script_name main=System   selection=Nightly          -  Switch to nightly builds:                             
+# $script_name main=System   selection=Stable           -  Switch to stable builds:                                
+# $script_name main=System   selection=Default          -  Install default desktop:                          
+# $script_name main=System   selection=ZSH              -  Change to ZSH:                                  
+# $script_name main=System   selection=BASH             -  Change to BASH:                                         
+# $script_name main=System   selection=Stable           -  Change to stable repository [branch=dev]:               
+# $script_name main=System   selection=Nightly          -  Change to nightly repository [branch=dev]:      
+# $script_name main=Software selection=Source_install   -  Install kernel source:                          
+# $script_name main=Software selection=Source_remove    -  Remove kernel source:                           
+# $script_name main=Software selection=Avahi            -  Install Avahi mDNS/DNS-SD daemon:
+
+
+}

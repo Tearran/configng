@@ -4,6 +4,7 @@ A list of the heper function ie bash prosedures used in Jobs file.
 
 | Feature | Description | Credit | Reference | Documents | Status |
 |:------- | ----------- | ----------- |:---------:|:---------:|:------:|
+| see_cli_legacy | Generate a Help message legacy cli commands. | Tearran | X | X | source link Needed | 
 | set_runtime_variables | Run time varibales Migrated procedures from Armbian config. | Igor Pecovnik | [Source](https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L136) | X | review | 
 | see_function_table_md | Generate this markdown table of all module_options | Tearran | X | X | source link Needed | 
 | show_menu | Display a menu from pipe | Joey Turner | [Source](https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L550) | X | WIP | 
@@ -19,12 +20,16 @@ A list of the heper function ie bash prosedures used in Jobs file.
 | see_current_apt | Check when apt list was last updated | Joey Turner | [Source](https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#667) | X | review | 
 | check_if_installed | Migrated procedures from Armbian config. | Igor Pecovnik | [Source](https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L88) | X | review | 
 | generate_svg | Generate 'Armbian CPU logo' SVG for docunment file. | Tearran | [Source](https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#201) | X | review | 
+| Headers_remove | Remove Linux headers | https://github.com/Tearran | [Source](https://github.com/armbian/config/blob/master/debian-config-jobs#L160) | [Document](https://github.com/armbian/config/wiki#System) | Review | 
+| Headers_remove | Remove Linux headers | https://github.com/Tearran | [Source](https://github.com/armbian/config/blob/master/debian-config-jobs#L160) | [Document](https://github.com/armbian/config/wiki#System) | Review | 
 | check_ip_version | Check if a domain is reachable via IPv4 and IPv6 | Joey Turner | X | X | source link Needed | 
 | set_header_remove | Migrated procedures from Armbian config. | Igor Pecovnik | [Source](https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L64) | X | review | 
 | generate_menu | Generate a submenu from a parent_id | Joey Turner | [Source](https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L416) | X | review | 
 | see_jq_menu_list | Generate a markdown list json objects using jq. | Tearran | [Source](https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L304) | X | review | 
 | generate_jobs_from_json | Generate jobs from JSON file. | Tearran | [Source](https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L223) | X | review | 
+| Headers_install | Install kernel headers | https://github.com/Tearran | [Source](https://github.com/armbian/config/blob/master/debian-config-jobs#L160) | [Document](https://github.com/armbian/config/wiki#System) | Review | 
 | toggle_ipv6 | Toggle IPv6 on or off | Joey Turner | X | X | source link Needed | 
+| see_cli_list | Generate a Help message for cli commands. | Tearran | X | X | source link Needed | 
 | generate_json | Generate JSON-like object file. | Tearran | [Source](https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L149) | X | review | 
 | set_colors | Change the background color of the terminal or dialoge box | Joey Turner | [Source](https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L287) | X | review | 
 | serve_doc | Serve the edit and debug server. | Tearran | [Source](https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L89) | X | review | 
