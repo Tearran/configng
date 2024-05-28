@@ -84,7 +84,7 @@ cd configng
 ![BT-connect-2024-04-03 10-06-58](https://github.com/armbian/configng/assets/2831630/fef037ce-346d-4d70-9025-90f69fbdf5d3)
 
 Following was updated on:
-Tue May 28 03:30:02 PM MST 2024.
+Tue May 28 03:34:16 PM MST 2024.
 
 ***
 
