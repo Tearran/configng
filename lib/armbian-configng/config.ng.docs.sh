@@ -348,9 +348,9 @@ cat << EOF
 To clone this development branch, run the following commands:
 
 ~~~
-git clone https://github.com/Tearran/configng.git
-cd configng
-./armbian-configng
+    git clone https://github.com/Tearran/configng.git
+    cd configng
+    ./armbian-configng
 ~~~
 
 ## Install latest upstream 
@@ -358,13 +358,13 @@ dowload .deb package:
 
 ~~~
 {
-latest_release=\$(curl -s https://api.github.com/repos/armbian/configng/releases/latest)
-deb_url=\$(echo "\$latest_release" | jq -r '.assets[] | select(.name | endswith(".deb")) | .browser_download_url')
-curl -LO "\$deb_url"
-deb_file=\$(echo "\$deb_url" | awk -F"/" '{print \$NF}')
-sudo dpkg -i "\$deb_file"
-sudo dpkg --configure -a
-sudo apt --fix-broken install
+    latest_release=\$(curl -s https://api.github.com/repos/armbian/configng/releases/latest)
+    deb_url=\$(echo "\$latest_release" | jq -r '.assets[] | select(.name | endswith(".deb")) | .browser_download_url')
+    curl -LO "\$deb_url"
+    deb_file=\$(echo "\$deb_url" | awk -F"/" '{print \$NF}')
+    sudo dpkg -i "\$deb_file"
+    sudo dpkg --configure -a
+    sudo apt --fix-broken install
 }
 ~~~
 
@@ -374,20 +374,9 @@ sudo apt --fix-broken install
 Command ine options.
 
 Use:
-
-    armbian-config --help
-
-Outputs:
 ~~~
-
-***
-
-## CLI options
-Command ine options.
-
-Use:
-
     armbian-config --help
+~~~
 
 Outputs:
 ~~~
