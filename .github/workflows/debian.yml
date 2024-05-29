@@ -11,14 +11,7 @@ on:
 
 jobs:
 
-  check-owner:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Fail if not in armbian repo
-      run: if [ "$GITHUB_REPOSITORY_OWNER" != "armbian" ]; then exit 1; fi
-
   Debian:
-    needs: check-owner
     uses: armbian/scripts/.github/workflows/pack-debian.yml@master
     with:
       matrix: "all:jammy"
@@ -28,7 +21,7 @@ jobs:
       homepage: "https://www.armbian.com"
       section: "default"
       priority: "optional"
-      depends: "bash whiptail jq"
+      depends: "bash whiptail jq zenity"
       description: "Configng"
 
     secrets:
