@@ -10,6 +10,8 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
     
+    - name: Set TERM environment variable
+      run: echo "TERM=xterm" >> $GITHUB_ENV
     - name: Install ShellCheck
       run: sudo apt-get install pandoc git shellcheck
     - name: Run ShellCheck
