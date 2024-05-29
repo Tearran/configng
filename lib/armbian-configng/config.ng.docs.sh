@@ -21,9 +21,6 @@ function generate_readme() {
     # setup doc folders
     mkdir -p "$script_dir/../share/doc/armbian-configng"
 
-
-exit 0 ;
-
 echo -e "Sorting data\nUpdating documentation" # current_date ;
 
 ######################################
