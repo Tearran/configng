@@ -10,7 +10,7 @@ module_options+=(
 ["check_desktop,feature"]="check_desktop"
 ["check_desktop,desc"]="Migrated procedures from Armbian config."
 ["check_desktop,example"]="check_desktop"
-["check_desktop,status"]="review"
+["check_desktop,status"]="Active"
 ["check_desktop,doc_link"]=""
 )
 #
@@ -36,7 +36,7 @@ menu_options+=(
 ["get_headers_kernel,feature"]="get_headers_kernel"
 ["get_headers_kernel,desc"]="Migrated procedures from Armbian config."
 ["get_headers_kernel,example"]="get_headers_kernel"
-["get_headers_kernel,status"]="review"
+["get_headers_kernel,status"]="Active"
 ["get_headers_kernel,doc_link"]=""
 )
 #
@@ -61,7 +61,7 @@ module_options+=(
 ["set_header_remove,desc"]="Migrated procedures from Armbian config."
 ["set_header_remove,example"]="set_header_remove"
 ["set_header_remove,doc_link"]=""
-["set_header_remove,status"]="review"
+["set_header_remove,status"]="Active"
 ["set_header_remove,doc_ink"]=""
 )
 #
@@ -89,7 +89,7 @@ module_options+=(
 ["check_if_installed,feature"]="check_if_installed"
 ["check_if_installed,desc"]="Migrated procedures from Armbian config."
 ["check_if_installed,example"]="check_if_installed nano"
-["check_if_installed,status"]="review"
+["check_if_installed,status"]="Active"
 )
 #
 # check dpkg status of $1 -- currently only 'not installed at all' case caught
@@ -112,7 +112,7 @@ module_options+=(
 ["is_package_manager_running,feature"]="is_package_manager_running"
 ["is_package_manager_running,desc"]="Migrated procedures from Armbian config."
 ["is_package_manager_running,example"]="is_package_manager_running"
-["is_package_manager_running,status"]="review"
+["is_package_manager_running,status"]="Active"
 )
 #
 # check if package manager is doing something
@@ -135,7 +135,7 @@ module_options+=(
 ["set_runtime_variables,feature"]="set_runtime_variables"
 ["set_runtime_variables,desc"]="Run time varibales Migrated procedures from Armbian config."
 ["set_runtime_variables,example"]="set_runtime_variables"
-["set_runtime_variables,status"]="review"
+["set_runtime_variables,status"]="Active"
 )
 #
 # gather info about the board and start with loading menu variables
@@ -185,7 +185,7 @@ module_options+=(
 ["set_safe_boot,feature"]="set_safe_boot"
 ["set_safe_boot,desc"]="Freeze/unhold Migrated procedures from Armbian config."
 ["set_safe_boot,example"]="set_safe_boot unhold or set_safe_boot freeze"
-["set_safe_boot,status"]="review"
+["set_safe_boot,status"]="Active"
 )
 #
 # freeze/unhold packages
@@ -220,7 +220,7 @@ module_options+=(
 ["connect_bt_interface,feature"]="connect_bt_interface"
 ["connect_bt_interface,desc"]="Migrated procedures from Armbian config."
 ["connect_bt_interface,example"]="connect_bt_interface"
-["connect_bt_interface,status"]="review"
+["connect_bt_interface,status"]="Active"
 )
 #
 # connect to bluetooth device
@@ -278,7 +278,7 @@ module_options+=(
 ["set_colors,desc"]="Change the background color of the terminal or dialoge box"
 ["set_colors,example"]="set_colors 0-7"
 ["set_colors,doc_link"]=""
-["set_colors,status"]="review"
+["set_colors,status"]="Active"
 )
 #
 # Function to set the tui colors
@@ -357,7 +357,7 @@ module_options+=(
 ["generate_top_menu,desc"]="Build the main menu from a object"
 ["generate_top_menu,example"]="generate_top_menu 'json_data'"
 ["generate_top_menu,doc_link"]=""
-["generate_top_menu,status"]="review"
+["generate_top_menu,status"]="Active"
 )
 #
 # Function to generate the main menu from a JSON object
@@ -407,7 +407,7 @@ module_options+=(
 ["generate_menu,desc"]="Generate a submenu from a parent_id"
 ["generate_menu,example"]="generate_menu 'parent_id'"
 ["generate_menu,doc_link"]=""
-["generate_menu,status"]="review"
+["generate_menu,status"]="Active"
 )
 #
 # Function to generate the submenu
@@ -461,7 +461,7 @@ module_options+=(
 ["execute_command,desc"]="Needed by generate_menu"
 ["execute_command,example"]=""
 ["execute_command,doc_link"]=""
-["execute_command,status"]="review"
+["execute_command,status"]="Active"
 )
 #
 # Function to execute the command
@@ -485,7 +485,7 @@ module_options+=(
 ["show_message,desc"]="Display a message box"
 ["show_message,example"]="show_message <<< 'hello world' "
 ["show_message,doc_link"]="https://github.com/armbian/configng/wiki/interface"
-["show_message,status"]="review"
+["show_message,status"]="Active"
 )
 #
 # Function to display a message box
@@ -511,7 +511,7 @@ module_options+=(
 ["show_infobox,desc"]="pipe line strings to a infobox "
 ["show_infobox,example"]="show_infobox <<< 'hello world' ; "
 ["show_infobox,doc_link"]=""
-["show_infobox,status"]="review"
+["show_infobox,status"]="Active"
 )
 #
 # Function to display an infobox with a message
@@ -587,7 +587,7 @@ module_options+=(
 ["get_user_continue,desc"]="Display a Yes/No dialog box and prosees continue/exit"
 ["get_user_continue,example"]="get_user_continue 'Do you wish to continue?' process_input"
 ["get_user_continue,doc_link"]=""
-["get_user_continue,status"]="review"
+["get_user_continue,status"]="Active"
 )
 #
 # Function to display a Yes/No dialog box (WIP)
@@ -610,7 +610,7 @@ menu_options+=(
 ["get_user_continue,feature"]="process_input"
 ["get_user_continue,desc"]="used to process the user's choice paired with get_user_continue"
 ["get_user_continue,example"]="get_user_continue 'Do you wish to continue?' process_input"
-["get_user_continue,status"]="review"
+["get_user_continue,status"]="Active"
 ["get_user_continue,doc_link"]=""
 )
 #
@@ -666,7 +666,7 @@ module_options+=(
 ["see_ping,desc"]="Check the internet connection with fallback DNS"
 ["see_ping,example"]="see_ping"
 ["see_ping,doc_link"]=""
-["see_ping,status"]="review"
+["see_ping,status"]="Active"
 )
 #
 # Function to check the internet connection
@@ -701,7 +701,7 @@ module_options+=(
 ["see_current_apt,desc"]="Check when apt list was last updated"
 ["see_current_apt,example"]="see_current_apt"
 ["see_current_apt,doc_link"]=""
-["see_current_apt,status"]="review"
+["see_current_apt,status"]="Active"
 )
 #
 # Function to check when the package list was last updated

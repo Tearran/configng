@@ -82,7 +82,7 @@
                         "check_if_installed xserver-xorg && debconf-apt-progress -- apt-get -y --no-install-recommends install pulseaudio-module-bluetooth blueman"
                     ],
                     "show": false,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -97,7 +97,7 @@
                         "debconf-apt-progress -- apt -y -qq autoremove"
 		       ],
                     "show": false,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -110,7 +110,7 @@
 
                     ],
                     "show": false,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -122,7 +122,7 @@
                         "see_current_apt; debconf-apt-progress -- apt-get -y --no-install-recommends install lirc"
                     ],
                     "show": false,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -134,7 +134,7 @@
                         "see_current_apt; debconf-apt-progress -- apt-get -y --no-install-recommends install lirc"
                     ],
                     "show": false,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -146,7 +146,7 @@
                         "nmtui connect"
                     ],
                     "show": true,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -159,7 +159,7 @@
                         "nano /etc/network/interfaces"
                     ],
                     "show": true,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -173,7 +173,7 @@
 						"do nmcli con delete uuid  $line; done > /dev/null"
                     ],
                     "show": true,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -186,7 +186,7 @@
                         "toggle_ipv6 | show_infobox"
                     ],
                     "show": true,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -205,7 +205,7 @@
 						"dpkg-reconfigure tzdata"
                     ],
                     "show": true,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -219,7 +219,7 @@
 		                    "export LANGUAGE=$LANG"
                     ],
                     "show": true,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -231,7 +231,7 @@
 						"dpkg-reconfigure keyboard-configuration ; setupcon "
                     ],
                     "show": true,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -243,7 +243,7 @@
                         "get_user_continue \"This is only a frontend test\" process_input"
                     ],
                     "show": false,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -263,7 +263,7 @@
                         "debconf-apt-progress -- apt update"
                     ],
                     "show": true,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -275,7 +275,7 @@
                         "armbianmonitor -m | show_infobox"
                     ],
                     "show": true,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -294,7 +294,7 @@
                         "show_message <<< \"This app is to help exicute prosedures to configure your system\n\nSome option may not work on manualy modified sytemes\""
                     ],
                     "show": true,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -306,7 +306,7 @@
                         "show_message <<< see_use"
                     ],
                     "show": false,
-                    "status": "review",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
