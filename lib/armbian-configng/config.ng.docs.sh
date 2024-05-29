@@ -23,23 +23,23 @@ function generate_readme() {
 #    [[ ! -f "$script_dir/images/logo.svg" ]]  && generate_svg > "$script_dir/images/logo.svg" ;
 
 
-echo "Sorting data\nUpdating documentation" | show_infobox ;
+echo "Sorting data\nUpdating documentation" # current_date ;
 
 ######################################
 # Generate the README.md file   
 echo "$(see_full_list)" > "$script_dir/../README.md" 
-echo "Updating Readme.md" | show_infobox
+echo "Updating Readme.md" # current_date
 
 
 ######################################
 
 
 cp  "$script_dir/../README.md" "$doc_dir/Home.md"
-echo "README.md has been updated." | show_infobox
+echo "README.md has been updated." # current_date
 
 ######################################
 
-echo "Updating WIKI Functions" | show_infobox
+echo "Updating WIKI Functions" # current_date
 cat << EOF > "$doc_dir/Functions.md"
 
 # Helper functions
@@ -51,7 +51,7 @@ EOF
 
 ######################################
 
-echo "Updating WIKI HowTo" | show_infobox
+echo "Updating WIKI HowTo" # current_date
 cat << EOF > "$doc_dir/Menu.md"
 
 # Menu list.
@@ -63,7 +63,7 @@ EOF
 
 ######################################
 
-echo "Updating WIKI Command line options" | show_infobox
+echo "Updating WIKI Command line options" # current_date
 cat << EOF > "$doc_dir/Command.md"
 
 ## CLI options
