@@ -642,9 +642,16 @@ function get_user_continue_secure() {
 
     # Define a list of allowed functions
     local allowed_functions=("process_input" "other_function")
-
     # Check if the next_action is in the list of allowed functions
-    if [[ " ${allowed_functions[@]} " =~ " ${next_action} " ]]; then
+    found=0
+    for func in "${allowed_functions[@]}"; do
+        if [[ "$func" == "$next_action" ]]; then
+            found=1
+            break
+        fi
+    done
+
+    if [[ "$found" -eq 1 ]]; then
         if $($DIALOG --yesno "$message" 10 80 3>&1 1>&2 2>&3); then
             $next_action
         else
