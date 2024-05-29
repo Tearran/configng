@@ -18,12 +18,13 @@ function generate_readme() {
 
     # Get the current date
     local current_date=$(date)  
+    # setup doc folders
+    mkdir -p "$script_dir/../share/doc/armbian-configng"
 
-#    [[ ! -d "$script_dir/images" ]] && mkdir -p "$script_dir/images" && generate_svg > "$script_dir/images/logo.svg" ;
-#    [[ ! -f "$script_dir/images/logo.svg" ]]  && generate_svg > "$script_dir/images/logo.svg" ;
 
+exit 0 ;
 
-echo "Sorting data\nUpdating documentation" # current_date ;
+echo -e "Sorting data\nUpdating documentation" # current_date ;
 
 ######################################
 # Generate the README.md file   
