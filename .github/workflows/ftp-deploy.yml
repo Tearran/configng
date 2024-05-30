@@ -12,8 +12,10 @@ jobs:
     
     - name: Set TERM environment variable
       run: echo "TERM=xterm" >> $GITHUB_ENV
+
     - name: Install ShellCheck
       run: sudo apt-get install pandoc git shellcheck
+
     - name: Run ShellCheck
       run: |
         ret=0
@@ -24,7 +26,23 @@ jobs:
 
     - name: Generate website 
       run: ./bin/armbian-configng --doc
-           
+
+    - name: Checkout Wiki
+      uses: actions/checkout@v3
+      with:
+        repository: ${{ github.repository }}.wiki
+        path: .wiki
+        
+    - name: Update Wiki
+      run: |
+        cp -r share/doc/armbian-configng/* .wiki/
+        cd .wiki
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Update Wiki"
+        git push
+
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
