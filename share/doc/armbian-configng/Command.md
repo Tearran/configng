@@ -11,7 +11,7 @@ Outputs:
 Usage:  armbian-configng [option] [arguments]
 
     --help      -  Display this help message.
-    main=Help   -  Display Legacy cli commands. deprecated."
+    main=Help   -  Display Legacy Options (Backward Compatible)
 
     --cli S01  -  Enable Armbina kernal upgrades
     --cli S02  -  Disable Armbina kernal upgrades
@@ -44,7 +44,7 @@ Use:
 
 Outputs:
 ~~~
-Legacy help commands are deprecated.
+Legacy Options (Backward Compatible)
 Please use 'armbian-config --help' for more information.
 
 Usage:  armbian-configng main=[arguments] selection=[options]

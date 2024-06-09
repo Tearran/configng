@@ -74,12 +74,12 @@ Utility for configuring your board, divided into four main sections:
 To clone this development branch, run the following commands:
 
 ~~~
-    git clone https://github.com/Tearran/configng.git
+    git clone https://github.com/armbian/configng
     cd configng
-    ./armbian-configng
+    ./armbian-configng --help
 ~~~
 
-## Install latest upstream 
+## Install latest release
 dowload .deb package: 
 
 ~~~
@@ -109,7 +109,7 @@ Outputs:
 Usage:  armbian-configng [option] [arguments]
 
     --help      -  Display this help message.
-    main=Help   -  Display Legacy cli commands. deprecated."
+    main=Help   -  Display Legacy Options (Backward Compatible)
 
     --cli S01  -  Enable Armbina kernal upgrades
     --cli S02  -  Disable Armbina kernal upgrades
@@ -134,7 +134,7 @@ Usage:  armbian-configng [option] [arguments]
 ~~~
 
 ## Legacy options
-deprecated
+Backward Compatible options.
 
 Use:
 
@@ -142,7 +142,7 @@ Use:
 
 Outputs:
 ~~~
-Legacy help commands are deprecated.
+Legacy Options (Backward Compatible)
 Please use 'armbian-config --help' for more information.
 
 Usage:  armbian-configng main=[arguments] selection=[options]
