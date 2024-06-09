@@ -4,7 +4,7 @@
 
 module_options+=(
     ["generate_readme,author"]="Joey Turner"
-    ["generate_readme,ref_link"]="https://github.com/armbian/configng/blob/main/lib/armbian-configng/documents.sh#L18"
+    ["generate_readme,ref_link"]="https://github.com/armbian/configng/blob/main/lib/armbian-configng/config.ng.functions.sh#L17"
     ["generate_readme,feature"]="generate_readme"
     ["generate_readme,desc"]="Generate Document files."
     ["generate_readme,example"]="generate_readme"
@@ -93,7 +93,7 @@ EOF
 
 module_options+=(
     ["serve_doc,author"]="Tearran"
-    ["serve_doc,ref_link"]="https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L89"
+    ["serve_doc,ref_link"]="https://github.com/armbian/configng/blob/main/lib/armbian-configng/config.ng.functions.sh#L106"
     ["serve_doc,feature"]="serve_doc"
     ["serve_doc,desc"]="Serve the edit and debug server."
     ["serve_doc,example"]="serve_doc"
@@ -132,7 +132,7 @@ function serve_doc() {
 
 module_options+=(
     ["see_use,author"]="Tearran"
-    ["see_use,ref_link"]="https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L126"
+    ["see_use,ref_link"]="https://github.com/armbian/configng/blob/main/lib/armbian-configng/config.ng.functions.sh#L145"
     ["see_use,feature"]="see_use"
     ["see_use,desc"]="Show the usage of the functions."
     ["see_use,example"]="see_use"
@@ -161,7 +161,7 @@ function see_use() {
 
 module_options+=(
     ["generate_json_options,author"]="Tearran"
-    ["generate_json_options,ref_link"]="https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L149"
+    ["generate_json_options,ref_link"]="https://github.com/armbian/configng/blob/main/lib/armbian-configng/config.ng.functions.sh#L174"
     ["generate_json_options,feature"]="generate_json"
     ["generate_json_options,desc"]="Generate JSON-like object file."
     ["generate_json_options,example"]="generate_json"
@@ -215,7 +215,7 @@ echo "}"
 
 module_options+=(
     ["generate_svg,author"]="Tearran"
-    ["generate_svg,ref_link"]="https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#201"
+    ["generate_svg,ref_link"]="https://github.com/armbian/configng/blob/main/lib/armbian-configng/config.ng.functions.sh#L201"
     ["generate_svg,feature"]="generate_svg"
     ["generate_svg,desc"]="Generate 'Armbian CPU logo' SVG for docunment file."
     ["generate_svg,example"]="generate_svg"
@@ -240,7 +240,7 @@ EOF
 
 module_options+=(
     ["generate_jobs_from_json,author"]="Tearran"
-    ["generate_jobs_from_json,ref_link"]="https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L223"
+    ["generate_jobs_from_json,ref_link"]="https://github.com/armbian/configng/blob/main/lib/armbian-configng/config.ng.functions.sh#L253"
     ["generate_jobs_from_json,feature"]="generate_jobs_from_json"
     ["generate_jobs_from_json,desc"]="Generate jobs from JSON file."
     ["generate_jobs_from_json,example"]="generate_jobs_from_json"
@@ -303,7 +303,7 @@ Utility for configuring your board, divided into four main sections:
 
 EOF
 
-    # Use jq to parse the JSON
+    # Use jq to parse the JSON into markdown
     menu_items=$(jq -r '.menu | length' "$json_file")
 
     for (( i=0; i<$menu_items; i++ ))
@@ -346,12 +346,12 @@ cat << EOF
 To clone this development branch, run the following commands:
 
 ~~~
-    git clone https://github.com/Tearran/configng.git
+    git clone https://github.com/armbian/configng
     cd configng
-    ./armbian-configng
+    ./armbian-configng --help
 ~~~
 
-## Install latest upstream 
+## Install latest release
 dowload .deb package: 
 
 ~~~
@@ -382,7 +382,7 @@ $(see_cli_list)
 ~~~
 
 ## Legacy options
-deprecated
+Backward Compatible options.
 
 Use:
 
@@ -444,7 +444,7 @@ function see_function_table_md() {
 
 module_options+=(
     ["see_jq_menu_list,author"]="Tearran"
-    ["see_jq_menu_list,ref_link"]="https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#L304"
+    ["see_jq_menu_list,ref_link"]="https://github.com/armbian/configng/blob/main/lib/armbian-configng/config.ng.functions.sh#L304"
     ["see_jq_menu_list,feature"]="see_jq_menu_list"
     ["see_jq_menu_list,desc"]="Generate a markdown list json objects using jq."
     ["see_jq_menu_list,example"]="see_jq_menu_list"
@@ -483,7 +483,7 @@ function see_cli_list() {
 Usage:  $script_name [option] [arguments]
 
     --help      -  Display this help message.
-    main=Help   -  Display Legacy cli commands. deprecated."
+    main=Help   -  Display Legacy Options (Backward Compatible)
 
 EOF
     # TODO: Migrate More features. 
@@ -508,7 +508,7 @@ module_options+=(
 function see_cli_legacy() {
         local script_name=$(basename "$0")
         cat << EOF 
-Legacy help commands are deprecated.
+Legacy Options (Backward Compatible)
 Please use 'armbian-config --help' for more information.
 
 Usage:  $script_name main=[arguments] selection=[options]

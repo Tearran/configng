@@ -549,7 +549,7 @@ module_options+=(
 ["show_menu,desc"]="Display a menu from pipe"
 ["show_menu,example"]="show_menu <<< armbianmonitor -h  ; "
 ["show_menu,doc_link"]=""
-["show_menu,status"]="WIP"
+["show_menu,status"]="Active"
 )
 #
 #
@@ -590,7 +590,7 @@ module_options+=(
 ["get_user_continue,status"]="Active"
 )
 #
-# Function to display a Yes/No dialog box (WIP)
+# Function to display a Yes/No dialog box
 #
 function get_user_continue() {
     local message="$1"
@@ -631,7 +631,7 @@ module_options+=(
 ["get_user_continue_secure,desc"]="Secure version of get_user_continue"
 ["get_user_continue_secure,example"]="get_user_continue_secure 'Do you wish to continue?' process_input"
 ["get_user_continue_secure,doc_link"]=""
-["get_user_continue_secure,status"]="WIP"
+["get_user_continue_secure,status"]="Active"
 )
 #
 # Secure version of get_user_continue
