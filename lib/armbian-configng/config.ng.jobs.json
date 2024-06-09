@@ -12,7 +12,7 @@
                         "set_safe_boot unhold"
                     ],
                     "show": true,
-                    "status": "WIP",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -24,7 +24,7 @@
                         "set_safe_boot freeze"
                     ],
                     "show": true,
-                    "status": "WIP",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""
@@ -37,7 +37,7 @@
                         "nano /boot/armbianEnv.txt"
                     ],
                     "show": true,
-                    "status": "WIP",
+                    "status": "Active",
                     "doc_link": "",
                     "src_reference": "",
                     "author": ""

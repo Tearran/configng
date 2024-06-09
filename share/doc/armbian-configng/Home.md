@@ -10,11 +10,11 @@ Utility for configuring your board, divided into four main sections:
 
 - ## **System** 
   - **S01** - Description: Enable Armbina kernal upgrades
-    - Status: [WIP](https://github.com/armbian/configng/wiki/Menu#s01)
+    - Status: [Active](https://github.com/armbian/configng/wiki/Menu#s01)
   - **S02** - Description: Disable Armbina kernal upgrades
-    - Status: [WIP](https://github.com/armbian/configng/wiki/Menu#s02)
+    - Status: [Active](https://github.com/armbian/configng/wiki/Menu#s02)
   - **S03** - Description: Edit the boot enviroment (WIP)
-    - Status: [WIP](https://github.com/armbian/configng/wiki/Menu#s03)
+    - Status: [Active](https://github.com/armbian/configng/wiki/Menu#s03)
   - **S04** - Description: Install Linux headers
     - Status: [Pending Review](https://github.com/armbian/config/wiki#System)
   - **S05** - Description: Remove Linux headers
