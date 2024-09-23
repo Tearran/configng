@@ -1,0 +1,29 @@
+name: Update Documentation
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  update-doc:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Run documentation update script
+      run: |
+        chmod +x ./bin/armbian-configng
+        ./bin/armbian-configng --doc
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add README.md
+        git commit -m "Update README after PR merge"
+        git push origin HEAD:main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
