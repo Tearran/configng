@@ -1,8 +1,4 @@
 
-
-# Prepare the module options array
-declare -A module_options
-
 module_options+=(
     ["set_checkpoint,author"]="@armbian"
     ["set_checkpoint,maintainer"]="@igorpecovnik"
@@ -39,7 +35,7 @@ function set_checkpoint() {
             set_checkpoint_CHECKPOINTS+=($checkpoint_time)
             set_checkpoint_DESCRIPTIONS+=("$2")
             local count=${#set_checkpoint_DESCRIPTIONS[@]}
-            if [ "$3" == "time" ]; then
+            if [[ "$3" == "time" && $UXMODE != "cmd" ]]; then
                 echo "$2: ${checkpoint_duration} seconds"
             fi
             ;;

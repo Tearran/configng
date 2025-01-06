@@ -12,9 +12,10 @@ UXMODE="tui"
 script_dir="$(dirname "$0")"
 
 # Conditionaly change settings.
+[[ "$1" == "--api" ]] && UXMODE="cmd" ;
 [[ -d "$script_dir/../tools" ]] && tools_dir="$script_dir/../tools"
 [[ ! -d "$script_dir/../lib" && -n "$tools_dir" ]] && echo -e "Please run\nbash "$tools_dir/config-assemble.sh" to build the lib directory\n" && exit 1 
-[[ "$1" == "--api" ]] && UXMODE="cmd" ;
+
 [[ -x "$(command -v whiptail)" ]] && DIALOG="whiptail"
 
 
