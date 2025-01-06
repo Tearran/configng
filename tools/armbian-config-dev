@@ -6,44 +6,46 @@
 # Setup Database
 declare -A module_options
 
-INPUTMODE="cmd"
+# Default Setting DO not change here. 
+INPUTMODE="cmd" 
 UXMODE="tui"
-
-[[ "$1" == "--api" ]] && UXMODE="cmd" ;
-# Get the script directory
 script_dir="$(dirname "$0")"
 
+# Conditionaly change settings.
 [[ -d "$script_dir/../tools" ]] && tools_dir="$script_dir/../tools"
 [[ ! -d "$script_dir/../lib" && -n "$tools_dir" ]] && echo -e "Please run\nbash "$tools_dir/config-assemble.sh" to build the lib directory\n" && exit 1 
+[[ "$1" == "--api" ]] && UXMODE="cmd" ;
+[[ -x "$(command -v whiptail)" ]] && DIALOG="whiptail"
 
 
 # Load and run timer
 # see --api set_checkpoint help for more info 
 . "$tools_dir/dev/developer_checkpoint.sh"
 set_checkpoint start
-set_checkpoint mark "Initializing script" time
+set_checkpoint mark "Initializing" time
 
-[[ -x "$(command -v whiptail)" ]] && DIALOG="whiptail"
+
+
 
 # Define the lib directory one level up from the script directory
 lib_dir="$script_dir/../lib/armbian-config"
 doc_dir="$script_dir/../share/doc/armbian-config"
 json_file="$lib_dir/config.jobs.json"
-
+set_checkpoint mark "Library path set" time
 #
 # Load UX data
 json_data=$(<"$json_file")
-    INPUTMODE="cmd"
+set_checkpoint mark "UX Data loaded" time
 
-set_checkpoint mark "Paths set" time
+
 
 source "$lib_dir/config.runtime.sh"
-set_checkpoint mark "Runtime conditions..." time ;
+set_checkpoint mark "Runtime conditions set" time ;
 #
 # Load configng core functions and module options array
 
 source "$lib_dir/config.functions.sh"
-set_checkpoint mark "Base lib loaded" time
+set_checkpoint mark "Main library loaded" time
 
 set_runtime_variables
 set_checkpoint mark "Runtime variables set" time ;
@@ -55,16 +57,16 @@ source "$lib_dir/config.docs.sh"
 set_checkpoint mark "Docs..." time ;
 
 source "$lib_dir/config.system.sh"
-set_checkpoint mark "System Modules Loaded..." time ;
+set_checkpoint mark "System Modules Loaded" time ;
 
 source "$lib_dir/config.network.sh"
-set_checkpoint mark "Network Modules Loaded ..." time ;
+set_checkpoint mark "Network Modules Loaded" time ;
 
 source "$lib_dir/config.software.sh"
-set_checkpoint mark "Software Modules Loaded..." time ;
+set_checkpoint mark "Software Modules Loaded" time ;
 
 set_menu_runtime
-set_checkpoint mark "Menu Runtime updates..." time ;
+set_checkpoint mark "Menu Runtime updated" time ;
 
 
 
