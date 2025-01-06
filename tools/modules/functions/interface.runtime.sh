@@ -1,20 +1,6 @@
 #!/bin/bash
 
-# This script is used to dynamically modify a JSON structure that represents a menu in the Armbian configuration tool.
-# It performs several checks, such as checking if certain packages are installed and determining the network protocol used.
-# Based on these checks, it appends information to the descriptions of menu and submenu items, and shows or hides certain submenu items.
-# The modified JSON structure is stored in the variable 'json_data'.
 
-set_colors 2 # Set the color to green
-
-# Dynamically updates a JSON menu structure based on system checks.
-
-#
-# Initialize variables
-system_info="$(uname -m)"
-locale_setting="$LANG"
-installed_software="$(see_current_apt)"
-held_packages=$(apt-mark showhold)
 
 module_options+=(
 	["update_json_data,author"]="@Tearran"
@@ -68,8 +54,14 @@ update_sub_submenu_data() {
 
 #
 # Check if network adapter is IPv6 or IPv4
-network_adapter="$DEFAULT_ADAPTER"
 
+
+set_menu_runtime(){
+	system_info="$(uname -m)"
+locale_setting="$LANG"
+installed_software="$(see_current_apt)"
+held_packages=$(apt-mark showhold)
+network_adapter="$DEFAULT_ADAPTER"
 #
 # Main menu updates
 update_json_data "System" "$system_info"
@@ -146,3 +138,4 @@ update_sub_submenu_data "Software" "Downloaders" "RDR002" "http://$LOCALIPADD:${
 update_sub_submenu_data "Software" "Downloaders" "DOW026" "http://$LOCALIPADD:${module_options["module_prowlarr,port"]}"
 update_sub_submenu_data "Software" "Downloaders" "JEL002" "http://$LOCALIPADD:${module_options["module_jellyseerr,port"]}"
 
+}
