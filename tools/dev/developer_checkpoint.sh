@@ -1,4 +1,3 @@
-
 module_options+=(
     ["set_checkpoint,author"]="@armbian"
     ["set_checkpoint,maintainer"]="@igorpecovnik"
@@ -36,25 +35,22 @@ function set_checkpoint() {
             set_checkpoint_DESCRIPTIONS+=("$2")
             local count=${#set_checkpoint_DESCRIPTIONS[@]}
             if [[ "$3" == "time" && $UXMODE != "cmd" ]]; then
-                echo "$2: ${checkpoint_duration} seconds"
+                printf "%-30s: %d seconds\n" "$2" "${checkpoint_duration}"
             fi
             ;;
         show)
             if [[ -n "$set_checkpoint_START" && -n "$set_checkpoint_STOP" ]]; then
                 set_checkpoint_DURATION=$((set_checkpoint_STOP - set_checkpoint_START))
-                echo "Total elapsed time: ${set_checkpoint_DURATION} seconds"
+                printf "%-30s: %d seconds\n" "Total elapsed time" "${set_checkpoint_DURATION}"
 
                 local previous_time=$set_checkpoint_START
                 for i in "${!set_checkpoint_CHECKPOINTS[@]}"; do
                     local checkpoint_time=${set_checkpoint_CHECKPOINTS[$i]}
                     local checkpoint_duration=$((checkpoint_time - previous_time))
                     local description=${set_checkpoint_DESCRIPTIONS[$i]}
-                    echo "${description:-Checkpoint $((i+1))}: ${checkpoint_duration} seconds"
+                    printf "%-30s: %d seconds\n" "${description:-Checkpoint $((i+1))}" "${checkpoint_duration}"
                     previous_time=$checkpoint_time
                 done
-
-                #local final_duration=$((set_checkpoint_STOP - previous_time))
-                #echo "Final segment: ${final_duration} seconds"
             else
                 echo "Timer has not been started and stopped properly."
             fi
