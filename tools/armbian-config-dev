@@ -1,18 +1,27 @@
 #!/bin/bash
 
-# Check  
+# Ensure the script is run with root privileges 
 [[ $EUID != 0 ]] && exec sudo "$0" "$@"
 
-# Setup Database
+# Initialize data base (associative array for module options)
 declare -A module_options
 
-# Default Setting DO not change here. 
+# Default settings (do not change here) 
 INPUTMODE="cmd" 
-UXMODE="tui"
+
+# Conditional settings
+if [[ "$1" == "--api" || "$1" == "--doc" ]]; then
+    UXMODE="cmd"
+elif [[ -z "$1" || "$1" == "--cmd" ]]; then
+    UXMODE="tui"
+fi
+
+#UXMODE="tui"
+#[[ "$1" == "--api" ]] && UXMODE="cmd" ;
 script_dir="$(dirname "$0")"
 
-# Conditionaly change settings.
-[[ "$1" == "--api" ]] && UXMODE="cmd" ;
+# Conditional settings
+
 [[ -d "$script_dir/../tools" ]] && tools_dir="$script_dir/../tools"
 [[ ! -d "$script_dir/../lib" && -n "$tools_dir" ]] && echo -e "Please run\nbash "$tools_dir/config-assemble.sh" to build the lib directory\n" && exit 1 
 
@@ -22,7 +31,7 @@ script_dir="$(dirname "$0")"
 # see --api set_checkpoint help for more info 
 . "$tools_dir/dev/developer_checkpoint.sh"
 set_checkpoint start
-set_checkpoint mark "Initializing Armbian Configurator" time
+set_checkpoint mark "Initializing complete" time
 
 
 # Define the lib directory one level up from the script directory
@@ -34,8 +43,6 @@ set_checkpoint mark "File paths set" time
 # Load UX data
 json_data=$(<"$json_file")
 set_checkpoint mark "UX Data loaded" time
-
-
 
 source "$lib_dir/config.runtime.sh"
 set_checkpoint mark "Runtime conditions set" time ;
@@ -63,8 +70,6 @@ set_checkpoint mark "Software Modules Loaded" time ;
 
 set_menu_runtime
 set_checkpoint mark "Menu Runtime updated" time ;
-
-
 
 case "$1" in
 "--help")

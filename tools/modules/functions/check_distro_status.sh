@@ -5,6 +5,10 @@ module_options+=(
 	["check_os_status,example"]="help"
 	["check_os_status,desc"]="Check if the current OS is supported based on /etc/armbian-distribution-status"
 	["check_os_status,status"]="Active"
+	["check_os_status,doc_link"]="https://wiki.bazarr.media/"
+	["check_os_status,group"]="runtime"
+	["check_os_status,port"]=""
+	["check_os_status,arch"]="x86-64 arm64"
 )
 
 function check_distro_status() {
@@ -25,7 +29,7 @@ function check_distro_status() {
 
 			# Check if the OS is listed as supported in the DISTRO_STATUS
 			if grep -qE "^${DISTROID}=.*supported" "$DISTRO_STATUS" 2> /dev/null; then
-				echo "The current $ARMBIAN ($DISTROID) is supported."
+				echo "$ARMBIAN"
 			else
 			BACKTITLE="Warning: The current OS ($DISTROID) is not supported or not listed"
 			set_colors 1

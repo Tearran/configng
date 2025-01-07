@@ -1,10 +1,14 @@
 module_options+=(
-    ["set_checkpoint,author"]="@armbian"
-    ["set_checkpoint,maintainer"]="@igorpecovnik"
-    ["set_checkpoint,feature"]="set_checkpoint"
-    ["set_checkpoint,example"]="start stop show"
-    ["set_checkpoint,desc"]="Helper module for timing code execution"
-    ["set_checkpoint,status"]="Active"
+	["set_checkpoint,author"]="@armbian"
+	["set_checkpoint,maintainer"]="@igorpecovnik"
+	["set_checkpoint,feature"]="set_checkpoint"
+	["set_checkpoint,example"]="help start mark stop show"
+	["set_checkpoint,desc"]="Helper module for timing code execution"
+	["set_checkpoint,status"]=""
+	["set_checkpoint,doc_link"]="https://wiki.bazarr.media/"
+	["set_checkpoint,group"]="Development"
+	["set_checkpoint,port"]=""
+	["set_checkpoint,arch"]="x86-64 arm64"
 )
 #
 # Function to manage timer with multiple checkpoints
@@ -35,7 +39,7 @@ function set_checkpoint() {
             set_checkpoint_DESCRIPTIONS+=("$2")
             local count=${#set_checkpoint_DESCRIPTIONS[@]}
             if [[ "$3" == "time" && $UXMODE != "cmd" ]]; then
-                printf "%-30s: %d seconds\n" "$2" "${checkpoint_duration}"
+                printf "%-30s %10d seconds\n" "$2:" "${checkpoint_duration}"
             fi
             ;;
         show)
