@@ -36,6 +36,8 @@ declare -A module_options
 # Load configng core functions and module options array
 
 source "$lib_dir/config.functions.sh"
+source "$lib_dir/config.runtime.sh"
+echo "Loaded Runtime conditions..." #| show_infobox ;
 set_runtime_variables
 check_distro_status
 echo "Loaded Runtime variables..." #| show_infobox ;
@@ -52,8 +54,7 @@ echo "Loaded Software helpers..." #| show_infobox ;
 #
 # Loads the variables from beta armbian-config for runtime handling
 
-source "$lib_dir/config.runtime.sh"
-echo "Loaded Runtime conditions..." #| show_infobox ;
+
 
 clear
 
