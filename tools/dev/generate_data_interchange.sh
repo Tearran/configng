@@ -27,7 +27,7 @@ function set_json_data() {
 		ref_key="${feature},ref_link"
 		status_key="${feature},status"
 		doc_key="${feature},doc_link"
-		helpers_key="${feature},helpers"
+#		helpers_key="${feature},helpers"
 		group_key="${feature},group"
 		commands_key="${feature},commands"
 		port_key="${feature},port"
@@ -40,7 +40,7 @@ function set_json_data() {
 		doc_link="${module_options[$doc_key]}"
 		desc="${module_options[$desc_key]}"
 		example="${module_options[$example_key]}"
-		helpers="${module_options[$helpers_key]}"
+#		helpers="${module_options[$helpers_key]}"
 		group="${module_options[$group_key]}"
 		commands="${module_options[$commands_key]}"
 		port="${module_options[$port_key]}"
@@ -49,7 +49,7 @@ function set_json_data() {
 		echo "  {"
 		echo "    \"id\": \"$id\","
 		echo "    \"feature\": \"$feature\","
-		echo "    \"helpers\": \"$helpers\","
+#		echo "    \"helpers\": \"$helpers\","
 		echo "    \"description\": \"$desc ($feature)\","
 		echo "    \"command\": \"$feature\","
 		echo "    \"options\": \"$example\","
@@ -75,7 +75,8 @@ function set_json_data() {
 }
 
 
-function generate_module_list() {
+
+function set_software_list() {
 	set_json_data | jq '
 	# Define an array of allowed software groups
 	def softwareGroups: ["WebHosting", "Netconfig", "Downloaders", "Database", "DNS", "DevTools", "HomeAutomation", "Benchy", "Containers", "Media", "Monitoring", "Management"];
@@ -111,53 +112,53 @@ function generate_module_list() {
 	'
 	}
 
+function set_system_list() {
+	set_json_data | jq '
+	# Define an array of allowed software groups
+	def systemGroups: ["Kernel", "Storage", "Access", "User", "Updates"];
 
-function generate_json_data() {
-	set_json_data | jq '{
+	{
 	"menu": [
-		{
-		"id": "tests",
+	{
+		"id": "System",
 		"description": "Run/Install 3rd party applications",
-		"sub": [
-			{
-			"id": "Modules",
-			"description": "Various installable modules",
-			"sub": [
-				.[] |
-				if (.feature | type == "string") and (.feature | startswith("module_")) then
-				{
-				"id": .id,
-				"description": .description,
-				"command": [("see_menu " + .feature)],
-				"options": ("help " + .options + " status"),
-				"status": .status,
-				"condition": "",
-				"author": .author
-				}
-				else empty
-				end
-			]
-			}
-		]
-		}
+		"sub": (
+		group_by(.group)
+		# Skip grouped arrays where the group is null, empty, or not in softwareGroups
+		| map(select(.[0].group != null and .[0].group != "" and (.[0].group | IN(softwareGroups[]))))
+		| map({
+		"id": .[0].group,
+		"description": .[0].group,
+		"sub": (
+			map({
+			"id": .id,
+			"description": .description,
+			"command": [("see_menu " + .feature)],
+			"options": ("help " + .options + " status"),
+			"status": .status,
+			"condition": "",
+			"author": .author
+			})
+		)
+		})
+		)
+	}
 	]
-	}'
-
+	}
+	'
 }
 
-
 # Test Function
-interface_json_data_old() {
+interface_software_data() {
 
 	# uncomment to set the data to a file
-	set_json_data | jq --tab --indent 4 '.' > tools/json/config.temp.json
-	#generate_json_data | jq --indent 4 "." > tools/json/config.temp.json
+	set_json_data | jq --tab --indent 4 '.' > tools/json/config.all.json
 	#json_file="$tools_dir/json/config.temp.json
-
-	json_data=$(generate_json_data)
+	#json_data=$(set_system_list)
+	#generate_menu "System" "$json_data"
+	#json_data=$(set_software_list)
+	#generate_menu "Software" "$json_data"
 	#generate_top_menu "$json_data"
-
-	generate_menu "Software" "$json_data"
 }
 
 

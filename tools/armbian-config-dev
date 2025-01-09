@@ -29,7 +29,12 @@ script_dir="$(dirname "$0")"
 
 # Load and run timer
 # see --api set_checkpoint help for more info 
-. "$tools_dir/dev/developer_checkpoint.sh"
+#. "$tools_dir/dev/messages_checkpoint.sh"
+# Iterate over each .sh file in the specified directory and source it
+for file in "$tools_dir/dev"/*.sh; do
+  . "$file"
+done
+#
 set_checkpoint start
 set_checkpoint mark "Initializing complete" time
 
@@ -68,8 +73,7 @@ set_checkpoint mark "Network Modules Loaded" time ;
 source "$lib_dir/config.software.sh"
 set_checkpoint mark "Software Modules Loaded" time ;
 
-set_menu_runtime
-set_checkpoint mark "Menu Runtime updated" time ;
+
 
 case "$1" in
 "--help")
@@ -131,11 +135,16 @@ case "$1" in
 		exit 0
 	fi
 	UXMODE="tui"
+	set_menu_runtime
+	set_checkpoint mark "Menu Runtime updated" time ;
+	clear
+	set_checkpoint stop
+	generate_top_menu "$json_data"
+	set_checkpoint show
 	;;
 esac
 
-set_checkpoint stop
-generate_top_menu "$json_data"
+
 
 # move curser to last line for dialoge
 tput cup $(($(tput lines) - 1)) 0

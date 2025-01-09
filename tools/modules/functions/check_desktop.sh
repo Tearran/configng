@@ -7,6 +7,8 @@ module_options+=(
 	["check_desktop,example"]="check_desktop"
 	["check_desktop,status"]="Active"
 	["check_desktop,doc_link"]=""
+	["check_desktop,doc_link"]="helper"
+
 )
 #
 # read desktop parameters

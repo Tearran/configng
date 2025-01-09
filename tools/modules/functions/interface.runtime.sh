@@ -10,7 +10,7 @@ module_options+=(
 	["update_json_data,example"]="update_json_data"
 	["update_json_data,status"]="review"
 	["update_json_data,doc_link"]=""
-
+	["update_json_data,group"]="TUI"
 )
 #
 # Update JSON data with system information
@@ -27,6 +27,7 @@ module_options+=(
 	["update_submenu_data,example"]="update_submenu_data"
 	["update_submenu_data,status"]="review"
 	["update_submenu_data,doc_link"]=""
+	["update_submenu_data,group"]="TUI"
 )
 #
 # Update submenu descriptions based on conditions
@@ -42,6 +43,7 @@ module_options+=(
 	["update_sub_submenu_data,desc"]="Update sub-submenu descriptions based on conditions"
 	["update_sub_submenu_data,example"]="update_sub_submenu_data MenuID SubID SubSubID CMD"
 	["update_sub_submenu_data,status"]=""
+	["update_sub_submenu_data,group"]="TUI"
 )
 #
 # Update sub-submenu descriptions based on conditions

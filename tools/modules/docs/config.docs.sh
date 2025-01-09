@@ -9,6 +9,7 @@ module_options+=(
 	["generate_readme,desc"]="Generate Document files."
 	["generate_readme,example"]="generate_readme"
 	["generate_readme,status"]="review"
+	["generate_readme,group"]="Messages"
 )
 #
 # Function to generate the README.md file
@@ -209,6 +210,7 @@ module_options+=(
 	["see_use,example"]="see_use"
 	["see_use,status"]="review"
 	["see_use,doc_link"]=""
+	["see_use,group"]="Messages"
 )
 #
 # Function to parse the key-pairs  (WIP)
@@ -237,6 +239,7 @@ module_options+=(
 	["generate_jobs_from_json,example"]="generate_jobs_from_json"
 	["generate_jobs_from_json,status"]="review"
 	["generate_jobs_from_json,doc_link"]=""
+	["generate_jobs_from_json,group"]="Messages"
 )
 #
 # This function is used to generate jobs links Table from JSON file.
@@ -318,12 +321,13 @@ function see_full_list() {
 
 module_options+=(
 	["see_function_table_md,author"]="@Tearran"
-	["see_function_table_md,ref_link"]=""
 	["see_function_table_md,feature"]="see_function_table_md"
 	["see_function_table_md,desc"]="Generate this markdown table of all module_options"
 	["see_function_table_md,example"]="see_function_table_md"
 	["see_function_table_md,status"]="review"
 	["see_function_table_md,doc_link"]=""
+	["see_function_table_md,group"]="Messages"
+
 )
 #
 # This function is used to generate a markdown table from the module_options array
@@ -352,7 +356,7 @@ function see_function_table_md() {
 
 module_options+=(
 	["see_jq_menu_list,author"]="@Tearran"
-	["see_jq_menu_list,ref_link"]=""
+	["see_jq_menu_list,group"]="Messages"
 	["see_jq_menu_list,feature"]="see_jq_menu_list"
 	["see_jq_menu_list,desc"]="Generate a markdown list json objects using jq."
 	["see_jq_menu_list,example"]="see_jq_menu_list"
@@ -375,7 +379,7 @@ function see_jq_menu_list() {
 
 module_options+=(
 	["see_cmd_list,author"]="@Tearran"
-	["see_cmd_list,ref_link"]=""
+	["see_cmd_list,group"]="Messages"
 	["see_cmd_list,feature"]="see_cmd_list"
 	["see_cmd_list,desc"]="Generate a Help message for cli commands."
 	["see_cmd_list,example"]="see_cmd_list [category]"
@@ -449,12 +453,12 @@ see_cmd_list() {
 
 module_options+=(
 	["see_cli_legacy,author"]="@Tearran"
-	["see_cli_legacy,ref_link"]=""
 	["see_cli_legacy,feature"]="see_cli_legacy"
 	["see_cli_legacy,desc"]="Generate a Help message legacy cli commands."
 	["see_cli_legacy,example"]="see_cli_legacy"
 	["see_cli_legacy,status"]="review"
 	["see_cli_legacy,doc_link"]=""
+	["see_cli_legacy,group"]="Messages"
 )
 function see_cli_legacy() {
 	local script_name=$(basename "$0")

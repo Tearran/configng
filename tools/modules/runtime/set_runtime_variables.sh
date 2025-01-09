@@ -5,6 +5,7 @@ module_options+=(
 	["set_runtime_variables,desc"]="Run time variables Migrated procedures from Armbian config."
 	["set_runtime_variables,example"]="set_runtime_variables"
 	["set_runtime_variables,status"]="Active"
+	["set_runtime_variables,group"]="Core"
 )
 #
 # gather info about the board and start with loading menu variables

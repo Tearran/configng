@@ -7,6 +7,7 @@ module_options+=(
 	["see_ping,example"]="see_ping"
 	["see_ping,doc_link"]=""
 	["see_ping,status"]="review"
+	["see_ping,status"]="Core"
 )
 #
 # Function to check the internet connection

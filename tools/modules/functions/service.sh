@@ -7,6 +7,7 @@ module_options+=(
 	["service,example"]="service install some.service"
 	["service,feature"]="service"
 	["service,status"]="active"
+	["service,group"]="Core"
 )
 
 function service()

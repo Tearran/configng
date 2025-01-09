@@ -6,7 +6,7 @@ module_options+=(
 	["check_os_status,desc"]="Check if the current OS is supported based on /etc/armbian-distribution-status"
 	["check_os_status,status"]="Active"
 	["check_os_status,doc_link"]="https://wiki.bazarr.media/"
-	["check_os_status,group"]="runtime"
+	["check_os_status,group"]="Core"
 	["check_os_status,port"]=""
 	["check_os_status,arch"]="x86-64 arm64"
 )

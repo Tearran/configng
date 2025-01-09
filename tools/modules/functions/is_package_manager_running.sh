@@ -6,6 +6,7 @@ module_options+=(
 	["is_package_manager_running,desc"]="Migrated procedures from Armbian config."
 	["is_package_manager_running,example"]="is_package_manager_running"
 	["is_package_manager_running,status"]="Active"
+	["is_package_manager_running,group"]="Core"
 )
 #
 # check if package manager is doing something

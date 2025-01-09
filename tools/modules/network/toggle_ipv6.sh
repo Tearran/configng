@@ -7,6 +7,7 @@ module_options+=(
 	["toggle_ipv6,example"]="toggle_ipv6"
 	["toggle_ipv6,status"]="review"
 	["toggle_ipv6,doc_link"]=""
+	["toggle_ipv6,group"]="helper"
 )
 #
 # Function to toggle IPv6 on or off

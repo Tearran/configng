@@ -5,6 +5,7 @@ module_options+=(
 	["set_interface,desc"]="Check for (Whiptail, DIALOG, READ) tools and set the user interface."
 	["set_interface,example"]=""
 	["set_interface,status"]="review"
+	["set_interface,group"]="Core"
 )
 #
 # Check for (Whiptail, DIALOG, READ) tools and set the user interface
@@ -27,6 +28,7 @@ module_options+=(
 	["see_menu,desc"]="Uses Avalible (Whiptail, DIALOG, READ) for the menu interface"
 	["see_menu,example"]="<function_name>"
 	["see_menu,status"]="review"
+	["see_menu,status"]="TUI"
 )
 #
 # Uses Avalible (Whiptail, DIALOG, READ) for the menu interface

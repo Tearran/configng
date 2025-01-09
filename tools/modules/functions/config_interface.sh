@@ -85,7 +85,9 @@ module_options+=(
 	["parse_menu_items,example"]="parse_menu_items 'menu_options_array'"
 	["parse_menu_items,doc_link"]=""
 	["parse_menu_items,status"]="Active"
+	["parse_menu_items,group"]="TUO"
 )
+
 #
 # Function to parse the menu items
 #
@@ -114,6 +116,7 @@ module_options+=(
 	["generate_top_menu,desc"]="Build the main menu from a object"
 	["generate_top_menu,example"]="generate_top_menu 'json_data'"
 	["generate_top_menu,status"]="Active"
+	["generate_top_menu,group"]="TUI"
 )
 #
 # Function to generate the main menu from a JSON object
@@ -148,6 +151,7 @@ module_options+=(
 	["generate_menu,desc"]="Generate a submenu from a parent_id"
 	["generate_menu,example"]="generate_menu 'parent_id'"
 	["generate_menu,status"]="Active"
+	["generate_menu,status"]="TUI"
 )
 #
 # Function to generate the submenu
@@ -195,6 +199,7 @@ module_options+=(
 	["execute_command,example"]="execute_command 'id'"
 	["execute_command,doc_link"]=""
 	["execute_command,status"]="Active"
+	["execute_command,group"]="Core"
 )
 #
 # Function to execute the command
@@ -238,6 +243,7 @@ module_options+=(
 	["show_message,example"]="show_message <<< 'hello world' "
 	["show_message,doc_link"]=""
 	["show_message,status"]="Active"
+	["show_message,group"]="TUI"
 )
 #
 # Function to display a message box
@@ -263,6 +269,7 @@ module_options+=(
 	["show_infobox,example"]="show_infobox <<< 'hello world' ; "
 	["show_infobox,doc_link"]=""
 	["show_infobox,status"]="Active"
+	["show_infobox,group"]="Active"
 )
 #
 # Function to display an infobox with a message
@@ -300,6 +307,7 @@ module_options+=(
 	["show_menu,example"]="show_menu <<< armbianmonitor -h  ; "
 	["show_menu,doc_link"]=""
 	["show_menu,status"]="Active"
+	["show_menu,status"]="TUI"
 )
 #
 #
@@ -337,6 +345,7 @@ module_options+=(
 	["get_user_continue,example"]="get_user_continue 'Do you wish to continue?' process_input"
 	["get_user_continue,doc_link"]=""
 	["get_user_continue,status"]="Active"
+	["get_user_continue,status"]="TUI"
 )
 #
 # Function to display a Yes/No dialog box
@@ -360,6 +369,7 @@ menu_options+=(
 	["get_user_continue,example"]="get_user_continue 'Do you wish to continue?' process_input"
 	["get_user_continue,status"]="Active"
 	["get_user_continue,doc_link"]=""
+	["get_user_continue,status"]="TUI"
 )
 #
 # Function to process the user's choice paired with get_user_continue
@@ -381,6 +391,7 @@ module_options+=(
 	["get_user_continue_secure,example"]="get_user_continue_secure 'Do you wish to continue?' process_input"
 	["get_user_continue_secure,doc_link"]=""
 	["get_user_continue_secure,status"]="Active"
+	["get_user_continue_secure,group"]="TUI"
 )
 #
 # Secure version of get_user_continue

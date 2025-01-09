@@ -6,6 +6,7 @@ module_options+=(
 ["about_armbian_configng,desc"]="Show general information about this tool"
 ["about_armbian_configng,example"]="about_armbian_configng"
 ["about_armbian_configng,status"]="Active"
+["about_armbian_configng,group"]="Message"
 )
 #
 # @description Show general information about this tool
