@@ -1,4 +1,3 @@
-
 # Start of config ng interface
 
 module_options+=(
@@ -9,6 +8,7 @@ module_options+=(
 	["set_colors,example"]="set_colors 0-7"
 	["set_colors,doc_link"]=""
 	["set_colors,status"]="Active"
+	["set_colors,status"]="TUI"
 )
 #
 # Function to set the tui colors
@@ -85,9 +85,8 @@ module_options+=(
 	["parse_menu_items,example"]="parse_menu_items 'menu_options_array'"
 	["parse_menu_items,doc_link"]=""
 	["parse_menu_items,status"]="Active"
-	["parse_menu_items,group"]="TUO"
+	["parse_menu_items,group"]="TUI"
 )
-
 #
 # Function to parse the menu items
 #
@@ -269,7 +268,7 @@ module_options+=(
 	["show_infobox,example"]="show_infobox <<< 'hello world' ; "
 	["show_infobox,doc_link"]=""
 	["show_infobox,status"]="Active"
-	["show_infobox,group"]="Active"
+	["show_infobox,group"]="TUI"
 )
 #
 # Function to display an infobox with a message
@@ -432,6 +431,7 @@ module_options+=(
 	["see_current_apt,example"]="see_current_apt or see_current_apt update"
 	["see_current_apt,doc_link"]=""
 	["see_current_apt,status"]="Active"
+	["see_current_apt,group"]="Packeages"
 )
 #
 # Function to check when the package list was last updated
@@ -483,7 +483,8 @@ module_options+=(
 	["sanitize_input,feature"]="sanitize_input"
 	["sanitize_input,desc"]="sanitize input cli"
 	["sanitize_input,example"]="sanitize_input"
-	["sanitize_input,status"]="Review"
+	["sanitize_input,status"]="Unknown"
+	["sanitize_input,group"]="NONE"
 )
 #
 # sanitize input cli
