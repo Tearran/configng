@@ -1,6 +1,4 @@
 
-
-
 function set_json_data() {
 	local i=0
 
@@ -149,6 +147,25 @@ function set_system_list() {
 }
 
 # Test Function
+
+
+
+function gen_jobs_json() {
+
+  # Get the software menu JSON
+  software_json=$(set_software_list)
+
+  # Get the system menu JSON
+  menu_json=$(<"$json_file")
+
+  # Now, merge them by appending the software section to the "menu" array in set_menu_groups
+  merged_json=$(echo "$menu_json" | jq ".menu += $software_json.menu")
+
+  # Output the merged JSON
+  echo "$merged_json" | jq .
+}
+
+
 interface_software_data() {
 
 	# uncomment to set the data to a file
@@ -156,9 +173,9 @@ interface_software_data() {
 	#json_file="$tools_dir/json/config.temp.json
 	#json_data=$(set_system_list)
 	#generate_menu "System" "$json_data"
-	#json_data=$(set_software_list)
+	json_data=$(gen_jobs_json)
 	#generate_menu "Software" "$json_data"
-	#generate_top_menu "$json_data"
+	generate_top_menu "$json_data"
 }
 
 
