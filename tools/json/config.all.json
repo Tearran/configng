@@ -2,6 +2,7 @@
     {
         "id": "SEE001",
         "feature": "see_cli_legacy",
+        "helpers": "",
         "description": "Generate a Help message legacy cli commands. (see_cli_legacy)",
         "command": "see_cli_legacy",
         "options": "see_cli_legacy",
@@ -17,6 +18,7 @@
     {
         "id": "SET002",
         "feature": "set_runtime_variables",
+        "helpers": "",
         "description": "Run time variables Migrated procedures from Armbian config. (set_runtime_variables)",
         "command": "set_runtime_variables",
         "options": "set_runtime_variables",
@@ -32,6 +34,7 @@
     {
         "id": "SET003",
         "feature": "set_interface",
+        "helpers": "",
         "description": "Check for (Whiptail, DIALOG, READ) tools and set the user interface. (set_interface)",
         "command": "set_interface",
         "options": "",
@@ -47,6 +50,7 @@
     {
         "id": "TOG004",
         "feature": "toggle_ssh_lastlog",
+        "helpers": "",
         "description": "Toggle SSH lastlog (toggle_ssh_lastlog)",
         "command": "toggle_ssh_lastlog",
         "options": "toggle_ssh_lastlog",
@@ -62,6 +66,7 @@
     {
         "id": "SEE005",
         "feature": "see_function_table_md",
+        "helpers": "",
         "description": "Generate this markdown table of all module_options (see_function_table_md)",
         "command": "see_function_table_md",
         "options": "see_function_table_md",
@@ -77,6 +82,7 @@
     {
         "id": "MOD006",
         "feature": "module_webmin",
+        "helpers": "",
         "description": "Webmin setup and service setting. (module_webmin)",
         "command": "module_webmin",
         "options": "help install remove start stop enable disable status check",
@@ -92,6 +98,7 @@
     {
         "id": "MOD007",
         "feature": "module_haos",
+        "helpers": "",
         "description": "Install HA supervised container (module_haos)",
         "command": "module_haos",
         "options": "install remove purge status help",
@@ -107,6 +114,7 @@
     {
         "id": "MAN008",
         "feature": "manage_overlayfs",
+        "helpers": "",
         "description": "Set Armbian root filesystem to read only (manage_overlayfs)",
         "command": "manage_overlayfs",
         "options": "manage_overlayfs enable/disable",
@@ -122,6 +130,7 @@
     {
         "id": "SHO009",
         "feature": "show_menu",
+        "helpers": "",
         "description": "Display a menu from pipe (show_menu)",
         "command": "show_menu",
         "options": "show_menu <<< armbianmonitor -h  ; ",
@@ -137,6 +146,7 @@
     {
         "id": "MOD010",
         "feature": "module_watchtower",
+        "helpers": "",
         "description": "Install watchtower container (module_watchtower)",
         "command": "module_watchtower",
         "options": "install remove status help",
@@ -152,6 +162,7 @@
     {
         "id": "GEN011",
         "feature": "generate_top_menu",
+        "helpers": "",
         "description": "Build the main menu from a object (generate_top_menu)",
         "command": "generate_top_menu",
         "options": "generate_top_menu 'json_data'",
@@ -167,6 +178,7 @@
     {
         "id": "MOD012",
         "feature": "module_bazarr",
+        "helpers": "",
         "description": "Install bazarr container (module_bazarr)",
         "command": "module_bazarr",
         "options": "install remove purge status help",
@@ -182,6 +194,7 @@
     {
         "id": "MOD013",
         "feature": "module_headers",
+        "helpers": "",
         "description": "Install headers container (module_headers)",
         "command": "module_headers",
         "options": "install remove status help",
@@ -197,6 +210,7 @@
     {
         "id": "IS_014",
         "feature": "is_package_manager_running",
+        "helpers": "",
         "description": "Migrated procedures from Armbian config. (is_package_manager_running)",
         "command": "is_package_manager_running",
         "options": "is_package_manager_running",
@@ -212,6 +226,7 @@
     {
         "id": "CHE015",
         "feature": "check_desktop",
+        "helpers": "",
         "description": "Migrated procedures from Armbian config. (check_desktop)",
         "command": "check_desktop",
         "options": "check_desktop",
@@ -227,6 +242,7 @@
     {
         "id": "MOD016",
         "feature": "module_phpmyadmin",
+        "helpers": "",
         "description": "Install phpmyadmin container (module_phpmyadmin)",
         "command": "module_phpmyadmin",
         "options": "install remove purge status help",
@@ -242,6 +258,7 @@
     {
         "id": "MOD017",
         "feature": "module_stirling",
+        "helpers": "",
         "description": "Install stirling container (module_stirling)",
         "command": "module_stirling",
         "options": "install remove purge status help",
@@ -257,6 +274,7 @@
     {
         "id": "MOD018",
         "feature": "module_sonarr",
+        "helpers": "",
         "description": "Install sonarr container (module_sonarr)",
         "command": "module_sonarr",
         "options": "install remove purge status help",
@@ -272,6 +290,7 @@
     {
         "id": "GEN019",
         "feature": "generate_readme",
+        "helpers": "",
         "description": "Generate Document files. (generate_readme)",
         "command": "generate_readme",
         "options": "generate_readme",
@@ -287,6 +306,7 @@
     {
         "id": "STO020",
         "feature": "store_netplan_config",
+        "helpers": "",
         "description": "Storing netplan config to tmp (store_netplan_config)",
         "command": "store_netplan_config",
         "options": "store_netplan_config",
@@ -302,6 +322,7 @@
     {
         "id": "MOD021",
         "feature": "module_jellyseerr",
+        "helpers": "",
         "description": "Install jellyseerr container (module_jellyseerr)",
         "command": "module_jellyseerr",
         "options": "install remove purge status help",
@@ -317,6 +338,7 @@
     {
         "id": "EXE022",
         "feature": "execute_command",
+        "helpers": "",
         "description": "Needed by generate_menu (execute_command)",
         "command": "execute_command",
         "options": "execute_command 'id'",
@@ -332,6 +354,7 @@
     {
         "id": "GET023",
         "feature": "get_user_continue",
+        "helpers": "",
         "description": "Display a Yes/No dialog box and process continue/exit (get_user_continue)",
         "command": "get_user_continue",
         "options": "get_user_continue 'Do you wish to continue?' process_input",
@@ -347,6 +370,7 @@
     {
         "id": "MOD024",
         "feature": "module_armbian_firmware",
+        "helpers": "",
         "description": "Module for Armbian firmware manipulating. (module_armbian_firmware)",
         "command": "module_armbian_firmware",
         "options": "select install show hold unhold repository headers help",
@@ -362,6 +386,7 @@
     {
         "id": "CON025",
         "feature": "connect_bt_interface",
+        "helpers": "",
         "description": "Migrated procedures from Armbian config. (connect_bt_interface)",
         "command": "connect_bt_interface",
         "options": "connect_bt_interface",
@@ -377,6 +402,7 @@
     {
         "id": "SHO026",
         "feature": "show_message",
+        "helpers": "",
         "description": "Display a message box (show_message)",
         "command": "show_message",
         "options": "show_message <<< 'hello world' ",
@@ -390,8 +416,25 @@
         "arch": ""
     },
     {
-        "id": "SEE027",
+        "id": "MOD027",
+        "feature": "module_armbian_runners",
+        "helpers": "",
+        "description": "Manage self hosted runners (module_armbian_runners)",
+        "command": "module_armbian_runners",
+        "options": "install remove remove_online purge help",
+        "status": "Active",
+        "condition": " ",
+        "reference": "",
+        "author": "@igorpecovnik",
+        "group": "",
+        "commands": "",
+        "port": "",
+        "arch": ""
+    },
+    {
+        "id": "SEE028",
         "feature": "see_monitoring",
+        "helpers": "",
         "description": "Menu for armbianmonitor features (see_monitoring)",
         "command": "see_monitoring",
         "options": "see_monitoring",
@@ -405,8 +448,9 @@
         "arch": ""
     },
     {
-        "id": "MAN028",
+        "id": "MAN029",
         "feature": "manage_dtoverlays",
+        "helpers": "",
         "description": "Enable/disable device tree overlays (manage_dtoverlays)",
         "command": "manage_dtoverlays",
         "options": "",
@@ -420,8 +464,9 @@
         "arch": "aarch64 armhf"
     },
     {
-        "id": "QR_029",
+        "id": "QR_030",
         "feature": "qr_code",
+        "helpers": "",
         "description": "Show or generate QR code for Google OTP (qr_code)",
         "command": "qr_code",
         "options": "qr_code generate",
@@ -435,8 +480,9 @@
         "arch": ""
     },
     {
-        "id": "PKG030",
+        "id": "PKG031",
         "feature": "pkg_remove",
+        "helpers": "",
         "description": "Remove package (pkg_remove)",
         "command": "pkg_remove",
         "options": "pkg_remove nmap",
@@ -450,8 +496,9 @@
         "arch": ""
     },
     {
-        "id": "SEE031",
+        "id": "SEE032",
         "feature": "see_current_apt",
+        "helpers": "",
         "description": "Check when apt list was last updated and suggest updating or update (see_current_apt)",
         "command": "see_current_apt",
         "options": "see_current_apt or see_current_apt update",
@@ -465,8 +512,9 @@
         "arch": ""
     },
     {
-        "id": "MOD032",
+        "id": "MOD033",
         "feature": "module_portainer",
+        "helpers": "",
         "description": "Install/uninstall/check status of portainer container (module_portainer)",
         "command": "module_portainer",
         "options": "install remove purge status help",
@@ -480,8 +528,9 @@
         "arch": "x86-64 arm64 armhf"
     },
     {
-        "id": "INS033",
+        "id": "INS034",
         "feature": "Install plexmediaserver",
+        "helpers": "",
         "description": " (Install plexmediaserver)",
         "command": "Install plexmediaserver",
         "options": "",
@@ -495,8 +544,9 @@
         "arch": ""
     },
     {
-        "id": "PKG034",
+        "id": "PKG035",
         "feature": "pkg_full_upgrade",
+        "helpers": "",
         "description": "Upgrade installed packages (potentially removing some) (pkg_full_upgrade)",
         "command": "pkg_full_upgrade",
         "options": "pkg_full_upgrade",
@@ -510,8 +560,9 @@
         "arch": ""
     },
     {
-        "id": "MOD035",
+        "id": "MOD036",
         "feature": "module_zfs",
+        "helpers": "",
         "description": "Install zfs filesystem support (module_zfs)",
         "command": "module_zfs",
         "options": "install remove status kernel_max zfs_version zfs_installed_version help",
@@ -525,8 +576,9 @@
         "arch": ""
     },
     {
-        "id": "PKG036",
+        "id": "PKG037",
         "feature": "pkg_installed",
+        "helpers": "",
         "description": "Check if package is installed (pkg_installed)",
         "command": "pkg_installed",
         "options": "pkg_installed mc",
@@ -540,8 +592,9 @@
         "arch": ""
     },
     {
-        "id": "UPD037",
+        "id": "UPD038",
         "feature": "update_submenu_data",
+        "helpers": "",
         "description": "Update submenu descriptions based on conditions (update_submenu_data)",
         "command": "update_submenu_data",
         "options": "update_submenu_data",
@@ -555,8 +608,9 @@
         "arch": ""
     },
     {
-        "id": "SAN038",
+        "id": "SAN039",
         "feature": "sanitize_input",
+        "helpers": "",
         "description": "sanitize input cli (sanitize_input)",
         "command": "sanitize_input",
         "options": "sanitize_input",
@@ -570,8 +624,9 @@
         "arch": ""
     },
     {
-        "id": "MOD039",
+        "id": "MOD040",
         "feature": "module_openssh-server",
+        "helpers": "",
         "description": "Install openssh-server container (module_openssh-server)",
         "command": "module_openssh-server",
         "options": "install remove purge status help",
@@ -585,8 +640,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "PKG040",
+        "id": "PKG041",
         "feature": "pkg_upgrade",
+        "helpers": "",
         "description": "Upgrade installed packages (pkg_upgrade)",
         "command": "pkg_upgrade",
         "options": "pkg_upgrade",
@@ -600,8 +656,9 @@
         "arch": ""
     },
     {
-        "id": "MOD041",
+        "id": "MOD042",
         "feature": "module_lidarr",
+        "helpers": "",
         "description": "Install lidarr container (module_lidarr)",
         "command": "module_lidarr",
         "options": "install remove purge status help",
@@ -615,8 +672,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "CHE042",
+        "id": "CHE043",
         "feature": "check_ip_version",
+        "helpers": "",
         "description": "Check if a domain is reachable via IPv4 and IPv6 (check_ip_version)",
         "command": "check_ip_version",
         "options": "check_ip_version google.com",
@@ -630,8 +688,9 @@
         "arch": ""
     },
     {
-        "id": "PKG043",
+        "id": "PKG044",
         "feature": "pkg_install",
+        "helpers": "",
         "description": "Install package (pkg_install)",
         "command": "pkg_install",
         "options": "pkg_install neovim",
@@ -645,8 +704,9 @@
         "arch": ""
     },
     {
-        "id": "MOD044",
+        "id": "MOD045",
         "feature": "module_wireguard",
+        "helpers": "",
         "description": "Install wireguard container (module_wireguard)",
         "command": "module_wireguard",
         "options": "install remove purge qrcode status help",
@@ -660,8 +720,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "MOD045",
+        "id": "MOD046",
         "feature": "module_swag",
+        "helpers": "",
         "description": "Secure Web Application Gateway  (module_swag)",
         "command": "module_swag",
         "options": "install remove purge status password help",
@@ -675,8 +736,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "MOD046",
+        "id": "MOD047",
         "feature": "module_deluge",
+        "helpers": "",
         "description": "Install deluge container (module_deluge)",
         "command": "module_deluge",
         "options": "install remove purge status help",
@@ -690,8 +752,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "MOD047",
+        "id": "MOD048",
         "feature": "module_cockpit",
+        "helpers": "",
         "description": "Cockpit setup and service setting. (module_cockpit)",
         "command": "module_cockpit",
         "options": "help install remove start stop enable disable status check",
@@ -705,8 +768,9 @@
         "arch": "x86-64 arm64 armhf"
     },
     {
-        "id": "GEN048",
+        "id": "GEN049",
         "feature": "generate_menu",
+        "helpers": "",
         "description": "Generate a submenu from a parent_id (generate_menu)",
         "command": "generate_menu",
         "options": "generate_menu 'parent_id'",
@@ -720,8 +784,9 @@
         "arch": ""
     },
     {
-        "id": "SEE049",
+        "id": "SEE050",
         "feature": "see_jq_menu_list",
+        "helpers": "",
         "description": "Generate a markdown list json objects using jq. (see_jq_menu_list)",
         "command": "see_jq_menu_list",
         "options": "see_jq_menu_list",
@@ -735,8 +800,9 @@
         "arch": ""
     },
     {
-        "id": "MOD050",
+        "id": "MOD051",
         "feature": "module_octoprint",
+        "helpers": "",
         "description": "Install octoprint container (module_octoprint)",
         "command": "module_octoprint",
         "options": "install remove purge status help",
@@ -750,8 +816,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "GEN051",
+        "id": "GEN052",
         "feature": "generate_jobs_from_json",
+        "helpers": "",
         "description": "Generate jobs from JSON file. (generate_jobs_from_json)",
         "command": "generate_jobs_from_json",
         "options": "generate_jobs_from_json",
@@ -765,8 +832,9 @@
         "arch": ""
     },
     {
-        "id": "MOD052",
+        "id": "MOD053",
         "feature": "module_radarr",
+        "helpers": "",
         "description": "Install radarr container (module_radarr)",
         "command": "module_radarr",
         "options": "install remove purge status help",
@@ -780,8 +848,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "TOG053",
+        "id": "TOG054",
         "feature": "toggle_ipv6",
+        "helpers": "",
         "description": "Toggle IPv6 on or off (toggle_ipv6)",
         "command": "toggle_ipv6",
         "options": "toggle_ipv6",
@@ -795,8 +864,9 @@
         "arch": ""
     },
     {
-        "id": "ABO054",
+        "id": "ABO055",
         "feature": "about_armbian_configng",
+        "helpers": "",
         "description": "Show general information about this tool (about_armbian_configng)",
         "command": "about_armbian_configng",
         "options": "about_armbian_configng",
@@ -810,8 +880,9 @@
         "arch": ""
     },
     {
-        "id": "MOD055",
+        "id": "MOD056",
         "feature": "module_embyserver",
+        "helpers": "",
         "description": "Install embyserver container (module_embyserver)",
         "command": "module_embyserver",
         "options": "install remove purge status help",
@@ -825,8 +896,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "MOD056",
+        "id": "MOD057",
         "feature": "module_qbittorrent",
+        "helpers": "",
         "description": "Install qbittorrent container (module_qbittorrent)",
         "command": "module_qbittorrent",
         "options": "install remove purge status help",
@@ -840,8 +912,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "MOD057",
+        "id": "MOD058",
         "feature": "module_transmission",
+        "helpers": "",
         "description": "Install transmission container (module_transmission)",
         "command": "module_transmission",
         "options": "install remove purge status help",
@@ -855,8 +928,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "MOD058",
+        "id": "MOD059",
         "feature": "module_nextcloud",
+        "helpers": "",
         "description": "Install nextcloud container (module_nextcloud)",
         "command": "module_nextcloud",
         "options": "install remove purge status help",
@@ -870,8 +944,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "SER059",
+        "id": "SER060",
         "feature": "service",
+        "helpers": "",
         "description": "Wrapper for service manipulation (service)",
         "command": "service",
         "options": "service install some.service",
@@ -885,8 +960,9 @@
         "arch": ""
     },
     {
-        "id": "MOD060",
+        "id": "MOD061",
         "feature": "module_openhab",
+        "helpers": "",
         "description": "Install Openhab (module_openhab)",
         "command": "module_openhab",
         "options": "install remove purge status help",
@@ -900,8 +976,9 @@
         "arch": "x86-64 arm64 armhf"
     },
     {
-        "id": "SEE061",
+        "id": "SEE062",
         "feature": "see_menu",
+        "helpers": "",
         "description": "Uses Avalible (Whiptail, DIALOG, READ) for the menu interface (see_menu)",
         "command": "see_menu",
         "options": "<function_name>",
@@ -915,8 +992,9 @@
         "arch": ""
     },
     {
-        "id": "NET062",
+        "id": "NET063",
         "feature": "network_config",
+        "helpers": "",
         "description": "Netplan wrapper (network_config)",
         "command": "network_config",
         "options": "network_config",
@@ -930,8 +1008,9 @@
         "arch": ""
     },
     {
-        "id": "MOD063",
+        "id": "MOD064",
         "feature": "module_medusa",
+        "helpers": "",
         "description": "Install medusa container (module_medusa)",
         "command": "module_medusa",
         "options": "install remove purge status help",
@@ -945,8 +1024,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "MOD064",
+        "id": "MOD065",
         "feature": "module_syncthing",
+        "helpers": "",
         "description": "Install syncthing container (module_syncthing)",
         "command": "module_syncthing",
         "options": "install remove purge status help",
@@ -960,8 +1040,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "MOD065",
+        "id": "MOD066",
         "feature": "module_grafana",
+        "helpers": "",
         "description": "Install grafana container (module_grafana)",
         "command": "module_grafana",
         "options": "install remove purge status help",
@@ -975,8 +1056,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "ODR066",
+        "id": "ODR067",
         "feature": "Odroid board",
+        "helpers": "",
         "description": " (Odroid board)",
         "command": "Odroid board",
         "options": "",
@@ -990,8 +1072,9 @@
         "arch": ""
     },
     {
-        "id": "MOD067",
+        "id": "MOD068",
         "feature": "module_owncloud",
+        "helpers": "",
         "description": "Install owncloud container (module_owncloud)",
         "command": "module_owncloud",
         "options": "install remove purge status help",
@@ -1005,8 +1088,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "MOD068",
+        "id": "MOD069",
         "feature": "module_netdata",
+        "helpers": "",
         "description": "Install netdata container (module_netdata)",
         "command": "module_netdata",
         "options": "install remove purge status help",
@@ -1020,8 +1104,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "SET069",
+        "id": "SET070",
         "feature": "set_colors",
+        "helpers": "",
         "description": "Change the background color of the terminal or dialog box (set_colors)",
         "command": "set_colors",
         "options": "set_colors 0-7",
@@ -1035,8 +1120,9 @@
         "arch": ""
     },
     {
-        "id": "ABO070",
+        "id": "ABO071",
         "feature": "about_armbian_configng",
+        "helpers": "",
         "description": "Show general information about this tool (about_armbian_configng)",
         "command": "about_armbian_configng",
         "options": "about_armbian_configng",
@@ -1050,8 +1136,9 @@
         "arch": ""
     },
     {
-        "id": "SER071",
+        "id": "SER072",
         "feature": "serve_doc",
+        "helpers": "",
         "description": "Serve the edit and debug server. (serve_doc)",
         "command": "serve_doc",
         "options": "serve_doc",
@@ -1065,8 +1152,9 @@
         "arch": ""
     },
     {
-        "id": "UPD072",
+        "id": "UPD073",
         "feature": "update_json_data",
+        "helpers": "",
         "description": "Update JSON data with system information (update_json_data)",
         "command": "update_json_data",
         "options": "update_json_data",
@@ -1080,8 +1168,9 @@
         "arch": ""
     },
     {
-        "id": "MOD073",
+        "id": "MOD074",
         "feature": "module_nfs",
+        "helpers": "",
         "description": "Install nfs client (module_nfs)",
         "command": "module_nfs",
         "options": "install remove servers help",
@@ -1095,8 +1184,9 @@
         "arch": ""
     },
     {
-        "id": "SHO074",
+        "id": "SHO075",
         "feature": "show_infobox",
+        "helpers": "",
         "description": "pipeline strings to an infobox  (show_infobox)",
         "command": "show_infobox",
         "options": "show_infobox <<< 'hello world' ; ",
@@ -1110,8 +1200,9 @@
         "arch": ""
     },
     {
-        "id": "MOD075",
+        "id": "MOD076",
         "feature": "module_readarr",
+        "helpers": "",
         "description": "Install readarr container (module_readarr)",
         "command": "module_readarr",
         "options": "install remove purge status help",
@@ -1125,8 +1216,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "MOD076",
+        "id": "MOD077",
         "feature": "module_uptimekuma",
+        "helpers": "",
         "description": "Install uptimekuma container (module_uptimekuma)",
         "command": "module_uptimekuma",
         "options": "install remove purge status help",
@@ -1140,8 +1232,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "DEF077",
+        "id": "DEF078",
         "feature": "default_wireless_network_config",
+        "helpers": "",
         "description": "Stop hostapd, clean config (default_wireless_network_config)",
         "command": "default_wireless_network_config",
         "options": "default_wireless_network_config",
@@ -1155,8 +1248,9 @@
         "arch": ""
     },
     {
-        "id": "UPD078",
+        "id": "UPD079",
         "feature": "update_sub_submenu_data",
+        "helpers": "",
         "description": "Update sub-submenu descriptions based on conditions (update_sub_submenu_data)",
         "command": "update_sub_submenu_data",
         "options": "update_sub_submenu_data MenuID SubID SubSubID CMD",
@@ -1170,8 +1264,9 @@
         "arch": ""
     },
     {
-        "id": "PAR079",
+        "id": "PAR080",
         "feature": "parse_menu_items",
+        "helpers": "",
         "description": "Parse json to get list of desired menu or submenu items (parse_menu_items)",
         "command": "parse_menu_items",
         "options": "parse_menu_items 'menu_options_array'",
@@ -1185,8 +1280,9 @@
         "arch": ""
     },
     {
-        "id": "SET080",
+        "id": "SET081",
         "feature": "set_checkpoint",
+        "helpers": "",
         "description": "Helper module for timing code execution (set_checkpoint)",
         "command": "set_checkpoint",
         "options": "help start mark stop show",
@@ -1200,8 +1296,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "SEE081",
+        "id": "SEE082",
         "feature": "see_use",
+        "helpers": "",
         "description": "Show the usage of the functions. (see_use)",
         "command": "see_use",
         "options": "see_use",
@@ -1215,8 +1312,9 @@
         "arch": ""
     },
     {
-        "id": "MAN082",
+        "id": "MAN083",
         "feature": "manage_desktops",
+        "helpers": "",
         "description": "Install Desktop environment (manage_desktops)",
         "command": "manage_desktops",
         "options": "manage_desktops xfce install",
@@ -1230,8 +1328,9 @@
         "arch": ""
     },
     {
-        "id": "MAN083",
+        "id": "MAN084",
         "feature": "manage_zsh",
+        "helpers": "",
         "description": "Set system shell to BASH (manage_zsh)",
         "command": "manage_zsh",
         "options": "manage_zsh enable|disable",
@@ -1245,8 +1344,9 @@
         "arch": ""
     },
     {
-        "id": "MOD084",
+        "id": "MOD085",
         "feature": "module_sabnzbd",
+        "helpers": "",
         "description": "Install sabnzbd container (module_sabnzbd)",
         "command": "module_sabnzbd",
         "options": "install remove purge status help",
@@ -1260,8 +1360,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "PKG085",
+        "id": "PKG086",
         "feature": "pkg_configure",
+        "helpers": "",
         "description": "Configure an unconfigured package (pkg_configure)",
         "command": "pkg_configure",
         "options": "pkg_configure",
@@ -1275,8 +1376,9 @@
         "arch": ""
     },
     {
-        "id": "MOD086",
+        "id": "MOD087",
         "feature": "module_pi_hole",
+        "helpers": "",
         "description": "Install Pi-hole container (module_pi_hole)",
         "command": "module_pi_hole",
         "options": "install remove purge password status help",
@@ -1290,8 +1392,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "SEE087",
+        "id": "SEE088",
         "feature": "see_cmd_list",
+        "helpers": "",
         "description": "Generate a Help message for cli commands. (see_cmd_list)",
         "command": "see_cmd_list",
         "options": "see_cmd_list [category]",
@@ -1305,8 +1408,9 @@
         "arch": ""
     },
     {
-        "id": "MOD088",
+        "id": "MOD089",
         "feature": "module_mariadb",
+        "helpers": "",
         "description": "Install mariadb container (module_mariadb)",
         "command": "module_mariadb",
         "options": "install remove purge status help",
@@ -1320,8 +1424,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "DEF089",
+        "id": "DEF090",
         "feature": "default_network_config",
+        "helpers": "",
         "description": "Revert network config back to Armbian defaults (default_network_config)",
         "command": "default_network_config",
         "options": "default_network_config",
@@ -1335,8 +1440,9 @@
         "arch": ""
     },
     {
-        "id": "CHE090",
+        "id": "CHE091",
         "feature": "check_os_status",
+        "helpers": "",
         "description": "Check if the current OS is supported based on /etc/armbian-distribution-status (check_os_status)",
         "command": "check_os_status",
         "options": "help",
@@ -1350,8 +1456,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "MOD091",
+        "id": "MOD092",
         "feature": "module_prowlarr",
+        "helpers": "",
         "description": "Install prowlarr container (module_prowlarr)",
         "command": "module_prowlarr",
         "options": "install remove purge status help",
@@ -1365,8 +1472,9 @@
         "arch": "x86-64 arm64"
     },
     {
-        "id": "MOD092",
+        "id": "MOD093",
         "feature": "module_nfsd",
+        "helpers": "",
         "description": "Install nfsd server (module_nfsd)",
         "command": "module_nfsd",
         "options": "install remove manage add status clients servers help",
@@ -1380,8 +1488,9 @@
         "arch": ""
     },
     {
-        "id": "SEE093",
+        "id": "SEE094",
         "feature": "see_ping",
+        "helpers": "",
         "description": "Check the internet connection with fallback DNS (see_ping)",
         "command": "see_ping",
         "options": "see_ping",
@@ -1395,8 +1504,9 @@
         "arch": ""
     },
     {
-        "id": "MOD094",
+        "id": "MOD095",
         "feature": "module_docker",
+        "helpers": "",
         "description": "Install docker from a repo using apt (module_docker)",
         "command": "module_docker",
         "options": "install remove purge status help",
@@ -1410,8 +1520,9 @@
         "arch": "x86-64 arm64 armhf"
     },
     {
-        "id": "UPG095",
+        "id": "UPG096",
         "feature": "Upgrade upstream distribution release",
+        "helpers": "",
         "description": " (Upgrade upstream distribution release)",
         "command": "Upgrade upstream distribution release",
         "options": "",
@@ -1425,8 +1536,9 @@
         "arch": ""
     },
     {
-        "id": "UPD096",
+        "id": "UPD097",
         "feature": "update_skel",
+        "helpers": "",
         "description": "Update the /etc/skel files in users directories (update_skel)",
         "command": "update_skel",
         "options": "update_skel",
@@ -1440,8 +1552,9 @@
         "arch": ""
     },
     {
-        "id": "CHA097",
+        "id": "CHA098",
         "feature": "Change hostname",
+        "helpers": "",
         "description": " (Change hostname)",
         "command": "Change hostname",
         "options": "",
@@ -1455,8 +1568,9 @@
         "arch": ""
     },
     {
-        "id": "PKG098",
+        "id": "PKG099",
         "feature": "pkg_update",
+        "helpers": "",
         "description": "Update package repository (pkg_update)",
         "command": "pkg_update",
         "options": "pkg_update",
@@ -1470,8 +1584,9 @@
         "arch": ""
     },
     {
-        "id": "GET099",
+        "id": "GET100",
         "feature": "get_user_continue_secure",
+        "helpers": "",
         "description": "Secure version of get_user_continue (get_user_continue_secure)",
         "command": "get_user_continue_secure",
         "options": "get_user_continue_secure 'Do you wish to continue?' process_input",

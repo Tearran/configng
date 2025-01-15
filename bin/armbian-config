@@ -106,7 +106,7 @@ case "$1" in
 	shift
 	args=$(sanitize_input "$@")
 	# echo -e "\"$option\" \"$args\""
-	"$option" "$args"
+	"$option" "$@"
 	exit 0
 	;;
 "main=help" | "main=Help")

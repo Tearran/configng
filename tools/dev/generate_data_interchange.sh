@@ -25,7 +25,7 @@ function set_json_data() {
 		ref_key="${feature},ref_link"
 		status_key="${feature},status"
 		doc_key="${feature},doc_link"
-#		helpers_key="${feature},helpers"
+		helpers_key="${feature},helpers"
 		group_key="${feature},group"
 		commands_key="${feature},commands"
 		port_key="${feature},port"
@@ -38,7 +38,7 @@ function set_json_data() {
 		doc_link="${module_options[$doc_key]}"
 		desc="${module_options[$desc_key]}"
 		example="${module_options[$example_key]}"
-#		helpers="${module_options[$helpers_key]}"
+		helpers="${module_options[$helpers_key]}"
 		group="${module_options[$group_key]}"
 		commands="${module_options[$commands_key]}"
 		port="${module_options[$port_key]}"
@@ -47,7 +47,7 @@ function set_json_data() {
 		echo "  {"
 		echo "    \"id\": \"$id\","
 		echo "    \"feature\": \"$feature\","
-#		echo "    \"helpers\": \"$helpers\","
+		echo "    \"helpers\": \"$helpers\","
 		echo "    \"description\": \"$desc ($feature)\","
 		echo "    \"command\": \"$feature\","
 		echo "    \"options\": \"$example\","
@@ -68,10 +68,10 @@ function set_json_data() {
 	done
 	echo "]"
 
-} | jq .
+} | jq --tab --indent 4 '.'
+
 
 }
-
 
 
 function set_software_list() {
@@ -119,11 +119,11 @@ function set_system_list() {
 	"menu": [
 	{
 		"id": "System",
-		"description": "Run/Install 3rd party applications",
+		"description": "System wide and admin settings",
 		"sub": (
 		group_by(.group)
-		# Skip grouped arrays where the group is null, empty, or not in softwareGroups
-		| map(select(.[0].group != null and .[0].group != "" and (.[0].group | IN(softwareGroups[]))))
+		# Skip grouped arrays where the group is null, empty, or not in ssystemGroups
+		| map(select(.[0].group != null and .[0].group != "" and (.[0].group | IN(systemGroups[]))))
 		| map({
 		"id": .[0].group,
 		"description": .[0].group,
@@ -152,61 +152,113 @@ function set_system_list() {
 
 function gen_jobs_json() {
 
-  # Get the software menu JSON
-  software_json=$(set_software_list)
+	# Get the menu groups
+	system_json=$(set_system_list )
+	#network_json=$(network_list)
+	#localisation_json=$(localisation_ist)
+	software_json=$(set_software_list)
+	#about_json=$(about_list)
 
-  # Get the system menu JSON
-  menu_json=$(<"$json_file")
+	# Get the system menu JSON
+	#menu_json=$(<"$json_file")
+	menu_json=$(jq -n '{menu: []}')
+	# Now, merge them by appending the software section to the "menu" array in set_menu_groups
+	merged_json=$(echo "$menu_json" | jq ".menu += set_software_list.menu")
 
-  # Now, merge them by appending the software section to the "menu" array in set_menu_groups
-  merged_json=$(echo "$menu_json" | jq ".menu += $software_json.menu")
-
-  # Output the merged JSON
-  echo "$merged_json" | jq .
+	# Output the merged JSON
+	echo "$merged_json" | jq .
 }
 
 
-interface_software_data() {
+interface_module_option() {
 
-	# uncomment to set the data to a file
-	set_json_data | jq --tab --indent 4 '.' > tools/json/config.all.json
-	#json_file="$tools_dir/json/config.temp.json
-	#json_data=$(set_system_list)
-	#generate_menu "System" "$json_data"
-	json_data=$(gen_jobs_json)
-	#generate_menu "Software" "$json_data"
-	generate_top_menu "$json_data"
+
+	generate_menu "System" "$set_system_list"
+	#generate_menu "Software" "$set_software_list"
+	#generate_top_menu "$json_data"
+}
+
+# Function to display the whiptail menu and handle the user's selection
+function main_menu() {
+    while true; do
+        CHOICE=$(whiptail --title "Main Menu" --menu "Choose an option" 15 60 4 \
+            "System" "System wide and admin settings" \
+            "Software" "Run/Install 3rd party applications" \
+            "Exit" "Exit the script" 3>&1 1>&2 2>&3)
+
+        case $CHOICE in
+            "System")
+                generate_menu "System" "$set_system_list"
+	#generate_menu "Software" "$set_software_list"
+                ;;
+            "Software")
+                generate_menu "System" "$set_system_list"
+	#generate_menu "Software" "$set_software_list"
+                ;;
+            "Exit")
+                break
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
 }
 
 
-# Test Function
-interface_json_data() {
-	# Convert the example string to an array
-	local commands=("raw" "mnu" "top" "sub" "help")
-	json_data=$(generate_json_data)
-	case "$1" in
+# Define module options for main_menu
+module_options+=(
+    ["module_main_menu,author"]="@Tearran"
+    ["module_main_menu,maintainer"]="@Tearran"
+    ["module_main_menu,feature"]="module_main_menu"
+    ["module_main_menu,example"]="help run"
+    ["module_main_menu,desc"]="Main menu displaying system and software options."
+    ["module_main_menu,status"]="Active"
+    ["module_main_menu,doc_link"]="https://example.com/docs/main_menu"
+    ["module_main_menu,group"]="Management"
+    ["module_main_menu,arch"]="x86-64 arm64 armhf"
+)
 
-	"${commands[0]}")
-		echo "Setting JSON data to file..."
-		set_json_data | jq --tab --indent 4 '.' > tools/json/config.temp.json
-	;;
-	"${commands[1]}")
-		echo "Generating JSON data..."
-		generate_json_data | jq --tab --indent 4 '.' > tools/json/config.temp.json
-	;;
-	"${commands[2]}")
-		generate_top_menu "$json_data"
-	;;
-	"${commands[3]}")
-		generate_menu "Software" "$json_data"
-	;;
-	"${commands[-1]}")
-		echo "Usage: interface_json_data <command>"
-		echo "Available commands:"
-		echo -e "\traw\t- Set flat JSON data to a file for inspection not used"
-		echo -e "\tmnu\t- Generate the Menu JSON data to file for inspection not used"
-		echo -e "\ttop\t- Show the top menu using the JSON data."
-		echo -e "\tsub\t- Show the Software menu using the JSON data."
-	;;
-	esac
+# Function to display the whiptail menu and handle the user's selection
+function module_main_menu() {
+    local title="main_menu"
+    local commands
+    IFS=' ' read -r -a commands <<< "${module_options["module_main_menu,example"]}"
+
+    case "$1" in
+        "${commands[0]}")
+            ## help/menu options for the module
+            echo -e "\nUsage: ${module_options["module_main_menu,feature"]} <command>"
+            echo -e "Commands: ${module_options["module_main_menu,example"]}"
+            echo "Available commands:"
+            echo -e "  run\t- Run the main menu."
+            ;;
+        "${commands[1]}")
+            ## run the main menu
+            while true; do
+                CHOICE=$(whiptail --title "Main Menu" --menu "Choose an option" 15 60 4 \
+                    "System" "System wide and admin settings" \
+                    "Software" "Run/Install 3rd party applications" \
+                    "Exit" "Exit the script" 3>&1 1>&2 2>&3)
+
+                case $CHOICE in
+                    "System")
+                        generate_menu "System" "$set_system_list"
+                        ;;
+                    "Software")
+                        generate_menu "Software" "$set_software_list"
+                        ;;
+                    "Exit")
+                        break
+                        ;;
+                    *)
+                        break
+                        ;;
+                esac
+            done
+            ;;
+        *)
+            echo "Invalid command. Try: '${module_options["module_main_menu,example"]}'"
+            ;;
+    esac
 }
