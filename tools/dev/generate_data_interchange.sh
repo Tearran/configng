@@ -146,7 +146,32 @@ function set_system_list() {
 	'
 }
 
-# Test Function
+
+see_api_message() {
+    # Initialize the usage message
+    mod_message="Usage: \n\n"
+
+    # Append the formatted JSON data to the usage message
+    mod_message+=$( set_json_data | jq -r '
+        .[] |
+        if .feature != null and .status == "Active" and .options != .feature then
+            # Construct the first line with feature and description
+            "\(.feature) - \(.description)\n" +
+            # Conditionally add the second line with options if it exists and is different from feature
+            (if .options != null  then
+                "\(.options)\n"
+            else
+                ""
+            end)
+        else
+            empty
+        end
+    ')
+
+    # Print the final usage message
+    echo -e "$mod_message"
+}
+
 
 
 
