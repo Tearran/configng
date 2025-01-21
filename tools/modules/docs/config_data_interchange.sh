@@ -362,7 +362,7 @@ mkdir -p "$(dirname "$json_opjects")"
 
 
 
-function see_module_options() {
+function set_module_options() {
 	local i=0
 
 	features=()
@@ -447,23 +447,32 @@ function see_module_options() {
 			;;
 		esac
 
-		module_options_file="$tools_dir/dev/${parent}/${feature}_array.sh"
+        # Determine the file path based on group
+        if [ "$group" != "unknown" ]; then
+            module_options_file="$tools_dir/modules/${parent}/${feature}_array.sh"
+        else
+            module_options_file="$tools_dir/dev/${parent}/${feature}_array.sh"
+        fi
+
+        # Create the parent directory if it doesn't exist
+        mkdir -p "$(dirname "$module_options_file")"
+
 	{
 		echo "module_options+=("
-		echo "    \"[$feature,id_count]\"=\"$id\","
-		echo "    \"[$feature,maintainer]\"=\"$maintainer\","
-		echo "    \"[$feature,feature]\"=\"$feature\","
-		echo "    \"[$feature,description]\"=\"$desc\","
-		echo "    \"[$feature,example]\"=\"$example\","
-		echo "    \"[$feature,status]\"=\"$status\","
-		echo "    \"[$feature,condition]\"=\"\","
-		echo "    \"[$feature,reference]\"=\"$doc_link\","
-		echo "    \"[$feature,author]\"=\"$author\","
-		echo "    \"[$feature,parent]\"=\"$parent\","
-		echo "    \"[$feature,group]\"=\"$group\","
-		echo "    \"[$feature,options]\"=\"$example\","
-		echo "    \"[$feature,port]\"=\"$port\","
-		echo "    \"[$feature,arch\"=\"$arch\""
+		echo "    [\"$feature,id_count\"]=\"$id\""
+		echo "    [\"$feature,maintainer\"]=\"$maintainer\""
+		echo "    [\"$feature,feature\"]=\"$feature\""
+		echo "    [\"$feature,description\"]=\"$desc\""
+		echo "    [\"$feature,example\"]=\"$example\""
+		echo "    [\"$feature,status\"]=\"$status\""
+		echo "    [\"$feature,condition\"]=\"\""
+		echo "    [\"$feature,reference\"]=\"$doc_link\""
+		echo "    [\"$feature,author\"]=\"$author\""
+		echo "    [\"$feature,parent\"]=\"$parent\""
+		echo "    [\"$feature,group\"]=\"$group\""
+		echo "    [\"$feature,options\"]=\"$example\""
+		echo "    [\"$feature,port\"]=\"$port\""
+		echo "    [\"$feature,arch\"]=\"$arch\""
 		echo ")"
 		echo ""
 	} > "$module_options_file"
@@ -471,21 +480,14 @@ function see_module_options() {
 	done
 
 }
-# Call the function to see the output
 
-function set_api_files() {
-	see_api_json > "$tools_dir/dev/module_option.json"
-	set_api_json
-	see_module_options
-	set_api_dbt
-}
 
 function see_api_message() {
     # Initialize the usage message
     mod_message="Usage: \n\n"
 
     # Append the formatted JSON data to the usage message
-    mod_message+=$(set_api_json | jq -r '
+    mod_message+=$(see_api_json | jq -r '
         group_by(.group) | sort_by(.[0].group == "Unknown")[] |
         .[0].group as $group |
         "\($group) (\(.[0].parent)):\n" +
