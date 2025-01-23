@@ -1,6 +1,6 @@
 # Function to convert JSON object to .dbt files
 
-function gen_module_api() {
+function geneate_files_api() {
 	local i=0
 
 	features=()
@@ -47,19 +47,13 @@ function gen_module_api() {
 			id="$feature"
 		fi
 
-		if [ -z "$doc_link" ]; then
-		doc_link="Missing link"
-		fi
-		if [ -z "$port" ]; then
-		port="unset"
-		fi
-		if [ -z "$arch" ]; then
-		arch="unset"
-		fi
-		if [ "$example" == "$feature" ]; then
-		example=""
-		fi
-
+		# Set default values for missing fields
+		doc_link="${doc_link:-Missing}"
+		port="${port:-Unset}"
+		arch="${arch:-Missing}"
+		example="${example:-}"
+		author="${author:-Unknown}"
+		maintainer="${maintainer:-Needed}"
 		# Use group_prefix for id
 		# Check if group belongs to the software category
 		case "$group" in
@@ -89,14 +83,15 @@ function gen_module_api() {
 
 		gen_api_array
 		gen_test_conf
-		gen_api_dbt
-		get_api_json
+		#gen_api_dbt
+		#sget_api_json
 
 
 	done
 
         chown -R "${SUDO_USER:-$USER}":"${SUDO_USER:-$USER}" "$script_dir"
 }
+
 
 gen_api_array(){
 	   # Determine the file path based on group
@@ -109,59 +104,58 @@ gen_api_array(){
         # Create the parent directory if it doesn't exist
         mkdir -p "$(dirname "$module_options_file")"
 
-	{
-		echo "module_options+=("
-		echo "    [\"$feature,id\"]=\"$id\""
-		echo "    [\"$feature,maintainer\"]=\"$maintainer\""
-		echo "    [\"$feature,feature\"]=\"$feature\""
-		echo "    [\"$feature,description\"]=\"$desc\""
-		echo "    [\"$feature,example\"]=\"$example\""
-		echo "    [\"$feature,status\"]=\"$status\""
-		echo "    [\"$feature,condition\"]=\"\""
-		echo "    [\"$feature,doc_link\"]=\"$doc_link\""
-		echo "    [\"$feature,author\"]=\"$author\""
-		echo "    [\"$feature,parent\"]=\"$parent\""
-		echo "    [\"$feature,group\"]=\"$group\""
-		echo "    [\"$feature,port\"]=\"$port\""
-		echo "    [\"$feature,arch\"]=\"$arch\""
-		echo ")"
-		echo ""
-	} > "$module_options_file"
+cat << EOF > "$module_options_file"
+module_options+=(
+	["$feature,id"]="$id"
+	["$feature,maintainer"]="$maintainer"
+	["$feature,feature"]="$feature"
+	["$feature,description"]="$desc"
+	["$feature,example"]="$example"
+	["$feature,status"]="$status"
+	["$feature,condition"]=""
+	["$feature,doc_link"]="$doc_link"
+	["$feature,author"]="$author"
+	["$feature,parent"]="$parent"
+	["$feature,group"]="$group"
+	["$feature,port"]="$port"
+	["$feature,arch"]="$arch"
+)
+
+EOF
+
 }
 
 
 get_api_json(){
 
-        if [ "$group" != "unknown" ]; then
-            json_opjects="$tools_dir/dev/json/${parent}/${feature}.json"
-        else
-            json_opjects="$tools_dir/dev/json/${parent}/${feature}.json"
-        fi
+	if [ "$group" != "unknown" ]; then
+		json_opjects="$tools_dir/dev/json/${parent}/${feature}.json"
+	else
+		json_opjects="$tools_dir/dev/json/${parent}/${feature}.json"
+	fi
 
 	# Create the parent directory if it doesn't exist
 	mkdir -p "$(dirname "$json_opjects")"
 
+cat << EOF > "$json_opjects"
 {
-        echo "  {"
-        echo "    \"id_count\": \"$id\","
-	echo "    \"maintainer\": \"$maintainer\","
-        echo "    \"feature\": \"$feature\","
-        echo "    \"description\": \"$desc\","
-        echo "    \"example\": \"$example\","
-        echo "    \"status\": \"$status\","
-        echo "    \"condition\": \"\","
-        echo "    \"doc_link\": \"$doc_link\","
-        echo "    \"author\": \"$author\","
-        echo "    \"parent\": \"$parent\","
-        echo "    \"group\": \"$group\","
-        echo "    \"port\": \"$port\","
-        echo "    \"arch\": \"$arch\""
-            echo "  }"
-}  > "$json_opjects"
+	"id_count": "$id",
+	"maintainer": "$maintainer",
+	"feature": "$feature",
+	"description": "$desc",
+	"example": "$example",
+	"status": "$status",
+	"condition": "",
+	"doc_link": "$doc_link",
+	"author": "$author",
+	"parent": "$parent",
+	"group": "$group",
+	"port": "$port",
+	"arch": "$arch"
+}
+EOF
 
 }
-
-
 
 
 gen_api_dbt(){
@@ -199,26 +193,30 @@ EOF
 gen_test_conf(){
         if [ "$group" != "unknown" ] && [ -n "$id" ]; then
         	conf_file="$tools_dir/dev/test/${id}.conf"
-        else
-        	conf_file="$tools_dir/dev/test/${group}/${feature}.conf"
+        #else
+        	#conf_file="$tools_dir/dev/test/${group}/${feature}.conf"
         fi
 
 	# Create the parent directory if it doesn't exist
 	mkdir -p "$(dirname "$conf_file")"
 
-cat << EOF > "$conf_file"
+	local commands
+	IFS=' ' read -r -a commands <<< "${module_options["$feature,example"]}"
+
+	[[ $parent == "software" ]]  && cat << EOF > "$conf_file"
 
 ENABLED=true
 RELEASE="$arch"
 
 function testcase(){
 	./bin/armbian-config --api $feature install
-        [ -n "\$(./bin/armbian-config --api \"$feature\" status)" ]
+        [ -z "\$(./bin/armbian-config --api \"$feature\" ${commands[1]}  | grep ${commands[1]})" ]
 	./bin/armbian-config --api $feature remove
-	[ -z "\$(./bin/armbian-config --api \"$feature\" status)" ]
+	[ -z "\$(./bin/armbian-config --api \"$feature\" ${commands[2]} | grep ${commands[2]})" ]
 }
 
 EOF
+
 
 
 }
