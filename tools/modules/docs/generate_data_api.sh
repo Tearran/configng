@@ -89,7 +89,7 @@ function geneate_files_api() {
 
 	done
 
-        chown -R "${SUDO_USER:-$USER}":"${SUDO_USER:-$USER}" "$script_dir"
+        chown -R "${SUDO_USER:-$USER}":"${SUDO_USER:-$USER}" "$tools_dir"
 }
 
 
@@ -97,14 +97,14 @@ gen_api_array(){
 	   # Determine the file path based on group
         if [ "$group" != "unknown" ]; then
             module_options_file="$tools_dir/modules/${parent}/${feature}_array.sh"
-        else
-            module_options_file="$tools_dir/dev/array/${parent}/${feature}_array.sh"
+       # else
+         #   module_options_file="$tools_dir/dev/array/${parent}/${feature}_array.sh"
         fi
 
         # Create the parent directory if it doesn't exist
         mkdir -p "$(dirname "$module_options_file")"
 
-cat << EOF > "$module_options_file"
+	[[ $parent == "software" ]] && cat << EOF > "$module_options_file"
 module_options+=(
 	["$feature,id"]="$id"
 	["$feature,maintainer"]="$maintainer"
