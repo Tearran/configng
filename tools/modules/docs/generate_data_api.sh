@@ -103,7 +103,7 @@ function geneate_files_api() {
 gen_api_array(){
 		# Determine the file path based on group
 	if [ "$group" != "unknown" ]; then
-		module_options_file="$tools_dir/modules/${parent}/${feature}_array.sh"
+		module_options_file="$tools_dir/modules/${parent}/${feature}_array"
 	#else
 		#module_options_file="$tools_dir/dev/array/${feature}_array.sh"
 	fi
