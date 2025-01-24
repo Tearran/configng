@@ -1,15 +1,20 @@
 module_options+=(
-	["module_openhab,author"]="@igorpecovnik"
-	["module_openhab,maintainer"]="@igorpecovnik"
-	["module_openhab,feature"]="module_openhab"
-	["module_openhab,example"]="install remove purge status help"
-	["module_openhab,desc"]="Install Openhab"
-	["module_openhab,status"]="Active"
-	["module_openhab,doc_link"]="https://www.openhab.org/docs/tutorial"
-	["module_openhab,group"]="HomeAutomation"
-	["module_openhab,port"]="8080"
-	["module_openhab,arch"]="x86-64 arm64 armhf"
+	["module_octoprint,id"]="PRI0520"
+	["module_octoprint,maintainer"]="@igorpecovnik"
+	["module_octoprint,feature"]="module_octoprint"
+	["module_octoprint,desc"]="Install octoprint container"
+	["module_octoprint,example"]="install remove purge status help"
+	["module_octoprint,status"]="Active"
+	["module_octoprint,about"]=""
+	["module_octoprint,doc_link"]="https://transmissionbt.com/"
+	["module_octoprint,author"]="@armbian"
+	["module_octoprint,parent"]="software"
+	["module_octoprint,group"]="Printing"
+	["module_octoprint,port"]="7981"
+	["module_octoprint,arch"]="x86-64 arm64"
 )
+
+
 #
 # Install openHAB from repo using apt
 #
