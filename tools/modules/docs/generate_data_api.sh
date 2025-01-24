@@ -15,6 +15,7 @@ function geneate_files_api() {
 		i=$((i + 1))
 
 		# Get keys pairs
+		about_key="${feature},about"
 		desc_key="${feature},desc"
 		example_key="${feature},example"
 		author_key="${feature},author"
@@ -26,7 +27,10 @@ function geneate_files_api() {
 		port_key="${feature},port"
 		arch_key="${feature},arch"
 		maintainer_key="${feature},maintainer"
+		header_key="${feature},header"
+		footer_key="${feature},footer"
 		# Get array info
+		about="${module_options[$about_key]}"
 		author="${module_options[$author_key]}"
 		ref_link="${module_options[$ref_key]}"
 		status="${module_options[$status_key]}"
@@ -38,7 +42,8 @@ function geneate_files_api() {
 		port="${module_options[$port_key]}"
 		arch="${module_options[$arch_key]}"
 		maintainer="${module_options[$maintainer_key]}"
-
+		header="${module_options[$header_key]}"
+		footer="${module_options[$footer_key]}"
 		if [[ -n group ]]; then
 			g=$((g + 10)) ;
 			group_prefix=$(echo "${group:0:3}" | tr '[:lower:]' '[:upper:]') # Extract first 3 letters and convert to uppercase
@@ -54,6 +59,8 @@ function geneate_files_api() {
 		example="${example:-}"
 		author="${author:-Unknown}"
 		maintainer="${maintainer:-Needed}"
+		footer="${footer:-None}"
+		header="${header:-None}"
 		# Use group_prefix for id
 		# Check if group belongs to the software category
 		case "$group" in
@@ -84,7 +91,7 @@ function geneate_files_api() {
 		gen_api_array
 		gen_test_conf
 		#gen_api_dbt
-		#sget_api_json
+		get_api_json
 
 
 	done
@@ -94,25 +101,25 @@ function geneate_files_api() {
 
 
 gen_api_array(){
-	   # Determine the file path based on group
-        if [ "$group" != "unknown" ]; then
-            module_options_file="$tools_dir/modules/${parent}/${feature}_array.sh"
-       # else
-         #   module_options_file="$tools_dir/dev/array/${parent}/${feature}_array.sh"
-        fi
+		# Determine the file path based on group
+	if [ "$group" != "unknown" ]; then
+		module_options_file="$tools_dir/modules/${parent}/${feature}_array.sh"
+	#else
+		#module_options_file="$tools_dir/dev/array/${feature}_array.sh"
+	fi
 
         # Create the parent directory if it doesn't exist
         mkdir -p "$(dirname "$module_options_file")"
 
-	[[ $parent == "software" ]] && cat << EOF > "$module_options_file"
+	[[ $parent == "software" ]] && cat << EOF | tee -a "$module_options_file" >> "$tools_dir/dev/array/module_options.sh"
 module_options+=(
 	["$feature,id"]="$id"
 	["$feature,maintainer"]="$maintainer"
 	["$feature,feature"]="$feature"
-	["$feature,description"]="$desc"
+	["$feature,desc"]="$desc"
 	["$feature,example"]="$example"
 	["$feature,status"]="$status"
-	["$feature,condition"]=""
+	["$feature,about"]=""
 	["$feature,doc_link"]="$doc_link"
 	["$feature,author"]="$author"
 	["$feature,parent"]="$parent"
@@ -137,12 +144,12 @@ get_api_json(){
 	# Create the parent directory if it doesn't exist
 	mkdir -p "$(dirname "$json_opjects")"
 
-cat << EOF > "$json_opjects"
+	cat << EOF > "$json_opjects"
 {
 	"id_count": "$id",
 	"maintainer": "$maintainer",
 	"feature": "$feature",
-	"description": "$desc",
+	"desc": "$desc",
 	"example": "$example",
 	"status": "$status",
 	"condition": "",
@@ -168,33 +175,47 @@ gen_api_dbt(){
 	# Create the parent directory if it doesn't exist
 	mkdir -p "$(dirname "$dbt_file")"
 
+
+# Create the .conf file with the defined variables
 cat << EOF > "$dbt_file"
-[$feature]
+[main]
+id="$id"
+feature="$feature"
 parent="$parent"
 group="$group"
-feature="$feature"
-
-id="$id"
 maintainer="$maintainer"
-author="$author"
-feature="$feature"
-description="$desc"
-example="$example"
+
+[checks]
 status="$status"
-doc_link="$doc_link"
 port="$port"
 arch="$arch"
-EOF
 
+
+[messages]
+example="$example"
+description="$desc"
+
+[markdown]
+title="$id - $feature"
+author="$author"
+header="""
+$header
+"""
+image=""
+footer="""
+$footer
+"""
+doc_link="$doc_link"
+
+EOF
 
 
 }
 
+
 gen_test_conf(){
         if [ "$group" != "unknown" ] && [ -n "$id" ]; then
         	conf_file="$tools_dir/dev/test/${id}.conf"
-        #else
-        	#conf_file="$tools_dir/dev/test/${group}/${feature}.conf"
         fi
 
 	# Create the parent directory if it doesn't exist
@@ -203,21 +224,28 @@ gen_test_conf(){
 	local commands
 	IFS=' ' read -r -a commands <<< "${module_options["$feature,example"]}"
 
-	[[ $parent == "software" ]]  && cat << EOF > "$conf_file"
+	if [[ $parent == "software" ]]; then
+		if [[ " ${commands[@]} " =~ " help " && " ${commands[@]} " =~ " status " ]]; then
+			{
+			echo "ENABLED=true"
+			echo "RELEASE=\"$arch\""
+			echo ""
+			echo "function testcase(){"
 
-ENABLED=true
-RELEASE="$arch"
+				for i in "${!commands[@]}"; do
 
-function testcase(){
-	./bin/armbian-config --api $feature install
-        [ -z "\$(./bin/armbian-config --api \"$feature\" ${commands[1]}  | grep ${commands[1]})" ]
-	./bin/armbian-config --api $feature remove
-	[ -z "\$(./bin/armbian-config --api \"$feature\" ${commands[2]} | grep ${commands[2]})" ]
-}
+						echo "	armbian-config --api $feature ${commands[$i]}"
+						echo "	[ -z \$(armbian-config --api $feature help | grep ${commands[$i]}) ]"
+						echo ""
 
-EOF
+				done
 
+			echo "}"
 
+        		} > "$conf_file"
+		fi
+
+	fi
 
 }
 
