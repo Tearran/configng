@@ -1,0 +1,10 @@
+{
+	"id": "DOW0590",
+	"description": "Install qbittorrent container",
+	"command": [
+	"see_menu module_qbittorrent"
+	],
+	"status": "",
+	"author": "@qbittorrent",
+	"condition": "module_qbittorrent status | grep install"
+}

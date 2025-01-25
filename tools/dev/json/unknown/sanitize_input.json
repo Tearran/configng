@@ -1,0 +1,10 @@
+{
+	"id": "0390",
+	"description": "sanitize input cli",
+	"command": [
+	"see_menu sanitize_input"
+	],
+	"status": "",
+	"author": "@Tearran",
+	"condition": "sanitize_input status | grep install"
+}

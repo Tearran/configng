@@ -1,0 +1,10 @@
+{
+	"id": "0640",
+	"description": "Wrapper for service manipulation",
+	"command": [
+	"see_menu service"
+	],
+	"status": "",
+	"author": "@dimitry-ishenko",
+	"condition": "service status | grep install"
+}

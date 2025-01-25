@@ -88,8 +88,8 @@ function geneate_files_api() {
 			;;
 		esac
 
-		gen_api_array
-		gen_test_conf
+		#gen_api_array
+		#gen_test_conf
 		#gen_api_dbt
 		get_api_json
 
@@ -146,19 +146,14 @@ get_api_json(){
 
 	cat << EOF > "$json_opjects"
 {
-	"id_count": "$id",
-	"maintainer": "$maintainer",
-	"feature": "$feature",
-	"desc": "$desc",
-	"example": "$example",
-	"status": "$status",
-	"condition": "",
-	"doc_link": "$doc_link",
+	"id": "$id",
+	"description": "$desc",
+	"command": [
+	"see_menu $feature"
+	],
+	"status": "",
 	"author": "$author",
-	"parent": "$parent",
-	"group": "$group",
-	"port": "$port",
-	"arch": "$arch"
+	"condition": "$feature status | grep install"
 }
 EOF
 
