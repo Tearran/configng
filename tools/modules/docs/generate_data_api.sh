@@ -1,6 +1,7 @@
 # Function to convert JSON object to .dbt files
 
 function geneate_files_api() {
+	local generator=$1
 	local i=0
 
 	features=()
@@ -88,11 +89,13 @@ function geneate_files_api() {
 			;;
 		esac
 
-		#gen_api_array
-		#gen_test_conf
-		#gen_api_dbt
-		get_api_json
-
+        # Call the specified generator function
+        if [[ $(type -t "$generator") == "function" ]]; then
+            "$generator"
+        else
+            echo "Error: Invalid generator function '$generator'."
+            return 1
+        fi
 
 	done
 
@@ -100,18 +103,21 @@ function geneate_files_api() {
 }
 
 
+
 gen_api_array(){
 		# Determine the file path based on group
 	if [ "$group" != "unknown" ]; then
 		module_options_file="$tools_dir/modules/${parent}/${feature}_array"
-	#else
-		#module_options_file="$tools_dir/dev/array/${feature}_array.sh"
+	else
+		module_options_file="$tools_dir/dev/array/${parent}/${feature}_array.sh"
 	fi
+
 
         # Create the parent directory if it doesn't exist
         mkdir -p "$(dirname "$module_options_file")"
 
-	[[ $parent == "software" ]] && cat << EOF | tee -a "$module_options_file" >> "$tools_dir/dev/array/module_options.sh"
+
+	cat << EOF | tee -a "$module_options_file" >> "$tools_dir/dev/array/${parent}_module_options.sh"
 module_options+=(
 	["$feature,id"]="$id"
 	["$feature,maintainer"]="$maintainer"
@@ -133,7 +139,7 @@ EOF
 }
 
 
-get_api_json(){
+gen_api_json(){
 
 	if [ "$group" != "unknown" ]; then
 		json_opjects="$tools_dir/dev/json/${parent}/${feature}.json"
@@ -162,9 +168,9 @@ EOF
 
 gen_api_dbt(){
         if [ "$group" != "unknown" ]; then
-        	dbt_file="$tools_dir/dev/dbt/${parent}/${feature}.dbt"
+        	dbt_file="$tools_dir/modules/${parent}/${feature}_database.dbt"
         else
-        	dbt_file="$tools_dir/dev/dbt/${parent}/${feature}.dbt"
+        	dbt_file="$tools_dir/dev/dbt/${parent}/${feature}_database.dbt"
         fi
 
 	# Create the parent directory if it doesn't exist
@@ -173,7 +179,7 @@ gen_api_dbt(){
 
 # Create the .conf file with the defined variables
 cat << EOF > "$dbt_file"
-[main]
+[menu]
 id="$id"
 feature="$feature"
 parent="$parent"
@@ -227,13 +233,13 @@ gen_test_conf(){
 			echo ""
 			echo "function testcase(){"
 
-				for i in "${!commands[@]}"; do
+			for i in "${!commands[@]}"; do
 
-						echo "	armbian-config --api $feature ${commands[$i]}"
-						echo "	[ -z \$(armbian-config --api $feature help | grep ${commands[$i]}) ]"
-						echo ""
+				echo "	armbian-config --api $feature ${commands[$i]}"
+				echo "	[ -z \$(armbian-config --api $feature help | grep ${commands[$i]}) ]"
+				echo ""
 
-				done
+			done
 
 			echo "}"
 
@@ -245,3 +251,57 @@ gen_test_conf(){
 }
 
 
+module_options+=(
+	["module_api_files,maintainer"]="@Tearran"
+	["module_api_files,feature"]="module_api_files"
+	["module_api_files,example"]="help array json dbt test"
+	["module_api_files,desc"]="Example module unattended interface."
+	["module_api_files,status"]="Active"
+	["module_api_files,condition"]=""
+	["module_api_files,doc_link"]=""
+	["module_api_files,author"]="@Tearran"
+	["module_api_files,parent"]="Helper"
+	["module_api_files,group"]="Development"
+	["module_api_files,port"]=""
+	["module_api_files,arch"]=""
+)
+
+	# Function to handle the module commands for 'module_api_files'
+	function module_api_files() {
+
+	# Convert the example string to an array
+	local commands
+	IFS=' ' read -r -a commands <<< "${module_options["module_api_files,example"]}"
+
+	# Handle the command passed to the function
+	case "$1" in
+		"${commands[0]}")
+		echo -e "\nUsage: ${module_options["module_api_files,feature"]} <command>"
+		echo -e "Commands:  ${module_options["module_api_files,example"]}"
+		echo "Available commands:"
+		echo -e "\tarray\t- Generate Data array API."
+		echo -e "\tjson\t- Generate JSON from API."
+		echo -e "\tdbt\t- Generate DBT from API."
+		echo -e "\ttest\t- Generate test CONF from API."
+		echo
+		;;
+		"${commands[1]}")
+		geneate_files_api "gen_api_array"
+		;;
+		"${commands[2]}")
+		geneate_files_api "gen_api_json"
+		;;
+		"${commands[3]}")
+		geneate_files_api "gen_api_dbt"
+		;;
+		"${commands[4]}")
+		geneate_files_api "gen_test_conf"
+		;;
+		*)
+		echo "${module_options["module_api_files,example"]}"
+		;;
+	esac
+	}
+
+# Uncomment to test the module
+# module_api_files "$1"
