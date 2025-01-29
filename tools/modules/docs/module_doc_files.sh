@@ -2,7 +2,7 @@
 
 # This file is part of Armbian configuration utility.
 
-module_options+=(
+module_helper+=(
 	["generate_readme,author"]="@Tearran"
 	["generate_readme,ref_link"]=""
 	["generate_readme,feature"]="generate_readme"
@@ -163,7 +163,7 @@ EOF
 
 }
 
-module_options+=(
+module_helper+=(
 	["serve_doc,author"]="@Tearran"
 	["serve_doc,ref_link"]=""
 	["serve_doc,feature"]="serve_doc"
@@ -201,7 +201,7 @@ function serve_doc() {
 	fi
 }
 
-module_options+=(
+module_helper+=(
 	["see_use,author"]="@Tearran"
 	["see_use,ref_link"]=""
 	["see_use,feature"]="see_use"
@@ -216,20 +216,20 @@ module_options+=(
 function see_use() {
 	mod_message="Usage: \n\n"
 	# Iterate over the options
-	for key in "${!module_options[@]}"; do
+	for key in "${!module_helper[@]}"; do
 		# Split the key into function_name and type
 		IFS=',' read -r function_name type <<< "$key"
 		# If the type is 'long', append the option to the help message
 		if [[ "$type" == "feature" ]]; then
-			mod_message+="${module_options["$function_name,feature"]} - ${module_options["$function_name,desc"]}\n"
-			mod_message+="  ${module_options["$function_name,example"]}\n\n"
+			mod_message+="${module_helper["$function_name,feature"]} - ${module_helper["$function_name,desc"]}\n"
+			mod_message+="  ${module_helper["$function_name,example"]}\n\n"
 		fi
 	done
 
 	echo -e "$mod_message"
 }
 
-module_options+=(
+module_helper+=(
 	["generate_json_options,author"]="@Tearran"
 	["generate_json_options,ref_link"]=""
 	["generate_json_options,feature"]="generate_json"
@@ -244,9 +244,9 @@ module_options+=(
 function generate_json_options() {
 	echo -e "{\n\"configng-helpers\" : ["
 	features=()
-	for key in "${!module_options[@]}"; do
+	for key in "${!module_helper[@]}"; do
 		if [[ $key == *",feature" ]]; then
-			features+=("${module_options[$key]}")
+			features+=("${module_helper[$key]}")
 		fi
 	done
 
@@ -258,12 +258,12 @@ function generate_json_options() {
 		ref_key="${feature},ref_link"
 		status_key="${feature},status"
 		doc_key="${feature},doc_link"
-		author="${module_options[$author_key]}"
-		ref_link="${module_options[$ref_key]}"
-		status="${module_options[$status_key]}"
-		doc_link="${module_options[$doc_key]}"
-		desc="${module_options[$desc_key]}"
-		example="${module_options[$example_key]}"
+		author="${module_helper[$author_key]}"
+		ref_link="${module_helper[$ref_key]}"
+		status="${module_helper[$status_key]}"
+		doc_link="${module_helper[$doc_key]}"
+		desc="${module_helper[$desc_key]}"
+		example="${module_helper[$example_key]}"
 		echo "  {"
 		echo "    \"id\": \"$feature\","
 		echo "    \"Author\": \"$author\","
@@ -282,7 +282,7 @@ function generate_json_options() {
 	echo "}"
 }
 
-module_options+=(
+module_helper+=(
 	["generate_svg,author"]="@Tearran"
 	["generate_svg,ref_link"]=""
 	["generate_svg,feature"]="generate_svg"
@@ -307,7 +307,7 @@ EOF
 
 }
 
-module_options+=(
+module_helper+=(
 	["generate_jobs_from_json,author"]="@Tearran"
 	["generate_jobs_from_json,ref_link"]=""
 	["generate_jobs_from_json,feature"]="generate_jobs_from_json"
@@ -394,41 +394,41 @@ function see_full_list() {
 	done
 }
 
-module_options+=(
+module_helper+=(
 	["see_function_table_md,author"]="@Tearran"
 	["see_function_table_md,ref_link"]=""
 	["see_function_table_md,feature"]="see_function_table_md"
-	["see_function_table_md,desc"]="Generate this markdown table of all module_options"
+	["see_function_table_md,desc"]="Generate this markdown table of all module_helper"
 	["see_function_table_md,example"]="see_function_table_md"
 	["see_function_table_md,status"]="review"
 	["see_function_table_md,doc_link"]=""
 )
 #
-# This function is used to generate a markdown table from the module_options array
+# This function is used to generate a markdown table from the module_helper array
 #
 function see_function_table_md() {
 	mod_message="| Description | Example | Credit |\n"
 	mod_message+="|:----------- | ------- |:------:|\n"
 	# Iterate over the options
-	for key in "${!module_options[@]}"; do
+	for key in "${!module_helper[@]}"; do
 		# Split the key into function_name and type
 		IFS=',' read -r function_name type <<< "$key"
 		# If the type is 'feature', append the option to the help message
 		if [[ "$type" == "feature" ]]; then
-			status=${module_options["$function_name,status"]}
-			ref_link=${module_options["$function_name,ref_link"]}
-			doc_link=${module_options["$function_name,doc_link"]}
+			status=${module_helper["$function_name,status"]}
+			ref_link=${module_helper["$function_name,ref_link"]}
+			doc_link=${module_helper["$function_name,doc_link"]}
 			ref_link_md=$([[ -n "$ref_link" ]] && echo "[Source]($ref_link)" || echo "X")
 			doc_link_md=$([[ -n "$doc_link" ]] && echo "[Document]($doc_link)" || echo "X")
 			status_md=$([[ -z "$ref_link" ]] && echo "source link Needed" || ([[ (-n "$ref_link" && -n "$doc_link") ]] && echo "Review" || echo "$status"))
-			mod_message+="| ${module_options["$function_name,desc"]} | ${module_options["$function_name,example"]} | ${module_options["$function_name,author"]} \n"
+			mod_message+="| ${module_helper["$function_name,desc"]} | ${module_helper["$function_name,example"]} | ${module_helper["$function_name,author"]} \n"
 		fi
 	done
 
 	echo -e "$mod_message"
 }
 
-module_options+=(
+module_helper+=(
 	["see_jq_menu_list,author"]="@Tearran"
 	["see_jq_menu_list,ref_link"]=""
 	["see_jq_menu_list,feature"]="see_jq_menu_list"
@@ -451,7 +451,7 @@ function see_jq_menu_list() {
 ' $json_file
 }
 
-module_options+=(
+module_helper+=(
 	["see_cmd_list,author"]="@Tearran"
 	["see_cmd_list,ref_link"]=""
 	["see_cmd_list,feature"]="see_cmd_list"
@@ -525,43 +525,44 @@ see_cmd_list() {
 }
 
 
+
+
 module_options+=(
-	["see_cli_legacy,author"]="@Tearran"
-	["see_cli_legacy,ref_link"]=""
-	["see_cli_legacy,feature"]="see_cli_legacy"
-	["see_cli_legacy,desc"]="Generate a Help message legacy cli commands."
-	["see_cli_legacy,example"]="see_cli_legacy"
-	["see_cli_legacy,status"]="review"
-	["see_cli_legacy,doc_link"]=""
+	["module_doc_files,maintainer"]="@Tearran"
+	["module_doc_files,feature"]="module_doc_files"
+	["module_doc_files,example"]="help readme"
+	["module_doc_files,desc"]="Example module unattended interface."
+	["module_doc_files,status"]="Active"
+	["module_doc_files,condition"]=""
+	["module_doc_files,doc_link"]=""
+	["module_doc_files,author"]="@Tearran"
+	["module_doc_files,parent"]="docs"
+	["module_doc_files,group"]="Docs"
+	["module_doc_files,port"]=""
+	["module_doc_files,arch"]=""
 )
-function see_cli_legacy() {
-	local script_name=$(basename "$0")
-	cat << EOF
-Legacy Options (Backward Compatible)
-Please use 'armbian-config --help' for more information.
 
-Usage:  $script_name main=[arguments] selection=[options]
+	# Function to handle the module commands for 'module_doc_files'
+function module_doc_files() {
 
-EOF
+# Convert the example string to an array
+local commands
+IFS=' ' read -r -a commands <<< "${module_helper["module_doc_files,example"]}"
 
-cat << EOF
-	$script_name main=System selection=Headers          -  Install headers:
-	$script_name main=System selection=Headers_remove   -  Remove headers:
-EOF
-
-	# TODO Migrate following features
-
-	# $script_name main=System   selection=Firmware         -  Update, upgrade and reboot:
-	# $script_name main=System   selection=Nightly          -  Switch to nightly builds:
-	# $script_name main=System   selection=Stable           -  Switch to stable builds:
-	# $script_name main=System   selection=Default          -  Install default desktop:
-	# $script_name main=System   selection=ZSH              -  Change to ZSH:
-	# $script_name main=System   selection=BASH             -  Change to BASH:
-	# $script_name main=System   selection=Stable           -  Change to stable repository [branch=dev]:
-	# $script_name main=System   selection=Nightly          -  Change to nightly repository [branch=dev]:
-	# $script_name main=Software selection=Source_install   -  Install kernel source:
-	# $script_name main=Software selection=Source_remove    -  Remove kernel source:
-	# $script_name main=Software selection=Avahi            -  Install Avahi mDNS/DNS-SD daemon:
-
+# Handle the command passed to the function
+case "$1" in
+	"${commands[0]}")
+	echo -e "\nUsage: ${module_helper["module_doc_files,feature"]} <command>"
+	echo -e "Commands:  ${module_helper["module_doc_files,example"]}"
+	echo "Available commands:"
+	echo -e "\treadme\t- Generate readme."
+	echo
+	;;
+	"${commands[1]}")
+	generate_readme
+	;;
+	*)
+	echo "${module_helper["module_doc_files,example"]}"
+	;;
+esac
 }
-
