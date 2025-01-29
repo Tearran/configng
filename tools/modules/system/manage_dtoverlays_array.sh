@@ -1,5 +1,5 @@
 module_options+=(
-	["manage_dtoverlays,id"]="KER0200"
+	["manage_dtoverlays,id"]="KER0260"
 	["manage_dtoverlays,maintainer"]="@igorpecovnik,@The-Going"
 	["manage_dtoverlays,feature"]="manage_dtoverlays"
 	["manage_dtoverlays,desc"]="Enable/disable device tree overlays"

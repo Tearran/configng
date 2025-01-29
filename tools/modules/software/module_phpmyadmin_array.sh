@@ -1,5 +1,5 @@
 module_options+=(
-	["module_phpmyadmin,id"]="DAT0100"
+	["module_phpmyadmin,id"]="DAT0140"
 	["module_phpmyadmin,maintainer"]="@igorpecovnik"
 	["module_phpmyadmin,feature"]="module_phpmyadmin"
 	["module_phpmyadmin,desc"]="Install phpmyadmin container"

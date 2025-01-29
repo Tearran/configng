@@ -1,5 +1,5 @@
 module_options+=(
-	["module_embyserver,id"]="MED0420"
+	["module_embyserver,id"]="MED0530"
 	["module_embyserver,maintainer"]="@schwar3kat"
 	["module_embyserver,feature"]="module_embyserver"
 	["module_embyserver,desc"]="Install embyserver container"

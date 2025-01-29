@@ -1,5 +1,5 @@
 module_options+=(
-	["module_portainer,id"]="CON0240"
+	["module_portainer,id"]="CON0300"
 	["module_portainer,maintainer"]="@schwar3kat"
 	["module_portainer,feature"]="module_portainer"
 	["module_portainer,desc"]="Install/uninstall/check status of portainer container"

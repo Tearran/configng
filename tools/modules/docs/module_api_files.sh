@@ -80,7 +80,7 @@ function geneate_files_api() {
 		# Use group_prefix for id
 		# Check if group belongs to the software category
 		case "$group" in
-			WebHosting|HomeAutomation|DNS|Downloaders|Database|DevTools|Containers|Media|Monitoring|Management|Updates|Printing|Netconfig)
+			WebHosting|HomeAutomation|DNS|Downloaders|Database|Upkeep|DevTools|Containers|Media|Monitoring|Management|Printing|Netconfig)
 			parent="software"
 			;;
 			Kernel|Storage|Access|User|Updates)

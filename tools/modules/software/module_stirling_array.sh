@@ -1,5 +1,5 @@
 module_options+=(
-	["module_stirling,id"]="MED0110"
+	["module_stirling,id"]="MED0150"
 	["module_stirling,maintainer"]="@igorpecovnik"
 	["module_stirling,feature"]="module_stirling"
 	["module_stirling,desc"]="Install stirling container"

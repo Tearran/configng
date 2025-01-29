@@ -1,5 +1,5 @@
 module_options+=(
-	["module_medusa,id"]="DOW0510"
+	["module_medusa,id"]="DOW0630"
 	["module_medusa,maintainer"]="@igorpecovnik"
 	["module_medusa,feature"]="module_medusa"
 	["module_medusa,desc"]="Install medusa container"

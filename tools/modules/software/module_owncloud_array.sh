@@ -1,5 +1,5 @@
 module_options+=(
-	["module_owncloud,id"]="DAT0540"
+	["module_owncloud,id"]="DAT0670"
 	["module_owncloud,maintainer"]="@igorpecovnik"
 	["module_owncloud,feature"]="module_owncloud"
 	["module_owncloud,desc"]="Install owncloud container"

@@ -1,5 +1,5 @@
 module_options+=(
-	["module_webmin,id"]="MAN0040"
+	["module_webmin,id"]="MAN0050"
 	["module_webmin,maintainer"]="@Tearran"
 	["module_webmin,feature"]="module_webmin"
 	["module_webmin,desc"]="Webmin setup and service setting."

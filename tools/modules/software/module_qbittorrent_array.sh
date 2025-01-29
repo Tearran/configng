@@ -1,5 +1,5 @@
 module_options+=(
-	["module_qbittorrent,id"]="DOW0430"
+	["module_qbittorrent,id"]="DOW0540"
 	["module_qbittorrent,maintainer"]="@igorpecovnik"
 	["module_qbittorrent,feature"]="module_qbittorrent"
 	["module_qbittorrent,desc"]="Install qbittorrent container"

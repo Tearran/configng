@@ -1,5 +1,5 @@
 module_options+=(
-	["module_swag,id"]="WEB0360"
+	["module_swag,id"]="WEB0430"
 	["module_swag,maintainer"]="@igorpecovnik"
 	["module_swag,feature"]="module_swag"
 	["module_swag,desc"]="Secure Web Application Gateway "

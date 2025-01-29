@@ -1,5 +1,5 @@
 module_options+=(
-	["module_wireguard,id"]="NET0350"
+	["module_wireguard,id"]="NET0420"
 	["module_wireguard,maintainer"]="@igorpecovnik"
 	["module_wireguard,feature"]="module_wireguard"
 	["module_wireguard,desc"]="Install wireguard container"

@@ -1,5 +1,5 @@
 module_options+=(
-	["module_pi_hole,id"]="DNS0670"
+	["module_pi_hole,id"]="DNS0830"
 	["module_pi_hole,maintainer"]="@igorpecovnik"
 	["module_pi_hole,feature"]="module_pi_hole"
 	["module_pi_hole,desc"]="Install Pi-hole container"

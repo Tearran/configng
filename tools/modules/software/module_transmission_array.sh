@@ -1,5 +1,5 @@
 module_options+=(
-	["module_transmission,id"]="DOW0440"
+	["module_transmission,id"]="DOW0550"
 	["module_transmission,maintainer"]="@igorpecovnik"
 	["module_transmission,feature"]="module_transmission"
 	["module_transmission,desc"]="Install transmission container"

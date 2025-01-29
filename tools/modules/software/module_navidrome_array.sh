@@ -1,5 +1,5 @@
 module_options+=(
-	["module_navidrome,id"]="DOW0460"
+	["module_navidrome,id"]="DOW0570"
 	["module_navidrome,maintainer"]="@igorpecovnik"
 	["module_navidrome,feature"]="module_navidrome"
 	["module_navidrome,desc"]="Install navidrome container"

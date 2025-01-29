@@ -1,5 +1,5 @@
 module_options+=(
-	["module_readarr,id"]="DOW0600"
+	["module_readarr,id"]="DOW0740"
 	["module_readarr,maintainer"]="@igorpecovnik"
 	["module_readarr,feature"]="module_readarr"
 	["module_readarr,desc"]="Install readarr container"

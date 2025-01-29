@@ -1,5 +1,5 @@
 module_options+=(
-	["module_syncthing,id"]="MED0520"
+	["module_syncthing,id"]="MED0640"
 	["module_syncthing,maintainer"]="@igorpecovnik"
 	["module_syncthing,feature"]="module_syncthing"
 	["module_syncthing,desc"]="Install syncthing container"

@@ -1,5 +1,5 @@
 module_options+=(
-	["module_nextcloud,id"]="DOW0450"
+	["module_nextcloud,id"]="DOW0560"
 	["module_nextcloud,maintainer"]="@igorpecovnik"
 	["module_nextcloud,feature"]="module_nextcloud"
 	["module_nextcloud,desc"]="Install nextcloud container"

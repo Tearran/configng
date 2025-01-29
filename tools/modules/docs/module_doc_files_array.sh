@@ -1,5 +1,5 @@
 module_options+=(
-	["module_doc_files,id"]="DOC0710"
+	["module_doc_files,id"]="DOC0890"
 	["module_doc_files,maintainer"]="@Tearran"
 	["module_doc_files,feature"]="module_doc_files"
 	["module_doc_files,desc"]="Example module unattended interface."
