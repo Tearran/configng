@@ -136,9 +136,9 @@ module_helper+=(
 gen_api_array(){
 		# Determine the file path based on group
 	if [ "$group" != "unknown" ]; then
-		module_options_file="$tools_dir/modules/${parent}/${feature}_array"
+		module_options_file="$tools_dir/modules/${parent}/${feature}_array.sh"
 	else
-		module_options_file="$tools_dir/dev/array/${parent}/${feature}_array.sh"
+		module_options_file="$tools_dir/dev/array/${feature}_array.sh"
 	fi
 
 
@@ -146,7 +146,7 @@ gen_api_array(){
         mkdir -p "$(dirname "$module_options_file")"
 
 
-	cat << EOF | tee -a "$module_options_file" >> "$tools_dir/dev/array/${parent}_module_options.sh"
+	cat << EOF > "$module_options_file"
 module_options+=(
 	["$feature,id"]="$id"
 	["$feature,maintainer"]="$maintainer"

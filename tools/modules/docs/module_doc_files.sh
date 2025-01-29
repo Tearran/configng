@@ -523,26 +523,8 @@ see_cmd_list() {
 		echo "nope"
 	fi
 }
-
-
-
-
-module_options+=(
-	["module_doc_files,maintainer"]="@Tearran"
-	["module_doc_files,feature"]="module_doc_files"
-	["module_doc_files,example"]="help readme"
-	["module_doc_files,desc"]="Example module unattended interface."
-	["module_doc_files,status"]="Active"
-	["module_doc_files,condition"]=""
-	["module_doc_files,doc_link"]=""
-	["module_doc_files,author"]="@Tearran"
-	["module_doc_files,parent"]="docs"
-	["module_doc_files,group"]="Docs"
-	["module_doc_files,port"]=""
-	["module_doc_files,arch"]=""
-)
-
-	# Function to handle the module commands for 'module_doc_files'
+#
+# Function to handle the module commands for 'module_doc_files'
 function module_doc_files() {
 
 # Convert the example string to an array
