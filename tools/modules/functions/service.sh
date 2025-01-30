@@ -1,13 +1,3 @@
-# service.sh
-
-declare -A module_options
-module_options+=(
-	["service,author"]="@dimitry-ishenko"
-	["service,desc"]="Wrapper for service manipulation"
-	["service,example"]="service install some.service"
-	["service,feature"]="service"
-	["service,status"]="active"
-)
 
 function service()
 {
