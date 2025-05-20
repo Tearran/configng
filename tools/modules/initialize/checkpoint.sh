@@ -5,7 +5,7 @@ module_options+=(
 	["checkpoint,feature"]="checkpoint"
 	["checkpoint,example"]="debug help mark reset total"
 	["checkpoint,desc"]="Manage checkpoints"
-	["checkpoint,status"]="Active"
+	["checkpoint,status"]=""
 	["checkpoint,group"]="Development"
 )
 
