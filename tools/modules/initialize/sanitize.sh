@@ -1,7 +1,7 @@
 module_options+=(
 	["sanitize,author"]="@Tearran"
 	["sanitize,desc"]="Make sure param contains only valid chars"
-	["sanitize,example"]="sanitize 'foo_bar_42'"
+	["sanitize,example"]="<module_name>"
 	["sanitize,feature"]="sanitize"
 	["sanitize,status"]="Interface"
 )
@@ -13,7 +13,7 @@ sanitize() {
 module_options+=(
 	["die,author"]="@dimitry-ishenko"
 	["die,desc"]="Exit with error code 1, optionally printing a message to stderr"
-	["die,example"]="run_critical_function || die 'The world is about to end'"
+	["die,example"]="'The world is about to end'"
 	["die,feature"]="die"
 	["die,status"]="Interface"
 )

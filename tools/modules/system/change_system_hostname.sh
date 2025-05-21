@@ -1,9 +1,9 @@
 module_options+=(
 	["change_system_hostname,author"]="@igorpecovnik"
 	["change_system_hostname,ref_link"]=""
-	["change_system_hostname,feature"]="Change hostname"
-	["change_system_hostname,desc"]="change_system_hostname"
-	["change_system_hostname,example"]="change_system_hostname"
+	["change_system_hostname,feature"]="change_system_hostname"
+	["change_system_hostname,desc"]="Change hostname"
+	["change_system_hostname,example"]=""
 	["change_system_hostname,status"]="Active"
 )
 #

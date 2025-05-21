@@ -3,7 +3,7 @@ module_options+=(
 	["connect_bt_interface,ref_link"]=""
 	["connect_bt_interface,feature"]="connect_bt_interface"
 	["connect_bt_interface,desc"]="Migrated procedures from Armbian config."
-	["connect_bt_interface,example"]="connect_bt_interface"
+	["connect_bt_interface,example"]=""
 	["connect_bt_interface,status"]="Active"
 )
 #

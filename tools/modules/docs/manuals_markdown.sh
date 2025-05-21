@@ -136,3 +136,107 @@ function markdown_module_options() {
 
 	echo -e "$mod_message"
 }
+
+module_options+=(
+	["docs_markdown_manpage,author"]="@Tearran"
+	["docs_markdown_manpage,ref_link"]=""
+	["docs_markdown_manpage,feature"]="docs_markdown_manpage"
+	["docs_markdown_manpage,desc"]="Generate Document files."
+	["docs_markdown_manpage,example"]=""
+	["docs_markdown_manpage,status"]="review"
+)
+#
+# Function to generate the README.md file
+#
+function docs_markdown_manpage() {
+
+	# Get the current date
+	local current_date=$(date)
+
+	# Setup the documentation and man-page directories
+	local doc_dir="$script_dir/../"
+	local man_dir="$script_dir/../share/man1"
+
+	# Ensure the directories exist
+	mkdir -p "$doc_dir"
+	mkdir -p "$man_dir"
+
+	echo -e "Sorting data\nUpdating documentation" # Log the process
+
+	# Generate the Markdown documentation
+	cat << EOF_DOC > "$doc_dir/DOCUMENTATION.md"
+---
+title: "armbian-config(1)"
+author: "Armbian Team"
+date: "$current_date"
+---
+
+<img alt="Armbian Config Logo" src="https://raw.githubusercontent.com/armbian/configng/main/share/icons/hicolor/scalable/configng-tux.svg">
+
+# NAME
+**Armbian Config** - The Next Generation
+
+# SYNOPSIS
+\`armbian-config[option] [arguments] [@]\`
+
+# DESCRIPTION
+\`armbian-config\` provides configuration and installation routines for customizing and automating tasks within the Armbian Linux environment. These utilities help streamline setup processes for various use cases, such as managing software, network settings, localization, and system optimizations.
+
+# COMMAND-LINE OPTIONS
+\`armbian-config\` can also be used directly from the command line with the following options:
+
+## General Options
+- Display help for specific categories or overall usage.
+
+\`\`\`bash
+armbian-config --help [cmd|System|Software|Network|Localisation]
+\`\`\`
+
+- Navigate directly to a specific menu location or ID.
+
+\`\`\`bash
+armbian-config --cmd help
+\`\`\`
+
+- Programmatically interact with an application module or its helper functions.
+(applications parsing interface)
+\`\`\`bash
+armbian-config --api help
+\`\`\`
+
+
+# Directly open run menu item
+\`\`\`bash
+$(_cmd_list)
+\`\`\`
+
+# Directly access modules and helpers
+
+\`\`\`bash
+$(_api_list)
+\`\`\`
+
+
+---
+
+# SEE ALSO
+For more information, visit:
+- [Armbian Documentation](https://docs.armbian.com/User-Guide_Armbian-Config/)
+- [GitHub Repository](https://github.com/armbian/configng)
+
+---
+
+# COPYRIGHT
+© 2025 Armbian Team. Distributed under the GPL 3.0 license.
+EOF_DOC
+
+	# Convert the Markdown documentation to a man page
+	if pandoc -s -t man "$doc_dir/DOCUMENTATION.md" -o "$man_dir/armbian-config.1" && gzip -f "$man_dir/armbian-config.1"; then
+		echo "Man page successfully generated at: $man_dir/armbian-config.1"
+	else
+		echo "An error occurred while generating the man page."
+		return 1
+	fi
+
+	checkpoint debug "Documentation and man page update completed."
+}
