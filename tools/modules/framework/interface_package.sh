@@ -3,7 +3,6 @@
 # internal function
 _pkg_have_stdin() { [[ -t 0 ]]; }
 
-declare -A module_options
 module_options+=(
 	["pkg_configure,author"]="@dimitry-ishenko"
 	["pkg_configure,desc"]="Configure an unconfigured package"
@@ -118,15 +117,14 @@ function is_package_manager_running() {
 
 }
 
-
 module_options+=(
 	["see_current_apt,author"]="@Tearran"
 	["see_current_apt,ref_link"]=""
 	["see_current_apt,feature"]="see_current_apt"
 	["see_current_apt,desc"]="Check when apt list was last updated and suggest updating or update"
-	["see_current_apt,example"]=""
+	["see_current_apt,example"]="update"
 	["see_current_apt,doc_link"]=""
-	["see_current_apt,status"]="Active"
+	["see_current_apt,status"]=""
 )
 #
 # Function to check when the package list was last updated

@@ -13,7 +13,7 @@ function interface_menu() {
 	local function_name="$1"
 
 	# Get the help message from the specified function
-	help_message=$("$function_name" menu)
+	help_message=$("$function_name" help)
 
 	# Prepare options for the dialog tool based on help message
 	options=()

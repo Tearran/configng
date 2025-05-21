@@ -4,7 +4,7 @@ module_options+=(
 	["set_colors,ref_link"]=""
 	["set_colors,feature"]="set_colors"
 	["set_colors,desc"]="Change the background color of the User Interface box"
-	["set_colors,example"]="set_colors 0-7"
+	["set_colors,example"]="0 1 2 3 4 5 6 7"
 	["set_colors,doc_link"]=""
 	["set_colors,status"]="Active"
 )
@@ -71,6 +71,6 @@ function _term_colors() {
 #
 # Function to reset the colors
 #
-function reset_colors() {
+function reset_interface_colors() {
 	echo -e "\e[0m"
 }

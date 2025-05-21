@@ -3,21 +3,23 @@
 # allows CTRL c to exit
 trap "exit" INT TERM
 
-# Get the script directory
+# PATH
 script_dir="$(dirname "$0")"
-lib_dir="$script_dir/../lib/armbian-config"
+SCRIPT_DIR="$(dirname "$0")"
+LIB_DIR="$SCRIPT_DIR/../lib/armbian-config"
 doc_dir="$script_dir/../share/doc/armbian-config"
+DOC_DIR="$SCRIPT_DIR/../share/doc/armbian-config"
 
 declare -A module_options
 
 # Load the initialize modules
-source "$script_dir/../lib/armbian-config/config.initialize.sh"
+source "$LIB_DIR/config.initialize.sh"
 
 # Start loading messages
 checkpoint reset
 checkpoint debug "Initializing script"
 
-source "$lib_dir/config.framework.sh"
+source "$LIB_DIR/config.framework.sh"
 checkpoint debug "Load Framework..."
 
 initialize_interface
@@ -31,16 +33,16 @@ checkpoint debug "Check Systems variables..."
 
 check_distro_status
 
-source "$lib_dir/config.docs.sh"
+source "$LIB_DIR/config.docs.sh"
 checkpoint debug "Loaded Help messages..."
 
-source "$lib_dir/config.system.sh"
+source "$LIB_DIR/config.system.sh"
 checkpoint debug "Loaded System modules..."
 
-source "$lib_dir/config.network.sh"
+source "$LIB_DIR/config.network.sh"
 checkpoint debug "Loaded Network modules..."
 
-source "$lib_dir/config.software.sh"
+source "$LIB_DIR/config.software.sh"
 checkpoint debug "Loaded Software modules..."
 
 case "$1" in
@@ -55,6 +57,7 @@ case "$1" in
     ;;
     
     "")
+        interface_colors 4
         checkpoint debug "Launching TUI"
         interface_menu interface_categories
         checkpoint debug "Exited TUI"
@@ -64,6 +67,7 @@ case "$1" in
     *)
         checkpoint debug "Starting module call"
         fn=$(sanitize "$1") || die
+        shift 1
         "$fn" "$@"
         checkpoint debug "Finished module call"
     ;;

@@ -16,9 +16,6 @@ function module_samba() {
 	local condition
 	condition=$(command -v smbd)
 
-	# Set the interface for dialog tools
-	set_interface
-
 	# Convert the example string to an array
 	local commands
 	IFS=' ' read -r -a commands <<< "${module_options["module_samba,example"]}"
