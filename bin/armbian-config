@@ -33,9 +33,6 @@ checkpoint debug "Check Systems variables..."
 
 check_distro_status
 
-source "$LIB_DIR/config.docs.sh"
-checkpoint debug "Loaded Help messages..."
-
 source "$LIB_DIR/config.system.sh"
 checkpoint debug "Loaded System modules..."
 

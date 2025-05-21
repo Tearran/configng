@@ -3,13 +3,33 @@ module_options+=(
 	["interface_categories,maintainer"]="@igorpecovnik"
 	["interface_categories,feature"]="interface_categories"
 	["interface_categories,example"]="System Network Localisation Software About"
-	["interface_categories,desc"]="The main menu list"
+	["interface_categories,desc"]="The main TUI menu list"
 	["interface_categories,status"]=""
 	["interface_categories,doc_link"]=""
 	["interface_categories,group"]="main"
-	["interface_categories,port"]="9090"
 	["interface_categories,arch"]="x86-64 arm64 armhf"
 )
+
+
+_tui_system() {
+	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
+}
+
+_tui_network() {
+	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
+}
+
+_tui_localisation() {
+	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
+}
+
+_tui_software() {
+	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
+}
+
+_tui_about() {
+	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
+}
 
 function  interface_categories() {
     # Ordered list of keys
@@ -26,22 +46,23 @@ function  interface_categories() {
 
 	case "$1" in
 		"${keys[0]}")
-		echo "${keys[0]}"
+		_tui_system
 		;;
 
 		"${keys[1]}")
-		echo "{keys[1]}"
+		_tui_network
 		;;
 
         "${keys[2]}")
-		echo "{keys[2]}"
+		_tui_localisation
 		;;
 
 		"${keys[3]}")
-		echo "{keys[3]}"
+		_tui_software
 		;;
 
 		"${keys[4]}")
+		_tui_about
 		about_armbian_configng | interface_message 
 		;;
 
