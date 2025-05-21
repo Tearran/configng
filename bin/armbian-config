@@ -2,6 +2,8 @@
 
 # allows CTRL c to exit
 trap "exit" INT TERM
+[[ -d "$script_dir/../tools" ]] && tools_dir="$script_dir/../tools"
+[[ ! -d "$script_dir/../lib" && -n "$tools_dir" ]] && die -e "Please run\nbash "$tools_dir/config-assemble.sh" to build the lib directory\n"
 
 # PATH
 script_dir="$(dirname "$0")"
