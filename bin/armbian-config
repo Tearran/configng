@@ -3,15 +3,12 @@
 # allows CTRL c to exit
 trap "exit" INT TERM
 
-# PATH
-script_dir="$(dirname "$0")"
+# PATHs
 SCRIPT_DIR="$(dirname "$0")"
 LIB_DIR="$SCRIPT_DIR/../lib/armbian-config"
-doc_dir="$script_dir/../share/doc/armbian-config"
-DOC_DIR="$SCRIPT_DIR/../share/doc/armbian-config"
 
 unset module_options
-declare -A hardware_options
+declare -A system_options
 declare -A software_options
 declare -A network_options
 declare -A framework_options
@@ -47,14 +44,15 @@ checkpoint debug "Loaded Network modules..."
 source "$LIB_DIR/config.software.sh"
 checkpoint debug "Loaded Software modules..."
 
-merge_arrays_into_module_options framework_options #network_options software_options hardware_options
+merge_arrays_into_module_options framework_options system_options software_options #network_options
 
 
 case "$1" in
     "--help"|"help"|"-h")
         case "$2" in
             "framework"|"-f") options_list framework_options ;;
-            "network"|"-n") options_list network_options ;;
+            "software"|"-p") options_list software_options ;;
+            "system"|"-s") options_list system_options ;;
             *)
                 if [[ -n "$2" ]]; then
                     fn=$(sanitize "$2") || die
@@ -65,8 +63,6 @@ case "$1" in
                 fi
         esac
     ;;
-
-    
     "")
         interface_colors 4
         checkpoint debug "Launching TUI"

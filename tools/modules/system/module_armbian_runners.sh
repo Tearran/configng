@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["module_armbian_runners,author"]="@igorpecovnik"
 	["module_armbian_runners,feature"]="module_armbian_runners"
 	["module_armbian_runners,desc"]="Manage self hosted runners"

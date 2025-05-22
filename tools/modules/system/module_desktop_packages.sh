@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["module_desktop_packages,author"]="@igorpecovnik"
 	["module_desktop_packages,feature"]="module_desktop"
 	["module_desktop_packages,desc"]="Generate desktop packages list"

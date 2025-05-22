@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["module_armbian_firmware,author"]="@igorpecovnik"
 	["module_armbian_firmware,feature"]="module_armbian_firmware"
 	["module_armbian_firmware,example"]="select install show hold unhold repository headers help"

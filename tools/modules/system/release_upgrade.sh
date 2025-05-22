@@ -1,5 +1,5 @@
 
-module_options+=(
+system_options+=(
 	["release_upgrade,author"]="@igorpecovnik"
 	["release_upgrade,ref_link"]=""
 	["release_upgrade,feature"]="release_upgrade"

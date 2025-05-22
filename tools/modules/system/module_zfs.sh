@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["module_zfs,author"]="@igorpecovnik"
 	["module_zfs,feature"]="module_zfs"
 	["module_zfs,desc"]="Install zfs filesystem support"

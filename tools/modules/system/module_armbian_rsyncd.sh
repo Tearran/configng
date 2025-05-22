@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["module_armbian_rsyncd,author"]="@igorpecovnik"
 	["module_armbian_rsyncd,maintainer"]="@igorpecovnik"
 	["module_armbian_rsyncd,feature"]="module_armbian_rsyncd"

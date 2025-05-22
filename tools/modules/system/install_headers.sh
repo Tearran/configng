@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["module_headers,author"]="@armbian"
 	["module_headers,feature"]="module_headers"
 	["module_headers,desc"]="Install headers container"

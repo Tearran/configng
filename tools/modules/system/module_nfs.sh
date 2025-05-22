@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["module_nfs,author"]="@igorpecovnik"
 	["module_nfs,feature"]="module_nfs"
 	["module_nfs,desc"]="Install nfs client"

@@ -1,5 +1,4 @@
-declare -A module_options
-module_options+=(
+system_options+=(
 	["module_armbian_upgrades,author"]="@igorpecovnik"
 	["module_armbian_upgrades,feature"]="module_armbian_upgrades"
 	["module_armbian_upgrades,desc"]="Install and configure automatic updates"

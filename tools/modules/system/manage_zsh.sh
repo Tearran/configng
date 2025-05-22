@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["manage_zsh,author"]="@igorpecovnik"
 	["manage_zsh,ref_link"]=""
 	["manage_zsh,feature"]="manage_zsh"

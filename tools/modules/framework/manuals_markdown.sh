@@ -1,5 +1,5 @@
 
-module_options+=(
+framework_options+=(
 	["markdown_manpage,author"]="@Tearran"
 	["markdown_manpage,ref_link"]=""
 	["markdown_manpage,feature"]="markdown_manpage"
@@ -16,8 +16,8 @@ function markdown_manpage() {
 	local current_date=$(date)
 
 	# Setup the documentation and man-page directories
-	local doc_dir="$script_dir/../"
-	local man_dir="$script_dir/../share/man1"
+	local doc_dir="$SCRIPT_DIR/../"
+	local man_dir="$SCRIPT_DIR/../share/man1"
 
 	# Ensure the directories exist
 	mkdir -p "$doc_dir"
@@ -103,7 +103,7 @@ EOF_DOC
 }
 
 
-module_options+=(
+framework_options+=(
 	["markdown_module_options,author"]="@Tearran"
 	["markdown_module_options,ref_link"]=""
 	["markdown_module_options,feature"]="markdown_module_options"
@@ -137,7 +137,7 @@ function markdown_module_options() {
 	echo -e "$mod_message"
 }
 
-module_options+=(
+framework_options+=(
 	["docs_markdown_manpage,author"]="@Tearran"
 	["docs_markdown_manpage,ref_link"]=""
 	["docs_markdown_manpage,feature"]="docs_markdown_manpage"
@@ -154,8 +154,8 @@ function docs_markdown_manpage() {
 	local current_date=$(date)
 
 	# Setup the documentation and man-page directories
-	local doc_dir="$script_dir/../"
-	local man_dir="$script_dir/../share/man1"
+	local doc_dir="$SCRIPT_DIR/../"
+	local man_dir="$SCRIPT_DIR/../share/man1"
 
 	# Ensure the directories exist
 	mkdir -p "$doc_dir"

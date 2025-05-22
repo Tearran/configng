@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["module_openssh-server,author"]="@armbian"
 	["module_openssh-server,maintainer"]="@igorpecovnik"
 	["module_openssh-server,feature"]="module_openssh-server"

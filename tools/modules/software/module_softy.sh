@@ -1,4 +1,4 @@
-module_options+=(
+software_options+=(
 	["_checklist_proftpd,author"]="@Tearran"
 	["_checklist_proftpd,maintainer"]="@Tearran"
 	["_checklist_proftpd,feature"]="_checklist_proftpd"
@@ -14,7 +14,7 @@ function _checklist_proftpd() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["_checklist_proftpd,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["_checklist_proftpd,example"]}"
 
 	## Dynamically manage ProFTPD packages
 	echo "Fetching $title-related packages..."
@@ -40,7 +40,7 @@ function _checklist_proftpd() {
 }
 
 
-module_options+=(
+software_options+=(
 	["_checklist_browsers,author"]="@Tearran"
 	["_checklist_browsers,maintainer"]="@Tearran"
 	["_checklist_browsers,feature"]="_checklist_browsers"
@@ -95,7 +95,7 @@ function _checklist_browsers() {
 	process_package_selection "$title" "Select packages to install/remove:" checklist_options[@]
 }
 
-module_options+=(
+software_options+=(
 	["_checklist_editors,author"]="@Tearran"
 	["_checklist_editors,maintainer"]="@Tearran"
 	["_checklist_editors,feature"]="_checklist_editors"
@@ -109,9 +109,9 @@ module_options+=(
 # Scaffold for app with specific single or dummy candidates.
 function _checklist_editors() {
 	local title="Editors"
-	local self="${module_options["_checklist_editors,feature"]}"
+	local self="${software_options["_checklist_editors,feature"]}"
 	local _packages
-	IFS=' ' read -r -a _packages <<< "${module_options["$self,example"]}"
+	IFS=' ' read -r -a _packages <<< "${software_options["$self,example"]}"
 
 	# Manage editor installation/removal
 	echo "Fetching $title package details..."
@@ -145,7 +145,7 @@ function _checklist_editors() {
 	process_package_selection "$title" "Select packages to install/remove:" checklist_options[@]
 }
 
-module_options+=(
+software_options+=(
 	["_checklist_imaging,author"]="@Tearran"
 	["_checklist_imaging,maintainer"]="@Tearran"
 	["_checklist_imaging,feature"]="_checklist_imaging"
@@ -158,9 +158,9 @@ module_options+=(
 # Scaffold for app with specific single or dummy candidates.
 function _checklist_imaging() {
 	local title="Imaging"
-	local self="${module_options["_checklist_imaging,feature"]}"
+	local self="${software_options["_checklist_imaging,feature"]}"
 	local _packages
-	IFS=' ' read -r -a _packages <<< "${module_options["$self,example"]}"
+	IFS=' ' read -r -a _packages <<< "${software_options["$self,example"]}"
 
 	# Manage editor installation/removal
 	echo "Fetching $title package details..."
@@ -194,7 +194,7 @@ function _checklist_imaging() {
 	process_package_selection "$title" "Select packages to install/remove:" checklist_options[@]
 }
 
-module_options+=(
+software_options+=(
 	["module_softy,author"]="@Tearran"
 	["module_softy,maintainer"]="@Tearran"
 	["module_softy,feature"]="module_softy"
@@ -209,16 +209,16 @@ module_options+=(
 # Scafold for software module tites
 function module_softy() {
 	local title="Packages"
-	local self="${module_options["module_softy,feature"]}"
+	local self="${software_options["module_softy,feature"]}"
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["$self,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["$self,example"]}"
 
 	case "$1" in
 		"${commands[0]}")
 			## help/menu options for the module
 			echo -e "\nUsage: $self <command>"
-			echo -e "Commands: ${module_options["$self,example"]}"
+			echo -e "Commands: ${software_options["$self,example"]}"
 			echo "Available commands:"
 			# Loop through all commands (starting from index 1)
 			for ((i = 1; i < ${#commands[@]}; i++)); do
@@ -241,7 +241,7 @@ function module_softy() {
 			_checklist_imaging
 		;;
 		*)
-			echo "Invalid command. Try one of: ${module_options["$self,example"]}"
+			echo "Invalid command. Try one of: ${software_options["$self,example"]}"
 
 		;;
 	esac

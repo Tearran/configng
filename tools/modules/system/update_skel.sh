@@ -1,5 +1,5 @@
 
-module_options+=(
+system_options+=(
 	["update_skel,author"]="@igorpecovnik"
 	["update_skel,ref_link"]=""
 	["update_skel,feature"]="update_skel"
