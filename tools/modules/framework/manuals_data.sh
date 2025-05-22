@@ -2,9 +2,8 @@ framework_options+=(
 	["merge_arrays_into_module_options,author"]="@tearran"
 	["merge_arrays_into_module_options,maintainer"]="@igorpecovnik"
 	["merge_arrays_into_module_options,feature"]="merge_arrays_into_module_options"
-	["merge_arrays_into_module_options,example"]="module_options module_name"
+	["merge_arrays_into_module_options,example"]="<options_name>"
 	["merge_arrays_into_module_options,desc"]="Merges compatible associative arrays into module_options for unified access."
-	["merge_arrays_into_module_options,status"]=""
 	["merge_arrays_into_module_options,doc_link"]=""
 	["merge_arrays_into_module_options,group"]="data"
 	["merge_arrays_into_module_options,arch"]=""
@@ -36,14 +35,18 @@ function options_list() {
     local usage="$2"
     local -n options_array="$array_name"  # Bash 4.3+ nameref
     local mod_message="Usage: ${0} [$usage] [options]\n\n"
-    for key in "${!options_array[@]}"; do
-        IFS=',' read -r function_name type <<< "$key"
-        if [[ "$type" == "feature" ]]; then
-            example="${options_array["$function_name,example"]}"
-            mod_message+="  ${options_array["$function_name,desc"]}\n\t${options_array["$function_name,feature"]} $example\n\n"
-        fi
-    done
+	i=1
+	for function_name in "${!options_array[@]}"; do
+		# Parse out the function name if your keys are like "foo,desc"
+		[[ "$function_name" =~ ^([^,]+),feature$ ]] || continue
+		fn_name="${BASH_REMATCH[1]}"
+		type="feature" # or get from your array if stored
+		if [[ "$type" == "feature" ]]; then
+			example="${options_array["$fn_name,example"]}"
+			mod_message+="$i. ${options_array["$fn_name,desc"]}\n\t${options_array["$fn_name,feature"]} $example\n\n"
+			((i++))
+		fi
+	done
     echo -e "$mod_message"
 }
-# Usage:
-# options_list framework_options framework_name
+# options_list framework_options

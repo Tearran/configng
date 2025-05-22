@@ -8,10 +8,10 @@ SCRIPT_DIR="$(dirname "$0")"
 LIB_DIR="$SCRIPT_DIR/../lib/armbian-config"
 
 unset module_options
-declare -A system_options
-declare -A software_options
-declare -A network_options
 declare -A framework_options
+declare -A system_options
+declare -A network_options
+declare -A software_options
 declare -A module_options
 
 # Load the initialize modules
@@ -51,8 +51,8 @@ case "$1" in
     "--help"|"help"|"-h")
         case "$2" in
             "framework"|"-f") options_list framework_options ;;
-            "software"|"-p") options_list software_options ;;
             "system"|"-s") options_list system_options ;;
+            "software"|"-p") options_list software_options ;;
             *)
                 if [[ -n "$2" ]]; then
                     fn=$(sanitize "$2") || die
