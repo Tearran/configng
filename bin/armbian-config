@@ -52,13 +52,18 @@ merge_arrays_into_module_options framework_options #network_options software_opt
 
 case "$1" in
     "--help"|"help"|"-h")
-        if [[ -n "$2" ]]; then
-            fn=$(sanitize "$2") || die
-            shift 2
-            "$fn" "help"
-        else
-            options_list module_options
-        fi
+        case "$2" in
+            "framework"|"-f") options_list framework_options ;;
+            "network"|"-n") options_list network_options ;;
+            *)
+                if [[ -n "$2" ]]; then
+                    fn=$(sanitize "$2") || die
+                    shift 2
+                    "$fn" "help"
+                else
+                    options_list module_options
+                fi
+        esac
     ;;
 
     
