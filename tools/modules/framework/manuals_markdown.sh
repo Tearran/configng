@@ -48,34 +48,14 @@ date: "$current_date"
 \`armbian-config\` can also be used directly from the command line with the following options:
 
 ## General Options
-- Display help for specific categories or overall usage.
+- Display help for specific module or overall usage.
 
 \`\`\`bash
-armbian-config --help [cmd|System|Software|Network|Localisation]
+armbian-config [--help | -h | help] | [module_name]
 \`\`\`
-
-- Navigate directly to a specific menu location or ID.
-
+- List of all avalible features
 \`\`\`bash
-armbian-config --cmd help
-\`\`\`
-
-- Programmatically interact with an application module or its helper functions.
-(applications parsing interface)
-\`\`\`bash
-armbian-config --api help
-\`\`\`
-
-
-# Directly open run menu item
-\`\`\`bash
-$(_cmd_list)
-\`\`\`
-
-# Directly access modules and helpers
-
-\`\`\`bash
-$(_api_list)
+$(options_list module_options)
 \`\`\`
 
 

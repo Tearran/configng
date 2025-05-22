@@ -70,7 +70,6 @@ case "$1" in
         checkpoint debug "Exited TUI"
         about_armbian_configng
     ;;
-
     *)
         checkpoint debug "Starting module call"
         fn=$(sanitize "$1") || die
