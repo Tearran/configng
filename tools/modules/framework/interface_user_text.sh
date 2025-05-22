@@ -1,4 +1,4 @@
-module_options+=(
+framework_options+=(
 	["interface_categories,author"]="@tearran"
 	["interface_categories,maintainer"]="@igorpecovnik"
 	["interface_categories,feature"]="interface_categories"
@@ -13,6 +13,27 @@ module_options+=(
 
 _tui_system() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
+    # Ordered list of keys
+    local keys=(
+		"Kernal"
+		"Storage"
+		"Access"
+		"User"
+		"Updates"
+		)
+
+    local -A description=(
+		["Kernal"]="Alternative kernels, headers, rolling updates, overlays"  
+		["Storage"]="Install to internal media, ZFS, NFS, read-only rootfs"
+		["Access"]="Manage SSH daemon options, enable 2FA"
+		["User"]="Change shell, adjust MOTD"
+		["Updates"]="OS updates and distribution upgrades"
+    )
+
+    for key in "${keys[@]}"; do
+        eval "desc=\"$key - ${description[$key]}\""
+        echo -e "$desc"
+    done
 }
 
 _tui_network() {
@@ -25,16 +46,58 @@ _tui_localisation() {
 
 _tui_software() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
+
+	local keys=(
+		"WebHosting" 
+		"HomeAutomation" 
+		"DNS" 
+		"Music"
+		"Desktops"
+		"Downloaders"
+		"Database"
+		"DevTools"
+		"Containers"
+		"Media"
+		"Monitoring"
+		"Management"
+		"Printing"
+		"Netconfig"
+	)
+
+    local -A description=(
+		["WebHosting"]="Web server, LEMP, reverse proxy, Let's Encrypt SSL"
+		["HomeAutomation"]="Home Automation for control home appliances"
+		["DNS"]="Network-wide ad blockers servers"
+		["Music"]="Music servers and streamers"
+		["Desktops"]="Desktop Environments"
+		["Downloaders"]="Download apps for movies, TV shows, music and subtitles"
+		["Database"]="SQL database servers and web interface managers"
+		["DevTools"]="Applications and tools for development"
+		["Containers"]="Docker containerization and KVM virtual machines"
+		["Media"]="Media servers, organizers and editors"
+		["Monitoring"]="Real-time monitoring, collecting metrics, up-time status"
+		["Management"]="Remote Management tools"
+		["Printing"]="Tools for printing and 3D printing"
+		["Netconfig"]="Console network tools for measuring load and bandwidth"  
+	)
+
+    for key in "${keys[@]}"; do
+        eval "desc=\"$key - ${description[$key]}\""
+        echo -e "$desc"
+    done
+
 }
 
 _tui_about() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
+	about_armbian_configng
+
 }
 
 function  interface_categories() {
     # Ordered list of keys
     local keys
-	IFS=' ' read -r -a keys <<< "${module_options["interface_categories,example"]}"
+	IFS=' ' read -r -a keys <<< "${framework_options["interface_categories,example"]}"
 
     local -A description=(
         ["System"]="System wide and admin settings (\$(uname -m))"
@@ -45,39 +108,21 @@ function  interface_categories() {
     )
 
 	case "$1" in
-		"${keys[0]}")
-		_tui_system
-		;;
-
-		"${keys[1]}")
-		_tui_network
-		;;
-
-        "${keys[2]}")
-		_tui_localisation
-		;;
-
-		"${keys[3]}")
-		_tui_software
-		;;
-
-		"${keys[4]}")
-		_tui_about
-		about_armbian_configng | interface_message 
-		;;
-
-		"menu")
-        echo -e "\nUsage: ${module_options["interface_categories,feature"]} <command>"
-        echo -e "Options:  ${module_options["interface_categories,example"]}"
-        echo "Available keys:"
+		"${keys[0]}") interface_menu _tui_system ;;
+		"${keys[1]}") _tui_network ;;
+        "${keys[2]}") _tui_localisation	;;
+		"${keys[3]}") interface_menu _tui_software	;;
+		"${keys[4]}") _tui_about | interface_message ;;
+		"help")
+        echo -e "\nUsage: ${framework_options["interface_categories,feature"]} <command>"
+        echo -e "Options:  ${framework_options["interface_categories,example"]}"
+        echo "Available Options:"
         for key in "${keys[@]}"; do
             eval "desc=\"${description[$key]}\""
             echo -e "\t$key\t- $desc"
         done
         echo
 		;;
-		*)
-		${module_options["interface_categories,feature"]} ${keys[2]}
-		;;
+		*) ${framework_options["interface_categories,feature"]} ${keys[2]}	;;
 	esac
 }

@@ -1,5 +1,5 @@
 
-module_options+=(
+framework_options+=(
 ["about_armbian_configng,author"]="@igorpecovnik"
 ["about_armbian_configng,ref_link"]=""
 ["about_armbian_configng,feature"]="about_armbian_configng"

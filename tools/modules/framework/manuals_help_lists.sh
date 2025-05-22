@@ -28,8 +28,23 @@ function _module_list() {
 	echo -e "$mod_message"
 }
 
+function _framework_list() {
+	mod_message="Usage: ${0} [framework_name] [options]\n\n"
+	# Iterate over the options
+	for key in "${!framework_options[@]}"; do
+		# Split the key into function_name and type
+		IFS=',' read -r function_name type <<< "$key"
 
-module_options+=(
+		if [[ "$type" == "feature" ]]; then
+			example="${framework_options["$function_name,example"]}"
+			mod_message+="  ${framework_options["$function_name,desc"]}\n\t${framework_options["$function_name,feature"]} $example\n\n"
+		fi
+
+	done
+
+	echo -e "$mod_message"
+}
+framework_options+=(
 	["generate_json_options,author"]="@Tearran"
 	["generate_json_options,ref_link"]=""
 	["generate_json_options,feature"]="generate_json"
@@ -81,3 +96,4 @@ function generate_json_options() {
 	echo "]"
 	echo "}"
 }
+

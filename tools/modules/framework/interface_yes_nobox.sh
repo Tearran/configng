@@ -1,6 +1,6 @@
 
 
-module_options+=(
+framework_options+=(
 	["interface_yes_no,author"]="@Tearran"
 	["interface_yes_no,ref_link"]=""
 	["interface_yes_no,feature"]="interface_yes_no"
