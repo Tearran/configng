@@ -1,5 +1,5 @@
 
-module_options+=(
+network_options+=(
 	["qr_code,author"]="@igorpecovnik"
 	["qr_code,ref_link"]=""
 	["qr_code,feature"]="qr_code"

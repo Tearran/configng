@@ -10,7 +10,7 @@ framework_options+=(
 #
 # @description Show general information about this tool
 #
-function about_armbian_configng() {
+function support_armbian_configng() {
 
 	echo "Armbian Config: The Next Generation"
 	echo ""

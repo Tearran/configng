@@ -17,4 +17,5 @@ initialize_interface() {
 	else
 		die "TUI unavalible"
 	fi
+	checkpoint debug "Initialized (TUI) text user interface is ($DIALOG)..."
 }

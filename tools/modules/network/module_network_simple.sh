@@ -1,4 +1,4 @@
-module_options+=(
+network_options+=(
 	["module_simple_network,author"]="@igorpecovnik"
 	["module_simple_network,maintainer"]="@igorpecovnik"
 	["module_simple_network,feature"]="module_simple_network"
@@ -20,7 +20,7 @@ function module_simple_network() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_simple_network,example"]}"
+	IFS=' ' read -r -a commands <<< "${network_options["module_simple_network,example"]}"
 
 	# defaul yaml file
 	yamlfile=armbian
@@ -29,26 +29,26 @@ function module_simple_network() {
 		# simple
 		"${commands[0]}")
 			# store current configs to temporal folder
-			${module_options["module_simple_network,feature"]} ${commands[5]} "$2"
+			${network_options["module_simple_network,feature"]} ${commands[5]} "$2"
 			# select adapter
-			${module_options["module_simple_network,feature"]} ${commands[4]} "$2"
+			${network_options["module_simple_network,feature"]} ${commands[4]} "$2"
 			if [[ -n $adapter && $? == 0 ]]; then
 				if [[ "$adapter" == w* && "$adapter" != wa* ]]; then
 					# wireless networking select SSID
-					${module_options["module_simple_network,feature"]} ${commands[3]} "$2" "wifis"
+					${network_options["module_simple_network,feature"]} ${commands[3]} "$2" "wifis"
 					# DHCP or static
 					if [[ -n "${SELECTED_SSID}" ]]; then
-						${module_options["module_simple_network,feature"]} ${commands[2]} "$2" "wifis"
+						${network_options["module_simple_network,feature"]} ${commands[2]} "$2" "wifis"
 					fi
 				else
 					# Wired networking DHCP or static
-					${module_options["module_simple_network,feature"]} ${commands[2]} "$2" "ethernets"
+					${network_options["module_simple_network,feature"]} ${commands[2]} "$2" "ethernets"
 				fi
 			fi
 		;;
 		"${commands[1]}")
 			# advanced with bridge TBD
-			${module_options["module_simple_network,feature"]} ${commands[0]} "advanced"
+			${network_options["module_simple_network,feature"]} ${commands[0]} "advanced"
 			echo "Advanced mode not ported to this script"
 			exit 1
 		;;
@@ -63,7 +63,7 @@ function module_simple_network() {
 				if [[ $? -eq 0 ]]; then
 					if [[ "${wiredmode}" == "dhcp" ]]; then
 						# set dhcp on adapter
-						${module_options["module_simple_network,feature"]} ${commands[7]} "$2" "$3"
+						${network_options["module_simple_network,feature"]} ${commands[7]} "$2" "$3"
 					elif [[ "${wiredmode}" == "static" ]]; then
 						local ips=()
 						for f in /sys/class/net/*; do
@@ -86,7 +86,7 @@ function module_simple_network() {
 						nameservers="9.9.9.9,1.1.1.1"
 						nameservers=$($DIALOG --title "Enter DNS server" --inputbox "\nValid format: $nameservers" 9 40 "$nameservers" 3>&1 1>&2 2>&3)
 						# set fixed ip on adapter
-						${module_options["module_simple_network,feature"]} ${commands[8]} "$2" "$3"
+						${network_options["module_simple_network,feature"]} ${commands[8]} "$2" "$3"
 					fi
 				fi
 			fi
@@ -237,9 +237,9 @@ function module_simple_network() {
 				if $DIALOG --title "Action for ${adapter}" --yes-button "Configure" --no-button "Drop" --yesno "$1" 5 60; then
 					ip link set ${adapter} up
 				else
-					${module_options["module_simple_network,feature"]} ${commands[9]} "${adapter}"
+					${network_options["module_simple_network,feature"]} ${commands[9]} "${adapter}"
 					netplan apply
-					${module_options["module_simple_network,feature"]} ${commands[4]} "$2"
+					${network_options["module_simple_network,feature"]} ${commands[4]} "$2"
 				fi
 			fi
 		;;
@@ -258,7 +258,7 @@ function module_simple_network() {
 		;;
 		"${commands[7]}")
 			# drop current settings
-			${module_options["module_simple_network,feature"]} ${commands[9]} "${adapter}"
+			${network_options["module_simple_network,feature"]} ${commands[9]} "${adapter}"
 			# dhcp
 			netplan set --origin-hint ${yamlfile} renderer=${NETWORK_RENDERER}
 			# wifi needs ap
@@ -276,7 +276,7 @@ function module_simple_network() {
 		;;
 		"${commands[8]}")
 			# drop current settings
-			${module_options["module_simple_network,feature"]} ${commands[9]} "${adapter}"
+			${network_options["module_simple_network,feature"]} ${commands[9]} "${adapter}"
 			# static
 			netplan set --origin-hint ${yamlfile} renderer=${NETWORK_RENDERER}
 			# wifi needs ap
@@ -322,8 +322,8 @@ function module_simple_network() {
 			chmod 600 /etc/netplan/${yamlfile}.yaml
 		;;
 		"${commands[20]}")
-			echo -e "\nUsage: ${module_options["module_simple_network,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_simple_network,example"]}"
+			echo -e "\nUsage: ${network_options["module_simple_network,feature"]} <command>"
+			echo -e "Commands:  ${network_options["module_simple_network,example"]}"
 			echo "Available commands:"
 			echo -e "\tsimple\t\t- Select simple $title setup."
 			echo -e "\tadvanced\t- Select advanced $title setup."
@@ -337,7 +337,7 @@ function module_simple_network() {
 			echo
 		;;
 		*)
-			${module_options["module_simple_network,feature"]} ${commands[20]}
+			${network_options["module_simple_network,feature"]} ${commands[20]}
 		;;
 	esac
 

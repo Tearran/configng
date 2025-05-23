@@ -38,6 +38,7 @@ _tui_system() {
 
 _tui_network() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
+	
 }
 
 _tui_localisation() {
@@ -90,7 +91,10 @@ _tui_software() {
 
 _tui_about() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
-	about_armbian_configng
+	echo "Armbian Config: V3 Framework"
+	echo """
+help
+	"""
 
 }
 

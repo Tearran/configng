@@ -1,4 +1,4 @@
-module_options+=(
+network_options+=(
 	["connect_bt_interface,author"]="@armbian"
 	["connect_bt_interface,ref_link"]=""
 	["connect_bt_interface,feature"]="connect_bt_interface"

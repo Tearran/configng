@@ -202,7 +202,7 @@ software_options+=(
 	["module_softy,desc"]="Apt wizard TUI deb packages similar to softy"
 	["module_softy,status"]="Active"
 	["module_softy,doc_link"]=""
-	["module_softy,group"]="aptwizard"
+	["module_softy,group"]="Managment"
 	["module_softy,port"]=""
 	["module_softy,arch"]="x86-64 arm64 armhf"
 )

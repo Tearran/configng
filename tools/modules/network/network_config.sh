@@ -1,5 +1,5 @@
 
-module_options+=(
+network_options+=(
 	["network_config,author"]="@igorpecovnik"
 	["network_config,ref_link"]=""
 	["network_config,feature"]="network_config"
