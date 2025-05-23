@@ -1,32 +1,32 @@
 
 module_options+=(
-	["module_api_files,id"]="DOC0740"
-	["module_api_files,maintainer"]="@Tearran"
-	["module_api_files,feature"]="module_api_files"
-	["module_api_files,desc"]="Example module unattended interface."
-	["module_api_files,example"]="help array json dbt test all"
-	["module_api_files,status"]="Active"
-	["module_api_files,about"]=""
-	["module_api_files,doc_link"]="Missing"
-	["module_api_files,author"]="@Tearran"
-	["module_api_files,parent"]="docs"
-	["module_api_files,group"]="Docs"
-	["module_api_files,port"]="Unset"
-	["module_api_files,arch"]="Missing"
+	["module_data_files,id"]="DOC0740"
+	["module_data_files,maintainer"]="@Tearran"
+	["module_data_files,feature"]="module_data_files"
+	["module_data_files,desc"]="Example module unattended interface."
+	["module_data_files,example"]="help array json dbt test all"
+	["module_data_files,status"]="Active"
+	["module_data_files,about"]=""
+	["module_data_files,doc_link"]="Missing"
+	["module_data_files,author"]="@Tearran"
+	["module_data_files,parent"]="docs"
+	["module_data_files,group"]="Docs"
+	["module_data_files,port"]="Unset"
+	["module_data_files,arch"]="Missing"
 )
 #
-# Function to handle the module commands for 'module_api_files'
-function module_api_files() {
+# Function to handle the module commands for 'module_data_files'
+function module_data_files() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_api_files,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_data_files,example"]}"
 
 	# Handle the command passed to the function
 	case "$1" in
 		"${commands[0]}")
-		echo -e "\nUsage: ${module_options["module_api_files,feature"]} <command>"
-		echo -e "Commands:  ${module_options["module_api_files,example"]}"
+		echo -e "\nUsage: ${module_options["module_data_files,feature"]} <command>"
+		echo -e "Commands:  ${module_options["module_data_files,example"]}"
 		echo "Available commands:"
 		echo -e "\tarray\t- Generate module_options files from production module_options array."
 		echo -e "\tjson\t- Generate JSON object from module_options"
@@ -36,47 +36,47 @@ function module_api_files() {
 		echo
 		;;
 		"${commands[1]}")
-		geneate_files_api "gen_api_array"
+		generate_data_files "_gen_data_array"
 		;;
 		"${commands[2]}")
-		geneate_files_api "gen_api_json"
+		generate_data_files "_gen_data_json"
 		;;
 		"${commands[3]}")
-		geneate_files_api "gen_api_dbt"
+		generate_data_files "_gen_data_dbt"
 		;;
 		"${commands[4]}")
-		geneate_files_api "unit_test_files"
+		generate_data_files "_gen_unit_test_files"
 		;;
 		"all")
-		geneate_files_api "gen_api_array"
-		geneate_files_api "gen_api_json"
-		geneate_files_api "gen_api_dbt"
-		geneate_files_api "unit_test_files"
+		generate_data_files "_gen_data_array"
+		generate_data_files "_gen_data_json"
+		generate_data_files "_gen_data_dbt"
+		generate_data_files "_gen_unit_test_files"
 		;;
 		*)
-		echo "${module_options["module_api_files,example"]}"
+		echo "${module_options["module_data_files,example"]}"
 		;;
 	esac
 }
 
 
 module_helper+=(
-	["geneate_files_api,maintainer"]="@Tearran"
-	["geneate_files_api,feature"]="geneate_files_api"
-	["geneate_files_api,example"]=""
-	["geneate_files_api,desc"]="Helper to sort module_option array"
-	["geneate_files_api,status"]="Active"
-	["geneate_files_api,condition"]=""
-	["geneate_files_api,doc_link"]=""
-	["geneate_files_api,author"]="@Tearran"
-	["geneate_files_api,parent"]="docs"
-	["geneate_files_api,group"]="Docs"
-	["geneate_files_api,port"]=""
-	["geneate_files_api,arch"]=""
+	["generate_data_files,maintainer"]="@Tearran"
+	["generate_data_files,feature"]="generate_data_files"
+	["generate_data_files,example"]=""
+	["generate_data_files,desc"]="Helper to sort module_option array"
+	["generate_data_files,status"]="Active"
+	["generate_data_files,condition"]=""
+	["generate_data_files,doc_link"]=""
+	["generate_data_files,author"]="@Tearran"
+	["generate_data_files,parent"]="docs"
+	["generate_data_files,group"]="Docs"
+	["generate_data_files,port"]=""
+	["generate_data_files,arch"]=""
 )
 # Use production array to verify a parent/group and subgroup/subsubgroup keys are valid
 # may be used to verify other keys if needed
-function geneate_files_api() {
+function generate_data_files() {
 	local generator=$1
 	local i=0
 
@@ -180,7 +180,7 @@ function geneate_files_api() {
 
 
 # adds missing keys to module_option array
-gen_api_array(){
+_gen_data_array(){
 
 	module_options_file="$tools_dir/dev/array/${parent}/${feature}_array.sh"
 
@@ -211,7 +211,7 @@ EOF
 #
 # output json objects for each module_option
 #
-gen_api_json(){
+_gen_data_json(){
 
 	if [ "$group" != "unknown" ]; then
 		[ "$parent" != "docs" ] && json_objects="$tools_dir/dev/json/${parent}/${group}/${feature}.json"
@@ -239,23 +239,23 @@ gen_api_json(){
 }
 
 module_helper+=(
-	["gen_api_dbt,maintainer"]="@Tearran"
-	["gen_api_dbt,feature"]="gen_api_dbt"
-	["gen_api_dbt,example"]=""
-	["gen_api_dbt,desc"]="Helper for module_api"
-	["gen_api_dbt,status"]="Active"
-	["gen_api_dbt,condition"]=""
-	["gen_api_dbt,doc_link"]=""
-	["gen_api_dbt,author"]="@Tearran"
-	["gen_api_dbt,parent"]="docs"
-	["gen_api_dbt,group"]="Docs"
-	["gen_api_dbt,port"]=""
-	["gen_api_dbt,arch"]=""
+	["_gen_data_dbt,maintainer"]="@Tearran"
+	["_gen_data_dbt,feature"]="_gen_data_dbt"
+	["_gen_data_dbt,example"]=""
+	["_gen_data_dbt,desc"]="Helper for module_api"
+	["_gen_data_dbt,status"]="Active"
+	["_gen_data_dbt,condition"]=""
+	["_gen_data_dbt,doc_link"]=""
+	["_gen_data_dbt,author"]="@Tearran"
+	["_gen_data_dbt,parent"]="docs"
+	["_gen_data_dbt,group"]="Docs"
+	["_gen_data_dbt,port"]=""
+	["_gen_data_dbt,arch"]=""
 )
 #
 # can output a Configuration file
 #
-gen_api_dbt(){
+_gen_data_dbt(){
 	if [ "$group" != "unknown" ]; then
 		dbt_file="$tools_dir/modules/${parent}/${feature}_database.dbt"
 	else
@@ -288,7 +288,7 @@ gen_api_dbt(){
 #
 # Testing consept to convert config file to module_option array
 #
-convert_dbt_array(){
+_convert_dbt_array(){
 	# Ensure input file is provided
 	if [[ $# -ne 1 ]]; then
 		echo "Usage: $0 <input_file>"
@@ -328,7 +328,7 @@ convert_dbt_array(){
 #
 # same testing as above
 #
-function dbt_to_array() {
+function _dbt_to_array() {
 	local ini_file=$1
 	declare -gA ini_options
 
@@ -343,22 +343,22 @@ function dbt_to_array() {
 }
 
 module_helper+=(
-	["unit_test_files,maintainer"]="@Tearran"
-	["unit_test_files,feature"]="unit_test_files"
-	["unit_test_files,example"]=""
-	["unit_test_files,desc"]="Helper for module_api"
-	["unit_test_files,status"]="Active"
-	["unit_test_files,condition"]=""
-	["unit_test_files,doc_link"]=""
-	["unit_test_files,author"]="@Tearran"
-	["unit_test_files,parent"]="docs"
-	["unit_test_files,group"]="Docs"
-	["unit_test_files,port"]=""
-	["unit_test_files,arch"]=""
+	["_gen_unit_test_files,maintainer"]="@Tearran"
+	["_gen_unit_test_files,feature"]="_gen_unit_test_files"
+	["_gen_unit_test_files,example"]=""
+	["_gen_unit_test_files,desc"]="Helper for module_api"
+	["_gen_unit_test_files,status"]="Active"
+	["_gen_unit_test_files,condition"]=""
+	["_gen_unit_test_files,doc_link"]=""
+	["_gen_unit_test_files,author"]="@Tearran"
+	["_gen_unit_test_files,parent"]="docs"
+	["_gen_unit_test_files,group"]="Docs"
+	["_gen_unit_test_files,port"]=""
+	["_gen_unit_test_files,arch"]=""
 )
 
 	# Unrefined unit-test config file for  ./test/*.conf
-function unit_test_files(){
+function _gen_unit_test_files(){
 	if [ "$group" != "unknown" ] && [ -n "$id" ]; then
 		conf_file="$tools_dir/dev/tests/${id}.conf"
 	fi
