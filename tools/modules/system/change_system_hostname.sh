@@ -1,4 +1,4 @@
-system_options+=(
+module_options+=(
 	["change_system_hostname,author"]="@igorpecovnik"
 	["change_system_hostname,ref_link"]=""
 	["change_system_hostname,feature"]="change_system_hostname"

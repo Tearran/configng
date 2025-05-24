@@ -1,4 +1,4 @@
-software_options+=(
+module_options+=(
 	["module_owncloud,author"]="@armbian"
 	["module_owncloud,maintainer"]="@igorpecovnik"
 	["module_owncloud,feature"]="module_owncloud"
@@ -23,7 +23,7 @@ function module_owncloud () {
 	fi
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${software_options["module_owncloud,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_owncloud,example"]}"
 
 	OWNCLOUD_BASE="${SOFTWARE_FOLDER}/owncloud"
 
@@ -64,7 +64,7 @@ function module_owncloud () {
 			fi
 		;;
 		"${commands[2]}")
-			${software_options["module_owncloud,feature"]} ${commands[1]}
+			${module_options["module_owncloud,feature"]} ${commands[1]}
 			if [[ -n "${OWNCLOUD_BASE}" && "${OWNCLOUD_BASE}" != "/" ]]; then
 				rm -rf "${OWNCLOUD_BASE}"
 			fi
@@ -77,8 +77,8 @@ function module_owncloud () {
 			fi
 		;;
 		"${commands[4]}")
-			echo -e "\nUsage: ${software_options["module_owncloud,feature"]} <command>"
-			echo -e "Commands:  ${software_options["module_owncloud,example"]}"
+			echo -e "\nUsage: ${module_options["module_owncloud,feature"]} <command>"
+			echo -e "Commands:  ${module_options["module_owncloud,example"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tremove\t- Remove $title."
@@ -87,7 +87,7 @@ function module_owncloud () {
 			echo
 		;;
 		*)
-			${software_options["module_owncloud,feature"]} ${commands[4]}
+			${module_options["module_owncloud,feature"]} ${commands[4]}
 		;;
 	esac
 }

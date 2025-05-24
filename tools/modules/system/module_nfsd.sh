@@ -1,4 +1,4 @@
-system_options+=(
+module_options+=(
 	["module_nfsd,author"]="@igorpecovnik"
 	["module_nfsd,feature"]="module_nfsd"
 	["module_nfsd,desc"]="Install nfsd server"

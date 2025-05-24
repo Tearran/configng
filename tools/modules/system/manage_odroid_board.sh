@@ -1,4 +1,4 @@
-system_options+=(
+module_options+=(
 	["manage_odroid_board,author"]="@GeoffClements"
 	["manage_odroid_board,ref_link"]=""
 	["manage_odroid_board,feature"]="Odroid board"

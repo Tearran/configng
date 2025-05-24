@@ -1,5 +1,5 @@
 
-framework_options+=(
+module_options+=(
 	["markdown_manpage,author"]="@Tearran"
 	["markdown_manpage,ref_link"]=""
 	["markdown_manpage,feature"]="markdown_manpage"
@@ -83,7 +83,7 @@ EOF_DOC
 }
 
 
-framework_options+=(
+module_options+=(
 	["markdown_module_options,author"]="@Tearran"
 	["markdown_module_options,ref_link"]=""
 	["markdown_module_options,feature"]="markdown_module_options"
@@ -117,7 +117,7 @@ function markdown_module_options() {
 	echo -e "$mod_message"
 }
 
-framework_options+=(
+module_options+=(
 	["docs_markdown_manpage,author"]="@Tearran"
 	["docs_markdown_manpage,ref_link"]=""
 	["docs_markdown_manpage,feature"]="docs_markdown_manpage"

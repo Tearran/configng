@@ -1,4 +1,4 @@
-software_options+=(
+module_options+=(
 	["module_plexmediaserver,author"]="@schwar3kat"
 	["module_plexmediaserver,maintainer"]="@igorpecovnik"
 	["module_plexmediaserver,feature"]="Install plexmediaserver"
@@ -19,7 +19,7 @@ module_plexmediaserver() {
 	local condition=$(which "$title" 2>/dev/null)
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${software_options["module_plexmediaserver,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_plexmediaserver,example"]}"
 
 	case "$1" in
 		"${commands[0]}")
@@ -49,8 +49,8 @@ module_plexmediaserver() {
 			fi
 		;;
 		"${commands[3]}")
-			echo -e "\nUsage: ${software_options["module_portainer,feature"]} <command>"
-			echo -e "Commands:  ${software_options["module_portainer,example"]}"
+			echo -e "\nUsage: ${module_options["module_portainer,feature"]} <command>"
+			echo -e "Commands:  ${module_options["module_portainer,example"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tstatus\t- Installation status $title."
@@ -58,7 +58,7 @@ module_plexmediaserver() {
 			echo
 		;;
 		*)
-			${software_options["module_plexmediaserver,feature"]} ${commands[3]}
+			${module_options["module_plexmediaserver,feature"]} ${commands[3]}
 		;;
 	esac
 }

@@ -1,5 +1,5 @@
 
-framework_options+=(
+module_options+=(
 	["interface_colors,author"]="@Tearran"
 	["interface_colors,ref_link"]=""
 	["interface_colors,feature"]="interface_colors"

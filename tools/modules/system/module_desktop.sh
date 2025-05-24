@@ -1,4 +1,4 @@
-system_options+=(
+module_options+=(
 	["module_desktop,author"]="@igorpecovnik"
 	["module_desktop,feature"]="module_desktop"
 	["module_desktop,desc"]="XFCE desktop packages"

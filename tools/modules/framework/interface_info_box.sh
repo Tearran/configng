@@ -1,4 +1,4 @@
-framework_options+=(
+module_options+=(
 	["interface_infobox,author"]="@Tearran"
 	["interface_infobox,ref_link"]=""
 	["interface_infobox,feature"]="interface_infobox"

@@ -1,4 +1,4 @@
-framework_options+=(
+module_options+=(
 	["merge_arrays_into_module_options,author"]="@tearran"
 	["merge_arrays_into_module_options,maintainer"]="@igorpecovnik"
 	["merge_arrays_into_module_options,feature"]="merge_arrays_into_module_options"
@@ -18,7 +18,7 @@ merge_arrays_into_module_options() {
     done
 }
 
-framework_options+=(
+module_options+=(
 	["options_list,author"]="@tearran"
 	["options_list,maintainer"]="@igorpecovnik"
 	["options_list,feature"]="options_list"
@@ -49,4 +49,4 @@ function options_list() {
 	done
     echo -e "$mod_message"
 }
-# options_list framework_options
+# options_list module_options

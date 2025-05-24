@@ -1,4 +1,4 @@
-system_options+=(
+module_options+=(
 	["module_armbian_kvmtest,author"]="@igorpecovnik"
 	["module_armbian_kvmtest,feature"]="module_armbian_kvmtest"
 	["module_armbian_kvmtest,desc"]="Deploy Armbian KVM instances"

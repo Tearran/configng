@@ -1,5 +1,5 @@
 
-framework_options+=(
+module_options+=(
 	["interface_menu,author"]="Tearran"
 	["interface_menu,feature"]="interface_menu"
 	["interface_menu,desc"]="menu User Interface box"

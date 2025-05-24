@@ -1,4 +1,4 @@
-system_options+=(
+module_options+=(
 	["module_overlayfs,author"]="@igorpecovnik"
 	["module_overlayfs,maintainer"]="@igorpecovnik"
 	["module_overlayfs,feature"]="module_overlayfs"

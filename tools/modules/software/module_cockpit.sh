@@ -1,4 +1,4 @@
-software_options+=(
+module_options+=(
 	["module_cockpit,author"]="@tearran"
 	["module_cockpit,maintainer"]="@igorpecovnik"
 	["module_cockpit,feature"]="module_cockpit"
@@ -16,13 +16,13 @@ function module_cockpit() {
 	local condition=$(dpkg -s "cockpit" 2>/dev/null | sed -n "s/Status: //p")
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${software_options["module_cockpit,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_cockpit,example"]}"
 
 	case "$1" in
 		"${commands[0]}")
 		## help/menu options for the module
-		echo -e "\nUsage: ${software_options["module_cockpit,feature"]} <command>"
-		echo -e "Commands: ${software_options["module_cockpit,example"]}"
+		echo -e "\nUsage: ${module_options["module_cockpit,feature"]} <command>"
+		echo -e "Commands: ${module_options["module_cockpit,example"]}"
 		echo "Available commands:"
 		if [[ -z "$condition" ]]; then
 			echo -e "  install\t- Install $title."
@@ -84,7 +84,7 @@ function module_cockpit() {
 		fi
 		;;
 		*)
-		echo "Invalid command. Try: '${software_options["module_cockpit,example"]}'"
+		echo "Invalid command. Try: '${module_options["module_cockpit,example"]}'"
 		;;
 	esac
 }

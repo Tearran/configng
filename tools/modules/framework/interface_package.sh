@@ -3,7 +3,7 @@
 # internal function
 _pkg_have_stdin() { [[ -t 0 ]]; }
 
-framework_options+=(
+module_options+=(
 	["pkg_configure,author"]="@dimitry-ishenko"
 	["pkg_configure,desc"]="Configure an unconfigured package"
 	["pkg_configure,example"]="pkg_configure"
@@ -16,7 +16,7 @@ pkg_configure()
 	_pkg_have_stdin && debconf-apt-progress -- dpkg --configure "$@" || dpkg --configure "$@"
 }
 
-framework_options+=(
+module_options+=(
 	["pkg_full_upgrade,author"]="@dimitry-ishenko"
 	["pkg_full_upgrade,desc"]="Upgrade installed packages (potentially removing some)"
 	["pkg_full_upgrade,example"]=""
@@ -29,7 +29,7 @@ pkg_full_upgrade()
 	_pkg_have_stdin && debconf-apt-progress -- apt-get -y full-upgrade "$@" || apt-get -y full-upgrade "$@"
 }
 
-framework_options+=(
+module_options+=(
 	["pkg_install,author"]="@dimitry-ishenko"
 	["pkg_install,desc"]="Install package"
 	["pkg_install,example"]="<apt packeage name>"
@@ -42,7 +42,7 @@ pkg_install()
 	_pkg_have_stdin && debconf-apt-progress -- apt-get -y install "$@" || apt-get -y install "$@"
 }
 
-framework_options+=(
+module_options+=(
 	["pkg_installed,author"]="@dimitry-ishenko"
 	["pkg_installed,desc"]="Check if package is installed"
 	["pkg_installed,example"]="<apt packeage name>"
@@ -56,7 +56,7 @@ pkg_installed()
 	! [[ -z "$status" || "$status" = *deinstall* || "$status" = *not-installed* ]]
 }
 
-framework_options+=(
+module_options+=(
 	["pkg_remove,author"]="@dimitry-ishenko"
 	["pkg_remove,desc"]="Remove package"
 	["pkg_remove,example"]="<apt packeage name>"
@@ -69,7 +69,7 @@ pkg_remove()
 	_pkg_have_stdin && debconf-apt-progress -- apt-get -y autopurge "$@" || apt-get -y autopurge "$@"
 }
 
-framework_options+=(
+module_options+=(
 	["pkg_update,author"]="@dimitry-ishenko"
 	["pkg_update,desc"]="Update package repository"
 	["pkg_update,example"]=""
@@ -82,7 +82,7 @@ pkg_update()
 	_pkg_have_stdin && debconf-apt-progress -- apt-get -y update || apt-get -y update
 }
 
-framework_options+=(
+module_options+=(
 	["pkg_upgrade,author"]="@dimitry-ishenko"
 	["pkg_upgrade,desc"]="Upgrade installed packages"
 	["pkg_upgrade,example"]=""
@@ -95,7 +95,7 @@ pkg_upgrade()
 	_pkg_have_stdin && debconf-apt-progress -- apt-get -y upgrade "$@" || apt-get -y upgrade "$@"
 }
 
-framework_options+=(
+module_options+=(
 	["is_package_manager_running,author"]="@armbian"
 	["is_package_manager_running,ref_link"]=""
 	["is_package_manager_running,feature"]="is_package_manager_running"
@@ -117,7 +117,7 @@ function is_package_manager_running() {
 
 }
 
-framework_options+=(
+module_options+=(
 	["see_current_apt,author"]="@Tearran"
 	["see_current_apt,ref_link"]=""
 	["see_current_apt,feature"]="see_current_apt"

@@ -1,4 +1,4 @@
-framework_options+=(
+module_options+=(
 	["generate_json_options,author"]="@Tearran"
 	["generate_json_options,ref_link"]=""
 	["generate_json_options,feature"]="generate_json"

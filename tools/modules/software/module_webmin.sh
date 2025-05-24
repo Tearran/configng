@@ -1,4 +1,4 @@
-software_options+=(
+module_options+=(
 	["module_webmin,author"]="@Tearran"
 	["module_webmin,maintainer"]="@Tearran"
 	["module_webmin,feature"]="module_webmin"
@@ -17,13 +17,13 @@ function module_webmin() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${software_options["module_webmin,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_webmin,example"]}"
 
 	case "$1" in
 		"${commands[0]}")
 			## help/menu options for the module
-			echo -e "\nUsage: ${software_options["module_webmin,feature"]} <command>"
-			echo -e "Commands: ${software_options["module_webmin,example"]}"
+			echo -e "\nUsage: ${module_options["module_webmin,feature"]} <command>"
+			echo -e "Commands: ${module_options["module_webmin,example"]}"
 			echo "Available commands:"
 			if [[ -z "$condition" ]]; then
 				echo -e "  install\t- Install $title."
@@ -100,7 +100,7 @@ function module_webmin() {
 			fi
 			;;
 		*)
-		echo "Invalid command.try: '${software_options["module_webmin,example"]}'"
+		echo "Invalid command.try: '${module_options["module_webmin,example"]}'"
 
 		;;
 	esac
