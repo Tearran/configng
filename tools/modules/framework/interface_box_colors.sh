@@ -1,12 +1,12 @@
 
 framework_options+=(
-	["set_colors,author"]="@Tearran"
-	["set_colors,ref_link"]=""
-	["set_colors,feature"]="set_colors"
-	["set_colors,desc"]="Change the background color of the User Interface box"
-	["set_colors,example"]="0 1 2 3 4 5 6 7"
-	["set_colors,doc_link"]=""
-	["set_colors,status"]="Active"
+	["interface_colors,author"]="@Tearran"
+	["interface_colors,ref_link"]=""
+	["interface_colors,feature"]="interface_colors"
+	["interface_colors,desc"]="Change the background color of the User Interface box"
+	["interface_colors,example"]="0 1 2 3 4 5 6 7"
+	["interface_colors,doc_link"]=""
+	["interface_colors,status"]="Active"
 )
 #
 # Function to set the tui colors
