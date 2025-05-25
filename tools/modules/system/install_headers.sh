@@ -1,12 +1,13 @@
+
 module_options+=(
-	["module_headers,author"]="@armbian"
 	["module_headers,feature"]="module_headers"
 	["module_headers,desc"]="Install headers container"
 	["module_headers,example"]="install remove status help"
-	["module_headers,port"]=""
-	["module_headers,status"]="Active"
-	["module_headers,arch"]=""
+	["module_headers,author"]="@igorpecovnik"
+	["module_headers,group"]="Kernel"
+
 )
+
 #
 # Mmodule_headers
 #

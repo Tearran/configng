@@ -6,7 +6,7 @@ module_options+=(
 	["default_wireless_network_config,desc"]="Stop hostapd, clean config"
 	["default_wireless_network_config,example"]=""
 	["default_wireless_network_config,doc_link"]=""
-	["default_wireless_network_config,status"]="review"
+	["default_wireless_network_config,group"]="Network"
 )
 function default_wireless_network_config(){
 

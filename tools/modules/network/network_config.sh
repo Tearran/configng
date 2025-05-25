@@ -4,7 +4,7 @@ module_options+=(
 	["network_config,ref_link"]=""
 	["network_config,feature"]="network_config"
 	["network_config,desc"]="Netplan wrapper"
-	["network_config,example"]=""
+	["network_config,group"]="Network"
 	["network_config,doc_link"]=""
 	["network_config,status"]="review"
 )

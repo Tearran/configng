@@ -6,7 +6,7 @@ module_options+=(
 	["module_samba,desc"]="Samba setup and service setting."
 	["module_samba,status"]="Active"
 	["module_samba,doc_link"]="https://www.samba.org/samba/docs/"
-	["module_samba,group"]="Networking"
+	["module_samba,group"]="Media"
 	["module_samba,port"]="445"
 	["module_samba,arch"]="x86-64 arm64 armhf"
 )

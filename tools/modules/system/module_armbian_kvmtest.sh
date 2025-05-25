@@ -4,7 +4,7 @@ module_options+=(
 	["module_armbian_kvmtest,desc"]="Deploy Armbian KVM instances"
 	["module_armbian_kvmtest,example"]="install remove save drop restore list help"
 	["module_armbian_kvmtest,port"]=""
-	["module_armbian_kvmtest,status"]="Active"
+	["module_armbian_kvmtest,grop"]="User"
 	["module_armbian_kvmtest,arch"]="x86-64"
 )
 #

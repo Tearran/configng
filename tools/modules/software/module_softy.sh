@@ -195,16 +195,13 @@ function _checklist_imaging() {
 }
 
 module_options+=(
-	["module_softy,author"]="@Tearran"
-	["module_softy,maintainer"]="@Tearran"
 	["module_softy,feature"]="module_softy"
-	["module_softy,example"]="help Editors Browsers Proftpd Imaging"
 	["module_softy,desc"]="Apt wizard TUI deb packages similar to softy"
-	["module_softy,status"]="Active"
-	["module_softy,doc_link"]=""
-	["module_softy,group"]="Managment"
+	["module_softy,example"]="help Editors Browsers Proftpd Imaging"
+	["module_softy,author"]="@Tearran"
+	["module_softy,group"]="Management"
 	["module_softy,port"]=""
-	["module_softy,arch"]="x86-64 arm64 armhf"
+	["module_softy,arch"]=""
 )
 # Scafold for software module tites
 function module_softy() {
