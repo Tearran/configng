@@ -4,7 +4,7 @@ module_options+=(
 	["interface_menu,feature"]="interface_menu"
 	["interface_menu,desc"]="menu User Interface box"
 	["interface_menu,example"]="<function_name>"
-	["interface_menu,status"]=""
+	["interface_menu,group"]="Interface"
 )
 #
 # Uses Avalible (Whiptail, DIALOG, READ) for the menu interface

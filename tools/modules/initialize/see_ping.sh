@@ -6,7 +6,7 @@ module_options+=(
 	["see_ping,desc"]="Check the internet connection with fallback DNS"
 	["see_ping,example"]=""
 	["see_ping,doc_link"]=""
-	["see_ping,status"]="review"
+	["see_ping,group"]="Initialize"
 )
 #
 # Function to check the internet connection

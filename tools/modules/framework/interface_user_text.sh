@@ -6,7 +6,7 @@ module_options+=(
 	["interface_categories,desc"]="The main TUI menu list"
 	["interface_categories,status"]=""
 	["interface_categories,doc_link"]=""
-	["interface_categories,group"]="main"
+	["interface_categories,group"]="Interface"
 	["interface_categories,arch"]="x86-64 arm64 armhf"
 )
 

@@ -5,7 +5,7 @@ module_options+=(
 	["interface_infobox,desc"]="info User Interface box"
 	["interface_infobox,example"]="<<< 'hello world' ; "
 	["interface_infobox,doc_link"]=""
-	["interface_infobox,status"]=""
+	["interface_infobox,group"]="Interface"
 )
 #
 # Function to display an infobox with a message

@@ -7,7 +7,7 @@ module_options+=(
 	["interface_yes_no,desc"]="yes/no User Interface box"
 	["interface_yes_no,example"]="'<string>' process_input"
 	["interface_yes_no,doc_link"]=""
-	["interface_yes_no,status"]=""
+	["interface_yes_no,group"]="Interface"
 )
 #
 # Secure version of get_user_continue

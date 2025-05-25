@@ -1,18 +1,12 @@
 
 module_options+=(
-	["module_data_files,id"]="DOC0740"
 	["module_data_files,maintainer"]="@Tearran"
 	["module_data_files,feature"]="module_data_files"
 	["module_data_files,desc"]="Example module unattended interface."
 	["module_data_files,example"]="help array json dbt test all"
-	["module_data_files,status"]="Active"
-	["module_data_files,about"]=""
 	["module_data_files,doc_link"]="Missing"
 	["module_data_files,author"]="@Tearran"
-	["module_data_files,parent"]="docs"
-	["module_data_files,group"]="Docs"
-	["module_data_files,port"]="Unset"
-	["module_data_files,arch"]="Missing"
+	["module_data_files,group"]="Interface"
 )
 #
 # Function to handle the module commands for 'module_data_files'
@@ -60,16 +54,12 @@ function module_data_files() {
 }
 
 
-module_helper+=(
+module_options+=(
 	["generate_data_files,maintainer"]="@Tearran"
 	["generate_data_files,feature"]="generate_data_files"
 	["generate_data_files,example"]=""
 	["generate_data_files,desc"]="Helper to sort module_option array"
-	["generate_data_files,status"]="Active"
-	["generate_data_files,condition"]=""
-	["generate_data_files,doc_link"]=""
 	["generate_data_files,author"]="@Tearran"
-	["generate_data_files,parent"]="docs"
 	["generate_data_files,group"]="Docs"
 	["generate_data_files,port"]=""
 	["generate_data_files,arch"]=""
@@ -141,7 +131,7 @@ function generate_data_files() {
 		# Use group_prefix for id
 		# Check if group belongs to the software category
 		case "$group" in
-			WebHosting|HomeAutomation|DNS|Downloaders|Database|Upkeep|DevTools|Containers|Media|Monitoring|Management|Printing|Netconfig)
+			WebHosting|HomeAutomation|DNS|Downloaders|Database|Upkeep|DevTools|Containers|Media|Monitoring|Management|Printing|Networking)
 			parent="software"
 			;;
 			Kernel|Storage|Access|User|Updates)
@@ -153,14 +143,14 @@ function generate_data_files() {
 			Localisation|Locals)
 			parent="localisation"
 			;;
-			Messages|Readme|Docs)
-			parent="docs"
+			Message|Readme|Docs|Interface|Helper)
+			parent="framework"
 			;;
-			Core|TUI|Interface|Helper)
-			parent="functions"
+			Initialize|Runtime)
+			parent="initialize"
 			;;
 			*)
-			parent="unknown"
+			parent="fix"
 			group="unknown"
 			;;
 		esac
@@ -238,7 +228,7 @@ _gen_data_json(){
 		}' > "$json_objects"
 }
 
-module_helper+=(
+module_options+=(
 	["_gen_data_dbt,maintainer"]="@Tearran"
 	["_gen_data_dbt,feature"]="_gen_data_dbt"
 	["_gen_data_dbt,example"]=""

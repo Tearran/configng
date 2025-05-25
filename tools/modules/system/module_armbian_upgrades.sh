@@ -4,7 +4,7 @@ module_options+=(
 	["module_armbian_upgrades,desc"]="Install and configure automatic updates"
 	["module_armbian_upgrades,example"]="install remove configure status defaults help"
 	["module_armbian_upgrades,port"]=""
-	["module_armbian_upgrades,status"]="Active"
+	["module_armbian_upgrades,group"]="User"
 	["module_armbian_upgrades,arch"]=""
 )
 #

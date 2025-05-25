@@ -6,7 +6,7 @@ module_options+=(
 	["interface_checklist,example"]="<title> <prompt> <options_array>"
 	["interface_checklist,desc"]="checklist User Interface box"
 	["interface_checklist,status"]="Active"
-	["interface_checklist,group"]="Helpers"
+	["interface_checklist,group"]="Interface"
 	["interface_checklist,arch"]="arm64"
 )
 # Helper function to display a checklist using whiptail/dialog/read
@@ -70,7 +70,7 @@ module_options+=(
 	["process_package_selection,example"]="<title> <prompt> <checklist_options_array>"
 	["process_package_selection,desc"]="Reusable helper function to process user-selected packages for installation or removal."
 	["process_package_selection,status"]="Active"
-	["process_package_selection,group"]="Helpers"
+	["process_package_selection,group"]="Interface"
 	["process_package_selection,arch"]="x86-64 arm64 armhf"
 )
 #

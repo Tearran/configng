@@ -5,7 +5,7 @@ module_options+=(
 	["check_desktop,feature"]="check_desktop"
 	["check_desktop,desc"]="Migrated procedures from Armbian config."
 	["check_desktop,example"]=""
-	["check_desktop,status"]="Active"
+	["check_desktop,group"]="Initialize"
 	["check_desktop,doc_link"]=""
 )
 #

@@ -6,7 +6,7 @@ module_options+=(
 	["interface_colors,desc"]="Change the background color of the User Interface box"
 	["interface_colors,example"]="0 1 2 3 4 5 6 7"
 	["interface_colors,doc_link"]=""
-	["interface_colors,status"]="Active"
+	["interface_colors,group"]="Interface"
 )
 #
 # Function to set the tui colors

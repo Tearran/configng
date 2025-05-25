@@ -4,7 +4,7 @@ module_options+=(
 	["check_os_status,feature"]="check_os_status"
 	["check_os_status,example"]="help"
 	["check_os_status,desc"]="Check if the current OS is supported based on /etc/armbian-distribution-status"
-	["check_os_status,status"]="Active"
+	["check_os_status,group"]="Initialize"
 )
 #
 function check_distro_status() {
@@ -49,9 +49,7 @@ module_options+=(
 	["info_wait_autocontinue,ref_link"]=""
 	["info_wait_autocontinue,feature"]="info_wait_autocontinue"
 	["info_wait_autocontinue,desc"]="Display a warning with a gauge for 10 seconds then continue"
-	["info_wait_autocontinue,example"]=""
-	["info_wait_autocontinue,doc_link"]=""
-	["info_wait_autocontinue,status"]="Active"
+	["info_wait_autocontinue,group"]="Initialize"
 )
 #
 function info_wait_continue() {

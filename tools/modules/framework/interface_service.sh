@@ -9,7 +9,7 @@ module_options+=(
 	["srv_active,desc"]="Check if service is active"
 	["srv_active,example"]="<service_name.service>"
 	["srv_active,feature"]="srv_active"
-	["srv_active,status"]="Interface"
+	["srv_active,group"]="Interface"
 )
 
 srv_active()
@@ -24,7 +24,7 @@ module_options+=(
 	["srv_daemon_reload,desc"]="Reload systemd configuration"
 	["srv_daemon_reload,example"]="srv_daemon_reload"
 	["srv_daemon_reload,feature"]=""
-	["srv_daemon_reload,status"]="Interface"
+	["srv_daemon_reload,group"]="Interface"
 )
 
 srv_daemon_reload()
@@ -38,7 +38,7 @@ module_options+=(
 	["srv_disable,desc"]="Disable service"
 	["srv_disable,example"]="srv_disable ssh.service"
 	["srv_disable,feature"]="srv_disable"
-	["srv_disable,status"]="Interface"
+	["srv_disable,group"]="Interface"
 )
 
 srv_disable() { systemctl disable "$@"; }
@@ -48,7 +48,7 @@ module_options+=(
 	["srv_enable,desc"]="Enable service"
 	["srv_enable,example"]="<service_name.service>"
 	["srv_enable,feature"]="srv_enable"
-	["srv_enable,status"]="Interface"
+	["srv_enable,group"]="Interface"
 )
 
 srv_enable() { systemctl enable "$@"; }
@@ -58,7 +58,7 @@ module_options+=(
 	["srv_enabled,desc"]="Check if service is enabled"
 	["srv_enabled,example"]="<service_name.service>"
 	["srv_enabled,feature"]="srv_enabled"
-	["srv_enabled,status"]="Interface"
+	["srv_enabled,group"]="Interface"
 )
 
 srv_enabled() { systemctl is-enabled "$@"; }
@@ -68,7 +68,7 @@ module_options+=(
 	["srv_mask,desc"]="Mask service"
 	["srv_mask,example"]="<service_name.service>"
 	["srv_mask,feature"]="srv_mask"
-	["srv_mask,status"]="Interface"
+	["srv_mask,group"]="Interface"
 )
 
 srv_mask() { systemctl mask "$@"; }
@@ -78,7 +78,7 @@ module_options+=(
 	["srv_reload,desc"]="Reload service"
 	["srv_reload,example"]="<service_name.service>"
 	["srv_reload,feature"]="srv_reload"
-	["srv_reload,status"]="Interface"
+	["srv_reload,group"]="Interface"
 )
 
 srv_reload()
@@ -92,7 +92,7 @@ module_options+=(
 	["srv_restart,desc"]="Restart service"
 	["srv_restart,example"]="<service_name.service>"
 	["srv_restart,feature"]="srv_restart"
-	["srv_restart,status"]="Interface"
+	["srv_restart,group"]="Interface"
 )
 
 srv_restart()
@@ -106,7 +106,7 @@ module_options+=(
 	["srv_start,desc"]="Start service"
 	["srv_start,example"]="<service_name.service>"
 	["srv_start,feature"]="srv_start"
-	["srv_start,status"]="Interface"
+	["srv_start,group"]="Interface"
 )
 
 srv_start()
@@ -120,7 +120,7 @@ module_options+=(
 	["srv_status,desc"]="Show service status information"
 	["srv_status,example"]="<service_name.service>"
 	["srv_status,feature"]="srv_status"
-	["srv_status,status"]="Interface"
+	["srv_status,group"]="Interface"
 )
 
 srv_status() { systemctl status "$@"; }
@@ -130,7 +130,7 @@ module_options+=(
 	["srv_stop,desc"]="Stop service"
 	["srv_stop,example"]="<service_name.service>"
 	["srv_stop,feature"]="srv_stop"
-	["srv_stop,status"]="Interface"
+	["srv_stop,group"]="Interface"
 )
 
 srv_stop()
@@ -144,7 +144,7 @@ module_options+=(
 	["srv_unmask,desc"]="Unmask service"
 	["srv_unmask,example"]="<service_name.service>"
 	["srv_unmask,feature"]="srv_unmask"
-	["srv_unmask,status"]="Interface"
+	["srv_unmask,group"]="Interface"
 )
 
 srv_unmask() { systemctl unmask "$@"; }

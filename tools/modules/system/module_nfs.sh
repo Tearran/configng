@@ -4,7 +4,7 @@ module_options+=(
 	["module_nfs,desc"]="Install nfs client"
 	["module_nfs,example"]="install remove servers mounts help"
 	["module_nfs,port"]=""
-	["module_nfs,status"]="Active"
+	["module_nfs,group"]="User"
 	["module_nfs,arch"]=""
 )
 #

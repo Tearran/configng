@@ -5,7 +5,7 @@ module_options+=(
 	["update_skel,feature"]="update_skel"
 	["update_skel,desc"]="Update the /etc/skel files in users directories"
 	["update_skel,example"]="update_skel"
-	["update_skel,status"]="Active"
+	["update_skel,group"]="Interface"
 )
 #
 # check dpkg status of $1 -- currently only 'not installed at all' case caught

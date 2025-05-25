@@ -1,16 +1,17 @@
 module_options+=(
-	["generate_json_options,author"]="@Tearran"
-	["generate_json_options,ref_link"]=""
-	["generate_json_options,feature"]="generate_json"
-	["generate_json_options,desc"]="Generate JSON-like object file."
-	["generate_json_options,example"]=""
-	["generate_json_options,status"]=""
-	["generate_json_options,doc_link"]=""
+	["generate_json,author"]="@Tearran"
+	["generate_json,ref_link"]=""
+	["generate_json,feature"]="generate_json"
+	["generate_json,desc"]="Generate JSON-like object file."
+	["generate_json,example"]=""
+	["generate_json,group"]="Docs"
+
 )
+
 #
 # Function to generate a JSON-like object file
 #
-function generate_json_options() {
+function generate_json() {
 	echo -e "{\n\"configng-helpers\" : ["
 	features=()
 	for key in "${!module_options[@]}"; do

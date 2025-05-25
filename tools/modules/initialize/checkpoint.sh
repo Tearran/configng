@@ -5,8 +5,7 @@ module_options+=(
 	["checkpoint,feature"]="checkpoint"
 	["checkpoint,example"]="debug help mark reset total"
 	["checkpoint,desc"]="Manage checkpoints"
-	["checkpoint,status"]=""
-	["checkpoint,group"]="Development"
+	["checkpoint,group"]="Initialize"
 )
 
 _checkpoint_add()

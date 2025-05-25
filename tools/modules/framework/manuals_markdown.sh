@@ -5,7 +5,7 @@ module_options+=(
 	["markdown_manpage,feature"]="markdown_manpage"
 	["markdown_manpage,desc"]="Generate Document files."
 	["markdown_manpage,example"]=""
-	["markdown_manpage,status"]="review"
+	["markdown_manpage,group"]="Docs"
 )
 #
 # Function to generate the README.md file
@@ -89,8 +89,7 @@ module_options+=(
 	["markdown_module_options,feature"]="markdown_module_options"
 	["markdown_module_options,desc"]="Markdown table of all module_options"
 	["markdown_module_options,example"]=""
-	["markdown_module_options,status"]="review"
-	["markdown_module_options,doc_link"]=""
+	["markdown_module_options,group"]="Docs"
 )
 #
 # This function is used to generate a markdown table from the module_options array
@@ -123,7 +122,7 @@ module_options+=(
 	["docs_markdown_manpage,feature"]="docs_markdown_manpage"
 	["docs_markdown_manpage,desc"]="Generate Document files."
 	["docs_markdown_manpage,example"]=""
-	["docs_markdown_manpage,status"]="review"
+	["docs_markdown_manpage,group"]="Docs"
 )
 #
 # Function to generate the README.md file

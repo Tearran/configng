@@ -5,7 +5,7 @@ module_options+=(
 	["check_ip_version,feature"]="check_ip_version"
 	["check_ip_version,desc"]="Check if a domain is reachable via IPv4 and IPv6"
 	["check_ip_version,example"]="<Domain name>"
-	["check_ip_version,status"]="review"
+	["check_ip_version,group"]="Initialize"
 	["check_ip_version,doc_link"]=""
 )
 #

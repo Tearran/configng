@@ -5,7 +5,7 @@ module_options+=(
 	["merge_arrays_into_module_options,example"]="<options_name>"
 	["merge_arrays_into_module_options,desc"]="Merges compatible associative arrays into module_options for unified access."
 	["merge_arrays_into_module_options,doc_link"]=""
-	["merge_arrays_into_module_options,group"]="data"
+	["merge_arrays_into_module_options,group"]="Interface"
 	["merge_arrays_into_module_options,arch"]=""
 )
 
@@ -26,7 +26,7 @@ module_options+=(
 	["options_list,desc"]="Displays a usage/help message listing all features in the specified options array, including their names, descriptions, and usage."
 	["options_list,status"]="stable"
 	["options_list,doc_link"]="https://github.com/armbian/configng#options_list"
-	["options_list,group"]="data"
+	["options_list,group"]="Interface"
 	["options_list,arch"]="all"
 )
 

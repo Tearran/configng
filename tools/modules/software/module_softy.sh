@@ -1,11 +1,19 @@
 module_options+=(
+	["module_softy,feature"]="module_softy"
+	["module_softy,desc"]="Apt wizard TUI deb packages similar to softy"
+	["module_softy,example"]="help Editors Browsers Proftpd Imaging"
+	["module_softy,author"]="@Tearran"
+	["module_softy,group"]="Management"
+)
+
+module_options+=(
 	["_checklist_proftpd,author"]="@Tearran"
 	["_checklist_proftpd,maintainer"]="@Tearran"
 	["_checklist_proftpd,feature"]="_checklist_proftpd"
 	["_checklist_proftpd,example"]=""
 	["_checklist_proftpd,desc"]="Dynamic ProFTPD package management with install/remove toggle."
 	["_checklist_proftpd,status"]="Active"
-	["_checklist_proftpd,group"]="Internet"
+	["_checklist_proftpd,group"]="Networking"
 	["_checklist_proftpd,arch"]="x86-64 arm64 armhf"
 )
 # Scaffold for an app that has multiple candidates, such as ProFTPD and modules.
@@ -47,7 +55,7 @@ module_options+=(
 	["_checklist_browsers,example"]=""
 	["_checklist_browsers,desc"]="Browser installation and management (Firefox-ESR and Chromium and more)."
 	["_checklist_browsers,status"]="Active"
-	["_checklist_browsers,group"]="Internet"
+	["_checklist_browsers,group"]="Networking"
 	["_checklist_browsers,arch"]="x86-64 arm64 armhf"
 )
 # Scaffold for app with specific single or dummy candidates.
@@ -102,7 +110,7 @@ module_options+=(
 	["_checklist_editors,example"]="nano code codium notepadqq"
 	["_checklist_editors,desc"]="Editor installation and management (codium notepadqq and more)."
 	["_checklist_editors,status"]="Active"
-	["_checklist_editors,group"]="Internet"
+	["_checklist_editors,group"]="Media"
 	["_checklist_editors,arch"]="x86-64 arm64 armhf"
 )
 
@@ -152,7 +160,7 @@ module_options+=(
 	["_checklist_imaging,example"]="inkscape gimp"
 	["_checklist_imaging,desc"]="Imaging Editor installation and management (gimp inkscape)."
 	["_checklist_imaging,status"]="Active"
-	["_checklist_imaging,group"]="Internet"
+	["_checklist_imaging,group"]="Media"
 	["_checklist_imaging,arch"]="x86-64 arm64 armhf"
 )
 # Scaffold for app with specific single or dummy candidates.
@@ -194,15 +202,6 @@ function _checklist_imaging() {
 	process_package_selection "$title" "Select packages to install/remove:" checklist_options[@]
 }
 
-module_options+=(
-	["module_softy,feature"]="module_softy"
-	["module_softy,desc"]="Apt wizard TUI deb packages similar to softy"
-	["module_softy,example"]="help Editors Browsers Proftpd Imaging"
-	["module_softy,author"]="@Tearran"
-	["module_softy,group"]="Management"
-	["module_softy,port"]=""
-	["module_softy,arch"]=""
-)
 # Scafold for software module tites
 function module_softy() {
 	local title="Packages"

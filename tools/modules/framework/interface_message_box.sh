@@ -6,7 +6,7 @@ module_options+=(
 	["interface_message,desc"]="OK message User Interface box"
 	["interface_message,example"]="<<< 'hello world' "
 	["interface_message,doc_link"]=""
-	["interface_message,status"]=""
+	["interface_message,group"]="Interface"
 )
 #
 # Function to display a message box

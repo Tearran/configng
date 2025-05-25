@@ -3,7 +3,7 @@
 module_options+=(
 	["module_generic,author"]="@armbian"
 	["module_generic,maintainer"]="@armbian"
-	["module_generic,status"]="Active"
+	["module_generic,group"]="Message"
 	["module_generic,doc_link"]="https://forum.armbian.com/"
 	["module_generic,arch"]="x86-64 aarch64 armhf riscv64"
 )

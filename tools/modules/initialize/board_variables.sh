@@ -4,7 +4,7 @@ module_options+=(
 	["initialize_variables,feature"]="initialize_variables"
 	["initialize_variables,desc"]="initialize system variables"
 	["initialize_variables,example"]=""
-	["initialize_variables,status"]=""
+	["initialize_variables,group"]="Initialize"
 )
 #
 # gather info about the board and start with loading menu variables

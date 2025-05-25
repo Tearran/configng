@@ -4,8 +4,8 @@ module_options+=(
 ["store_netplan_config,ref_link"]=""
 ["store_netplan_config,feature"]="store_netplan_config"
 ["store_netplan_config,desc"]="Storing netplan config to tmp"
-["store_netplan_config,example"]="s"
-["store_netplan_config,status"]="Active"
+["store_netplan_config,example"]=""
+["store_netplan_config,group"]="User"
 )
 #
 # @description Storing Netplan configuration to temp folder

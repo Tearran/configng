@@ -5,7 +5,7 @@ module_options+=(
 	["release_upgrade,feature"]="release_upgrade"
 	["release_upgrade,desc"]="Upgrade to next stable or rolling release"
 	["release_upgrade,example"]="stable verify"
-	["release_upgrade,status"]="Active"
+	["release_upgrade,group"]="User"
 )
 #
 # Upgrade distribution
