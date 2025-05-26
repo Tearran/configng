@@ -111,7 +111,7 @@ function generate_data_files() {
 		maintainer="${module_options[$maintainer_key]}"
 		header="${module_options[$header_key]}"
 		footer="${module_options[$footer_key]}"
-		if [[ -n group ]]; then
+		if [[ -n "$group" ]]; then
 			g=$((g + 10)) ;
 			group_prefix=$(echo "${group:0:3}" | tr '[:lower:]' '[:upper:]') # Extract first 3 letters and convert to uppercase
 			id=$(printf "%s%04d" "$group_prefix" "$g") # Combine prefix with padded number
