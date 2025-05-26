@@ -15,7 +15,7 @@ _tui_system() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
     # Ordered list of keys
     local keys=(
-		"Kernal"
+		"Kernel"
 		"Storage"
 		"Access"
 		"User"
