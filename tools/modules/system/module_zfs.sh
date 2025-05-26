@@ -4,7 +4,7 @@ module_options+=(
 	["module_zfs,desc"]="Install zfs filesystem support"
 	["module_zfs,example"]="install remove status kernel_max zfs_version zfs_installed_version help"
 	["module_zfs,port"]=""
-	["module_zfs,status"]="Active"
+	["module_zfs,group"]="User"
 	["module_zfs,arch"]="x86-64 arm64"
 )
 #

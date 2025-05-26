@@ -5,8 +5,7 @@ module_options+=(
 	["module_armbian_rsyncd,example"]="install remove status help"
 	["module_armbian_rsyncd,desc"]="Install and configure Armbian rsyncd."
 	["module_armbian_rsyncd,doc_link"]=""
-	["module_armbian_rsyncd,group"]="Armbian"
-	["module_armbian_rsyncd,status"]="Active"
+	["module_armbian_rsyncd,group"]="User"
 	["module_armbian_rsyncd,port"]="873"
 	["module_armbian_rsyncd,arch"]=""
 )

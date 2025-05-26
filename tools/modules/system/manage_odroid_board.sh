@@ -1,11 +1,9 @@
 module_options+=(
 	["manage_odroid_board,author"]="@GeoffClements"
-	["manage_odroid_board,ref_link"]=""
-	["manage_odroid_board,feature"]="Odroid board"
+	["manage_odroid_board,feature"]="manage_odroid_board"
 	["manage_odroid_board,desc"]="Select optimised Odroid board configuration"
 	["manage_odroid_board,example"]="select"
-	["manage_odroid_board,status"]="Stable"
-	["manage_odroid_board,arch"]="armhf"
+	["manage_odroid_board,group"]="User"
 )
 #
 # @description Select optimised board configuration

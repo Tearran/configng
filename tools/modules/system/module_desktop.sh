@@ -3,7 +3,7 @@ module_options+=(
 	["module_desktop,feature"]="module_desktop"
 	["module_desktop,desc"]="XFCE desktop packages"
 	["module_desktop,example"]="install remove disable enable status auto manual login help"
-	["module_desktop,status"]="Active"
+	["module_desktop,group"]="User"
 	["module_desktop,arch"]="x86-64"
 )
 #

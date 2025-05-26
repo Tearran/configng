@@ -6,7 +6,7 @@ module_options+=(
 	["module_overlayfs,desc"]="Set Armbian root filesystem to read only"
 	["module_overlayfs,status"]="Active"
 	["module_overlayfs,doc_link"]="https://docs.kernel.org/filesystems/overlayfs.html"
-	["module_overlayfs,group"]="System"
+	["module_overlayfs,group"]="User"
 	["module_overlayfs,port"]=""
 	["module_overlayfs,arch"]=""
 )

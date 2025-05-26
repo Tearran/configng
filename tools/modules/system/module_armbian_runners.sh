@@ -4,7 +4,7 @@ module_options+=(
 	["module_armbian_runners,desc"]="Manage self hosted runners"
 	["module_armbian_runners,example"]="install remove remove_online purge status help"
 	["module_armbian_runners,port"]=""
-	["module_armbian_runners,status"]="Active"
+	["module_armbian_runners,group"]="User"
 	["module_armbian_runners,arch"]=""
 )
 

@@ -4,7 +4,7 @@ module_options+=(
 	["module_desktop_packages,desc"]="Generate desktop packages list"
 	["module_desktop_packages,de"]="budgie cinnamon deepin enlightenment gnome i3-wm kde-plasma mate xfce xmonad"
 	["module_desktop_packages,release"]="bookworm noble plucky"
-	["module_desktop_packages,status"]="Active"
+	["module_desktop_packages,group"]="User"
 	["module_desktop_packages,arch"]="x86-64"
 )
 #

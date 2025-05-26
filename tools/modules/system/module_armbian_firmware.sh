@@ -3,7 +3,7 @@ module_options+=(
 	["module_armbian_firmware,feature"]="module_armbian_firmware"
 	["module_armbian_firmware,example"]="select install show hold unhold repository headers help"
 	["module_armbian_firmware,desc"]="Module for Armbian firmware manipulating."
-	["module_armbian_firmware,status"]="review"
+	["module_armbian_firmware,group"]="User"
 )
 
 function module_armbian_firmware() {

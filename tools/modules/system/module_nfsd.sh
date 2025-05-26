@@ -4,7 +4,7 @@ module_options+=(
 	["module_nfsd,desc"]="Install nfsd server"
 	["module_nfsd,example"]="install remove manage add status clients servers help"
 	["module_nfsd,port"]=""
-	["module_nfsd,status"]="Active"
+	["module_nfsd,group"]="User"
 	["module_nfsd,arch"]=""
 )
 #
