@@ -16,10 +16,10 @@ function interface_colors() {
 
 	if [ "$DIALOG" = "whiptail" ]; then
 		checkpoint debug "$DIALOG color code: $color_code" ;
-		_newt_colors "$color_code" || die "unknown error"
+		_newt_colors "$color_code" || die die "Failed to set NEWT for code '$color_code'"
 	elif [ "$DIALOG" = "dialog" ]; then
 		checkpoint debug "$DIALOG color code: $color_code" ;
-		_term_colors "$color_code"  || die "unknown error"
+		_term_colors "$color_code"  || die "Failed to set NCUSES terminal for code '$color_code'"
 	else
 		die "Invalid dialog type"
 	fi
