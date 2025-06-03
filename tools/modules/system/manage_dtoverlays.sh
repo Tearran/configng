@@ -6,7 +6,6 @@ module_options+=(
 ["manage_dtoverlays,feature"]="manage_dtoverlays"
 ["manage_dtoverlays,desc"]="Enable/disable device tree overlays"
 ["manage_dtoverlays,options"]=""
-["manage_dtoverlays,status"]="Active"
 ["manage_dtoverlays,group"]="Kernel"
 ["manage_dtoverlays,port"]=""
 ["manage_dtoverlays,arch"]="aarch64 armhf"

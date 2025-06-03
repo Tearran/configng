@@ -4,7 +4,6 @@ software_options+=(
 	["module_owncloud,feature"]="module_owncloud"
 	["module_owncloud,desc"]="Install owncloud container"
 	["module_owncloud,options"]="install remove purge status help"
-	["module_owncloud,status"]="Active"
 	["module_owncloud,about"]=""
 	["module_owncloud,doc_link"]="https://doc.owncloud.com/"
 	["module_owncloud,author"]="@armbian"

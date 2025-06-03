@@ -32,7 +32,6 @@ framework_options+=(
 	["options_list,feature"]="options_list"
 	["options_list,options"]="<options_array_name>"
 	["options_list,desc"]="Displays a usage/help message listing all features in the specified options array, including their names, descriptions, and usage."
-	["options_list,status"]="stable"
 	["options_list,doc_link"]="https://github.com/armbian/configng#options_list"
 	["options_list,group"]="Interface"
 	["options_list,arch"]="all"

@@ -2,7 +2,6 @@ module_options+=(
 	["change_system_hostname,feature"]="change_system_hostname"
 	["change_system_hostname,desc"]="Change hostname"
 	["change_system_hostname,options"]=""
-	["change_system_hostname,status"]=""
 	["change_system_hostname,about"]=""
 	["change_system_hostname,doc_link"]="Missing"
 	["change_system_hostname,author"]="@igorpecovnik"

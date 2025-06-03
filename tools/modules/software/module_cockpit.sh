@@ -4,7 +4,6 @@ software_options+=(
 	["module_cockpit,feature"]="module_cockpit"
 	["module_cockpit,desc"]="Cockpit setup and service setting."
 	["module_cockpit,options"]="help install remove start stop enable disable status check"
-	["module_cockpit,status"]="Stable"
 	["module_cockpit,about"]=""
 	["module_cockpit,doc_link"]="https://cockpit-project.org/guide/latest/"
 	["module_cockpit,author"]="@tearran"

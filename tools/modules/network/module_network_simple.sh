@@ -4,7 +4,6 @@ module_options+=(
 	["module_simple_network,feature"]="module_simple_network"
 	["module_simple_network,options"]="simple advanced type stations select store restore dhcp static help"
 	["module_simple_network,desc"]="Netplan wrapper"
-	["module_simple_network,status"]="review"
 	["module_simple_network,doc_link"]=""
 	["module_simple_network,group"]="Network"
 	["module_simple_network,port"]=""

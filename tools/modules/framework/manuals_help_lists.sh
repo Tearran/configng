@@ -26,7 +26,6 @@ function generate_json() {
 		example_key="${feature},options"
 		author_key="${feature},author"
 		ref_key="${feature},ref_link"
-		status_key="${feature},status"
 		doc_key="${feature},doc_link"
 		author="${framework_options[$author_key]}"
 		ref_link="${framework_options[$ref_key]}"

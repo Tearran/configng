@@ -103,7 +103,6 @@ function markdown_framework_options() {
 		IFS=',' read -r function_name type <<< "$key"
 		# If the type is 'feature', append the option to the help message
 		if [[ "$type" == "feature" ]]; then
-			status=${framework_options["$function_name,status"]}
 			ref_link=${framework_options["$function_name,ref_link"]}
 			doc_link=${framework_options["$function_name,doc_link"]}
 			ref_link_md=$([[ -n "$ref_link" ]] && echo "[Source]($ref_link)" || echo "X")

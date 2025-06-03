@@ -6,7 +6,6 @@ module_options+=(
 	["network_config,desc"]="Netplan wrapper"
 	["network_config,group"]="Network"
 	["network_config,doc_link"]=""
-	["network_config,status"]="review"
 )
 #
 # Function to select network adapter

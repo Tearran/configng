@@ -4,7 +4,6 @@ software_options+=(
 	["module_openssh-server,feature"]="module_openssh-server"
 	["module_openssh-server,options"]="install remove purge status help"
 	["module_openssh-server,desc"]="Install openssh-server container"
-	["module_openssh-server,status"]="Active"
 	["module_openssh-server,doc_link"]="https://docs.linuxserver.io/images/docker-openssh-server/#server-mode"
 	["module_openssh-server,group"]="Networking"
 	["module_openssh-server,port"]="2222"

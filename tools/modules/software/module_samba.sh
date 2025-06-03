@@ -4,7 +4,6 @@ software_options+=(
 	["module_samba,feature"]="module_samba"
 	["module_samba,desc"]="Samba setup and service setting."
 	["module_samba,options"]="help install remove start stop enable disable configure default status"
-	["module_samba,status"]="Active"
 	["module_samba,about"]=""
 	["module_samba,doc_link"]="https://www.samba.org/samba/docs/"
 	["module_samba,author"]="@Tearran"

@@ -4,7 +4,6 @@ module_options+=(
 	["module_overlayfs,feature"]="module_overlayfs"
 	["module_overlayfs,options"]="install remove status help"
 	["module_overlayfs,desc"]="Set Armbian root filesystem to read only"
-	["module_overlayfs,status"]="Active"
 	["module_overlayfs,doc_link"]="https://docs.kernel.org/filesystems/overlayfs.html"
 	["module_overlayfs,group"]="User"
 	["module_overlayfs,port"]=""

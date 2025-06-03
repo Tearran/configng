@@ -12,7 +12,6 @@ module_helpers+=(
 	["_checklist_proftpd,feature"]="_checklist_proftpd"
 	["_checklist_proftpd,options"]=""
 	["_checklist_proftpd,desc"]="Dynamic ProFTPD package management with install/remove toggle."
-	["_checklist_proftpd,status"]="Active"
 	["_checklist_proftpd,group"]="Networking"
 	["_checklist_proftpd,arch"]="x86-64 arm64 armhf"
 )
