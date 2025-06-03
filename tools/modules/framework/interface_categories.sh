@@ -98,7 +98,6 @@ help
 	}
 
 function interface_categories() {
-	
 	# Ordered list of keys
 	local keys
 	IFS=' ' read -r -a keys <<< "${module_options["interface_categories,example"]}"
