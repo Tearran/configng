@@ -4,7 +4,7 @@ framework_options+=(
 	["interface_colors,ref_link"]=""
 	["interface_colors,feature"]="interface_colors"
 	["interface_colors,desc"]="Change the background color of the User Interface box"
-	["interface_colors,options"]="0 1 2 3 4 5 6 7"
+	["interface_colors,options"]="0 1 2 3 4 5 6 7 8 9"
 	["interface_colors,doc_link"]=""
 	["interface_colors,group"]="Interface"
 )
