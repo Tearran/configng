@@ -91,7 +91,7 @@ _tui_software() {
 _tui_about() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
 	echo "Armbian Config: V3 Framework"
-	echo 
+	echo
 	echo "help"
 
 	}
