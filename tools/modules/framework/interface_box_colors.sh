@@ -16,7 +16,7 @@ function interface_colors() {
 
 	if [ "$DIALOG" = "whiptail" ]; then
 		checkpoint debug "$DIALOG color code: $color_code" ;
-		_newt_colors "$color_code" || die "unknown error"	
+		_newt_colors "$color_code" || die "unknown error"
 	elif [ "$DIALOG" = "dialog" ]; then
 		checkpoint debug "$DIALOG color code: $color_code" ;
 		_term_colors "$color_code"  || die "unknown error"
