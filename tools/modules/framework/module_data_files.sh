@@ -360,7 +360,8 @@ function _gen_unit_test_files(){
 	IFS=' ' read -r -a commands <<< "${module_options["$feature,example"]}"
 
 	if [[ $parent == "software" ]]; then
-		if [[ " ${commands[@]} " =~ " help " && " ${commands[@]} " =~ " status " ]]; then
+		if printf '%s\n' "${commands[@]}" | grep -qx "help" && printf '%s\n' "${commands[@]}" | grep -qx "status"; then
+		#if [[ " ${commands[@]} " =~ " help " && " ${commands[@]} " =~ " status " ]]; then
 		{
 		echo "ENABLED=true"
 		echo "RELEASE=\"$arch\""
