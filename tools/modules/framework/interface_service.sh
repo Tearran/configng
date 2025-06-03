@@ -8,7 +8,7 @@ framework_options+=(
 	["srv_active,author"]="@dimitry-ishenko"
 	["srv_active,desc"]="Check if service is active"
 	["srv_active,example"]="<service_name.service>"
-	["srv_active,feature"]="srv_active"
+	["srv_active,feature"]=""
 	["srv_active,group"]="Interface"
 )
 
