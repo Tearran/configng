@@ -23,7 +23,7 @@ _tui_system() {
 	)
 
 	local -A description=(
-		["Kernal"]="Alternative kernels, headers, rolling updates, overlays"  
+		["Kernal"]="Alternative kernels, headers, rolling updates, overlays"
 		["Storage"]="Install to internal media, ZFS, NFS, read-only rootfs"
 		["Access"]="Manage SSH daemon options, enable 2FA"
 		["User"]="Change shell, adjust MOTD"
@@ -38,7 +38,6 @@ _tui_system() {
 
 _tui_network() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
-	
 }
 
 _tui_localisation() {
@@ -49,9 +48,9 @@ _tui_software() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
 
 	local keys=(
-		"WebHosting" 
-		"HomeAutomation" 
-		"DNS" 
+		"WebHosting"
+		"HomeAutomation"
+		"DNS"
 		"Music"
 		"Desktops"
 		"Downloaders"
@@ -98,18 +97,18 @@ help
 
 	}
 
-function  interface_categories() {
+function interface_categories() {
     # Ordered list of keys
-    local keys
+	local keys
 	IFS=' ' read -r -a keys <<< "${module_options["interface_categories,example"]}"
 
-    local -A description=(
-        ["System"]="System wide and admin settings (\$(uname -m))"
-        ["Network"]="Fixed and wireless network settings (\$DEFAULT_ADAPTER)"
-        ["Localisation"]="Localisation (\$LANG)"
-        ["Software"]="Run/Install 3rd party applications (\$(see_current_apt))"
-        ["About"]="About this tool"
-    )
+	local -A description=(
+		["System"]="System wide and admin settings (\$(uname -m))"
+		["Network"]="Fixed and wireless network settings (\$DEFAULT_ADAPTER)"
+		["Localisation"]="Localisation (\$LANG)"
+		["Software"]="Run/Install 3rd party applications (\$(see_current_apt))"
+		["About"]="About this tool"
+	)
 
 	case "$1" in
 		"${keys[0]}") interface_menu _tui_system ;;
@@ -118,14 +117,14 @@ function  interface_categories() {
 		"${keys[3]}") interface_menu _tui_software	;;
 		"${keys[4]}") _tui_about | interface_message ;;
 		"help")
-        echo -e "\nUsage: ${module_options["interface_categories,feature"]} <command>"
-        echo -e "Options:  ${module_options["interface_categories,example"]}"
-        echo "Available Options:"
-        for key in "${keys[@]}"; do
-            eval "desc=\"${description[$key]}\""
-            echo -e "\t$key\t- $desc"
-        done
-        echo
+		echo -e "\nUsage: ${module_options["interface_categories,feature"]} <command>"
+		echo -e "Options:  ${module_options["interface_categories,example"]}"
+		echo "Available Options:"
+		for key in "${keys[@]}"; do
+			eval "desc=\"${description[$key]}\""
+			echo -e "\t$key\t- $desc"
+		done
+		echo
 		;;
 		*) ${module_options["interface_categories,feature"]} ${keys[2]}	;;
 	esac
