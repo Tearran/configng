@@ -11,7 +11,7 @@ framework_options+=(
 # Function to display an infobox with a message
 #
 function interface_infobox() {
-	export TERM=ansi
+	#export TERM=ansi
 	local input
 	local BACKTITLE="$BACKTITLE"
 	local -a buffer # Declare buffer as an array
