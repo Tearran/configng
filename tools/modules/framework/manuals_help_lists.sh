@@ -29,7 +29,6 @@ function generate_json() {
 		doc_key="${feature},doc_link"
 		author="${framework_options[$author_key]}"
 		ref_link="${framework_options[$ref_key]}"
-		status="${framework_options[$status_key]}"
 		doc_link="${framework_options[$doc_key]}"
 		desc="${framework_options[$desc_key]}"
 		example="${framework_options[$example_key]}"
@@ -39,7 +38,6 @@ function generate_json() {
 		echo "    \"src_reference\": \"$ref_link\","
 		echo "    \"description\": \"$desc\","
 		echo "    \"command\": [ \"$example\" ]",
-		echo "    \"status\": \"$status\","
 		echo "    \"doc_link\": \"$doc_link\""
 		if [ $index -ne $((${#features[@]} - 1)) ]; then
 			echo "  },"
