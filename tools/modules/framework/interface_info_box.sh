@@ -34,3 +34,4 @@ function interface_infobox() {
 	fi
 	echo -ne '\033[3J' # clear the screen
 }
+

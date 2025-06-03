@@ -6,7 +6,7 @@ module_options+=(
 	["module_softy,group"]="Management"
 )
 
-module_options+=(
+module_helpers+=(
 	["_checklist_proftpd,author"]="@Tearran"
 	["_checklist_proftpd,maintainer"]="@Tearran"
 	["_checklist_proftpd,feature"]="_checklist_proftpd"

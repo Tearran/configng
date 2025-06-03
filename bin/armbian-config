@@ -13,7 +13,7 @@ declare -A system_options
 declare -A network_options
 declare -A software_options
 declare -A module_options
-declare -A module_helper
+declare -A module_helpers
 
 # Load the initialize modules
 source "$LIB_DIR/config.initialize.sh"
@@ -45,7 +45,7 @@ checkpoint debug "Loaded Network modules..."
 source "$LIB_DIR/config.software.sh"
 checkpoint debug "Loaded Software modules..."
 
-merge_arrays_into_module_options framework_options system_options software_options network_options module_helper
+merge_arrays_into_module_options framework_options system_options software_options network_options module_helpers
 
 
 case "$1" in
@@ -55,7 +55,7 @@ case "$1" in
             "system"|"-s") options_list system_options ;;
             "network"|"-n") options_list network_options ;;
             "software"|"-p") options_list software_options ;;
-            "helper") options_list helper_options ;;
+            "helpers") options_list module_helpers ;;
             *)
                 if [[ -n "$2" ]]; then
                     fn=$(sanitize "$2") || die
