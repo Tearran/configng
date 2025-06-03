@@ -1,4 +1,4 @@
-module_options+=(
+framework_options+=(
 	["generate_json,author"]="@Tearran"
 	["generate_json,ref_link"]=""
 	["generate_json,feature"]="generate_json"
@@ -14,9 +14,9 @@ module_options+=(
 function generate_json() {
 	echo -e "{\n\"configng-helpers\" : ["
 	features=()
-	for key in "${!module_options[@]}"; do
+	for key in "${!framework_options[@]}"; do
 		if [[ $key == *",feature" ]]; then
-			features+=("${module_options[$key]}")
+			features+=("${framework_options[$key]}")
 		fi
 	done
 
@@ -28,12 +28,12 @@ function generate_json() {
 		ref_key="${feature},ref_link"
 		status_key="${feature},status"
 		doc_key="${feature},doc_link"
-		author="${module_options[$author_key]}"
-		ref_link="${module_options[$ref_key]}"
-		status="${module_options[$status_key]}"
-		doc_link="${module_options[$doc_key]}"
-		desc="${module_options[$desc_key]}"
-		example="${module_options[$example_key]}"
+		author="${framework_options[$author_key]}"
+		ref_link="${framework_options[$ref_key]}"
+		status="${framework_options[$status_key]}"
+		doc_link="${framework_options[$doc_key]}"
+		desc="${framework_options[$desc_key]}"
+		example="${framework_options[$example_key]}"
 		echo "  {"
 		echo "    \"id\": \"$feature\","
 		echo "    \"Author\": \"$author\","

@@ -1,5 +1,5 @@
 
-module_options+=(
+framework_options+=(
 	["interface_checklist,author"]="@Tearran"
 	["interface_checklist,maintainer"]="@Tearran"
 	["interface_checklist,feature"]="interface_checklist"
@@ -61,7 +61,7 @@ function interface_checklist() {
 	echo "$selected_items"
 }
 
-module_options+=(
+framework_options+=(
 	["process_package_selection,author"]="@Tearran"
 	["process_package_selection,maintainer"]="@Tearran"
 	["process_package_selection,feature"]="process_package_selection"

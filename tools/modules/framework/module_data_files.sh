@@ -1,5 +1,5 @@
 
-module_options+=(
+framework_options+=(
 	["module_data_files,maintainer"]="@Tearran"
 	["module_data_files,feature"]="module_data_files"
 	["module_data_files,desc"]="Example module unattended interface."
@@ -14,18 +14,18 @@ function module_data_files() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_data_files,example"]}"
+	IFS=' ' read -r -a commands <<< "${framework_options["module_data_files,example"]}"
 
 	# Handle the command passed to the function
 	case "$1" in
 		"${commands[0]}")
-		echo -e "\nUsage: ${module_options["module_data_files,feature"]} <command>"
-		echo -e "Commands:  ${module_options["module_data_files,example"]}"
+		echo -e "\nUsage: ${framework_options["module_data_files,feature"]} <command>"
+		echo -e "Commands:  ${framework_options["module_data_files,example"]}"
 		echo "Available commands:"
-		echo -e "\tarray\t- Generate module_options files from production module_options array."
-		echo -e "\tjson\t- Generate JSON object from module_options"
-		echo -e "\tdbt\t- Generate DBT from module_options"
-		echo -e "\ttest\t- Generate unit-test CONF from module_options."
+		echo -e "\tarray\t- Generate framework_options files from production framework_options array."
+		echo -e "\tjson\t- Generate JSON object from framework_options"
+		echo -e "\tdbt\t- Generate DBT from framework_options"
+		echo -e "\ttest\t- Generate unit-test CONF from framework_options."
 		echo -e "\tall\t- Generate All above."
 		echo
 		;;
@@ -48,13 +48,13 @@ function module_data_files() {
 		generate_data_files "_gen_unit_test_files"
 		;;
 		*)
-		echo "${module_options["module_data_files,example"]}"
+		echo "${framework_options["module_data_files,example"]}"
 		;;
 	esac
 }
 
 
-module_options+=(
+framework_options+=(
 	["generate_data_files,maintainer"]="@Tearran"
 	["generate_data_files,feature"]="generate_data_files"
 	["generate_data_files,example"]=""
@@ -72,9 +72,9 @@ function generate_data_files() {
 	local g=0
 
 	features=()
-	for key in "${!module_options[@]}"; do
+	for key in "${!framework_options[@]}"; do
 		if [[ $key == *",feature" ]]; then
-			features+=("${module_options[$key]}")
+			features+=("${framework_options[$key]}")
 		fi
 	done
 
@@ -98,20 +98,20 @@ function generate_data_files() {
 		header_key="${feature},header"
 		footer_key="${feature},footer"
 		# Get array info
-		about="${module_options[$about_key]}"
-		author="${module_options[$author_key]}"
-		ref_link="${module_options[$ref_key]}"
-		status="${module_options[$status_key]}"
-		doc_link="${module_options[$doc_key]}"
-		desc="${module_options[$desc_key]}"
-		example="${module_options[$example_key]}"
-		group="${module_options[$group_key]}"
-		commands="${module_options[$commands_key]}"
-		port="${module_options[$port_key]}"
-		arch="${module_options[$arch_key]}"
-		maintainer="${module_options[$maintainer_key]}"
-		header="${module_options[$header_key]}"
-		footer="${module_options[$footer_key]}"
+		about="${framework_options[$about_key]}"
+		author="${framework_options[$author_key]}"
+		ref_link="${framework_options[$ref_key]}"
+		status="${framework_options[$status_key]}"
+		doc_link="${framework_options[$doc_key]}"
+		desc="${framework_options[$desc_key]}"
+		example="${framework_options[$example_key]}"
+		group="${framework_options[$group_key]}"
+		commands="${framework_options[$commands_key]}"
+		port="${framework_options[$port_key]}"
+		arch="${framework_options[$arch_key]}"
+		maintainer="${framework_options[$maintainer_key]}"
+		header="${framework_options[$header_key]}"
+		footer="${framework_options[$footer_key]}"
 		if [[ -n "$group" ]]; then
 			g=$((g + 10)) ;
 			group_prefix=$(echo "${group:0:3}" | tr '[:lower:]' '[:upper:]') # Extract first 3 letters and convert to uppercase
@@ -173,13 +173,13 @@ function generate_data_files() {
 # adds missing keys to module_option array
 _gen_data_array(){
 
-	module_options_file="$tools_dir/dev/array/${parent}/${feature}_array.sh"
+	framework_options_file="$tools_dir/dev/array/${parent}/${feature}_array.sh"
 
 	# Create the parent directory if it doesn't exist
-	mkdir -p "$(dirname "$module_options_file")"
+	mkdir -p "$(dirname "$framework_options_file")"
 
-cat << EOF > "$module_options_file"
-module_options+=(
+cat << EOF > "$framework_options_file"
+framework_options+=(
 	["$feature,id"]="$id"
 	["$feature,maintainer"]="$maintainer"
 	["$feature,feature"]="$feature"
@@ -229,7 +229,7 @@ _gen_data_json(){
 		}' > "$json_objects"
 }
 
-module_options+=(
+framework_options+=(
 	["_gen_data_dbt,maintainer"]="@Tearran"
 	["_gen_data_dbt,feature"]="_gen_data_dbt"
 	["_gen_data_dbt,example"]=""
@@ -299,7 +299,7 @@ _convert_dbt_array(){
 	fi
 
 	# Start writing the output file
-	echo "module_options+=(" > "$output_file"
+	echo "framework_options+=(" > "$output_file"
 
 	# Process key-value pairs
 	awk -v module="$module_name" -F ' *= *' '
@@ -359,7 +359,7 @@ function _gen_unit_test_files(){
 	mkdir -p "$(dirname "$conf_file")"
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["$feature,example"]}"
+	IFS=' ' read -r -a commands <<< "${framework_options["$feature,example"]}"
 
 	if [[ $parent == "software" ]]; then
 		if printf '%s\n' "${commands[@]}" | grep -qx "help" && printf '%s\n' "${commands[@]}" | grep -qx "status"; then

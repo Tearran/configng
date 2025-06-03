@@ -1,5 +1,5 @@
 
-module_options+=(
+framework_options+=(
 ["support_armbian_configng,author"]="@igorpecovnik"
 ["support_armbian_configng,feature"]="support_armbian_configng"
 ["support_armbian_configng,desc"]="Show general information about this tool"

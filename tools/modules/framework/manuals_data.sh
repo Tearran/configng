@@ -1,24 +1,24 @@
-module_options+=(
-	["merge_arrays_into_module_options,author"]="@tearran"
-	["merge_arrays_into_module_options,maintainer"]="@igorpecovnik"
-	["merge_arrays_into_module_options,feature"]="merge_arrays_into_module_options"
-	["merge_arrays_into_module_options,example"]="<options_name>"
-	["merge_arrays_into_module_options,desc"]="Merges compatible associative arrays into module_options for unified access."
-	["merge_arrays_into_module_options,doc_link"]=""
-	["merge_arrays_into_module_options,group"]="Interface"
-	["merge_arrays_into_module_options,arch"]=""
+framework_options+=(
+	["merge_arrays_into_framework_options,author"]="@tearran"
+	["merge_arrays_into_framework_options,maintainer"]="@igorpecovnik"
+	["merge_arrays_into_framework_options,feature"]="merge_arrays_into_framework_options"
+	["merge_arrays_into_framework_options,example"]="<options_name>"
+	["merge_arrays_into_framework_options,desc"]="Merges compatible associative arrays into framework_options for unified access."
+	["merge_arrays_into_framework_options,doc_link"]=""
+	["merge_arrays_into_framework_options,group"]="Interface"
+	["merge_arrays_into_framework_options,arch"]=""
 )
 
 
-merge_arrays_into_module_options() {
+merge_arrays_into_framework_options() {
 	for array_name in "$@"; do
 		eval "for key in \"\${!$array_name[@]}\"; do
-			module_options[\"\$key\"]=\"\${$array_name[\"\$key\"]}\"
+			framework_options[\"\$key\"]=\"\${$array_name[\"\$key\"]}\"
 		done"
 	done
 }
 
-module_options+=(
+framework_options+=(
 	["options_list,author"]="@tearran"
 	["options_list,maintainer"]="@igorpecovnik"
 	["options_list,feature"]="options_list"
@@ -50,4 +50,4 @@ function options_list() {
 	done
 	echo -e "$mod_message"
 }
-# options_list module_options
+# options_list framework_options

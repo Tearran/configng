@@ -1,5 +1,5 @@
 
-module_options+=(
+framework_options+=(
 	["interface_message,author"]="@Tearran"
 	["interface_message,ref_link"]=""
 	["interface_message,feature"]="interface_message"

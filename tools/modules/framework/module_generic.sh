@@ -1,6 +1,6 @@
 # This module is used only for generating documentation. Where we use command from the menu directly, there is no module behind.
 # We assume that when calling command directly, its multiarch
-module_options+=(
+framework_options+=(
 	["module_generic,author"]="@armbian"
 	["module_generic,maintainer"]="@armbian"
 	["module_generic,group"]="Message"

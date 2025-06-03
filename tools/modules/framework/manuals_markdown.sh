@@ -1,5 +1,5 @@
 
-module_options+=(
+framework_options+=(
 	["markdown_manpage,author"]="@Tearran"
 	["markdown_manpage,ref_link"]=""
 	["markdown_manpage,feature"]="markdown_manpage"
@@ -55,7 +55,7 @@ armbian-config [--help | -h | help] | [module_name]
 \`\`\`
 - List of all available features
 \`\`\`bash
-$(options_list module_options)
+$(options_list framework_options)
 \`\`\`
 
 
@@ -83,40 +83,40 @@ EOF_DOC
 }
 
 
-module_options+=(
-	["markdown_module_options,author"]="@Tearran"
-	["markdown_module_options,ref_link"]=""
-	["markdown_module_options,feature"]="markdown_module_options"
-	["markdown_module_options,desc"]="Markdown table of all module_options"
-	["markdown_module_options,example"]=""
-	["markdown_module_options,group"]="Docs"
+framework_options+=(
+	["markdown_framework_options,author"]="@Tearran"
+	["markdown_framework_options,ref_link"]=""
+	["markdown_framework_options,feature"]="markdown_framework_options"
+	["markdown_framework_options,desc"]="Markdown table of all framework_options"
+	["markdown_framework_options,example"]=""
+	["markdown_framework_options,group"]="Docs"
 )
 #
-# This function is used to generate a markdown table from the module_options array
+# This function is used to generate a markdown table from the framework_options array
 #
-function markdown_module_options() {
+function markdown_framework_options() {
 	mod_message="| Description | Options | Credit |\n"
 	mod_message+="|:----------- | ------- |:------:|\n"
 	# Iterate over the options
-	for key in "${!module_options[@]}"; do
+	for key in "${!framework_options[@]}"; do
 		# Split the key into function_name and type
 		IFS=',' read -r function_name type <<< "$key"
 		# If the type is 'feature', append the option to the help message
 		if [[ "$type" == "feature" ]]; then
-			status=${module_options["$function_name,status"]}
-			ref_link=${module_options["$function_name,ref_link"]}
-			doc_link=${module_options["$function_name,doc_link"]}
+			status=${framework_options["$function_name,status"]}
+			ref_link=${framework_options["$function_name,ref_link"]}
+			doc_link=${framework_options["$function_name,doc_link"]}
 			ref_link_md=$([[ -n "$ref_link" ]] && echo "[Source]($ref_link)" || echo "X")
 			doc_link_md=$([[ -n "$doc_link" ]] && echo "[Document]($doc_link)" || echo "X")
 			status_md=$([[ -z "$ref_link" ]] && echo "source link Needed" || ([[ (-n "$ref_link" && -n "$doc_link") ]] && echo "Review" || echo "$status"))
-			mod_message+="| ${module_options["$function_name,desc"]} | ${module_options["$function_name,example"]} | ${module_options["$function_name,author"]} \n"
+			mod_message+="| ${framework_options["$function_name,desc"]} | ${framework_options["$function_name,example"]} | ${framework_options["$function_name,author"]} \n"
 		fi
 	done
 
 	echo -e "$mod_message"
 }
 
-module_options+=(
+framework_options+=(
 	["docs_markdown_manpage,author"]="@Tearran"
 	["docs_markdown_manpage,ref_link"]=""
 	["docs_markdown_manpage,feature"]="docs_markdown_manpage"
