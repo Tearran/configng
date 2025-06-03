@@ -98,7 +98,8 @@ help
 	}
 
 function interface_categories() {
-    # Ordered list of keys
+	
+	# Ordered list of keys
 	local keys
 	IFS=' ' read -r -a keys <<< "${module_options["interface_categories,example"]}"
 
@@ -113,7 +114,7 @@ function interface_categories() {
 	case "$1" in
 		"${keys[0]}") interface_menu _tui_system ;;
 		"${keys[1]}") _tui_network ;;
-        "${keys[2]}") _tui_localisation	;;
+		"${keys[2]}") _tui_localisation	;;
 		"${keys[3]}") interface_menu _tui_software	;;
 		"${keys[4]}") _tui_about | interface_message ;;
 		"help")
