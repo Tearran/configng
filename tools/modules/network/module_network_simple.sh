@@ -2,7 +2,7 @@ module_options+=(
 	["module_simple_network,author"]="@igorpecovnik"
 	["module_simple_network,maintainer"]="@igorpecovnik"
 	["module_simple_network,feature"]="module_simple_network"
-	["module_simple_network,options"]="simple advanced type stations select store restore dhcp static help"
+	["module_simple_network,options"]="help simple advanced type stations select store restore dhcp static"
 	["module_simple_network,desc"]="Netplan wrapper"
 	["module_simple_network,doc_link"]=""
 	["module_simple_network,group"]="Network"
@@ -27,6 +27,21 @@ function module_simple_network() {
 	case "$1" in
 		# simple
 		"${commands[0]}")
+			echo -e "\nUsage: ${module_options["module_simple_network,feature"]} <command>"
+			echo -e "Commands:  ${module_options["module_simple_network,options"]}"
+			echo "Available commands:"
+			echo -e "\tsimple\t\t- Select simple $title setup."
+			echo -e "\tadvanced\t- Select advanced $title setup."
+			echo -e "\tstations\t- Display wifi stations."
+			echo -e "\tselect\t\t- Select adaptor."
+			echo -e "\tstore\t\t- store NetPlan configs."
+			echo -e "\trestore\t\t- Restore NetPlan configs."
+			echo -e "\tdhcp\t\t- Set DHCP for adapter."
+			echo -e "\tstatic\t\t- Set static for adapter."
+			echo -e "\thelp\t\t- Display this."
+			echo
+		;;
+		"${commands[1]}")
 			# store current configs to temporal folder
 			${module_options["module_simple_network,feature"]} ${commands[5]} "$2"
 			# select adapter
@@ -45,13 +60,13 @@ function module_simple_network() {
 				fi
 			fi
 		;;
-		"${commands[1]}")
+		"${commands[2]}")
 			# advanced with bridge TBD
 			${module_options["module_simple_network,feature"]} ${commands[0]} "advanced"
 			echo "Advanced mode not ported to this script"
 			exit 1
 		;;
-		"${commands[2]}")
+		"${commands[3]}")
 			# static or dhcp
 			local list=()
 			list=("dhcp" "Auto IP assigning" "static" "Set IP manually")
@@ -90,7 +105,7 @@ function module_simple_network() {
 				fi
 			fi
 		;;
-		"${commands[3]}")
+		"${commands[4]}")
 
 			# init arrays
 			list=()
@@ -218,7 +233,7 @@ function module_simple_network() {
 			done
 		fi
 		;;
-		"${commands[4]}")
+		"${commands[5]}")
 			# list adapters
 			local list=()
 			for f in /sys/class/net/*; do
@@ -242,20 +257,20 @@ function module_simple_network() {
 				fi
 			fi
 		;;
-		"${commands[5]}")
+		"${commands[6]}")
 			# store current NetPlan configs
 			restore_netplan_config_folder=$(mktemp -d /tmp/XXXXXXXXXX)
 			trap '{ rm -rf -- "$restore_netplan_config"; }' EXIT
 			rsync --quiet /etc/netplan/* ${restore_netplan_config_folder}/ 2>/dev/null
 		;;
-		"${commands[6]}")
+		"${commands[7]}")
 			# restore current NetPlan configs
 			if [[ -n ${restore_netplan_config_folder} ]]; then
 				rm -f /etc/netplan/*
 				rsync -ar ${restore_netplan_config_folder}/. /etc/netplan
 			fi
 		;;
-		"${commands[7]}")
+		"${commands[8]}")
 			# drop current settings
 			${module_options["module_simple_network,feature"]} ${commands[9]} "${adapter}"
 			# dhcp
@@ -273,7 +288,7 @@ function module_simple_network() {
 			netplan set --origin-hint ${yamlfile} $3.$adapter.macaddress=''$mac_address''
 			netplan apply
 		;;
-		"${commands[8]}")
+		"${commands[9]}")
 			# drop current settings
 			${module_options["module_simple_network,feature"]} ${commands[9]} "${adapter}"
 			# static
@@ -294,7 +309,7 @@ function module_simple_network() {
 			netplan set --origin-hint ${yamlfile} $3.$adapter.nameservers.addresses='['$nameservers']'
 			netplan apply
 		;;
-		"${commands[9]}")
+		"${commands[-1]}")
 			# remove adapter from yaml file
 			sed -i -e 'H;x;/^\(  *\)\n\1/{s/\n.*//;x;d;}' \
 			-e 's/.*//;x;/'${2}'/{s/^\( *\).*/ \1/;x;d;}' /etc/netplan/${yamlfile}.yaml
@@ -320,23 +335,9 @@ function module_simple_network() {
 			mv /etc/netplan/${yamlfile}.yaml.tmp /etc/netplan/${yamlfile}.yaml
 			chmod 600 /etc/netplan/${yamlfile}.yaml
 		;;
-		"${commands[20]}")
-			echo -e "\nUsage: ${module_options["module_simple_network,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_simple_network,options"]}"
-			echo "Available commands:"
-			echo -e "\tsimple\t\t- Select simple $title setup."
-			echo -e "\tadvanced\t- Select advanced $title setup."
-			echo -e "\tstations\t- Display wifi stations."
-			echo -e "\tselect\t\t- Select adaptor."
-			echo -e "\tstore\t\t- store NetPlan configs."
-			echo -e "\trestore\t\t- Restore NetPlan configs."
-			echo -e "\tdhcp\t\t- Set DHCP for adapter."
-			echo -e "\tstatic\t\t- Set static for adapter."
-			echo -e "\thelp\t\t- Display this."
-			echo
-		;;
+
 		*)
-			${module_options["module_simple_network,feature"]} ${commands[20]}
+			${module_options["module_simple_network,feature"]} ${commands[-1]}
 		;;
 	esac
 
