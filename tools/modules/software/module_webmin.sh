@@ -3,7 +3,7 @@ software_options+=(
 	["module_webmin,maintainer"]="@Tearran"
 	["module_webmin,feature"]="module_webmin"
 	["module_webmin,desc"]="Webmin setup and service setting."
-	["module_webmin,example"]="help install remove start stop enable disable status check"
+	["module_webmin,options"]="help install remove start stop enable disable status check"
 	["module_webmin,status"]="Active"
 	["module_webmin,about"]=""
 	["module_webmin,doc_link"]="https://webmin.com/docs/"
@@ -20,13 +20,13 @@ function module_webmin() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${software_options["module_webmin,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["module_webmin,options"]}"
 
 	case "$1" in
 		"${commands[0]}")
 			## help/menu options for the module
 			echo -e "\nUsage: ${software_options["module_webmin,feature"]} <command>"
-			echo -e "Commands: ${software_options["module_webmin,example"]}"
+			echo -e "Commands: ${software_options["module_webmin,options"]}"
 			echo "Available commands:"
 			if [[ -z "$condition" ]]; then
 				echo -e "  install\t- Install $title."
@@ -103,7 +103,7 @@ function module_webmin() {
 			fi
 			;;
 		*)
-		echo "Invalid command.try: '${software_options["module_webmin,example"]}'"
+		echo "Invalid command.try: '${software_options["module_webmin,options"]}'"
 
 		;;
 	esac

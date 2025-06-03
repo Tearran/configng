@@ -2,7 +2,7 @@ module_options+=(
 	["module_simple_network,author"]="@igorpecovnik"
 	["module_simple_network,maintainer"]="@igorpecovnik"
 	["module_simple_network,feature"]="module_simple_network"
-	["module_simple_network,example"]="simple advanced type stations select store restore dhcp static help"
+	["module_simple_network,options"]="simple advanced type stations select store restore dhcp static help"
 	["module_simple_network,desc"]="Netplan wrapper"
 	["module_simple_network,status"]="review"
 	["module_simple_network,doc_link"]=""
@@ -20,7 +20,7 @@ function module_simple_network() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_simple_network,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_simple_network,options"]}"
 
 	# defaul yaml file
 	yamlfile=armbian
@@ -323,7 +323,7 @@ function module_simple_network() {
 		;;
 		"${commands[20]}")
 			echo -e "\nUsage: ${module_options["module_simple_network,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_simple_network,example"]}"
+			echo -e "Commands:  ${module_options["module_simple_network,options"]}"
 			echo "Available commands:"
 			echo -e "\tsimple\t\t- Select simple $title setup."
 			echo -e "\tadvanced\t- Select advanced $title setup."

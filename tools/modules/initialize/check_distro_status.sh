@@ -2,7 +2,7 @@
 framework_options+=(
 	["check_os_status,author"]="@Tearran"
 	["check_os_status,feature"]="check_os_status"
-	["check_os_status,example"]="help"
+	["check_os_status,options"]="help"
 	["check_os_status,desc"]="Check if the current OS is supported based on /etc/armbian-distribution-status"
 	["check_os_status,group"]="Initialize"
 )

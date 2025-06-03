@@ -4,7 +4,7 @@ framework_options+=(
 	["markdown_manpage,ref_link"]=""
 	["markdown_manpage,feature"]="markdown_manpage"
 	["markdown_manpage,desc"]="Generate Document files."
-	["markdown_manpage,example"]=""
+	["markdown_manpage,options"]=""
 	["markdown_manpage,group"]="Docs"
 )
 #
@@ -88,7 +88,7 @@ framework_options+=(
 	["markdown_framework_options,ref_link"]=""
 	["markdown_framework_options,feature"]="markdown_framework_options"
 	["markdown_framework_options,desc"]="Markdown table of all framework_options"
-	["markdown_framework_options,example"]=""
+	["markdown_framework_options,options"]=""
 	["markdown_framework_options,group"]="Docs"
 )
 #
@@ -109,7 +109,7 @@ function markdown_framework_options() {
 			ref_link_md=$([[ -n "$ref_link" ]] && echo "[Source]($ref_link)" || echo "X")
 			doc_link_md=$([[ -n "$doc_link" ]] && echo "[Document]($doc_link)" || echo "X")
 			status_md=$([[ -z "$ref_link" ]] && echo "source link Needed" || ([[ (-n "$ref_link" && -n "$doc_link") ]] && echo "Review" || echo "$status"))
-			mod_message+="| ${framework_options["$function_name,desc"]} | ${framework_options["$function_name,example"]} | ${framework_options["$function_name,author"]} \n"
+			mod_message+="| ${framework_options["$function_name,desc"]} | ${framework_options["$function_name,options"]} | ${framework_options["$function_name,author"]} \n"
 		fi
 	done
 
@@ -121,7 +121,7 @@ framework_options+=(
 	["docs_markdown_manpage,ref_link"]=""
 	["docs_markdown_manpage,feature"]="docs_markdown_manpage"
 	["docs_markdown_manpage,desc"]="Generate Document files."
-	["docs_markdown_manpage,example"]=""
+	["docs_markdown_manpage,options"]=""
 	["docs_markdown_manpage,group"]="Docs"
 )
 #

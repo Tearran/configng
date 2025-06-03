@@ -4,7 +4,7 @@ framework_options+=(
 	["interface_message,ref_link"]=""
 	["interface_message,feature"]="interface_message"
 	["interface_message,desc"]="OK message User Interface box"
-	["interface_message,example"]="<<< 'hello world' "
+	["interface_message,options"]="<<< 'hello world' "
 	["interface_message,doc_link"]=""
 	["interface_message,group"]="Interface"
 )

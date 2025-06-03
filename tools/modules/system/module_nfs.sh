@@ -2,7 +2,7 @@ module_options+=(
 	["module_nfs,author"]="@igorpecovnik"
 	["module_nfs,feature"]="module_nfs"
 	["module_nfs,desc"]="Install nfs client"
-	["module_nfs,example"]="install remove servers mounts help"
+	["module_nfs,options"]="install remove servers mounts help"
 	["module_nfs,port"]=""
 	["module_nfs,group"]="User"
 	["module_nfs,arch"]=""
@@ -15,7 +15,7 @@ function module_nfs () {
 	local condition=$(which "$title" 2>/dev/null)?
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_nfs,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_nfs,options"]}"
 
 	nfs_BASE="${SOFTWARE_FOLDER}/nfs"
 
@@ -98,7 +98,7 @@ function module_nfs () {
 		;;
 		"${commands[4]}")
 			echo -e "\nUsage: ${module_options["module_nfs,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_nfs,example"]}"
+			echo -e "Commands:  ${module_options["module_nfs,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tremove\t- Remove $title."

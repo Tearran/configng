@@ -2,7 +2,7 @@ module_options+=(
 	["module_armbian_runners,author"]="@igorpecovnik"
 	["module_armbian_runners,feature"]="module_armbian_runners"
 	["module_armbian_runners,desc"]="Manage self hosted runners"
-	["module_armbian_runners,example"]="install remove remove_online purge status help"
+	["module_armbian_runners,options"]="install remove remove_online purge status help"
 	["module_armbian_runners,port"]=""
 	["module_armbian_runners,group"]="User"
 	["module_armbian_runners,arch"]=""
@@ -29,7 +29,7 @@ function module_armbian_runners () {
 	done
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_armbian_runners,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_armbian_runners,options"]}"
 
 	case "$1" in
 

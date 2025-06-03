@@ -6,7 +6,7 @@ _pkg_have_stdin() { [[ -t 0 ]]; }
 framework_options+=(
 	["pkg_configure,author"]="@dimitry-ishenko"
 	["pkg_configure,desc"]="Configure an unconfigured package"
-	["pkg_configure,example"]="pkg_configure"
+	["pkg_configure,options"]="pkg_configure"
 	["pkg_configure,feature"]="pkg_configure"
 	["pkg_configure,group"]="Interface"
 )
@@ -19,7 +19,7 @@ pkg_configure()
 framework_options+=(
 	["pkg_full_upgrade,author"]="@dimitry-ishenko"
 	["pkg_full_upgrade,desc"]="Upgrade installed packages (potentially removing some)"
-	["pkg_full_upgrade,example"]=""
+	["pkg_full_upgrade,options"]=""
 	["pkg_full_upgrade,feature"]="pkg_full_upgrade"
 	["pkg_full_upgrade,group"]="Interface"
 )
@@ -32,7 +32,7 @@ pkg_full_upgrade()
 framework_options+=(
 	["pkg_install,author"]="@dimitry-ishenko"
 	["pkg_install,desc"]="Install package"
-	["pkg_install,example"]="<apt packeage name>"
+	["pkg_install,options"]="<apt packeage name>"
 	["pkg_install,feature"]="pkg_install"
 	["pkg_install,group"]="Interface"
 )
@@ -45,7 +45,7 @@ pkg_install()
 framework_options+=(
 	["pkg_installed,author"]="@dimitry-ishenko"
 	["pkg_installed,desc"]="Check if package is installed"
-	["pkg_installed,example"]="<apt package name>"
+	["pkg_installed,options"]="<apt package name>"
 	["pkg_installed,feature"]="pkg_installed"
 	["pkg_installed,group"]="Interface"
 )
@@ -59,7 +59,7 @@ pkg_installed()
 framework_options+=(
 	["pkg_remove,author"]="@dimitry-ishenko"
 	["pkg_remove,desc"]="Remove package"
-	["pkg_remove,example"]="<apt package name>"
+	["pkg_remove,options"]="<apt package name>"
 	["pkg_remove,feature"]="pkg_remove"
 	["pkg_remove,group"]="Interface"
 )
@@ -73,7 +73,7 @@ pkg_remove()
 framework_options+=(
 	["pkg_update,author"]="@dimitry-ishenko"
 	["pkg_update,desc"]="Update package repository"
-	["pkg_update,example"]=""
+	["pkg_update,options"]=""
 	["pkg_update,feature"]="pkg_update"
 	["pkg_update,group"]="Interface"
 )
@@ -86,7 +86,7 @@ pkg_update()
 framework_options+=(
 	["pkg_upgrade,author"]="@dimitry-ishenko"
 	["pkg_upgrade,desc"]="Upgrade installed packages"
-	["pkg_upgrade,example"]=""
+	["pkg_upgrade,options"]=""
 	["pkg_upgrade,feature"]="pkg_upgrade"
 	["pkg_upgrade,group"]="Interface"
 )
@@ -101,7 +101,7 @@ framework_options+=(
 	["is_package_manager_running,ref_link"]=""
 	["is_package_manager_running,feature"]="is_package_manager_running"
 	["is_package_manager_running,desc"]="Migrated procedures from Armbian config."
-	["is_package_manager_running,example"]=""
+	["is_package_manager_running,options"]=""
 	["is_package_manager_running,group"]="Interface"
 )
 #
@@ -123,7 +123,7 @@ framework_options+=(
 	["see_current_apt,ref_link"]=""
 	["see_current_apt,feature"]="see_current_apt"
 	["see_current_apt,desc"]="Check when apt list was last updated and suggest updating or update"
-	["see_current_apt,example"]="update"
+	["see_current_apt,options"]="update"
 	["see_current_apt,doc_link"]=""
 	["see_current_apt,group"]="Interface"
 )

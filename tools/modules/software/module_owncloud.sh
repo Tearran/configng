@@ -3,7 +3,7 @@ software_options+=(
 	["module_owncloud,maintainer"]="@igorpecovnik"
 	["module_owncloud,feature"]="module_owncloud"
 	["module_owncloud,desc"]="Install owncloud container"
-	["module_owncloud,example"]="install remove purge status help"
+	["module_owncloud,options"]="install remove purge status help"
 	["module_owncloud,status"]="Active"
 	["module_owncloud,about"]=""
 	["module_owncloud,doc_link"]="https://doc.owncloud.com/"
@@ -26,7 +26,7 @@ function module_owncloud () {
 	fi
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${software_options["module_owncloud,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["module_owncloud,options"]}"
 
 	OWNCLOUD_BASE="${SOFTWARE_FOLDER}/owncloud"
 
@@ -81,7 +81,7 @@ function module_owncloud () {
 		;;
 		"${commands[4]}")
 			echo -e "\nUsage: ${software_options["module_owncloud,feature"]} <command>"
-			echo -e "Commands:  ${software_options["module_owncloud,example"]}"
+			echo -e "Commands:  ${software_options["module_owncloud,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tremove\t- Remove $title."

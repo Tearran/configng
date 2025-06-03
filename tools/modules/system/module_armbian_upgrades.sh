@@ -2,7 +2,7 @@ module_options+=(
 	["module_armbian_upgrades,author"]="@igorpecovnik"
 	["module_armbian_upgrades,feature"]="module_armbian_upgrades"
 	["module_armbian_upgrades,desc"]="Install and configure automatic updates"
-	["module_armbian_upgrades,example"]="install remove configure status defaults help"
+	["module_armbian_upgrades,options"]="install remove configure status defaults help"
 	["module_armbian_upgrades,port"]=""
 	["module_armbian_upgrades,group"]="User"
 	["module_armbian_upgrades,arch"]=""
@@ -16,7 +16,7 @@ function module_armbian_upgrades () {
 	local condition=$(which "$title" 2>/dev/null)
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_armbian_upgrades,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_armbian_upgrades,options"]}"
 
 	case "$1" in
 
@@ -146,7 +146,7 @@ function module_armbian_upgrades () {
 		;;
 		"${commands[5]}")
 			echo -e "\nUsage: ${module_options["module_armbian_upgrades,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_armbian_upgrades,example"]}"
+			echo -e "Commands:  ${module_options["module_armbian_upgrades,options"]}"
 			echo -e "Available commands:\n"
 			echo -e "\tinstall\t\t- Install Armbian $title."
 			echo -e "\tremove\t\t- Remove Armbian $title."

@@ -3,7 +3,7 @@ module_options+=(
 	["manage_zsh,ref_link"]=""
 	["manage_zsh,feature"]="manage_zsh"
 	["manage_zsh,desc"]="Set system shell to BASH"
-	["manage_zsh,example"]="enable disable"
+	["manage_zsh,options"]="enable disable"
 	["manage_zsh,group"]="User"
 )
 #

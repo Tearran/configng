@@ -3,7 +3,7 @@ framework_options+=(
 	["module_data_files,maintainer"]="@Tearran"
 	["module_data_files,feature"]="module_data_files"
 	["module_data_files,desc"]="Example module unattended interface."
-	["module_data_files,example"]="help array json dbt test all"
+	["module_data_files,options"]="help array json dbt test all"
 	["module_data_files,doc_link"]="Missing"
 	["module_data_files,author"]="@Tearran"
 	["module_data_files,group"]="Interface"
@@ -14,13 +14,13 @@ function module_data_files() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${framework_options["module_data_files,example"]}"
+	IFS=' ' read -r -a commands <<< "${framework_options["module_data_files,options"]}"
 
 	# Handle the command passed to the function
 	case "$1" in
 		"${commands[0]}")
 		echo -e "\nUsage: ${framework_options["module_data_files,feature"]} <command>"
-		echo -e "Commands:  ${framework_options["module_data_files,example"]}"
+		echo -e "Commands:  ${framework_options["module_data_files,options"]}"
 		echo "Available commands:"
 		echo -e "\tarray\t- Generate framework_options files from production framework_options array."
 		echo -e "\tjson\t- Generate JSON object from framework_options"
@@ -48,7 +48,7 @@ function module_data_files() {
 		generate_data_files "_gen_unit_test_files"
 		;;
 		*)
-		echo "${framework_options["module_data_files,example"]}"
+		echo "${framework_options["module_data_files,options"]}"
 		;;
 	esac
 }
@@ -57,7 +57,7 @@ function module_data_files() {
 framework_options+=(
 	["generate_data_files,maintainer"]="@Tearran"
 	["generate_data_files,feature"]="generate_data_files"
-	["generate_data_files,example"]=""
+	["generate_data_files,options"]=""
 	["generate_data_files,desc"]="Helper to sort module_option array"
 	["generate_data_files,author"]="@Tearran"
 	["generate_data_files,group"]="Docs"
@@ -85,7 +85,7 @@ function generate_data_files() {
 		# Get keys pairs
 		about_key="${feature},about"
 		desc_key="${feature},desc"
-		example_key="${feature},example"
+		example_key="${feature},options"
 		author_key="${feature},author"
 		ref_key="${feature},ref_link"
 		status_key="${feature},status"
@@ -184,7 +184,7 @@ module_options+=(
 	["$feature,maintainer"]="$maintainer"
 	["$feature,feature"]="$feature"
 	["$feature,desc"]="$desc"
-	["$feature,example"]="$example"
+	["$feature,options"]="$example"
 	["$feature,status"]="$status"
 	["$feature,about"]=""
 	["$feature,doc_link"]="$doc_link"
@@ -232,7 +232,7 @@ _gen_data_json(){
 framework_options+=(
 	["_gen_data_dbt,maintainer"]="@Tearran"
 	["_gen_data_dbt,feature"]="_gen_data_dbt"
-	["_gen_data_dbt,example"]=""
+	["_gen_data_dbt,options"]=""
 	["_gen_data_dbt,desc"]="Helper for module_api"
 	["_gen_data_dbt,status"]="Active"
 	["_gen_data_dbt,condition"]=""
@@ -334,7 +334,7 @@ function _dbt_to_array() {
 framework_options+=(
 	["_gen_unit_test_files,maintainer"]="@Tearran"
 	["_gen_unit_test_files,feature"]="_gen_unit_test_files"
-	["_gen_unit_test_files,example"]=""
+	["_gen_unit_test_files,options"]=""
 	["_gen_unit_test_files,desc"]="Helper for module_api"
 	["_gen_unit_test_files,status"]="Active"
 	["_gen_unit_test_files,condition"]=""
@@ -359,7 +359,7 @@ function _gen_unit_test_files(){
 	mkdir -p "$(dirname "$conf_file")"
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["$feature,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["$feature,options"]}"
 
 	if [[ $parent == "software" ]]; then
 		if printf '%s\n' "${commands[@]}" | grep -qx "help" && printf '%s\n' "${commands[@]}" | grep -qx "status"; then

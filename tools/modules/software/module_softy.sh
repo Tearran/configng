@@ -1,7 +1,7 @@
 software_options+=(
 	["module_softy,feature"]="module_softy"
 	["module_softy,desc"]="Apt wizard TUI deb packages similar to softy"
-	["module_softy,example"]="help Editors Browsers Proftpd Imaging"
+	["module_softy,options"]="help Editors Browsers Proftpd Imaging"
 	["module_softy,author"]="@Tearran"
 	["module_softy,group"]="Management"
 )
@@ -10,7 +10,7 @@ module_helpers+=(
 	["_checklist_proftpd,author"]="@Tearran"
 	["_checklist_proftpd,maintainer"]="@Tearran"
 	["_checklist_proftpd,feature"]="_checklist_proftpd"
-	["_checklist_proftpd,example"]=""
+	["_checklist_proftpd,options"]=""
 	["_checklist_proftpd,desc"]="Dynamic ProFTPD package management with install/remove toggle."
 	["_checklist_proftpd,status"]="Active"
 	["_checklist_proftpd,group"]="Networking"
@@ -22,7 +22,7 @@ function _checklist_proftpd() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${software_options["_checklist_proftpd,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["_checklist_proftpd,options"]}"
 
 	## Dynamically manage ProFTPD packages
 	echo "Fetching $title-related packages..."
@@ -52,7 +52,7 @@ module_helpers+=(
 	["_checklist_browsers,author"]="@Tearran"
 	["_checklist_browsers,maintainer"]="@Tearran"
 	["_checklist_browsers,feature"]="_checklist_browsers"
-	["_checklist_browsers,example"]=""
+	["_checklist_browsers,options"]=""
 	["_checklist_browsers,desc"]="Browser installation and management (Firefox-ESR and Chromium and more)."
 	["_checklist_browsers,status"]="Active"
 	["_checklist_browsers,group"]="Networking"
@@ -107,7 +107,7 @@ module_helpers+=(
 	["_checklist_editors,author"]="@Tearran"
 	["_checklist_editors,maintainer"]="@Tearran"
 	["_checklist_editors,feature"]="_checklist_editors"
-	["_checklist_editors,example"]="nano code codium notepadqq"
+	["_checklist_editors,options"]="nano code codium notepadqq"
 	["_checklist_editors,desc"]="Editor installation and management (codium notepadqq and more)."
 	["_checklist_editors,status"]="Active"
 	["_checklist_editors,group"]="Media"
@@ -119,7 +119,7 @@ function _checklist_editors() {
 	local title="Editors"
 	local self="${software_options["_checklist_editors,feature"]}"
 	local _packages
-	IFS=' ' read -r -a _packages <<< "${software_options["$self,example"]}"
+	IFS=' ' read -r -a _packages <<< "${software_options["$self,options"]}"
 
 	# Manage editor installation/removal
 	echo "Fetching $title package details..."
@@ -157,7 +157,7 @@ module_helpers+=(
 	["_checklist_imaging,author"]="@Tearran"
 	["_checklist_imaging,maintainer"]="@Tearran"
 	["_checklist_imaging,feature"]="_checklist_imaging"
-	["_checklist_imaging,example"]="inkscape gimp"
+	["_checklist_imaging,options"]="inkscape gimp"
 	["_checklist_imaging,desc"]="Imaging Editor installation and management (gimp inkscape)."
 	["_checklist_imaging,status"]="Active"
 	["_checklist_imaging,group"]="Media"
@@ -168,7 +168,7 @@ function _checklist_imaging() {
 	local title="Imaging"
 	local self="${software_options["_checklist_imaging,feature"]}"
 	local _packages
-	IFS=' ' read -r -a _packages <<< "${software_options["$self,example"]}"
+	IFS=' ' read -r -a _packages <<< "${software_options["$self,options"]}"
 
 	# Manage editor installation/removal
 	echo "Fetching $title package details..."
@@ -208,13 +208,13 @@ function module_softy() {
 	local self="${software_options["module_softy,feature"]}"
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${software_options["$self,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["$self,options"]}"
 
 	case "$1" in
 		"${commands[0]}")
 			## help/menu options for the module
 			echo -e "\nUsage: $self <command>"
-			echo -e "Commands: ${software_options["$self,example"]}"
+			echo -e "Commands: ${software_options["$self,options"]}"
 			echo "Available commands:"
 			# Loop through all commands (starting from index 1)
 			for ((i = 1; i < ${#commands[@]}; i++)); do
@@ -237,7 +237,7 @@ function module_softy() {
 			_checklist_imaging
 		;;
 		*)
-			echo "Invalid command. Try one of: ${software_options["$self,example"]}"
+			echo "Invalid command. Try one of: ${software_options["$self,options"]}"
 
 		;;
 	esac

@@ -2,7 +2,7 @@ module_options+=(
 	["module_desktop,author"]="@igorpecovnik"
 	["module_desktop,feature"]="module_desktop"
 	["module_desktop,desc"]="XFCE desktop packages"
-	["module_desktop,example"]="install remove disable enable status auto manual login help"
+	["module_desktop,options"]="install remove disable enable status auto manual login help"
 	["module_desktop,group"]="User"
 	["module_desktop,arch"]="x86-64"
 )
@@ -30,7 +30,7 @@ function module_desktop() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_desktop,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_desktop,options"]}"
 
 	# generate and install packages
 	module_desktop_packages "$de" "$DISTROID"
@@ -194,7 +194,7 @@ function module_desktop() {
 		;;
 		"${commands[8]}")
 			echo -e "\nUsage: ${module_options["module_desktop,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_desktop,example"]}"
+			echo -e "Commands:  ${module_options["module_desktop,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Generate packages for $title."
 			echo -e "\tremove\t-  Generate packages for $title."

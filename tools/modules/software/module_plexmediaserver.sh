@@ -3,7 +3,7 @@ software_options+=(
 	["module_plexmediaserver,maintainer"]="@igorpecovnik"
 	["module_plexmediaserver,feature"]="module_plexmediaserver"
 	["module_plexmediaserver,desc"]="Install plexmediaserver from repo using apt"
-	["module_plexmediaserver,example"]="install remove status"
+	["module_plexmediaserver,options"]="install remove status"
 	["module_plexmediaserver,status"]="Active"
 	["module_plexmediaserver,about"]=""
 	["module_plexmediaserver,doc_link"]="https://www.plex.tv/"
@@ -21,7 +21,7 @@ module_plexmediaserver() {
 	local condition=$(which "$title" 2>/dev/null)
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${software_options["module_plexmediaserver,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["module_plexmediaserver,options"]}"
 
 	case "$1" in
 		"${commands[0]}")
@@ -52,7 +52,7 @@ module_plexmediaserver() {
 		;;
 		"${commands[3]}")
 			echo -e "\nUsage: ${software_options["module_plexmediaserver,feature"]} <command>"
-			echo -e "Commands:  ${software_options["module_plexmediaserver,example"]}"
+			echo -e "Commands:  ${software_options["module_plexmediaserver,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tstatus\t- Installation status $title."

@@ -4,7 +4,7 @@ framework_options+=(
 	["see_ping,ref_link"]="https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#632"
 	["see_ping,feature"]="see_ping"
 	["see_ping,desc"]="Check the internet connection with fallback DNS"
-	["see_ping,example"]=""
+	["see_ping,options"]=""
 	["see_ping,doc_link"]=""
 	["see_ping,group"]="Initialize"
 )

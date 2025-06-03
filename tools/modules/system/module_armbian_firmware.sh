@@ -1,7 +1,7 @@
 module_options+=(
 	["module_armbian_firmware,author"]="@igorpecovnik"
 	["module_armbian_firmware,feature"]="module_armbian_firmware"
-	["module_armbian_firmware,example"]="select install show hold unhold repository headers help"
+	["module_armbian_firmware,options"]="select install show hold unhold repository headers help"
 	["module_armbian_firmware,desc"]="Module for Armbian firmware manipulating."
 	["module_armbian_firmware,group"]="User"
 )
@@ -12,7 +12,7 @@ function module_armbian_firmware() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_armbian_firmware,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_armbian_firmware,options"]}"
 
 	# BRANCH, KERNELPKG_VERSION, KERNELPKG_LINUXFAMILY may require being updated after kernel switch
 	update_kernel_env
@@ -339,7 +339,7 @@ function module_armbian_firmware() {
 
 		"${commands[7]}")
 			echo -e "\nUsage: ${module_options["module_armbian_firmware,feature"]} <command> <switches>"
-			echo -e "Commands:  ${module_options["module_armbian_firmware,example"]}"
+			echo -e "Commands:  ${module_options["module_armbian_firmware,options"]}"
 			echo "Available commands:"
 			echo -e "\tselect    \t- TUI to select $title.              \t switches: [ stable | rolling ]"
 			echo -e "\tinstall   \t- Install $title.                    \t switches: [ \$branch | \$version ]"

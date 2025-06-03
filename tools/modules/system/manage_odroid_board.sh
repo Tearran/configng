@@ -2,7 +2,7 @@ module_options+=(
 	["manage_odroid_board,author"]="@GeoffClements"
 	["manage_odroid_board,feature"]="manage_odroid_board"
 	["manage_odroid_board,desc"]="Select optimised Odroid board configuration"
-	["manage_odroid_board,example"]="select"
+	["manage_odroid_board,options"]="select"
 	["manage_odroid_board,group"]="User"
 )
 #

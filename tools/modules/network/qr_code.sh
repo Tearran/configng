@@ -4,7 +4,7 @@ module_options+=(
 	["qr_code,ref_link"]=""
 	["qr_code,feature"]="qr_code"
 	["qr_code,desc"]="Show or generate QR code for Google OTP"
-	["qr_code,example"]="generate"
+	["qr_code,options"]="generate"
 	["qr_code,group"]="Network"
 )
 #

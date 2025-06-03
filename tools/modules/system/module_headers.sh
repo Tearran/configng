@@ -2,7 +2,7 @@
 module_options+=(
 	["module_headers,feature"]="module_headers"
 	["module_headers,desc"]="Install headers container"
-	["module_headers,example"]="install remove status help"
+	["module_headers,options"]="install remove status help"
 	["module_headers,author"]="@igorpecovnik"
 	["module_headers,group"]="Kernel"
 
@@ -27,7 +27,7 @@ function module_headers () {
 	fi
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_headers,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_headers,options"]}"
 
 	case "$1" in
 		"${commands[0]}")
@@ -42,7 +42,7 @@ function module_headers () {
 		;;
 		"${commands[3]}")
 			echo -e "\nUsage: ${module_options["module_headers,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_headers,example"]}"
+			echo -e "Commands:  ${module_options["module_headers,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tstatus\t- Installation status $title."

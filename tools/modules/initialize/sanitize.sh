@@ -1,7 +1,7 @@
 framework_options+=(
 	["sanitize,author"]="@Tearran"
 	["sanitize,desc"]="Make sure param contains only valid chars"
-	["sanitize,example"]="<module_name>"
+	["sanitize,options"]="<module_name>"
 	["sanitize,feature"]="sanitize"
 	["sanitize,group"]="Initialize"
 )
@@ -13,7 +13,7 @@ sanitize() {
 framework_options+=(
 	["die,author"]="@dimitry-ishenko"
 	["die,desc"]="Exit with error code 1, optionally printing a message to stderr"
-	["die,example"]="'The world is about to end'"
+	["die,options"]="'The world is about to end'"
 	["die,feature"]="die"
 	["die,group"]="Initialize"
 )

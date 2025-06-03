@@ -3,7 +3,7 @@ framework_options+=(
 	["generate_json,ref_link"]=""
 	["generate_json,feature"]="generate_json"
 	["generate_json,desc"]="Generate JSON-like object file."
-	["generate_json,example"]=""
+	["generate_json,options"]=""
 	["generate_json,group"]="Docs"
 
 )
@@ -23,7 +23,7 @@ function generate_json() {
 	for index in "${!features[@]}"; do
 		feature=${features[$index]}
 		desc_key="${feature},desc"
-		example_key="${feature},example"
+		example_key="${feature},options"
 		author_key="${feature},author"
 		ref_key="${feature},ref_link"
 		status_key="${feature},status"

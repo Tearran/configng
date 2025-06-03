@@ -2,7 +2,7 @@ software_options+=(
 	["module_openssh-server,author"]="@armbian"
 	["module_openssh-server,maintainer"]="@igorpecovnik"
 	["module_openssh-server,feature"]="module_openssh-server"
-	["module_openssh-server,example"]="install remove purge status help"
+	["module_openssh-server,options"]="install remove purge status help"
 	["module_openssh-server,desc"]="Install openssh-server container"
 	["module_openssh-server,status"]="Active"
 	["module_openssh-server,doc_link"]="https://docs.linuxserver.io/images/docker-openssh-server/#server-mode"
@@ -23,7 +23,7 @@ function module_openssh-server () {
 	fi
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${software_options["module_openssh-server,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["module_openssh-server,options"]}"
 
 	OPENSSHSERVER_BASE="${SOFTWARE_FOLDER}/openssh-server"
 
@@ -82,7 +82,7 @@ function module_openssh-server () {
 		;;
 		"${commands[4]}")
 			echo -e "\nUsage: ${software_options["module_openssh-server,feature"]} <command>"
-			echo -e "Commands:  ${software_options["module_openssh-server,example"]}"
+			echo -e "Commands:  ${software_options["module_openssh-server,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tstatus\t- Installation status $title."

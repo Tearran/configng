@@ -3,7 +3,7 @@ framework_options+=(
 	["initialize_variables,ref_link"]=""
 	["initialize_variables,feature"]="initialize_variables"
 	["initialize_variables,desc"]="initialize system variables"
-	["initialize_variables,example"]=""
+	["initialize_variables,options"]=""
 	["initialize_variables,group"]="Initialize"
 )
 #

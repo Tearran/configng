@@ -3,7 +3,7 @@ framework_options+=(
 	["interface_menu,author"]="Tearran"
 	["interface_menu,feature"]="interface_menu"
 	["interface_menu,desc"]="menu User Interface box"
-	["interface_menu,example"]="<function_name>"
+	["interface_menu,options"]="<function_name>"
 	["interface_menu,group"]="Interface"
 )
 #

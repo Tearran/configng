@@ -2,7 +2,7 @@ module_options+=(
 	["module_armbian_kvmtest,author"]="@igorpecovnik"
 	["module_armbian_kvmtest,feature"]="module_armbian_kvmtest"
 	["module_armbian_kvmtest,desc"]="Deploy Armbian KVM instances"
-	["module_armbian_kvmtest,example"]="install remove save drop restore list help"
+	["module_armbian_kvmtest,options"]="install remove save drop restore list help"
 	["module_armbian_kvmtest,port"]=""
 	["module_armbian_kvmtest,group"]="User"
 	["module_armbian_kvmtest,arch"]="x86-64"
@@ -97,7 +97,7 @@ function module_armbian_kvmtest () {
 	)
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_armbian_kvmtest,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_armbian_kvmtest,options"]}"
 
 	case "$1" in
 
@@ -240,7 +240,7 @@ function module_armbian_kvmtest () {
 		;;
 		"${commands[6]}")
 			echo -e "\nUsage: ${module_options["module_armbian_kvmtest,feature"]} <command> [switches]"
-			echo -e "Commands:  ${module_options["module_armbian_kvmtest,example"]}"
+			echo -e "Commands:  ${module_options["module_armbian_kvmtest,options"]}"
 			echo -e "Available commands:\n"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tremove\t- Remove all virtual machines $title."

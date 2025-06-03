@@ -3,7 +3,7 @@ framework_options+=(
 	["interface_infobox,ref_link"]=""
 	["interface_infobox,feature"]="interface_infobox"
 	["interface_infobox,desc"]="info User Interface box"
-	["interface_infobox,example"]="<<< 'hello world' ; "
+	["interface_infobox,options"]="<<< 'hello world' ; "
 	["interface_infobox,doc_link"]=""
 	["interface_infobox,group"]="Interface"
 )

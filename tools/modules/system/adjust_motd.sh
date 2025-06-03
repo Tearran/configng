@@ -3,7 +3,7 @@ module_options+=(
 ["adjust_motd,author"]="@igorpecovnik"
 ["adjust_motd,ref_link"]=""
 ["adjust_motd,desc"]="Adjust welcome screen (motd)"
-["adjust_motd,example"]="clear header sysinfo tips commands"
+["adjust_motd,options"]="clear header sysinfo tips commands"
 ["adjust_motd,group"]="User"
 ["adjust_motd,feature"]="adjust_motd"
 )

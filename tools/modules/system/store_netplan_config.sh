@@ -4,7 +4,7 @@ module_options+=(
 ["store_netplan_config,ref_link"]=""
 ["store_netplan_config,feature"]="store_netplan_config"
 ["store_netplan_config,desc"]="Storing netplan config to tmp"
-["store_netplan_config,example"]=""
+["store_netplan_config,options"]=""
 ["store_netplan_config,group"]="User"
 )
 #

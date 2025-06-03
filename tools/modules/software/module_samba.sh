@@ -3,7 +3,7 @@ software_options+=(
 	["module_samba,maintainer"]="@Tearran"
 	["module_samba,feature"]="module_samba"
 	["module_samba,desc"]="Samba setup and service setting."
-	["module_samba,example"]="help install remove start stop enable disable configure default status"
+	["module_samba,options"]="help install remove start stop enable disable configure default status"
 	["module_samba,status"]="Active"
 	["module_samba,about"]=""
 	["module_samba,doc_link"]="https://www.samba.org/samba/docs/"
@@ -21,16 +21,16 @@ function module_samba() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${software_options["module_samba,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["module_samba,options"]}"
 
 	case "$1" in
 		"${commands[0]}"|"")
 		## help/menu options for the module
 		echo -e "\nUsage: ${software_options["module_samba,feature"]} <command>"
 		# Full list of commands to referance is printed
-		echo -e "Commands: ${software_options["module_samba,example"]}"
+		echo -e "Commands: ${software_options["module_samba,options"]}"
 		echo "Available commands:"
-		# Unlike the for mentioned `echo -e "Commands: ${software_options["module_samba,example"]}"``
+		# Unlike the for mentioned `echo -e "Commands: ${software_options["module_samba,options"]}"``
 		# comprehenive referance the Avalible commands are commands considered useable in UI/UX
 		# intened use below.
 		if [[ -z "$condition" ]]; then
@@ -121,7 +121,7 @@ function module_samba() {
 		;;
 		*)
 		# Full list of commands to referance is printed
-		echo "Invalid command. Try: '${software_options["module_samba,example"]}'"
+		echo "Invalid command. Try: '${software_options["module_samba,options"]}'"
 		;;
 	esac
 }

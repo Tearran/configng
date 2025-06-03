@@ -2,7 +2,7 @@ module_options+=(
 	["module_nfsd,author"]="@igorpecovnik"
 	["module_nfsd,feature"]="module_nfsd"
 	["module_nfsd,desc"]="Install nfsd server"
-	["module_nfsd,example"]="install remove manage add status clients servers help"
+	["module_nfsd,options"]="install remove manage add status clients servers help"
 	["module_nfsd,port"]=""
 	["module_nfsd,group"]="User"
 	["module_nfsd,arch"]=""
@@ -20,7 +20,7 @@ function module_nfsd () {
 	mkdir -p /etc/exports.d/
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_nfsd,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_nfsd,options"]}"
 
 	NFSD_BASE="${SOFTWARE_FOLDER}/nfsd"
 
@@ -163,7 +163,7 @@ function module_nfsd () {
 		;;
 		"${commands[7]}")
 			echo -e "\nUsage: ${module_options["module_nfsd,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_nfsd,example"]}"
+			echo -e "Commands:  ${module_options["module_nfsd,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tmanage\t- Edit exports in $title."

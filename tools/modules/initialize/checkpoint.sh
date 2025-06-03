@@ -3,7 +3,7 @@
 framework_options+=(
 	["checkpoint,author"]="@dimitry-ishenko"
 	["checkpoint,feature"]="checkpoint"
-	["checkpoint,example"]="debug help mark reset total"
+	["checkpoint,options"]="debug help mark reset total"
 	["checkpoint,desc"]="Manage checkpoints"
 	["checkpoint,group"]="Initialize"
 )

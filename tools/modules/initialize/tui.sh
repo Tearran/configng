@@ -3,7 +3,7 @@ framework_options+=(
 	["initialize_interface,author"]="@tearran"
 	["initialize_interface,feature"]="initialize_interface"
 	["initialize_interface,desc"]="Check for (Whiptail, DIALOG) tools and set the user interface."
-	["initialize_interface,example"]=""
+	["initialize_interface,options"]=""
 	["initialize_interface,group"]="Initialize"
 )
 #

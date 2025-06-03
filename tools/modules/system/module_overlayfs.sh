@@ -2,7 +2,7 @@ module_options+=(
 	["module_overlayfs,author"]="@igorpecovnik"
 	["module_overlayfs,maintainer"]="@igorpecovnik"
 	["module_overlayfs,feature"]="module_overlayfs"
-	["module_overlayfs,example"]="install remove status help"
+	["module_overlayfs,options"]="install remove status help"
 	["module_overlayfs,desc"]="Set Armbian root filesystem to read only"
 	["module_overlayfs,status"]="Active"
 	["module_overlayfs,doc_link"]="https://docs.kernel.org/filesystems/overlayfs.html"
@@ -19,7 +19,7 @@ function module_overlayfs() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_overlayfs,example"]}"
+	IFS=' ' read -r -a commands <<< "${module_options["module_overlayfs,options"]}"
 
 	case "$1" in
 		"${commands[0]}")
@@ -48,7 +48,7 @@ function module_overlayfs() {
 		;;
 		"${commands[3]}")
 			echo -e "\nUsage: ${module_options["module_overlayfs,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_overlayfs,example"]}"
+			echo -e "Commands:  ${module_options["module_overlayfs,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tremove\t- Remove $title."
