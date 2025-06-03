@@ -350,6 +350,9 @@ module_helper+=(
 function _gen_unit_test_files(){
 	if [ "$group" != "unknown" ] && [ -n "$id" ]; then
 		conf_file="$tools_dir/dev/tests/${id}.conf"
+	else
+		echo "Skipping unit test generation for feature '$feature' due to missing id or unknown group."
+		return 0
 	fi
 
 	# Create the parent directory if it doesn't exist
