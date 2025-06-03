@@ -1,10 +1,10 @@
 
 module_options+=(
-["about_armbian_configng,author"]="@igorpecovnik"
-["about_armbian_configng,feature"]="about_armbian_configng"
-["about_armbian_configng,desc"]="Show general information about this tool"
-["about_armbian_configng,example"]="about_armbian_configng"
-["about_armbian_configng,group"]="Message"
+["support_armbian_configng,author"]="@igorpecovnik"
+["support_armbian_configng,feature"]="support_armbian_configng"
+["support_armbian_configng,desc"]="Show general information about this tool"
+["support_armbian_configng,example"]="support_armbian_configng"
+["support_armbian_configng,group"]="Message"
 )
 #
 # @description Show general information about this tool

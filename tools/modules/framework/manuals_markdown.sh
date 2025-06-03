@@ -53,7 +53,7 @@ date: "$current_date"
 \`\`\`bash
 armbian-config [--help | -h | help] | [module_name]
 \`\`\`
-- List of all avalible features
+- List of all available features
 \`\`\`bash
 $(options_list module_options)
 \`\`\`

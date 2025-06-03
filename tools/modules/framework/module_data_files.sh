@@ -69,6 +69,7 @@ module_options+=(
 function generate_data_files() {
 	local generator=$1
 	local i=0
+	local g=0
 
 	features=()
 	for key in "${!module_options[@]}"; do
@@ -310,9 +311,7 @@ _convert_dbt_array(){
 	' "$input_file" >> "$output_file"
 
 	# End the array
-	echo ")" #>> "$output_file"
-
-	echo "Conversion complete: $output_file"
+	echo ")" >> "$output_file"
 
 }
 #
