@@ -13,7 +13,28 @@ software_options+=(
 )
 #
 # Install plexmediaserver using apt
+# Manages installation, removal, and status of Plex Media Server using apt.
 #
+# Arguments:
+#
+# * $1: Command to execute. Supported commands are "help", "install", "remove", and "status".
+#
+# Outputs:
+#
+# * Prints usage instructions and command descriptions for "help".
+# * Installs or removes Plex Media Server and its repository as requested.
+# * Prints nothing for "status", but sets the exit code to 0 if installed, 1 otherwise.
+#
+# Returns:
+#
+# * 0 if the "status" command finds Plex Media Server installed, 1 otherwise.
+#
+# Example:
+#
+#   module_plexmediaserver install
+#   module_plexmediaserver remove
+#   module_plexmediaserver status
+#   module_plexmediaserver help
 module_plexmediaserver() {
 	local title="plexmediaserver"
 	local condition=$(which "$title" 2>/dev/null)

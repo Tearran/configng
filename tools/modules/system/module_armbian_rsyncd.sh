@@ -10,7 +10,33 @@ module_options+=(
 	["module_armbian_rsyncd,arch"]=""
 )
 
-function module_armbian_rsyncd() {
+# Manages the Armbian rsync daemon (rsyncd) module, providing install, remove, status, and help commands.
+	#
+	# Arguments:
+	#
+	# * Command to execute: one of `install`, `remove`, `status`, or `help`.
+	#
+	# Description:
+	#
+	# - `install`: Prompts for a storage path and directories to export, generates an rsyncd configuration, installs and starts the rsync service.
+	# - `remove`: Stops the rsync service and deletes its configuration file.
+	# - `status`: Checks if the rsyncd service is active or enabled.
+	# - `help`: Displays usage information and available commands.
+	#
+	# Returns:
+	#
+	# * 0 if the `status` command finds the service active.
+	# * 1 if the `status` command finds the service inactive or disabled.
+	#
+	# Example:
+	#
+	# ```bash
+	# module_armbian_rsyncd install
+	# module_armbian_rsyncd remove
+	# module_armbian_rsyncd status
+	# module_armbian_rsyncd help
+	# ```
+	function module_armbian_rsyncd() {
 	local title="rsyncd"
 	local condition=$(which "$title" 2>/dev/null)
 

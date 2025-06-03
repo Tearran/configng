@@ -10,7 +10,43 @@ framework_options+=(
 
 #
 # Function to generate a JSON-like object file
+# Outputs a JSON-formatted list of all features defined in the framework_options array, including their metadata.
 #
+# Globals:
+#
+# * framework_options: An associative array containing metadata for each feature, with keys following the pattern "<feature>,<field>".
+#
+# Arguments:
+#
+# * None.
+#
+# Outputs:
+#
+# * Prints a JSON object to STDOUT with a "configng-helpers" array, where each element represents a feature and its metadata fields: id, Author, src_reference, description, command, status, and doc_link.
+#
+# Returns:
+#
+# * None.
+#
+# Example:
+#
+# ```bash
+# generate_json
+# ```
+# Output:
+# {
+# "configng-helpers" : [
+#   {
+#     "id": "generate_json",
+#     "Author": "John Doe",
+#     "src_reference": "https://example.com/ref",
+#     "description": "Outputs feature metadata as JSON.",
+#     "command": [ "--help" ],
+#     "status": "stable",
+#     "doc_link": "https://example.com/doc"
+#   }
+# ]
+# }
 function generate_json() {
 	echo -e "{\n\"configng-helpers\" : ["
 	features=()

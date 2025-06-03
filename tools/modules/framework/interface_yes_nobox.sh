@@ -1,5 +1,3 @@
-
-
 framework_options+=(
 	["interface_yes_no,author"]="@Tearran"
 	["interface_yes_no,ref_link"]=""
@@ -11,7 +9,31 @@ framework_options+=(
 )
 #
 # Secure version of get_user_continue
+# Displays a secure yes/no dialog box and invokes a permitted callback function based on user input.
 #
+# Globals:
+#
+# * DIALOG: Command used to display the dialog box.
+#
+# Arguments:
+#
+# * message: The message string to display in the dialog box.
+# * next_action: The name of the callback function to invoke, which must be in the allowed list.
+#
+# Outputs:
+#
+# * Displays a yes/no dialog to the user.
+#
+# Returns:
+#
+# * Calls the specified callback function with no arguments if "yes" is selected, or with "No" as an argument if "no" is selected.
+# * Exits with status 1 and prints an error if the callback function is not allowed.
+#
+# Example:
+#
+# ```bash
+# interface_yes_no "Proceed with operation?" process_input
+# ```
 function interface_yes_no() {
 	local message="$1"
 	local next_action="$2"

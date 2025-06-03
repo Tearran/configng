@@ -11,7 +11,28 @@ module_options+=(
 )
 #
 # Function to select network adapter
+# Provides a command-driven interface for managing network adapters and Netplan configurations.
 #
+# Supports interactive setup of wired and wireless adapters, including scanning for WiFi networks, selecting adapters, configuring DHCP or static IP addresses, and managing Netplan YAML files. Also allows storing and restoring Netplan configurations, removing adapter settings, and displaying usage information.
+#
+# Globals:
+#   module_options - Associative array containing module command options and feature handlers.
+#   DIALOG - Dialog utility for user interaction.
+#   NETWORK_RENDERER - Netplan renderer type.
+#
+# Arguments:
+#   $1 - The network management command to execute (e.g., simple, advanced, type, stations, select, store, restore, dhcp, static, drop, help).
+#   $2, $3 - Optional arguments passed to subcommands as needed.
+#
+# Outputs:
+#   Displays interactive dialog menus and status messages to STDOUT.
+#
+# Example:
+#
+#   module_simple_network simple
+#   module_simple_network select
+#   module_simple_network dhcp
+#   module_simple_network static
 function module_simple_network() {
 
 	local title="network"

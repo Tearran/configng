@@ -10,6 +10,23 @@ framework_options+=(
 )
 
 
+# Displays the list of system-related TUI menu options with descriptions.
+#
+# Outputs:
+#
+# * Prints each system menu category and its description to STDOUT.
+#
+# Example:
+#
+# ```bash
+# _tui_system
+# # Output:
+# # Kernel - Alternative kernels, headers, rolling updates, overlays
+# # Storage - Install to internal media, ZFS, NFS, read-only rootfs
+# # Access - Manage SSH daemon options, enable 2FA
+# # User - Change shell, adjust MOTD
+# # Updates - OS updates and distribution upgrades
+# ```
 _tui_system() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
 	# Ordered list of keys
@@ -35,6 +52,22 @@ _tui_system() {
 	done
 }
 
+# Displays the network submenu options and their descriptions for the TUI.
+#
+# Outputs:
+#
+# * Prints an ordered list of network-related menu options with descriptive text to STDOUT.
+#
+# Example:
+#
+# ```bash
+# _tui_network
+# # Output:
+# # Configuration - Network interfaces, wireless setup, IP configuration
+# # Connectivity - Bluetooth pairing, IPv6 toggle, connection management
+# # Security - QR codes for authentication, network security tools
+# # Diagnostics - Network testing, ping tools, connection status
+# ```
 _tui_network() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
 	# Ordered list of keys
@@ -58,6 +91,21 @@ _tui_network() {
 	done
 }
 
+# Displays the localisation submenu options for the TUI, listing available settings for timezone, language, and keyboard configuration.
+#
+# Outputs:
+#
+# * Prints each localisation option with a brief description to STDOUT.
+#
+# Example:
+#
+# ```bash
+# _tui_localisation
+# # Output:
+# # Timezone - Set global timezone and time settings
+# # Language - Configure locales, language and character set
+# # Keyboard - Change keyboard layout and input methods
+# ```
 _tui_localisation() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
 	# Ordered list of keys
@@ -79,6 +127,21 @@ _tui_localisation() {
 	done
 }
 
+# Displays a categorized list of software-related menu options with descriptions for the TUI.
+#
+# Outputs:
+#
+# * Prints each software category and its description to STDOUT, formatted for display in a text user interface.
+#
+# Example:
+#
+# ```bash
+# _tui_software
+# # Output:
+# # WebHosting - Web server, LEMP, reverse proxy, Let's Encrypt SSL
+# # HomeAutomation - Home Automation for control home appliances
+# # ...
+# ```
 _tui_software() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
 
@@ -123,7 +186,22 @@ _tui_software() {
 
 }
 
-_tui_about() {
+# Displays information about the Armbian Config framework and provides a help prompt.
+	#
+	# Outputs:
+	#
+	# * Prints the framework version and a help message to STDOUT.
+	#
+	# Example:
+	#
+	# ```bash
+	# _tui_about
+	# # Output:
+	# # Armbian Config: V3 Framework
+	# #
+	# # help
+	# ```
+	_tui_about() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
 	echo "Armbian Config: V3 Framework"
 	echo
@@ -131,6 +209,18 @@ _tui_about() {
 
 	}
 
+# Displays the main interface categories menu and dispatches to the appropriate submenu or help output.
+#
+# Reads the list of available interface categories from framework options, maps each to a descriptive label, and invokes the corresponding submenu function based on the provided argument. If "help" is specified, prints usage instructions and descriptions for all categories. Defaults to the localisation submenu if an unrecognized argument is given.
+#
+# Arguments:
+#
+# * The name of the category to display (e.g., "System", "Network", "Localisation", "Software", "About"), or "help" for usage information.
+#
+# Example:
+#
+#   interface_categories System
+#   interface_categories help
 function interface_categories() {
 	# Ordered list of keys
 	local keys

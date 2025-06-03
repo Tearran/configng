@@ -1,4 +1,3 @@
-
 framework_options+=(
 	["module_data_files,maintainer"]="@Tearran"
 	["module_data_files,feature"]="module_data_files"
@@ -9,7 +8,27 @@ framework_options+=(
 	["module_data_files,group"]="Interface"
 )
 #
-# Function to handle the module commands for 'module_data_files'
+# Dispatches commands for module data file generation and management.
+#
+# Handles subcommands to generate module metadata files in various formats (array, JSON, DBT, unit test config) or display help information. Invokes the appropriate generator function based on the command provided.
+#
+# Arguments:
+#
+# * Command to execute: one of `help`, `array`, `json`, `dbt`, `test`, or `all`.
+#
+# Outputs:
+#
+# * Prints usage information or available commands to STDOUT for the `help` or unknown command.
+# * Triggers generation of data files for valid commands.
+#
+# Example:
+#
+#   module_data_files array
+#   module_data_files json
+#   module_data_files dbt
+#   module_data_files test
+#   module_data_files all
+#   module_data_files help
 function module_data_files() {
 
 	# Convert the example string to an array
@@ -65,7 +84,21 @@ framework_options+=(
 	["generate_data_files,arch"]=""
 )
 # Use production array to verify a parent/group and subgroup/subsubgroup keys are valid
-# may be used to verify other keys if needed
+# Iterates over all features in the global module_options array and generates data files using the specified generator function.
+#
+# For each feature, extracts metadata fields, assigns default values if missing, determines a unique ID and parent category, and invokes the provided generator function to create output files. After processing all features, sets ownership of the tools directory to the invoking user.
+#
+# Arguments:
+#
+# * generator: Name of the function to call for generating data files for each feature.
+#
+# Returns:
+#
+# * 1 if the specified generator is not a valid function; otherwise, returns the exit status of the generator function.
+#
+# Example:
+#
+#   generate_data_files _gen_data_array
 function generate_data_files() {
 	local generator=$1
 	local i=0
@@ -169,7 +202,19 @@ function generate_data_files() {
 }
 
 
-# adds missing keys to module_option array
+# Generates a shell script file containing an associative array of module metadata for a given feature.
+#
+# Globals:
+# * module_options: Associative array containing module metadata.
+# * tools_dir: Base directory for tool-generated files.
+# * parent, feature, id, maintainer, desc, example, doc_link, author, group, port, arch: Metadata variables for the current feature.
+#
+# Outputs:
+# * Writes a shell script file to $tools_dir/dev/array/<parent>/<feature>_array.sh containing the module's metadata as an associative array snippet.
+#
+# Example:
+# _gen_data_array
+# # Generates dev/array/software/myfeature_array.sh with module metadata.
 _gen_data_array(){
 
 	module_options_file="$tools_dir/dev/array/${parent}/${feature}_array.sh"
@@ -199,7 +244,21 @@ EOF
 
 #
 # output json objects for each module_option
+# Generates a JSON file containing module metadata for the current feature.
 #
+# The JSON file includes fields such as id, description, command, status, author, and a condition string.
+# The output file is saved under a directory structure based on the module's parent and group.
+#
+# Globals:
+# * id, desc, feature, author, group, parent, tools_dir: Used to construct JSON content and determine output path.
+#
+# Outputs:
+# * Writes a formatted JSON file to $tools_dir/dev/json/<parent>/<group>/<feature>.json or a fallback path if group is unknown.
+#
+# Example:
+#
+# _gen_data_json
+# # Produces a JSON file with module metadata for the current feature.
 _gen_data_json(){
 
 	if [ "$group" != "unknown" ]; then
@@ -242,7 +301,30 @@ framework_options+=(
 )
 #
 # can output a Configuration file
+# Generates a .dbt configuration file containing module metadata in INI-style format.
 #
+# Globals:
+#
+# * Uses global variables: feature, id, maintainer, desc, example, status, about, doc_link, author, parent, group, port, arch, tools_dir.
+#
+# Arguments:
+#
+# * None.
+#
+# Outputs:
+#
+# * Writes a .dbt file with module metadata to $tools_dir/modules/<parent>/<feature>_database.dbt if group is known, or to $tools_dir/dev/dbt/<parent>/<feature>_database.dbt otherwise.
+#
+# Returns:
+#
+# * None.
+#
+# Example:
+#
+# ```bash
+# _gen_data_dbt
+# # Creates a .dbt file with module information for the current feature.
+# ```
 _gen_data_dbt(){
 	if [ "$group" != "unknown" ]; then
 		dbt_file="$tools_dir/modules/${parent}/${feature}_database.dbt"
@@ -275,7 +357,22 @@ _gen_data_dbt(){
 
 #
 # Testing consept to convert config file to module_option array
+# Converts a .dbt INI-style configuration file into a shell associative array snippet.
 #
+# Arguments:
+#
+# * input_file: Path to the .dbt file to convert.
+#
+# Outputs:
+#
+# * Writes a shell script file with an associative array representation of the module's key-value pairs.
+#
+# Example:
+#
+# ```bash
+# _convert_dbt_array mymodule_database.dbt
+# # Generates mymodule_database_array.sh with the associative array.
+# ```
 _convert_dbt_array(){
 	# Ensure input file is provided
 	if [[ $# -ne 1 ]]; then
@@ -313,7 +410,22 @@ _convert_dbt_array(){
 }
 #
 # same testing as above
+# Parses an INI-style configuration file and populates a global associative array with its key-value pairs.
 #
+# Arguments:
+#
+# * ini_file: Path to the INI-style file to parse.
+#
+# Globals:
+#
+# * Declares and populates the global associative array `ini_options`.
+#
+# Example:
+#
+# ```bash
+# _dbt_to_array "/path/to/config.dbt"
+# echo "${ini_options["feature"]}"
+# ```
 function _dbt_to_array() {
 	local ini_file=$1
 	declare -gA ini_options
@@ -342,7 +454,36 @@ framework_options+=(
 	["_gen_unit_test_files,arch"]=""
 )
 
-	# Unrefined unit-test config file for  ./test/*.conf
+	# Generates a unit test configuration file for a module feature if its group and id are valid.
+#
+# The generated file includes a shell test script that defines environment variables and a `testcase` function.
+# The `testcase` function runs install/setup or uninstall/remove commands for the feature using `armbian-config`,
+# and checks the expected condition for each command.
+#
+# Globals:
+# * group: The feature's group, used to determine eligibility.
+# * id: The unique identifier for the feature.
+# * feature: The feature name.
+# * parent: The parent category of the feature.
+# * arch: The architecture string for the feature.
+# * tools_dir: The base directory for generated files.
+# * module_options: Associative array containing feature metadata and options.
+#
+# Arguments:
+# None.
+#
+# Outputs:
+# * Writes a shell configuration file to `$tools_dir/dev/tests/${id}.conf` if conditions are met.
+#
+# Returns:
+# * 0 if the unit test file is generated or skipped.
+#
+# Example:
+#
+# ```bash
+# _gen_unit_test_files
+# # Generates dev/tests/<id>.conf for eligible features.
+# ```
 function _gen_unit_test_files(){
 	if [ "$group" != "unknown" ] && [ -n "$id" ]; then
 		conf_file="$tools_dir/dev/tests/${id}.conf"

@@ -1,4 +1,3 @@
-
 framework_options+=(
 	["check_os_status,author"]="@Tearran"
 	["check_os_status,feature"]="check_os_status"
@@ -6,7 +5,29 @@ framework_options+=(
 	["check_os_status,desc"]="Check if the current OS is supported based on /etc/armbian-distribution-status"
 	["check_os_status,group"]="Initialize"
 )
+# Checks if the current OS distribution is officially supported.
 #
+# Globals:
+# * DISTROID: The identifier for the current OS distribution.
+# * DISTRO_STATUS: Path to the file listing supported distributions.
+# * ARMBIAN: Name of the current Armbian distribution (used for logging).
+# * BACKTITLE: Used to set the dialog backtitle for warnings.
+#
+# Arguments:
+# * "help" (optional): If provided, prints usage information.
+#
+# Outputs:
+# * Prints usage instructions if "help" is passed.
+# * Displays a warning dialog if the OS is not supported.
+#
+# Returns:
+# * Exits the script with an error if the OS distribution cannot be detected.
+#
+# Example:
+#   check_distro_status
+#   check_distro_status help
+check_distro_status() {
+...
 function check_distro_status() {
 	case "$1" in
 		help)
@@ -51,7 +72,22 @@ framework_options+=(
 	["info_wait_autocontinue,desc"]="Display a warning with a gauge for 10 seconds then continue"
 	["info_wait_autocontinue,group"]="Initialize"
 )
+# Displays a progress gauge dialog with the given message for 10 seconds before continuing.
 #
+# Arguments:
+#
+# * message: The message to display in the gauge dialog.
+# * next_action: Placeholder for a subsequent action (not used in this function).
+#
+# Outputs:
+#
+# * Shows a dialog-based progress gauge incrementing from 0% to 100% over 10 seconds.
+#
+# Example:
+#
+# ```bash
+# info_wait_continue "Warning: This OS is not officially supported." ""
+# ```
 function info_wait_continue() {
 	local message="$1"
 	local next_action="$2"
@@ -64,6 +100,26 @@ function info_wait_continue() {
 }
 
 
+# Exits the script if the provided input indicates user cancellation.
+#
+# Arguments:
+#
+# * input - User input string to check for cancellation.
+#
+# Outputs:
+#
+# * Prints a cancellation message to STDOUT if input is "No".
+#
+# Returns:
+#
+# * Exits the script with status 0 if input is "No".
+#
+# Example:
+#
+# ```bash
+# process_input "No" # Exits the script
+# process_input "Yes" # Continues execution
+# ```
 process_input() {
 	local input="$1"
 	if [ "$input" = "No" ]; then

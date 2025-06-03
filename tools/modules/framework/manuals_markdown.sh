@@ -1,4 +1,3 @@
-
 framework_options+=(
 	["markdown_manpage,author"]="@Tearran"
 	["markdown_manpage,ref_link"]=""
@@ -9,7 +8,28 @@ framework_options+=(
 )
 #
 # Function to generate the README.md file
+# Generates Markdown documentation and a compressed man page for the armbian-config tool.
 #
+# Globals:
+#
+# * SCRIPT_DIR: Used to determine documentation and man page output locations.
+# * framework_options: Used to generate the list of available features.
+#
+# Outputs:
+#
+# * Writes a DOCUMENTATION.md file with tool usage, options, and references.
+# * Produces a compressed man page (armbian-config.1.gz) in the appropriate directory.
+#
+# Returns:
+#
+# * 1 if man page generation fails; otherwise, returns the exit status of the last command.
+#
+# Example:
+#
+# ```bash
+# markdown_manpage
+# # Generates DOCUMENTATION.md and armbian-config.1.gz in their respective directories.
+# ```
 function markdown_manpage() {
 
 	# Get the current date
@@ -93,7 +113,20 @@ framework_options+=(
 )
 #
 # This function is used to generate a markdown table from the framework_options array
+# Generates a Markdown table summarizing all registered framework features.
 #
+# Outputs:
+#
+# * Prints a Markdown-formatted table with columns for Description, Options, and Credit, listing all entries in the `framework_options` array marked as features.
+#
+# Example:
+#
+# ```bash
+# markdown_framework_options
+# # | Description | Options | Credit |
+# # |:----------- | ------- |:------:|
+# # | ...         | ...     | ...    |
+# ```
 function markdown_framework_options() {
 	mod_message="| Description | Options | Credit |\n"
 	mod_message+="|:----------- | ------- |:------:|\n"
@@ -125,7 +158,28 @@ framework_options+=(
 )
 #
 # Function to generate the README.md file
+# Generates Markdown documentation and a compressed man page for the armbian-config tool, including command-line usage examples and API references.
 #
+# Globals:
+#
+# * SCRIPT_DIR: Used to determine documentation and man page output locations.
+#
+# Outputs:
+#
+# * Writes a DOCUMENTATION.md file to the documentation directory.
+# * Generates a compressed man page (armbian-config.1.gz) in the man page directory.
+# * Prints status and error messages to STDOUT.
+#
+# Returns:
+#
+# * Returns 1 if man page generation fails; otherwise, returns the exit status of the last command.
+#
+# Example:
+#
+# ```bash
+# docs_markdown_manpage
+# # Generates DOCUMENTATION.md and armbian-config.1.gz in their respective directories.
+# ```
 function docs_markdown_manpage() {
 
 	# Get the current date

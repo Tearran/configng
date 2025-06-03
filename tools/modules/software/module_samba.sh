@@ -11,7 +11,32 @@ software_options+=(
 	["module_samba,port"]="445"
 	["module_samba,arch"]="x86-64 arm64 armhf"
 )
+# Manages Samba software installation, configuration, and service operations.
 #
+# This function provides a command-line interface for installing, removing, configuring, and controlling the Samba service.
+# It supports commands for starting, stopping, enabling, disabling, and checking the status of the Samba service, as well as applying the default configuration.
+#
+# Arguments:
+#
+# * Command to execute (e.g., install, remove, start, stop, enable, disable, configure, status, help)
+#
+# Outputs:
+#
+# * Prints status messages, usage instructions, and error messages to STDOUT.
+#
+# Returns:
+#
+# * 0 on successful operations.
+# * 1 on failure (e.g., missing configuration files, unknown service state).
+#
+# Example:
+#
+# ```bash
+# module_samba install
+# module_samba start
+# module_samba configure
+# module_samba status
+# ```
 function module_samba() {
 	local title="samba"
 	local condition

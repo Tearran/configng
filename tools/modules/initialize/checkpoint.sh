@@ -8,6 +8,28 @@ framework_options+=(
 	["checkpoint,group"]="Initialize"
 )
 
+# Adds a checkpoint message with elapsed time or user feedback based on mode.
+#
+# Arguments:
+#
+# * type: The type of checkpoint action ("debug" or "mark").
+# * msg: The message to display with the checkpoint.
+#
+# Outputs:
+#
+# * Prints the message and elapsed seconds since the last checkpoint if DEBUG is set.
+# * Prints the message if UXMODE is set and type is "mark".
+#
+# Globals:
+#
+# * _checkpoint_time: Used and updated to track checkpoint timing.
+#
+# Example:
+#
+# ```bash
+# _checkpoint_add debug "Reached step 1"
+# _checkpoint_add mark "Checkpoint reached"
+# ```
 _checkpoint_add()
 {
 	local type="$1" msg="$2"

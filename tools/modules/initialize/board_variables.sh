@@ -8,7 +8,36 @@ framework_options+=(
 )
 #
 # gather info about the board and start with loading menu variables
+# Initializes system variables and gathers board, network, and environment information.
 #
+# This function ensures required dependencies are present, determines the active network renderer,
+# sets dialog constants, and collects distribution, kernel, and Armbian-specific metadata.
+# It identifies the default network adapter, local IP, and subnet, and constructs a whitelist for Transmission.
+# The function also checks ZFS kernel compatibility and detects the desktop environment.
+#
+# Globals:
+#
+# * Sets or updates: DIALOG, NETWORK_RENDERER, DIALOG_CANCEL, DIALOG_ESC, ARMBIAN, DISTRO_STATUS,
+#   DISTRO, DISTROID, KERNELID, SOFTWARE_FOLDER, DEFAULT_ADAPTER, LOCALIPADD, LOCALSUBNET,
+#   TRANSMISSION_WHITELIST, BACKTITLE, TITLE, ZFS_DKMS_VERSION, ZFS_KERNEL_MAX
+#
+# Arguments:
+#
+# * None
+#
+# Outputs:
+#
+# * Installs missing dependencies if required.
+#
+# Returns:
+#
+# * None
+#
+# Example:
+#
+# ```bash
+# initialize_variables
+# ```
 function initialize_variables() {
 
 	missing_dependencies=()

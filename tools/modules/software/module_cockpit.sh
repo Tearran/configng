@@ -11,7 +11,31 @@ software_options+=(
 	["module_cockpit,port"]="9090"
 	["module_cockpit,arch"]="x86-64 arm64 armhf"
 )
+# Manages the installation, removal, and service control of the Cockpit software module.
 #
+# Globals:
+#
+# * software_options: Associative array containing configuration and command options for the Cockpit module.
+#
+# Arguments:
+#
+# * $1: Command to execute (e.g., help, install, remove, start, stop, enable, disable, status, check).
+#
+# Outputs:
+#
+# * Prints usage instructions, status messages, or error messages to STDOUT.
+#
+# Returns:
+#
+# * 0 if the command completes successfully or the Cockpit service is active/disabled when using 'check'.
+# * 1 if the 'check' command is used and the service is neither active nor disabled.
+#
+# Example:
+#
+#   module_cockpit install
+#   module_cockpit start
+#   module_cockpit status
+#   module_cockpit remove
 function module_cockpit() {
 	local title="cockpit"
 	local condition=$(dpkg -s "cockpit" 2>/dev/null | sed -n "s/Status: //p")

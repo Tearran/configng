@@ -11,7 +11,28 @@ software_options+=(
 	["module_webmin,port"]="10000"
 	["module_webmin,arch"]="x86-64 arm64 armhf"
 )
+# Manages installation, removal, and service control for the Webmin software module.
 #
+# Provides a command-line interface to install, remove, start, stop, enable, disable, check status, and display help for the Webmin service.
+#
+# Arguments:
+#
+# * The first argument specifies the action to perform: help, install, remove, start, stop, enable, disable, status, or check.
+#
+# Outputs:
+#
+# * Prints status messages, usage instructions, or error messages to STDOUT.
+#
+# Returns:
+#
+# * For the `check` command: returns 0 if the Webmin service is active, 1 otherwise.
+#
+# Example:
+#
+#   module_webmin install
+#   module_webmin start
+#   module_webmin status
+#   module_webmin remove
 function module_webmin() {
 	local title="webmin"
 	local condition=$(which "$title" 2>/dev/null)

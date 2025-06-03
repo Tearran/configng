@@ -15,7 +15,23 @@ module_helpers+=(
 	["_checklist_proftpd,group"]="Networking"
 	["_checklist_proftpd,arch"]="x86-64 arm64 armhf"
 )
-# Scaffold for an app that has multiple candidates, such as ProFTPD and modules.
+# Presents a checklist interface for managing ProFTPD-related packages.
+#
+# Dynamically searches for all available ProFTPD packages using the APT cache, checks their installation status, and builds a checklist for user selection. If no ProFTPD packages are found, prints a message and returns an error code.
+#
+# Outputs:
+#
+# * Prints a message if no ProFTPD-related packages are found.
+#
+# Returns:
+#
+# * 1 if no ProFTPD packages are available; otherwise, returns the exit status of the package selection process.
+#
+# Example:
+#
+# ```bash
+# _checklist_proftpd
+# ```
 function _checklist_proftpd() {
 	local title="proftpd"
 
@@ -57,7 +73,27 @@ module_helpers+=(
 	["_checklist_browsers,group"]="Networking"
 	["_checklist_browsers,arch"]="x86-64 arm64 armhf"
 )
-# Scaffold for app with specific single or dummy candidates.
+# Presents a checklist interface for managing installation of common browser packages.
+#
+# For each supported browser (firefox-esr, chromium, lynx, google-chrome), retrieves its package description and current installation status.
+# Builds a checklist allowing the user to select browsers to install or remove.
+# If no supported browser packages are found, prints a message and returns with an error code.
+#
+# Outputs:
+#
+# * Displays a checklist TUI for browser package selection.
+# * Prints an error message to STDOUT if no browser packages are found.
+#
+# Returns:
+#
+# * 0 on successful checklist display.
+# * 1 if no browser packages are available.
+#
+# Example:
+#
+# ```bash
+# _checklist_browsers
+# ```
 function _checklist_browsers() {
 	local title="Browsers"
 
@@ -113,7 +149,23 @@ module_helpers+=(
 	["_checklist_editors,arch"]="x86-64 arm64 armhf"
 )
 
-# Scaffold for app with specific single or dummy candidates.
+# Presents a checklist interface for managing installation of editor packages.
+#
+# Fetches a predefined list of editor packages, retrieves their descriptions and installation status, and displays a checklist for the user to select which editors to install or remove.
+#
+# Outputs:
+#
+# * Prints a message if no editor packages are found.
+#
+# Returns:
+#
+# * 1 if no editor packages are available; otherwise, returns the exit status of the package selection process.
+#
+# Example:
+#
+# ```bash
+# _checklist_editors
+# ```
 function _checklist_editors() {
 	local title="Editors"
 	local self="${software_options["_checklist_editors,feature"]}"
@@ -162,7 +214,23 @@ module_helpers+=(
 	["_checklist_imaging,group"]="Media"
 	["_checklist_imaging,arch"]="x86-64 arm64 armhf"
 )
-# Scaffold for app with specific single or dummy candidates.
+# Presents a checklist interface for managing imaging software packages (e.g., inkscape, gimp).
+#
+# Fetches available imaging packages defined in the module options, retrieves their descriptions and installation status, and displays a checklist for the user to select packages to install or remove.
+#
+# Outputs:
+#
+# * Prints a message if no imaging packages are found.
+#
+# Returns:
+#
+# * 1 if no imaging packages are available; otherwise, returns the exit status of process_package_selection.
+#
+# Example:
+#
+# ```bash
+# _checklist_imaging
+# ```
 function _checklist_imaging() {
 	local title="Imaging"
 	local self="${software_options["_checklist_imaging,feature"]}"
@@ -201,7 +269,25 @@ function _checklist_imaging() {
 	process_package_selection "$title" "Select packages to install/remove:" checklist_options[@]
 }
 
-# Scafold for software module tites
+# Acts as the main command dispatcher for the "module_softy" package management module.
+#
+# Parses the first argument to determine which package group to manage (Editors, Browsers, ProFTPD, Imaging) or to display help information.
+# Invokes the corresponding checklist function for the selected group, or prints usage instructions and available commands if "help" is requested.
+#
+# Arguments:
+#
+# * Command name (e.g., help, Editors, Browsers, Proftpd, Imaging)
+#
+# Outputs:
+#
+# * Prints usage information, available commands, or error messages to STDOUT.
+# * Invokes interactive package selection for the chosen group.
+#
+# Example:
+#
+#   module_softy help
+#   module_softy Editors
+#   module_softy Browsers
 function module_softy() {
 	local title="Packages"
 	local self="${software_options["module_softy,feature"]}"

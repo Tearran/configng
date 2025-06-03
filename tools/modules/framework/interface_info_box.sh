@@ -9,7 +9,7 @@ framework_options+=(
 )
 #
 # Function to display an infobox with a message
-#
+#   interface_infobox "Single message to display"
 function interface_infobox() {
 	#export TERM=ansi
 	local input

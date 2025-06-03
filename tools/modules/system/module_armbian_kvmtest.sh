@@ -47,7 +47,42 @@ module_options+=(
 #     module_armbian_kvmtest install instances=03 memory=4096 vcpus=4 startingip=192_168_1_100 gateway=192_168_1_1 provisioning=/path/to/script keyword=Focal
 #
 #   To remove all deployed VMs:
-#     module_armbian_kvmtest remove
+# Manages the lifecycle of Armbian KVM virtual machines, including deployment, removal, snapshot management, restoration, listing available images, and displaying help.
+#
+# Globals:
+#   module_options - Associative array containing module metadata and command options.
+#
+# Arguments:
+#   The first argument specifies the command to execute: install, remove, save, drop, restore, list, or help.
+#   Additional arguments can be provided as key=value pairs to customize VM deployment and configuration, such as:
+#     - instances: Number of VM instances to deploy.
+#     - provisioning: Path to a provisioning script executed on first boot.
+#     - firstconfig: File with initial VM configuration commands.
+#     - startingip: Starting IP address for VMs (use underscores instead of dots).
+#     - gateway: Gateway IP address (use underscores instead of dots).
+#     - keyword: Comma-separated keywords to filter available Armbian images.
+#     - arch: VM architecture (default: x86).
+#     - kvmprefix: Prefix for VM names (default: kvmtest).
+#     - network: Network configuration (default: default).
+#     - bridge: Network bridge override.
+#     - memory: VM memory in MB (default: 3072).
+#     - vcpus: Number of virtual CPUs (default: 2).
+#     - size: Additional disk size in GB (default: 10).
+#
+# Outputs:
+#   Prints status messages, available images, and help information to STDOUT.
+#
+# Returns:
+#   Exit status of the executed command.
+#
+# Example:
+#
+#   module_armbian_kvmtest install instances=2 keyword=Focal,Jammy memory=4096 vcpus=4
+#   module_armbian_kvmtest remove
+#   module_armbian_kvmtest save
+#   module_armbian_kvmtest restore
+#   module_armbian_kvmtest list
+#   module_armbian_kvmtest help
 function module_armbian_kvmtest () {
 
 	local title="kvmtest"

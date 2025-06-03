@@ -1,6 +1,10 @@
 # package.sh
 
-# internal function
+# Checks if the script's standard input is a terminal.
+#
+# Returns:
+#
+# * 0 (success) if standard input is a terminal, 1 (failure) otherwise.
 _pkg_have_stdin() { [[ -t 0 ]]; }
 
 framework_options+=(
@@ -11,6 +15,22 @@ framework_options+=(
 	["pkg_configure,group"]="Interface"
 )
 
+# Configures unpacked but unconfigured packages using dpkg.
+#
+# Arguments:
+#
+# * Any arguments to pass to `dpkg --configure` (typically package names or `-a` for all).
+#
+# Outputs:
+#
+# * Progress information to STDOUT if running in a terminal.
+#
+# Example:
+#
+# ```bash
+# pkg_configure -a
+# pkg_configure mypackage
+# ```
 pkg_configure()
 {
 	_pkg_have_stdin && debconf-apt-progress -- dpkg --configure "$@" || dpkg --configure "$@"
@@ -24,6 +44,22 @@ framework_options+=(
 	["pkg_full_upgrade,group"]="Interface"
 )
 
+# Performs a full system upgrade, installing the newest versions of all packages and removing obsolete ones if necessary.
+#
+# Arguments:
+#
+# * Additional options or package names to pass to `apt-get full-upgrade`.
+#
+# Returns:
+#
+# * The exit status of the `apt-get full-upgrade` command.
+#
+# Example:
+#
+# ```bash
+# pkg_full_upgrade
+# pkg_full_upgrade --with-new-pkgs
+# ```
 pkg_full_upgrade()
 {
 	_pkg_have_stdin && debconf-apt-progress -- apt-get -y full-upgrade "$@" || apt-get -y full-upgrade "$@"
@@ -37,6 +73,21 @@ framework_options+=(
 	["pkg_install,group"]="Interface"
 )
 
+# Installs one or more packages using apt-get, displaying progress if run interactively.
+#
+# Arguments:
+#
+# * Names of packages to install.
+#
+# Outputs:
+#
+# * Installs the specified packages, printing progress to the terminal if standard input is a terminal.
+#
+# Example:
+#
+# ```bash
+# pkg_install curl git
+# ```
 pkg_install()
 {
 	_pkg_have_stdin && debconf-apt-progress -- apt-get -y install "$@" || apt-get -y install "$@"
@@ -50,6 +101,22 @@ framework_options+=(
 	["pkg_installed,group"]="Interface"
 )
 
+# Checks if a specified package is currently installed on the system.
+#
+# Arguments:
+#
+# * Package name to check.
+#
+# Returns:
+#
+# * 0 (success) if the package is installed and not marked as deinstalled or not-installed.
+# * 1 (failure) otherwise.
+#
+# Example:
+#
+# ```bash
+# pkg_installed bash && echo "Bash is installed"
+# ```
 pkg_installed()
 {
 	local status=$(dpkg -s "$1" 2>/dev/null | sed -n "s/Status: //p")
@@ -64,6 +131,18 @@ framework_options+=(
 	["pkg_remove,group"]="Interface"
 )
 
+# Removes specified packages and their dependencies, purging configuration files.
+#
+# Arguments:
+#
+# * Names of packages to remove.
+#
+# Example:
+#
+# ```bash
+# pkg_remove nginx
+# pkg_remove package1 package2
+# ```
 pkg_remove()
 {
 	_pkg_have_stdin && debconf-apt-progress -- apt-get -y remove --auto-remove --purge "$@" \
@@ -78,6 +157,19 @@ framework_options+=(
 	["pkg_update,group"]="Interface"
 )
 
+# Updates the package repository information using apt-get.
+#
+# If standard input is a terminal, displays progress using debconf-apt-progress.
+#
+# Outputs:
+#
+# * Progress and results of the repository update to STDOUT and STDERR.
+#
+# Example:
+#
+# ```bash
+# pkg_update
+# ```
 pkg_update()
 {
 	_pkg_have_stdin && debconf-apt-progress -- apt-get -y update || apt-get -y update
@@ -91,6 +183,20 @@ framework_options+=(
 	["pkg_upgrade,group"]="Interface"
 )
 
+# Upgrades all installed packages to the latest available versions.
+#
+# If standard input is a terminal, displays progress using debconf-apt-progress.
+#
+# Arguments:
+#
+# * Additional options or package names to pass to apt-get upgrade.
+#
+# Example:
+#
+# ```bash
+# pkg_upgrade
+# pkg_upgrade --with-new-pkgs
+# ```
 pkg_upgrade()
 {
 	_pkg_have_stdin && debconf-apt-progress -- apt-get -y upgrade "$@" || apt-get -y upgrade "$@"
@@ -106,7 +212,22 @@ framework_options+=(
 )
 #
 # check if package manager is doing something
+# Checks if a package manager process (apt-get, apt, or dpkg) is currently running.
 #
+# If a package manager is active and not in scripted mode, displays an informational message.
+#
+# Returns:
+#
+# * 0 if a package manager process is running.
+# * 1 if no package manager process is running.
+#
+# Example:
+#
+# ```bash
+# if is_package_manager_running; then
+#     echo "Please wait for the package manager to finish."
+# fi
+# ```
 function is_package_manager_running() {
 
 	if ps -C apt-get,apt,dpkg > /dev/null; then
@@ -129,7 +250,31 @@ framework_options+=(
 )
 #
 # Function to check when the package list was last updated
+# Checks the freshness of the apt package lists and optionally updates them.
 #
+# Arguments:
+#
+# * update_apt: If set to "update", the function will update the package lists if they are outdated; otherwise, it only checks their freshness.
+#
+# Outputs:
+#
+# * Prints messages indicating whether the package lists are up-to-date, missing, or if a package manager is currently running.
+#
+# Returns:
+#
+# * 0 if the package lists are present and either up-to-date or have been updated.
+# * 1 if no package lists are found or if a package manager process is running.
+#
+# Globals:
+#
+# * Sets the environment variable `running_pkg` to "true" if a package manager is running, "false" otherwise.
+#
+# Example:
+#
+# ```bash
+# see_current_apt           # Checks if the package lists are fresh
+# see_current_apt update    # Checks and updates the package lists if needed
+# ```
 see_current_apt() {
 	# Number of seconds in a day
 	local update_apt="$1"

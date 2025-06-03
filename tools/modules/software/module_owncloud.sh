@@ -13,7 +13,34 @@ software_options+=(
 )
 #
 # Module owncloud
+# Manages the OwnCloud container module, supporting installation, removal, purging, status checks, and help.
 #
+# Globals:
+#
+# * software_options: Associative array containing module metadata and supported commands.
+# * SOFTWARE_FOLDER: Base directory for software data storage.
+# * LOCALIPADD: Local IP address used for trusted domains in OwnCloud.
+#
+# Arguments:
+#
+# * $1: Command to execute. Supported commands are: install, remove, purge, status, help.
+#
+# Outputs:
+#
+# * Prints status messages, errors, or usage information to STDOUT.
+#
+# Returns:
+#
+# * 0 on successful status check or command execution.
+# * 1 on failure to create storage directory, container start timeout, or unsuccessful status check.
+#
+# Example:
+#
+#   module_owncloud install   # Installs and starts the OwnCloud container.
+#   module_owncloud remove    # Removes the OwnCloud container and image.
+#   module_owncloud purge     # Removes the container, image, and data directory.
+#   module_owncloud status    # Checks if OwnCloud is installed and running.
+#   module_owncloud help      # Displays usage information.
 function module_owncloud () {
 	local title="owncloud"
 	local condition=$(which "$title" 2>/dev/null)

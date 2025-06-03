@@ -6,6 +6,35 @@ module_options+=(
 	["module_armbian_firmware,group"]="User"
 )
 
+# Manages Armbian firmware packages, providing commands for selection, installation, status, repository switching, and kernel headers management.
+#
+# This function serves as the main entry point for the Armbian firmware management module. It dispatches subcommands to handle firmware package selection, installation, display, hold/unhold status, repository switching, and kernel headers operations. User interaction is supported via dialog menus for selection and confirmation. The function ensures package lists are updated, simulates installations to verify availability, and manages package holds and repository sources as needed. It also prompts for system reboot after firmware changes when appropriate.
+#
+# Globals:
+#   module_options: Associative array containing module metadata and command options.
+#   KERNEL_TEST_TARGET, BRANCH, KERNELPKG_VERSION, KERNELPKG_LINUXFAMILY, LINUXFAMILY, DISTROID, DIALOG, BACKTITLE: Various environment variables used for kernel and package management.
+#
+# Arguments:
+#   $1: Subcommand to execute (e.g., select, install, show, hold, unhold, repository, headers, help).
+#   Additional arguments are passed to the relevant subcommand handler.
+#
+# Outputs:
+#   Prints menus, status messages, and command results to STDOUT. May prompt the user for input via dialog interfaces.
+#
+# Returns:
+#   0 on success for most operations.
+#   1 for status queries if the requested condition is not met (e.g., packages not held, headers not installed, repository not matching).
+#
+# Example:
+#
+#   module_armbian_firmware select
+#   module_armbian_firmware install current 23.02.2
+#   module_armbian_firmware show current
+#   module_armbian_firmware hold status
+#   module_armbian_firmware unhold
+#   module_armbian_firmware repository rolling
+#   module_armbian_firmware headers install
+#   module_armbian_firmware help
 function module_armbian_firmware() {
 	local title="Armbian FW"
 	local condition=$(which "$title" 2>/dev/null)

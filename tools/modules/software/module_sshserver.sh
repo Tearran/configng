@@ -11,7 +11,31 @@ software_options+=(
 )
 #
 # Module openssh-server
+# Manages the lifecycle of an OpenSSH server container using Docker.
 #
+# Provides commands to install, remove, purge, check status, or display help for an OpenSSH server running in a Docker container. Handles user prompts for configuration, ensures Docker is installed, manages persistent storage, and installs additional utilities inside the container.
+#
+# Arguments:
+#
+# * Command to execute: one of `install`, `remove`, `purge`, `status`, or `help`.
+#
+# Outputs:
+#
+# * Prints status messages, usage information, or error messages to STDOUT/STDERR.
+#
+# Returns:
+#
+# * 0 on success for status checks; 1 on failure or error conditions.
+#
+# Example:
+#
+# ```bash
+# module_openssh-server install
+# module_openssh-server status
+# module_openssh-server remove
+# module_openssh-server purge
+# module_openssh-server help
+# ```
 function module_openssh-server () {
 	local title="openssh-server"
 	local condition=$(which "$title" 2>/dev/null)

@@ -1,4 +1,3 @@
-
 framework_options+=(
 ["support_armbian_configng,author"]="@igorpecovnik"
 ["support_armbian_configng,feature"]="support_armbian_configng"
@@ -8,7 +7,19 @@ framework_options+=(
 )
 #
 # @description Show general information about this tool
+# Prints general information and support links for Armbian Config: The Next Generation.
 #
+# Outputs:
+#
+# * A brief introduction to Armbian Config: The Next Generation.
+# * URLs for proposing new features, reporting bugs, and supporting developers.
+#
+# Example:
+#
+# ```bash
+# support_armbian_configng
+# ```
+# This will print informational text and relevant URLs to standard output.
 function support_armbian_configng() {
 
 	echo "Armbian Config: The Next Generation"
