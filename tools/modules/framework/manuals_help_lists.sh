@@ -1,6 +1,6 @@
 framework_options+=(
 	["generate_json,author"]="@Tearran"
-	["generate_json,ref_link"]=""
+	["generate_json,doc_link"]="false"
 	["generate_json,feature"]="generate_json"
 	["generate_json,desc"]="Generate JSON-like object file."
 	["generate_json,options"]=""
