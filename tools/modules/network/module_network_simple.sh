@@ -338,7 +338,7 @@ function module_simple_network() {
 		;;
 
 		*)
-			${module_options["module_simple_network,feature"]} ${commands[-1]}
+			${module_options["module_simple_network,feature"]} ${commands[0]}
 		;;
 	esac
 
