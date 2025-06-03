@@ -9,11 +9,21 @@ framework_options+=(
 	["merge_arrays_into_module_options,arch"]=""
 )
 
-merge_arrays_into_module_options() {
+merge_arrays_into_module_options_old() {
 	for array_name in "$@"; do
 		eval "for key in \"\${!$array_name[@]}\"; do
 			module_options[\"\$key\"]=\"\${$array_name[\"\$key\"]}\"
 		done"
+	done
+	
+}
+
+function merge_arrays_into_module_options() {
+	for array_name in "$@"; do
+		local -n src="$array_name"
+		for key in "${!src[@]}"; do
+			module_options["$key"]="${src[$key]}"
+		done
 	done
 }
 

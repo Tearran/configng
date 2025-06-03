@@ -1,8 +1,9 @@
 # service.sh
 module_helpers+=(
-	["_srv_system_running,"]
 	["_srv_system_running,desc"]="Internale service interface helper"
 	["_srv_system_running,feature"]="_srv_system_running"
+	["_srv_system_running,example"]=""
+	["_srv_system_running,group"]="Helper"
 )
 # internal function
 _srv_system_running() { [[ $(systemctl is-system-running) =~ ^(running|degraded)$ ]]; }
