@@ -21,7 +21,7 @@ function _checklist_proftpd() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${software_options["_checklist_proftpd,options"]}"
+	IFS=' ' read -r -a commands <<< "${module_helpers["_checklist_proftpd,options"]}"
 
 	## Dynamically manage ProFTPD packages
 	echo "Fetching $title-related packages..."
@@ -116,9 +116,9 @@ module_helpers+=(
 # Scaffold for app with specific single or dummy candidates.
 function _checklist_editors() {
 	local title="Editors"
-	local self="${software_options["_checklist_editors,feature"]}"
+	local self="${module_helpers["_checklist_editors,feature"]}"
 	local _packages
-	IFS=' ' read -r -a _packages <<< "${software_options["$self,options"]}"
+	IFS=' ' read -r -a _packages <<< "${module_helpers["$self,options"]}"
 
 	# Manage editor installation/removal
 	echo "Fetching $title package details..."
@@ -165,9 +165,9 @@ module_helpers+=(
 # Scaffold for app with specific single or dummy candidates.
 function _checklist_imaging() {
 	local title="Imaging"
-	local self="${software_options["_checklist_imaging,feature"]}"
+	local self="${module_helpers["_checklist_imaging,feature"]}"
 	local _packages
-	IFS=' ' read -r -a _packages <<< "${software_options["$self,options"]}"
+	IFS=' ' read -r -a _packages <<< "${module_helpers["$self,options"]}"
 
 	# Manage editor installation/removal
 	echo "Fetching $title package details..."
