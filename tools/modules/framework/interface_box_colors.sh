@@ -25,7 +25,6 @@ function interface_colors() {
 		die "Invalid dialog type"
 	fi
 }
-
 #
 # Function to set the colors for newt
 #
@@ -48,7 +47,6 @@ function _newt_colors() {
 	esac
 	export NEWT_COLORS="root=,$color"
 }
-
 #
 # Function to set the colors for terminal
 #
