@@ -28,7 +28,7 @@ function interface_yes_no() {
 	done
 
 	if [[ "$found" -eq 1 ]]; then
-		if $($DIALOG --yesno "$message" 10 80 3>&1 1>&2 2>&3); then
+		if $DIALOG --yesno "$message" 10 80 3>&1 1>&2 2>&3; then
 			$next_action
 		else
 			$next_action "No"

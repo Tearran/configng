@@ -23,7 +23,7 @@ _tui_system() {
 	)
 
 	local -A description=(
-		["Kernal"]="Alternative kernels, headers, rolling updates, overlays"
+		["Kernel"]="Alternative kernels, headers, rolling updates, overlays"
 		["Storage"]="Install to internal media, ZFS, NFS, read-only rootfs"
 		["Access"]="Manage SSH daemon options, enable 2FA"
 		["User"]="Change shell, adjust MOTD"
@@ -91,9 +91,8 @@ _tui_software() {
 _tui_about() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
 	echo "Armbian Config: V3 Framework"
-	echo """
-help
-"""
+	echo 
+	echo "help"
 
 	}
 

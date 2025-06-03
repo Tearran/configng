@@ -331,7 +331,7 @@ function _dbt_to_array() {
 	done < "$ini_file"
 }
 
-module_helper+=(
+framework_options+=(
 	["_gen_unit_test_files,maintainer"]="@Tearran"
 	["_gen_unit_test_files,feature"]="_gen_unit_test_files"
 	["_gen_unit_test_files,example"]=""
