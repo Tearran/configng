@@ -83,6 +83,7 @@ function _term_colors() {
 			die "Invalid color code"
 			;;
 	esac
+	echo -e "$color"
 }
 
 
