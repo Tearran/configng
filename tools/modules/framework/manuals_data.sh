@@ -9,7 +9,6 @@ framework_options+=(
 	["merge_arrays_into_module_options,arch"]=""
 )
 
-
 merge_arrays_into_module_options() {
 	for array_name in "$@"; do
 		eval "for key in \"\${!$array_name[@]}\"; do

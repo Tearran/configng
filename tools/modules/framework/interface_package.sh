@@ -45,7 +45,7 @@ pkg_install()
 framework_options+=(
 	["pkg_installed,author"]="@dimitry-ishenko"
 	["pkg_installed,desc"]="Check if package is installed"
-	["pkg_installed,example"]="<apt packeage name>"
+	["pkg_installed,example"]="<apt package name>"
 	["pkg_installed,feature"]="pkg_installed"
 	["pkg_installed,group"]="Interface"
 )
@@ -59,7 +59,7 @@ pkg_installed()
 framework_options+=(
 	["pkg_remove,author"]="@dimitry-ishenko"
 	["pkg_remove,desc"]="Remove package"
-	["pkg_remove,example"]="<apt packeage name>"
+	["pkg_remove,example"]="<apt package name>"
 	["pkg_remove,feature"]="pkg_remove"
 	["pkg_remove,group"]="Interface"
 )

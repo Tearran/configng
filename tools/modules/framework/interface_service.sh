@@ -1,14 +1,17 @@
 # service.sh
-
+module_helpers+=(
+	["_srv_system_running,"]
+	["_srv_system_running,desc"]="Internale service interface helper"
+	["_srv_system_running,feature"]="_srv_system_running"
+)
 # internal function
 _srv_system_running() { [[ $(systemctl is-system-running) =~ ^(running|degraded)$ ]]; }
 
-declare -A framework_options
 framework_options+=(
 	["srv_active,author"]="@dimitry-ishenko"
 	["srv_active,desc"]="Check if service is active"
 	["srv_active,example"]="<service_name.service>"
-	["srv_active,feature"]=""
+	["srv_active,feature"]="srv_active"
 	["srv_active,group"]="Interface"
 )
 
@@ -18,12 +21,12 @@ srv_active()
 	_srv_system_running && systemctl is-active --quiet "$@"
 }
 
-declare -A framework_options
+
 framework_options+=(
 	["srv_daemon_reload,author"]="@dimitry-ishenko"
 	["srv_daemon_reload,desc"]="Reload systemd configuration"
-	["srv_daemon_reload,example"]="srv_daemon_reload"
-	["srv_daemon_reload,feature"]=""
+	["srv_daemon_reload,example"]=""
+	["srv_daemon_reload,feature"]="srv_daemon_reload"
 	["srv_daemon_reload,group"]="Interface"
 )
 
@@ -36,7 +39,7 @@ srv_daemon_reload()
 framework_options+=(
 	["srv_disable,author"]="@dimitry-ishenko"
 	["srv_disable,desc"]="Disable service"
-	["srv_disable,example"]="srv_disable ssh.service"
+	["srv_disable,example"]="<name.service>"
 	["srv_disable,feature"]="srv_disable"
 	["srv_disable,group"]="Interface"
 )
