@@ -260,7 +260,8 @@ function module_simple_network() {
 		"${commands[6]}")
 			# store current NetPlan configs
 			restore_netplan_config_folder=$(mktemp -d /tmp/XXXXXXXXXX)
-			trap '{ rm -rf -- "$restore_netplan_config"; }' EXIT
+			#trap '{ rm -rf -- "$restore_netplan_config"; }' EXIT
+			trap '{ rm -rf -- "$restore_netplan_config_folder"; }' EXIT
 			rsync --quiet /etc/netplan/* ${restore_netplan_config_folder}/ 2>/dev/null
 		;;
 		"${commands[7]}")
