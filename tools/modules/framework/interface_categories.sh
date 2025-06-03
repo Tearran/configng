@@ -38,10 +38,50 @@ _tui_system() {
 
 _tui_network() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
+	
+	# Ordered list of keys
+	local keys=(
+		"Configuration"
+		"Connectivity"
+		"Security"
+		"Diagnostics"
+	)
+
+	local -A description=(
+		["Configuration"]="Network interfaces, wireless setup, IP configuration"
+		["Connectivity"]="Bluetooth pairing, IPv6 toggle, connection management"
+		["Security"]="QR codes for authentication, network security tools"
+		["Diagnostics"]="Network testing, ping tools, connection status"
+	)
+
+	for key in "${keys[@]}"; do
+		eval "desc=\"$key - ${description[$key]}\""
+		echo -e "$desc"
+	done
 }
 
 _tui_localisation() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
+	
+	# Ordered list of keys
+	local keys=(
+		"Timezone"
+		"Language" 
+		"Keyboard"
+#		"Regional"
+	)
+
+	local -A description=(
+		["Timezone"]="Set global timezone and time settings"
+		["Language"]="Configure locales, language and character set"
+		["Keyboard"]="Change keyboard layout and input methods"
+#		["Regional"]="APT mirrors, system hostname, regional settings"
+	)
+
+	for key in "${keys[@]}"; do
+		eval "desc=\"$key - ${description[$key]}\""
+		echo -e "$desc"
+	done
 }
 
 _tui_software() {
