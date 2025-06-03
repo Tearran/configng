@@ -4,7 +4,7 @@ framework_options+=(
 	["interface_message,ref_link"]=""
 	["interface_message,feature"]="interface_message"
 	["interface_message,desc"]="OK message User Interface box"
-	["interface_message,options"]="<<< 'hello world' "
+	["interface_message,options"]="<string>"
 	["interface_message,doc_link"]=""
 	["interface_message,group"]="Interface"
 )
@@ -13,7 +13,14 @@ framework_options+=(
 #
 function interface_message() {
 	# Read the input from the pipe
-	input=$(cat)
+	if [ -p /dev/stdin ]; then
+		input=$(cat)
+	elif [ -n "$1" ]; then
+		input="$1"
+	else
+		checkpoint debug "Unknown input"
+		return 1
+	fi
 	# Display menu based on DIALOG tool
 	case $DIALOG in
 		"dialog")
