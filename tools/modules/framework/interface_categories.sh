@@ -64,7 +64,7 @@ _tui_localisation() {
 	# Ordered list of keys
 	local keys=(
 		"Timezone"
-		"Language" 
+		"Language"
 		"Keyboard"
 	)
 
