@@ -15,7 +15,6 @@ merge_arrays_into_module_options_old() {
 			module_options[\"\$key\"]=\"\${$array_name[\"\$key\"]}\"
 		done"
 	done
-	
 }
 
 function merge_arrays_into_module_options() {
