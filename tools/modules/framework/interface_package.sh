@@ -66,7 +66,8 @@ framework_options+=(
 
 pkg_remove()
 {
-	_pkg_have_stdin && debconf-apt-progress -- apt-get -y remove --auto-remove --purge "$@" || apt-get -y purge "$@"
+	_pkg_have_stdin && debconf-apt-progress -- apt-get -y remove --auto-remove --purge "$@" \
+	|| apt-get -y remove --auto-remove --purge "$@"
 }
 
 framework_options+=(
