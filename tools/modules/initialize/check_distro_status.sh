@@ -1,5 +1,5 @@
 
-module_options+=(
+framework_options+=(
 	["check_os_status,author"]="@Tearran"
 	["check_os_status,feature"]="check_os_status"
 	["check_os_status,example"]="help"
@@ -44,7 +44,7 @@ function check_distro_status() {
 #
 # Functions to display warning for 10 seconds with a gauge
 #
-module_options+=(
+framework_options+=(
 	["info_wait_autocontinue,author"]="@igorpecovnik"
 	["info_wait_autocontinue,ref_link"]=""
 	["info_wait_autocontinue,feature"]="info_wait_autocontinue"

@@ -1,4 +1,4 @@
-module_options+=(
+framework_options+=(
 	["initialize_variables,author"]="@igorpecovnik"
 	["initialize_variables,ref_link"]=""
 	["initialize_variables,feature"]="initialize_variables"

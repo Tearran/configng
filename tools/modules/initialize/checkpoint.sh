@@ -1,6 +1,6 @@
 # checkpoint.sh
 
-module_options+=(
+framework_options+=(
 	["checkpoint,author"]="@dimitry-ishenko"
 	["checkpoint,feature"]="checkpoint"
 	["checkpoint,example"]="debug help mark reset total"

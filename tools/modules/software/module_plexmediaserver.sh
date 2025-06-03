@@ -1,3 +1,18 @@
+software_options+=(
+	["module_plexmediaserver,id"]="MED0300"
+	["module_plexmediaserver,maintainer"]="@igorpecovnik"
+	["module_plexmediaserver,feature"]="module_plexmediaserver"
+	["module_plexmediaserver,desc"]="Install plexmediaserver from repo using apt"
+	["module_plexmediaserver,example"]="install remove status"
+	["module_plexmediaserver,status"]="Active"
+	["module_plexmediaserver,about"]=""
+	["module_plexmediaserver,doc_link"]="https://www.plex.tv/"
+	["module_plexmediaserver,author"]="@schwar3kat"
+	["module_plexmediaserver,parent"]="software"
+	["module_plexmediaserver,group"]="Media"
+	["module_plexmediaserver,port"]="32400"
+	["module_plexmediaserver,arch"]="x86-64 arm64"
+)
 #
 # Install plexmediaserver using apt
 #
@@ -6,7 +21,7 @@ module_plexmediaserver() {
 	local condition=$(which "$title" 2>/dev/null)
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_plexmediaserver,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["module_plexmediaserver,example"]}"
 
 	case "$1" in
 		"${commands[0]}")
@@ -36,8 +51,8 @@ module_plexmediaserver() {
 			fi
 		;;
 		"${commands[3]}")
-			echo -e "\nUsage: ${module_options["module_portainer,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_portainer,example"]}"
+			echo -e "\nUsage: ${software_options["module_portainer,feature"]} <command>"
+			echo -e "Commands:  ${software_options["module_portainer,example"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tstatus\t- Installation status $title."
@@ -45,7 +60,7 @@ module_plexmediaserver() {
 			echo
 		;;
 		*)
-			${module_options["module_plexmediaserver,feature"]} ${commands[3]}
+			${software_options["module_plexmediaserver,feature"]} ${commands[3]}
 		;;
 	esac
 }

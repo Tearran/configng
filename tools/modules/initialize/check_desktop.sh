@@ -1,5 +1,5 @@
 
-module_options+=(
+framework_options+=(
 	["check_desktop,author"]="@armbian"
 	["check_desktop,ref_link"]=""
 	["check_desktop,feature"]="check_desktop"

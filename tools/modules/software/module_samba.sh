@@ -1,4 +1,18 @@
-
+software_options+=(
+	["module_samba,id"]="MED0280"
+	["module_samba,maintainer"]="@Tearran"
+	["module_samba,feature"]="module_samba"
+	["module_samba,desc"]="Samba setup and service setting."
+	["module_samba,example"]="help install remove start stop enable disable configure default status"
+	["module_samba,status"]="Active"
+	["module_samba,about"]=""
+	["module_samba,doc_link"]="https://www.samba.org/samba/docs/"
+	["module_samba,author"]="@Tearran"
+	["module_samba,parent"]="software"
+	["module_samba,group"]="Media"
+	["module_samba,port"]="445"
+	["module_samba,arch"]="x86-64 arm64 armhf"
+)
 #
 function module_samba() {
 	local title="samba"
@@ -7,16 +21,16 @@ function module_samba() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_samba,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["module_samba,example"]}"
 
 	case "$1" in
 		"${commands[0]}"|"")
 		## help/menu options for the module
-		echo -e "\nUsage: ${module_options["module_samba,feature"]} <command>"
+		echo -e "\nUsage: ${software_options["module_samba,feature"]} <command>"
 		# Full list of commands to referance is printed
-		echo -e "Commands: ${module_options["module_samba,example"]}"
+		echo -e "Commands: ${software_options["module_samba,example"]}"
 		echo "Available commands:"
-		# Unlike the for mentioned `echo -e "Commands: ${module_options["module_samba,example"]}"``
+		# Unlike the for mentioned `echo -e "Commands: ${software_options["module_samba,example"]}"``
 		# comprehenive referance the Avalible commands are commands considered useable in UI/UX
 		# intened use below.
 		if [[ -z "$condition" ]]; then
@@ -107,7 +121,7 @@ function module_samba() {
 		;;
 		*)
 		# Full list of commands to referance is printed
-		echo "Invalid command. Try: '${module_options["module_samba,example"]}'"
+		echo "Invalid command. Try: '${software_options["module_samba,example"]}'"
 		;;
 	esac
 }

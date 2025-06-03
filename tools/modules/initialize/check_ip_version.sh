@@ -1,5 +1,5 @@
 
-module_options+=(
+framework_options+=(
 	["check_ip_version,author"]="@Tearran"
 	["check_ip_version,ref_link"]=""
 	["check_ip_version,feature"]="check_ip_version"

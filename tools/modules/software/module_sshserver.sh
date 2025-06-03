@@ -1,4 +1,4 @@
-module_options+=(
+software_options+=(
 	["module_openssh-server,author"]="@armbian"
 	["module_openssh-server,maintainer"]="@igorpecovnik"
 	["module_openssh-server,feature"]="module_openssh-server"
@@ -23,7 +23,7 @@ function module_openssh-server () {
 	fi
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_openssh-server,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["module_openssh-server,example"]}"
 
 	OPENSSHSERVER_BASE="${SOFTWARE_FOLDER}/openssh-server"
 
@@ -70,7 +70,7 @@ function module_openssh-server () {
 			[[ "${image}" ]] && docker image rm "$image" >/dev/null
 		;;
 		"${commands[2]}")
-			${module_options["module_openssh-server,feature"]} ${commands[1]}
+			${software_options["module_openssh-server,feature"]} ${commands[1]}
 			[[ -n "${OPENSSHSERVER_BASE}" && "${OPENSSHSERVER_BASE}" != "/" ]] && rm -rf "${OPENSSHSERVER_BASE}"
 		;;
 		"${commands[3]}")
@@ -81,8 +81,8 @@ function module_openssh-server () {
 			fi
 		;;
 		"${commands[4]}")
-			echo -e "\nUsage: ${module_options["module_openssh-server,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_openssh-server,example"]}"
+			echo -e "\nUsage: ${software_options["module_openssh-server,feature"]} <command>"
+			echo -e "Commands:  ${software_options["module_openssh-server,example"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tstatus\t- Installation status $title."
@@ -90,7 +90,7 @@ function module_openssh-server () {
 			echo
 		;;
 		*)
-			${module_options["module_openssh-server,feature"]} ${commands[4]}
+			${software_options["module_openssh-server,feature"]} ${commands[4]}
 		;;
 	esac
 }

@@ -1,5 +1,5 @@
 
-module_options+=(
+framework_options+=(
 	["see_ping,author"]="@Tearran"
 	["see_ping,ref_link"]="https://github.com/Tearran/configng/blob/main/config.ng.functions.sh#632"
 	["see_ping,feature"]="see_ping"

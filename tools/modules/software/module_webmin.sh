@@ -1,16 +1,32 @@
+software_options+=(
+	["module_webmin,id"]="MAN0060"
+	["module_webmin,maintainer"]="@Tearran"
+	["module_webmin,feature"]="module_webmin"
+	["module_webmin,desc"]="Webmin setup and service setting."
+	["module_webmin,example"]="help install remove start stop enable disable status check"
+	["module_webmin,status"]="Active"
+	["module_webmin,about"]=""
+	["module_webmin,doc_link"]="https://webmin.com/docs/"
+	["module_webmin,author"]="@Tearran"
+	["module_webmin,parent"]="software"
+	["module_webmin,group"]="Management"
+	["module_webmin,port"]="10000"
+	["module_webmin,arch"]="x86-64 arm64 armhf"
+)
+#
 function module_webmin() {
 	local title="webmin"
 	local condition=$(which "$title" 2>/dev/null)
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_webmin,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["module_webmin,example"]}"
 
 	case "$1" in
 		"${commands[0]}")
 			## help/menu options for the module
-			echo -e "\nUsage: ${module_options["module_webmin,feature"]} <command>"
-			echo -e "Commands: ${module_options["module_webmin,example"]}"
+			echo -e "\nUsage: ${software_options["module_webmin,feature"]} <command>"
+			echo -e "Commands: ${software_options["module_webmin,example"]}"
 			echo "Available commands:"
 			if [[ -z "$condition" ]]; then
 				echo -e "  install\t- Install $title."
@@ -87,7 +103,7 @@ function module_webmin() {
 			fi
 			;;
 		*)
-		echo "Invalid command.try: '${module_options["module_webmin,example"]}'"
+		echo "Invalid command.try: '${software_options["module_webmin,example"]}'"
 
 		;;
 	esac
