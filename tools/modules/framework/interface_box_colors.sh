@@ -16,11 +16,12 @@ function interface_colors() {
 
 	if [ "$DIALOG" = "whiptail" ]; then
 		_newt_colors "$color_code"
-		#echo "color code: $color_code" | show_infobox ;
+		checkpoint debug "color code: $color_code" ;
 	elif [ "$DIALOG" = "dialog" ]; then
 		_term_colors "$color_code"
+		checkpoint debug "color code: $color_code" ;
 	else
-		echo "Invalid dialog type"
+		checkpoint debug "Invalid dialog type"
 		return 1
 	fi
 }
@@ -41,7 +42,10 @@ function _newt_colors() {
 		7) color="white" ;;
 		8) color="black" ;;
 		9) color="red" ;;
-		*) return ;;
+		*)
+			checkpoint debug "Warning: Invalid color code '$color_code' passed to _newt_colors" >&2
+			return 1
+			;;
 	esac
 	export NEWT_COLORS="root=,$color"
 }
@@ -61,7 +65,7 @@ function _term_colors() {
 		6) color="\e[46m" ;; # cyan
 		7) color="\e[47m" ;; # white
 		*)
-			echo "Invalid color code"
+			checkpoint debug "Invalid color code"
 			return 1
 			;;
 	esac
