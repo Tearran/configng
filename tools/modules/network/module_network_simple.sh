@@ -310,7 +310,7 @@ function module_simple_network() {
 			netplan set --origin-hint ${yamlfile} $3.$adapter.nameservers.addresses='['$nameservers']'
 			netplan apply
 		;;
-		"${commands[-1]}")
+		"${commands[10]}")
 			# remove adapter from yaml file
 			sed -i -e 'H;x;/^\(  *\)\n\1/{s/\n.*//;x;d;}' \
 			-e 's/.*//;x;/'${2}'/{s/^\( *\).*/ \1/;x;d;}' /etc/netplan/${yamlfile}.yaml
