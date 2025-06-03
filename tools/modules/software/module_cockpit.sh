@@ -1,5 +1,4 @@
 software_options+=(
-	["module_cockpit,id"]="MAN0420"
 	["module_cockpit,maintainer"]="@igorpecovnik"
 	["module_cockpit,feature"]="module_cockpit"
 	["module_cockpit,desc"]="Cockpit setup and service setting."

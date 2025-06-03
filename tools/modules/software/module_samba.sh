@@ -1,5 +1,4 @@
 software_options+=(
-	["module_samba,id"]="MED0280"
 	["module_samba,maintainer"]="@Tearran"
 	["module_samba,feature"]="module_samba"
 	["module_samba,desc"]="Samba setup and service setting."

@@ -1,5 +1,4 @@
 software_options+=(
-	["module_owncloud,id"]="MAN0560"
 	["module_owncloud,maintainer"]="@igorpecovnik"
 	["module_owncloud,feature"]="module_owncloud"
 	["module_owncloud,desc"]="Install owncloud container"

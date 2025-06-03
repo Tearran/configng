@@ -1,5 +1,4 @@
 software_options+=(
-	["module_plexmediaserver,id"]="MED0300"
 	["module_plexmediaserver,maintainer"]="@igorpecovnik"
 	["module_plexmediaserver,feature"]="module_plexmediaserver"
 	["module_plexmediaserver,desc"]="Install plexmediaserver from repo using apt"

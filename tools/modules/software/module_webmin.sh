@@ -1,5 +1,4 @@
 software_options+=(
-	["module_webmin,id"]="MAN0060"
 	["module_webmin,maintainer"]="@Tearran"
 	["module_webmin,feature"]="module_webmin"
 	["module_webmin,desc"]="Webmin setup and service setting."
