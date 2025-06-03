@@ -38,7 +38,6 @@ _tui_system() {
 
 _tui_network() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
-	
 	# Ordered list of keys
 	local keys=(
 		"Configuration"
@@ -62,20 +61,17 @@ _tui_network() {
 
 _tui_localisation() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
-	
 	# Ordered list of keys
 	local keys=(
 		"Timezone"
 		"Language" 
 		"Keyboard"
-#		"Regional"
 	)
 
 	local -A description=(
 		["Timezone"]="Set global timezone and time settings"
 		["Language"]="Configure locales, language and character set"
 		["Keyboard"]="Change keyboard layout and input methods"
-#		["Regional"]="APT mirrors, system hostname, regional settings"
 	)
 
 	for key in "${keys[@]}"; do
