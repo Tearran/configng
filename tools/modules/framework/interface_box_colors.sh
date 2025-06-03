@@ -15,14 +15,14 @@ function interface_colors() {
 	local color_code=$1
 
 	if [ "$DIALOG" = "whiptail" ]; then
-		_newt_colors "$color_code"
-		checkpoint debug "color code: $color_code" ;
+		checkpoint debug "$DIALOG color code: $color_code" ;
+		_newt_colors "$color_code" || die "unknown error"
+		
 	elif [ "$DIALOG" = "dialog" ]; then
-		_term_colors "$color_code"
-		checkpoint debug "color code: $color_code" ;
+		checkpoint debug "$DIALOG color code: $color_code" ;
+		_term_colors "$color_code"  || die "unknown error"
 	else
-		checkpoint debug "Invalid dialog type"
-		return 1
+		die "Invalid dialog type"
 	fi
 }
 
@@ -43,8 +43,7 @@ function _newt_colors() {
 		8) color="black" ;;
 		9) color="red" ;;
 		*)
-			checkpoint debug "Warning: Invalid color code '$color_code' passed to _newt_colors" >&2
-			return 1
+			die "Warning: Invalid color code '$color_code' passed to _newt_colors" >&2
 			;;
 	esac
 	export NEWT_COLORS="root=,$color"
@@ -67,8 +66,7 @@ function _term_colors() {
 		8) color="\e[100m" ;; # gray
 		9) color="\e[101m" ;; # bright red
 		*)
-			checkpoint debug "Invalid color code"
-			return 1
+			die "Invalid color code"
 			;;
 	esac
 	echo -e "$color"
