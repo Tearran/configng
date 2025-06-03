@@ -261,7 +261,6 @@ _gen_data_dbt(){
 		echo "feature    = ${feature}"
 		echo "desc       = ${desc}"
 		echo "example    = ${example}"
-		echo "status     = ${status}"
 		echo "about      = ${about}"
 		echo "doc_link   = ${doc_link}"
 		echo "author     = ${author}"
