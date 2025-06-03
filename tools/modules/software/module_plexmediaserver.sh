@@ -51,8 +51,8 @@ module_plexmediaserver() {
 			fi
 		;;
 		"${commands[3]}")
-			echo -e "\nUsage: ${software_options["module_portainer,feature"]} <command>"
-			echo -e "Commands:  ${software_options["module_portainer,example"]}"
+			echo -e "\nUsage: ${software_options["module_plexmediaserver,feature"]} <command>"
+			echo -e "Commands:  ${software_options["module_plexmediaserver,example"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tstatus\t- Installation status $title."
