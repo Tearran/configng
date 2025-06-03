@@ -107,7 +107,6 @@ function markdown_framework_options() {
 			doc_link=${framework_options["$function_name,doc_link"]}
 			ref_link_md=$([[ -n "$ref_link" ]] && echo "[Source]($ref_link)" || echo "X")
 			doc_link_md=$([[ -n "$doc_link" ]] && echo "[Document]($doc_link)" || echo "X")
-			status_md=$([[ -z "$ref_link" ]] && echo "source link Needed" || ([[ (-n "$ref_link" && -n "$doc_link") ]] && echo "Review" || echo "$status"))
 			mod_message+="| ${framework_options["$function_name,desc"]} | ${framework_options["$function_name,options"]} | ${framework_options["$function_name,author"]} \n"
 		fi
 	done
