@@ -19,7 +19,7 @@ function interface_yes_no() {
 	# Define a list of allowed functions
 	local allowed_functions=("process_input" "other_function")
 	# Check if the next_action is in the list of allowed functions
-	found=0
+	local found=0
 	for func in "${allowed_functions[@]}"; do
 		if [[ "$func" == "$next_action" ]]; then
 			found=1
