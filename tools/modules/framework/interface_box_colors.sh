@@ -64,6 +64,8 @@ function _term_colors() {
 		5) color="\e[45m" ;; # magenta
 		6) color="\e[46m" ;; # cyan
 		7) color="\e[47m" ;; # white
+		8) color="\e[100m" ;; # gray
+		9) color="\e[101m" ;; # bright red
 		*)
 			checkpoint debug "Invalid color code"
 			return 1
