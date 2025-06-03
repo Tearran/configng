@@ -61,8 +61,6 @@ function interface_checklist() {
 	echo "$selected_items"
 }
 
-
-
 module_options+=(
 	["process_package_selection,author"]="@Tearran"
 	["process_package_selection,maintainer"]="@Tearran"

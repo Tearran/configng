@@ -11,11 +11,11 @@ module_options+=(
 
 
 merge_arrays_into_module_options() {
-    for array_name in "$@"; do
-        eval "for key in \"\${!$array_name[@]}\"; do
-            module_options[\"\$key\"]=\"\${$array_name[\"\$key\"]}\"
-        done"
-    done
+	for array_name in "$@"; do
+		eval "for key in \"\${!$array_name[@]}\"; do
+			module_options[\"\$key\"]=\"\${$array_name[\"\$key\"]}\"
+		done"
+	done
 }
 
 module_options+=(
@@ -31,22 +31,23 @@ module_options+=(
 )
 
 function options_list() {
-    local array_name="$1"
-    local usage="$2"
-    local -n options_array="$array_name"  # Bash 4.3+ nameref
-    local mod_message="Usage: ${0} [$usage] [options]\n\n"
+	local array_name="$1"
+	local usage="$2"
+	local -n options_array="$array_name"  # Bash 4.3+ nameref
+	local mod_message="Usage: ${0} [$usage] [options]\n\n"
 	i=1
+
 	for function_name in "${!options_array[@]}"; do
-		# Parse out the function name if your keys are like "foo,desc"
-		[[ "$function_name" =~ ^([^,]+),feature$ ]] || continue
-		fn_name="${BASH_REMATCH[1]}"
-		type="feature" # or get from your array if stored
-		if [[ "$type" == "feature" ]]; then
-			example="${options_array["$fn_name,example"]}"
-			mod_message+="$i. ${options_array["$fn_name,desc"]}\n\t${options_array["$fn_name,feature"]} $example\n\n"
-			((i++))
-		fi
+	# Parse out the function name if your keys are like "foo,desc"
+	[[ "$function_name" =~ ^([^,]+),feature$ ]] || continue
+	fn_name="${BASH_REMATCH[1]}"
+	type="feature" # or get from your array if stored
+	if [[ "$type" == "feature" ]]; then
+		example="${options_array["$fn_name,example"]}"
+		mod_message+="$i. ${options_array["$fn_name,desc"]}\n\t${options_array["$fn_name,feature"]} $example\n\n"
+		((i++))
+	fi
 	done
-    echo -e "$mod_message"
+	echo -e "$mod_message"
 }
 # options_list module_options

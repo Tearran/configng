@@ -13,27 +13,27 @@ module_options+=(
 
 _tui_system() {
 	checkpoint debug "Text User Interface (TUI) is ($DIALOG)..."
-    # Ordered list of keys
-    local keys=(
+	# Ordered list of keys
+	local keys=(
 		"Kernel"
 		"Storage"
 		"Access"
 		"User"
 		"Updates"
-		)
+	)
 
-    local -A description=(
+	local -A description=(
 		["Kernal"]="Alternative kernels, headers, rolling updates, overlays"  
 		["Storage"]="Install to internal media, ZFS, NFS, read-only rootfs"
 		["Access"]="Manage SSH daemon options, enable 2FA"
 		["User"]="Change shell, adjust MOTD"
 		["Updates"]="OS updates and distribution upgrades"
-    )
+	)
 
-    for key in "${keys[@]}"; do
-        eval "desc=\"$key - ${description[$key]}\""
-        echo -e "$desc"
-    done
+	for key in "${keys[@]}"; do
+		eval "desc=\"$key - ${description[$key]}\""
+		echo -e "$desc"
+	done
 }
 
 _tui_network() {
@@ -65,7 +65,7 @@ _tui_software() {
 		"Netconfig"
 	)
 
-    local -A description=(
+	local -A description=(
 		["WebHosting"]="Web server, LEMP, reverse proxy, Let's Encrypt SSL"
 		["HomeAutomation"]="Home Automation for control home appliances"
 		["DNS"]="Network-wide ad blockers servers"
@@ -79,13 +79,13 @@ _tui_software() {
 		["Monitoring"]="Real-time monitoring, collecting metrics, up-time status"
 		["Management"]="Remote Management tools"
 		["Printing"]="Tools for printing and 3D printing"
-		["Netconfig"]="Console network tools for measuring load and bandwidth"  
+		["Netconfig"]="Console network tools for measuring load and bandwidth"
 	)
 
-    for key in "${keys[@]}"; do
-        eval "desc=\"$key - ${description[$key]}\""
-        echo -e "$desc"
-    done
+	for key in "${keys[@]}"; do
+		eval "desc=\"$key - ${description[$key]}\""
+		echo -e "$desc"
+	done
 
 }
 
@@ -94,9 +94,9 @@ _tui_about() {
 	echo "Armbian Config: V3 Framework"
 	echo """
 help
-	"""
+"""
 
-}
+	}
 
 function  interface_categories() {
     # Ordered list of keys
