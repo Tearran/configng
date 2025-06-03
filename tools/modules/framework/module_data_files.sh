@@ -71,7 +71,7 @@ function generate_data_files() {
 	local i=0
 	local g=0
 	local features feature
-	local about_key desc_key example_key author_key ref_key doc_key group_key commands_key port_key arch_key maintainer_key header_key footer_key status_key
+	local about_key desc_key example_key author_key ref_key doc_key group_key commands_key port_key arch_key maintainer_key header_key footer_key
 	local about author ref_link status doc_link desc example group commands port arch maintainer header footer
 	local group_prefix id parent
 
@@ -104,7 +104,6 @@ function generate_data_files() {
 		about="${module_options[$about_key]}"
 		author="${module_options[$author_key]}"
 		ref_link="${module_options[$ref_key]}"
-		status="${module_options[$status_key]}"
 		doc_link="${module_options[$doc_key]}"
 		desc="${module_options[$desc_key]}"
 		example="${module_options[$example_key]}"
