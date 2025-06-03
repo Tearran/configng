@@ -30,6 +30,7 @@ function module_simple_network() {
 			echo -e "\nUsage: ${module_options["module_simple_network,feature"]} <command>"
 			echo -e "Commands:  ${module_options["module_simple_network,options"]}"
 			echo "Available commands:"
+			echo -e "\thelp\t\t- Display this."
 			echo -e "\tsimple\t\t- Select simple $title setup."
 			echo -e "\tadvanced\t- Select advanced $title setup."
 			echo -e "\tstations\t- Display wifi stations."
@@ -38,7 +39,6 @@ function module_simple_network() {
 			echo -e "\trestore\t\t- Restore NetPlan configs."
 			echo -e "\tdhcp\t\t- Set DHCP for adapter."
 			echo -e "\tstatic\t\t- Set static for adapter."
-			echo -e "\thelp\t\t- Display this."
 			echo
 		;;
 		"${commands[1]}")
