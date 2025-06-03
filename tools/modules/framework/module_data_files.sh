@@ -70,6 +70,10 @@ function generate_data_files() {
 	local generator=$1
 	local i=0
 	local g=0
+	local features feature
+	local about_key desc_key example_key author_key ref_key doc_key group_key commands_key port_key arch_key maintainer_key header_key footer_key status_key
+	local about author ref_link status doc_link desc example group commands port arch maintainer header footer
+	local group_prefix id parent
 
 	features=()
 	for key in "${!module_options[@]}"; do
