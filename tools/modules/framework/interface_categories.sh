@@ -147,10 +147,10 @@ function interface_categories() {
 
 	case "$1" in
 		"${keys[0]}") interface_menu _tui_system ;;
-		"${keys[1]}") _tui_network ;;
-		"${keys[2]}") _tui_localisation	;;
+		"${keys[1]}") interface_menu _tui_network ;;
+		"${keys[2]}") interface_menu _tui_localisation	;;
 		"${keys[3]}") interface_menu _tui_software	;;
-		"${keys[4]}") _tui_about | interface_message ;;
+		"${keys[4]}") interface_menu _tui_about | interface_message ;;
 		"help")
 		echo -e "\nUsage: ${framework_options["interface_categories,feature"]} <command>"
 		echo -e "Options:  ${framework_options["interface_categories,example"]}"

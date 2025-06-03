@@ -14,18 +14,18 @@ function module_data_files() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_data_files,example"]}"
+	IFS=' ' read -r -a commands <<< "${framework_options["module_data_files,example"]}"
 
 	# Handle the command passed to the function
 	case "$1" in
 		"${commands[0]}")
-		echo -e "\nUsage: ${module_options["module_data_files,feature"]} <command>"
-		echo -e "Commands:  ${module_options["module_data_files,example"]}"
+		echo -e "\nUsage: ${framework_options["module_data_files,feature"]} <command>"
+		echo -e "Commands:  ${framework_options["module_data_files,example"]}"
 		echo "Available commands:"
-		echo -e "\tarray\t- Generate module_options files from production module_options array."
-		echo -e "\tjson\t- Generate JSON object from module_options"
-		echo -e "\tdbt\t- Generate DBT from module_options"
-		echo -e "\ttest\t- Generate unit-test CONF from module_options."
+		echo -e "\tarray\t- Generate framework_options files from production framework_options array."
+		echo -e "\tjson\t- Generate JSON object from framework_options"
+		echo -e "\tdbt\t- Generate DBT from framework_options"
+		echo -e "\ttest\t- Generate unit-test CONF from framework_options."
 		echo -e "\tall\t- Generate All above."
 		echo
 		;;
@@ -48,7 +48,7 @@ function module_data_files() {
 		generate_data_files "_gen_unit_test_files"
 		;;
 		*)
-		echo "${module_options["module_data_files,example"]}"
+		echo "${framework_options["module_data_files,example"]}"
 		;;
 	esac
 }
