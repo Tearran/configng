@@ -32,7 +32,8 @@ pkg_full_upgrade()
 framework_options+=(
 	["pkg_install,author"]="@dimitry-ishenko"
 	["pkg_install,desc"]="Install package"
-	["pkg_install,options"]="<apt packeage name>"
+-	["pkg_install,options"]="<apt packeage name>"
++	["pkg_install,options"]="<apt package name>"
 	["pkg_install,feature"]="pkg_install"
 	["pkg_install,group"]="Interface"
 )
