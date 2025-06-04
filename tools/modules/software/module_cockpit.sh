@@ -1,28 +1,29 @@
-module_options+=(
-	["module_cockpit,author"]="@tearran"
+software_options+=(
 	["module_cockpit,maintainer"]="@igorpecovnik"
 	["module_cockpit,feature"]="module_cockpit"
-	["module_cockpit,example"]="help install remove start stop enable disable status check"
 	["module_cockpit,desc"]="Cockpit setup and service setting."
-	["module_cockpit,status"]="Stable"
+	["module_cockpit,options"]="help install remove start stop enable disable status check"
+	["module_cockpit,about"]=""
 	["module_cockpit,doc_link"]="https://cockpit-project.org/guide/latest/"
+	["module_cockpit,author"]="@tearran"
+	["module_cockpit,parent"]="software"
 	["module_cockpit,group"]="Management"
 	["module_cockpit,port"]="9090"
 	["module_cockpit,arch"]="x86-64 arm64 armhf"
 )
-
+#
 function module_cockpit() {
 	local title="cockpit"
 	local condition=$(dpkg -s "cockpit" 2>/dev/null | sed -n "s/Status: //p")
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_cockpit,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["module_cockpit,options"]}"
 
 	case "$1" in
 		"${commands[0]}")
 		## help/menu options for the module
-		echo -e "\nUsage: ${module_options["module_cockpit,feature"]} <command>"
-		echo -e "Commands: ${module_options["module_cockpit,example"]}"
+		echo -e "\nUsage: ${software_options["module_cockpit,feature"]} <command>"
+		echo -e "Commands: ${software_options["module_cockpit,options"]}"
 		echo "Available commands:"
 		if [[ -z "$condition" ]]; then
 			echo -e "  install\t- Install $title."
@@ -84,7 +85,7 @@ function module_cockpit() {
 		fi
 		;;
 		*)
-		echo "Invalid command. Try: '${module_options["module_cockpit,example"]}'"
+		echo "Invalid command. Try: '${software_options["module_cockpit,options"]}'"
 		;;
 	esac
 }

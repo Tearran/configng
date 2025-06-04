@@ -1,10 +1,10 @@
-module_options+=(
+system_options+=(
 	["module_desktop_packages,author"]="@igorpecovnik"
 	["module_desktop_packages,feature"]="module_desktop"
 	["module_desktop_packages,desc"]="Generate desktop packages list"
 	["module_desktop_packages,de"]="budgie cinnamon deepin enlightenment gnome i3-wm kde-plasma mate xfce xmonad"
 	["module_desktop_packages,release"]="bookworm noble plucky"
-	["module_desktop_packages,status"]="Active"
+	["module_desktop_packages,group"]="User"
 	["module_desktop_packages,arch"]="x86-64"
 )
 #
@@ -16,7 +16,7 @@ function module_desktop_packages() {
 
 	# Convert the example string to an array
 	local de
-	IFS=' ' read -r -a de <<< "${module_options["module_desktop_packages,de"]}"
+	IFS=' ' read -r -a de <<< "${system_options["module_desktop_packages,de"]}"
 
 	# Common desktop packages
 	local packages+=(
@@ -245,7 +245,7 @@ function module_desktop_packages() {
 	esac
 
 	local release
-	IFS=' ' read -r -a release <<< "${module_options["module_desktop_packages,release"]}"
+	IFS=' ' read -r -a release <<< "${system_options["module_desktop_packages,release"]}"
 	case "$2" in
 		"${release[0]}")
 			# bookworm

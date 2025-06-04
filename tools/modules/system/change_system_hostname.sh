@@ -1,11 +1,16 @@
-module_options+=(
+system_options+=(
+	["change_system_hostname,feature"]="change_system_hostname"
+	["change_system_hostname,desc"]="Change hostname"
+	["change_system_hostname,options"]=""
+	["change_system_hostname,about"]=""
+	["change_system_hostname,doc_link"]="Missing"
 	["change_system_hostname,author"]="@igorpecovnik"
-	["change_system_hostname,ref_link"]=""
-	["change_system_hostname,feature"]="Change hostname"
-	["change_system_hostname,desc"]="change_system_hostname"
-	["change_system_hostname,example"]="change_system_hostname"
-	["change_system_hostname,status"]="Active"
+	["change_system_hostname,group"]="User"
+	["change_system_hostname,port"]="Unset"
+	["change_system_hostname,arch"]="Missing"
 )
+
+
 #
 # @description Change system hostname
 #

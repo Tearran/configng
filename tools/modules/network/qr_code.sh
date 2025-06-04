@@ -1,11 +1,11 @@
 
-module_options+=(
+network_options+=(
 	["qr_code,author"]="@igorpecovnik"
 	["qr_code,ref_link"]=""
 	["qr_code,feature"]="qr_code"
 	["qr_code,desc"]="Show or generate QR code for Google OTP"
-	["qr_code,example"]="qr_code generate"
-	["qr_code,status"]="Active"
+	["qr_code,options"]="generate"
+	["qr_code,group"]="Network"
 )
 #
 # check dpkg status of $1 -- currently only 'not installed at all' case caught

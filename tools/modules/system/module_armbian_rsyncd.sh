@@ -1,12 +1,11 @@
-module_options+=(
+system_options+=(
 	["module_armbian_rsyncd,author"]="@igorpecovnik"
 	["module_armbian_rsyncd,maintainer"]="@igorpecovnik"
 	["module_armbian_rsyncd,feature"]="module_armbian_rsyncd"
-	["module_armbian_rsyncd,example"]="install remove status help"
+	["module_armbian_rsyncd,options"]="install remove status help"
 	["module_armbian_rsyncd,desc"]="Install and configure Armbian rsyncd."
 	["module_armbian_rsyncd,doc_link"]=""
-	["module_armbian_rsyncd,group"]="Armbian"
-	["module_armbian_rsyncd,status"]="Active"
+	["module_armbian_rsyncd,group"]="User"
 	["module_armbian_rsyncd,port"]="873"
 	["module_armbian_rsyncd,arch"]=""
 )
@@ -17,7 +16,7 @@ function module_armbian_rsyncd() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_armbian_rsyncd,example"]}"
+	IFS=' ' read -r -a commands <<< "${system_options["module_armbian_rsyncd,options"]}"
 
 	case "$1" in
 		"${commands[0]}")
@@ -72,8 +71,8 @@ function module_armbian_rsyncd() {
 			fi
 		;;
 		"${commands[3]}")
-			echo -e "\nUsage: ${module_options["module_armbian_rsyncd,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_armbian_rsyncd,example"]}"
+			echo -e "\nUsage: ${system_options["module_armbian_rsyncd,feature"]} <command>"
+			echo -e "Commands:  ${system_options["module_armbian_rsyncd,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tremove\t- Remove $title."
@@ -81,7 +80,7 @@ function module_armbian_rsyncd() {
 			echo
 		;;
 		*)
-			${module_options["module_armbian_rsyncd,feature"]} ${commands[3]}
+			${system_options["module_armbian_rsyncd,feature"]} ${commands[3]}
 		;;
 	esac
 	}

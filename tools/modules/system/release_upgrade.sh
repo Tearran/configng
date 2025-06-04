@@ -1,11 +1,11 @@
 
-module_options+=(
+system_options+=(
 	["release_upgrade,author"]="@igorpecovnik"
 	["release_upgrade,ref_link"]=""
-	["release_upgrade,feature"]="Upgrade upstream distribution release"
+	["release_upgrade,feature"]="release_upgrade"
 	["release_upgrade,desc"]="Upgrade to next stable or rolling release"
-	["release_upgrade,example"]="release_upgrade stable verify"
-	["release_upgrade,status"]="Active"
+	["release_upgrade,options"]="stable verify"
+	["release_upgrade,group"]="User"
 )
 #
 # Upgrade distribution

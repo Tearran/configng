@@ -1,12 +1,11 @@
 # checkpoint.sh
 
-module_options+=(
+framework_options+=(
 	["checkpoint,author"]="@dimitry-ishenko"
 	["checkpoint,feature"]="checkpoint"
-	["checkpoint,example"]="debug help mark reset total"
+	["checkpoint,options"]="debug help mark reset total"
 	["checkpoint,desc"]="Manage checkpoints"
-	["checkpoint,status"]="Active"
-	["checkpoint,group"]="Development"
+	["checkpoint,group"]="Initialize"
 )
 
 _checkpoint_add()
@@ -27,7 +26,7 @@ _checkpoint_add()
 _checkpoint_help()
 {
 	echo "
-Usage: ${module_options[checkpoint,feature]} <action> <message>
+Usage: ${framework_options[checkpoint,feature]} <action> <message>
 Where <action> is one of:
 	debug      Show message in debug mode (DEBUG non-zero).
 	help       Show this help screen.

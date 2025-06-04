@@ -1,12 +1,11 @@
 
-module_options+=(
+network_options+=(
 	["network_config,author"]="@igorpecovnik"
 	["network_config,ref_link"]=""
 	["network_config,feature"]="network_config"
 	["network_config,desc"]="Netplan wrapper"
-	["network_config,example"]="network_config"
+	["network_config,group"]="Network"
 	["network_config,doc_link"]=""
-	["network_config,status"]="review"
 )
 #
 # Function to select network adapter

@@ -1,0 +1,4 @@
+reviews:
+  path_instructions:
+    - path: "tools/modules/**/*.sh"
+      instructions: "These are shell module files that are sourced by the main script. Ignore shellcheck rules SC2148 and SC2154 for these files."

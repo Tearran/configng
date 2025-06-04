@@ -1,10 +1,10 @@
-module_options+=(
+system_options+=(
 	["module_nfsd,author"]="@igorpecovnik"
 	["module_nfsd,feature"]="module_nfsd"
 	["module_nfsd,desc"]="Install nfsd server"
-	["module_nfsd,example"]="install remove manage add status clients servers help"
+	["module_nfsd,options"]="install remove manage add status clients servers help"
 	["module_nfsd,port"]=""
-	["module_nfsd,status"]="Active"
+	["module_nfsd,group"]="User"
 	["module_nfsd,arch"]=""
 )
 #
@@ -20,7 +20,7 @@ function module_nfsd () {
 	mkdir -p /etc/exports.d/
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_nfsd,example"]}"
+	IFS=' ' read -r -a commands <<< "${system_options["module_nfsd,options"]}"
 
 	NFSD_BASE="${SOFTWARE_FOLDER}/nfsd"
 
@@ -28,7 +28,7 @@ function module_nfsd () {
 		"${commands[0]}")
 			pkg_install nfs-common nfs-kernel-server
 			# add some exports
-			${module_options["module_nfsd,feature"]} ${commands[2]}
+			${system_options["module_nfsd,feature"]} ${commands[2]}
 			srv_restart $service_name
 		;;
 		"${commands[1]}")
@@ -53,7 +53,7 @@ function module_nfsd () {
 					exitstatus=$?
 					case "$exitstatus" in
 						0)
-							${module_options["module_nfsd,feature"]} ${commands[3]}
+							${system_options["module_nfsd,feature"]} ${commands[3]}
 						;;
 						1)
 							break
@@ -63,7 +63,7 @@ function module_nfsd () {
 						;;
 					esac
 				else
-					${module_options["module_nfsd,feature"]} ${commands[3]}
+					${system_options["module_nfsd,feature"]} ${commands[3]}
 					break
 				fi
 			done
@@ -162,8 +162,8 @@ function module_nfsd () {
 					fi
 		;;
 		"${commands[7]}")
-			echo -e "\nUsage: ${module_options["module_nfsd,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_nfsd,example"]}"
+			echo -e "\nUsage: ${system_options["module_nfsd,feature"]} <command>"
+			echo -e "Commands:  ${system_options["module_nfsd,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tmanage\t- Edit exports in $title."
@@ -173,7 +173,7 @@ function module_nfsd () {
 			echo
 		;;
 		*)
-			${module_options["module_nfsd,feature"]} ${commands[7]}
+			${system_options["module_nfsd,feature"]} ${commands[7]}
 		;;
 	esac
 }

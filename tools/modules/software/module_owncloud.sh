@@ -1,12 +1,13 @@
-module_options+=(
-	["module_owncloud,author"]="@armbian"
+software_options+=(
 	["module_owncloud,maintainer"]="@igorpecovnik"
 	["module_owncloud,feature"]="module_owncloud"
-	["module_owncloud,example"]="install remove purge status help"
 	["module_owncloud,desc"]="Install owncloud container"
-	["module_owncloud,status"]="Active"
+	["module_owncloud,options"]="install remove purge status help"
+	["module_owncloud,about"]=""
 	["module_owncloud,doc_link"]="https://doc.owncloud.com/"
-	["module_owncloud,group"]="Database"
+	["module_owncloud,author"]="@armbian"
+	["module_owncloud,parent"]="software"
+	["module_owncloud,group"]="Management"
 	["module_owncloud,port"]="7787"
 	["module_owncloud,arch"]="x86-64 arm64"
 )
@@ -23,7 +24,7 @@ function module_owncloud () {
 	fi
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_owncloud,example"]}"
+	IFS=' ' read -r -a commands <<< "${software_options["module_owncloud,options"]}"
 
 	OWNCLOUD_BASE="${SOFTWARE_FOLDER}/owncloud"
 
@@ -64,7 +65,7 @@ function module_owncloud () {
 			fi
 		;;
 		"${commands[2]}")
-			${module_options["module_owncloud,feature"]} ${commands[1]}
+			${software_options["module_owncloud,feature"]} ${commands[1]}
 			if [[ -n "${OWNCLOUD_BASE}" && "${OWNCLOUD_BASE}" != "/" ]]; then
 				rm -rf "${OWNCLOUD_BASE}"
 			fi
@@ -77,8 +78,8 @@ function module_owncloud () {
 			fi
 		;;
 		"${commands[4]}")
-			echo -e "\nUsage: ${module_options["module_owncloud,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_owncloud,example"]}"
+			echo -e "\nUsage: ${software_options["module_owncloud,feature"]} <command>"
+			echo -e "Commands:  ${software_options["module_owncloud,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tremove\t- Remove $title."
@@ -87,7 +88,7 @@ function module_owncloud () {
 			echo
 		;;
 		*)
-			${module_options["module_owncloud,feature"]} ${commands[4]}
+			${software_options["module_owncloud,feature"]} ${commands[4]}
 		;;
 	esac
 }

@@ -1,10 +1,10 @@
-module_options+=(
+system_options+=(
 	["module_zfs,author"]="@igorpecovnik"
 	["module_zfs,feature"]="module_zfs"
 	["module_zfs,desc"]="Install zfs filesystem support"
-	["module_zfs,example"]="install remove status kernel_max zfs_version zfs_installed_version help"
+	["module_zfs,options"]="install remove status kernel_max zfs_version zfs_installed_version help"
 	["module_zfs,port"]=""
-	["module_zfs,status"]="Active"
+	["module_zfs,group"]="User"
 	["module_zfs,arch"]="x86-64 arm64"
 )
 #
@@ -15,7 +15,7 @@ function module_zfs () {
 	local condition=$(which "$title" 2>/dev/null)
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_zfs,example"]}"
+	IFS=' ' read -r -a commands <<< "${system_options["module_zfs,options"]}"
 
 	case "$1" in
 		"${commands[0]}")
@@ -44,8 +44,8 @@ function module_zfs () {
 			fi
 		;;
 		"${commands[6]}")
-			echo -e "\nUsage: ${module_options["module_zfs,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_zfs,example"]}"
+			echo -e "\nUsage: ${system_options["module_zfs,feature"]} <command>"
+			echo -e "Commands:  ${system_options["module_zfs,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tremove\t- Remove $title."
@@ -56,7 +56,7 @@ function module_zfs () {
 			echo
 		;;
 		*)
-			${module_options["module_zfs,feature"]} ${commands[6]}
+			${system_options["module_zfs,feature"]} ${commands[6]}
 		;;
 	esac
 }

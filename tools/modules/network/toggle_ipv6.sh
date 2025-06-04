@@ -1,11 +1,11 @@
 
-module_options+=(
+network_options+=(
 	["toggle_ipv6,author"]="@Tearran"
 	["toggle_ipv6,ref_link"]=""
 	["toggle_ipv6,feature"]="toggle_ipv6"
 	["toggle_ipv6,desc"]="Toggle IPv6 on or off"
-	["toggle_ipv6,example"]="toggle_ipv6"
-	["toggle_ipv6,status"]="review"
+	["toggle_ipv6,options"]=""
+	["toggle_ipv6,group"]="Network"
 	["toggle_ipv6,doc_link"]=""
 )
 #
