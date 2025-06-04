@@ -1,5 +1,5 @@
 
-module_options+=(
+system_options+=(
 ["adjust_motd,author"]="@igorpecovnik"
 ["adjust_motd,ref_link"]=""
 ["adjust_motd,desc"]="Adjust welcome screen (motd)"

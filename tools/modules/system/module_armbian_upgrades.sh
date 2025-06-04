@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["module_armbian_upgrades,author"]="@igorpecovnik"
 	["module_armbian_upgrades,feature"]="module_armbian_upgrades"
 	["module_armbian_upgrades,desc"]="Install and configure automatic updates"
@@ -16,7 +16,7 @@ function module_armbian_upgrades () {
 	local condition=$(which "$title" 2>/dev/null)
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_armbian_upgrades,options"]}"
+	IFS=' ' read -r -a commands <<< "${system_options["module_armbian_upgrades,options"]}"
 
 	case "$1" in
 
@@ -24,7 +24,7 @@ function module_armbian_upgrades () {
 			pkg_update
 			pkg_install -o Dpkg::Options::="--force-confold" unattended-upgrades
 			# set Armbian defaults
-			${module_options["module_armbian_upgrades,feature"]} ${commands[4]}
+			${system_options["module_armbian_upgrades,feature"]} ${commands[4]}
 		;;
 		"${commands[1]}")
 			pkg_remove unattended-upgrades
@@ -145,8 +145,8 @@ function module_armbian_upgrades () {
 
 		;;
 		"${commands[5]}")
-			echo -e "\nUsage: ${module_options["module_armbian_upgrades,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_armbian_upgrades,options"]}"
+			echo -e "\nUsage: ${system_options["module_armbian_upgrades,feature"]} <command>"
+			echo -e "Commands:  ${system_options["module_armbian_upgrades,options"]}"
 			echo -e "Available commands:\n"
 			echo -e "\tinstall\t\t- Install Armbian $title."
 			echo -e "\tremove\t\t- Remove Armbian $title."
@@ -156,7 +156,7 @@ function module_armbian_upgrades () {
 			echo
 		;;
 		*)
-			${module_options["module_armbian_upgrades,feature"]} ${commands[5]}
+			${system_options["module_armbian_upgrades,feature"]} ${commands[5]}
 		;;
 	esac
 }

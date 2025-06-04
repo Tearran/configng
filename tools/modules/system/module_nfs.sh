@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["module_nfs,author"]="@igorpecovnik"
 	["module_nfs,feature"]="module_nfs"
 	["module_nfs,desc"]="Install nfs client"
@@ -15,7 +15,7 @@ function module_nfs () {
 	local condition=$(which "$title" 2>/dev/null)?
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_nfs,options"]}"
+	IFS=' ' read -r -a commands <<< "${system_options["module_nfs,options"]}"
 
 	nfs_BASE="${SOFTWARE_FOLDER}/nfs"
 
@@ -97,8 +97,8 @@ function module_nfs () {
 			fi
 		;;
 		"${commands[4]}")
-			echo -e "\nUsage: ${module_options["module_nfs,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_nfs,options"]}"
+			echo -e "\nUsage: ${system_options["module_nfs,feature"]} <command>"
+			echo -e "Commands:  ${system_options["module_nfs,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tremove\t- Remove $title."
@@ -106,7 +106,7 @@ function module_nfs () {
 			echo
 		;;
 		*)
-			${module_options["module_nfs,feature"]} ${commands[4]}
+			${system_options["module_nfs,feature"]} ${commands[4]}
 		;;
 	esac
 }

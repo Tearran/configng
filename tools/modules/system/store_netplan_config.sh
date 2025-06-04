@@ -1,5 +1,5 @@
 
-module_options+=(
+system_options+=(
 ["store_netplan_config,author"]="@igorpecovnik"
 ["store_netplan_config,ref_link"]=""
 ["store_netplan_config,feature"]="store_netplan_config"

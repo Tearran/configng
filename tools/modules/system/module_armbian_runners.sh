@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["module_armbian_runners,author"]="@igorpecovnik"
 	["module_armbian_runners,feature"]="module_armbian_runners"
 	["module_armbian_runners,desc"]="Manage self hosted runners"
@@ -29,7 +29,7 @@ function module_armbian_runners () {
 	done
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_armbian_runners,options"]}"
+	IFS=' ' read -r -a commands <<< "${system_options["module_armbian_runners,options"]}"
 
 	case "$1" in
 
@@ -68,7 +68,7 @@ function module_armbian_runners () {
 
 			if [[ -z $gh_token ]]; then
 				echo "Error: Github token is mandatory"
-				${module_options["module_armbian_runners,feature"]} ${commands[6]}
+				${system_options["module_armbian_runners,feature"]} ${commands[6]}
 				exit 1
 			fi
 
@@ -119,7 +119,7 @@ function module_armbian_runners () {
 				-H "X-GitHub-Api-Version: 2022-11-28" \
 				https://api.github.com/${prefix}/${registration_url}/actions/runners/registration-token | jq -r .token)
 
-				${module_options["module_armbian_runners,feature"]} ${commands[1]} ${runner_name} "${i}"
+				${system_options["module_armbian_runners,feature"]} ${commands[1]} ${runner_name} "${i}"
 
 				adduser --quiet --disabled-password --shell /bin/bash \
 				--home /home/actions-runner-${i} --gecos "actions-runner-${i}" actions-runner-${i}
@@ -152,7 +152,7 @@ function module_armbian_runners () {
 		"${commands[1]}")
 			# delete if previous already exists
 			echo "Removing runner $3 on GitHub"
-			${module_options["module_armbian_runners,feature"]} ${commands[2]} "$2-$3"
+			${system_options["module_armbian_runners,feature"]} ${commands[2]} "$2-$3"
 			echo "Removing runner $3 locally"
 			runner_home=$(getent passwd "actions-runner-${3}" | cut -d: -f6)
 			if [[ -f "${runner_home}/svc.sh" ]]; then
@@ -196,11 +196,11 @@ function module_armbian_runners () {
 		"${commands[3]}")
 			if [[ -z $gh_token ]]; then
 				echo "Error: Github token is mandatory"
-				${module_options["module_armbian_runners,feature"]} ${commands[6]}
+				${system_options["module_armbian_runners,feature"]} ${commands[6]}
 				exit 1
 			fi
 			for i in $(seq -w $start $stop); do
-				${module_options["module_armbian_runners,feature"]} ${commands[1]} ${runner_name}
+				${system_options["module_armbian_runners,feature"]} ${commands[1]} ${runner_name}
 			done
 		;;
 		"${commands[4]}")
@@ -211,7 +211,7 @@ function module_armbian_runners () {
 			fi
 		;;
 		"${commands[6]}")
-			echo -e "\nUsage: ${module_options["module_armbian_runners,feature"]} <command> [switches]"
+			echo -e "\nUsage: ${system_options["module_armbian_runners,feature"]} <command> [switches]"
 			echo -e "Commands:  install purge"
 			echo -e "Available commands:\n"
 			echo -e "\tinstall\t\t- Install or reinstall $title."
@@ -230,7 +230,7 @@ function module_armbian_runners () {
 			echo ""
 		;;
 		*)
-			${module_options["module_armbian_runners,feature"]} ${commands[6]}
+			${system_options["module_armbian_runners,feature"]} ${commands[6]}
 		;;
 	esac
 }

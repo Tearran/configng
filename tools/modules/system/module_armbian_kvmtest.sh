@@ -97,7 +97,7 @@ function module_armbian_kvmtest () {
 	)
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_armbian_kvmtest,options"]}"
+	IFS=' ' read -r -a commands <<< "${system_options["module_armbian_kvmtest,options"]}"
 
 	case "$1" in
 
@@ -239,8 +239,8 @@ function module_armbian_kvmtest () {
 			done
 		;;
 		"${commands[6]}")
-			echo -e "\nUsage: ${module_options["module_armbian_kvmtest,feature"]} <command> [switches]"
-			echo -e "Commands:  ${module_options["module_armbian_kvmtest,options"]}"
+			echo -e "\nUsage: ${system_options["module_armbian_kvmtest,feature"]} <command> [switches]"
+			echo -e "Commands:  ${system_options["module_armbian_kvmtest,options"]}"
 			echo -e "Available commands:\n"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tremove\t- Remove all virtual machines $title."
@@ -261,7 +261,7 @@ function module_armbian_kvmtest () {
 			echo
 		;;
 		*)
-			${module_options["module_armbian_kvmtest,feature"]} ${commands[6]}
+			${system_options["module_armbian_kvmtest,feature"]} ${commands[6]}
 		;;
 	esac
 }

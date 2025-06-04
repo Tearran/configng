@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["toggle_ssh_lastlog,author"]="@Tearran"
 	["toggle_ssh_lastlog,ref_link"]=""
 	["toggle_ssh_lastlog,feature"]="toggle_ssh_lastlog"

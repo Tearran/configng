@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["change_system_hostname,feature"]="change_system_hostname"
 	["change_system_hostname,desc"]="Change hostname"
 	["change_system_hostname,options"]=""

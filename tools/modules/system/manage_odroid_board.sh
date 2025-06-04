@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["manage_odroid_board,author"]="@GeoffClements"
 	["manage_odroid_board,feature"]="manage_odroid_board"
 	["manage_odroid_board,desc"]="Select optimised Odroid board configuration"

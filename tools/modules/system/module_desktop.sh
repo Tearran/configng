@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["module_desktop,author"]="@igorpecovnik"
 	["module_desktop,feature"]="module_desktop"
 	["module_desktop,desc"]="XFCE desktop packages"
@@ -30,7 +30,7 @@ function module_desktop() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_desktop,options"]}"
+	IFS=' ' read -r -a commands <<< "${system_options["module_desktop,options"]}"
 
 	# generate and install packages
 	module_desktop_packages "$de" "$DISTROID"
@@ -92,12 +92,12 @@ function module_desktop() {
 			srv_restart display-manager
 
 			# enable auto login
-			${module_options["module_desktop,feature"]} ${commands[5]}
+			${system_options["module_desktop,feature"]} ${commands[5]}
 		;;
 
 		"${commands[1]}")
 			# disable auto login
-			${module_options["module_desktop,feature"]} ${commands[6]}
+			${system_options["module_desktop,feature"]} ${commands[6]}
 			# remove destkop
 			srv_stop display-manager
 			pkg_remove ${PACKAGES}
@@ -193,8 +193,8 @@ function module_desktop() {
 			fi
 		;;
 		"${commands[8]}")
-			echo -e "\nUsage: ${module_options["module_desktop,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_desktop,options"]}"
+			echo -e "\nUsage: ${system_options["module_desktop,feature"]} <command>"
+			echo -e "Commands:  ${system_options["module_desktop,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Generate packages for $title."
 			echo -e "\tremove\t-  Generate packages for $title."
@@ -207,7 +207,7 @@ function module_desktop() {
 			echo
 		;;
 		*)
-			${module_options["module_desktop,feature"]} ${commands[8]}
+			${system_options["module_desktop,feature"]} ${commands[8]}
 		;;
 	esac
 }

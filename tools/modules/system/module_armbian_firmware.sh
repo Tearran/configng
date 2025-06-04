@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["module_armbian_firmware,author"]="@igorpecovnik"
 	["module_armbian_firmware,feature"]="module_armbian_firmware"
 	["module_armbian_firmware,options"]="select install show hold unhold repository headers help"
@@ -12,7 +12,7 @@ function module_armbian_firmware() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_armbian_firmware,options"]}"
+	IFS=' ' read -r -a commands <<< "${system_options["module_armbian_firmware,options"]}"
 
 	# BRANCH, KERNELPKG_VERSION, KERNELPKG_LINUXFAMILY may require being updated after kernel switch
 	update_kernel_env
@@ -30,9 +30,9 @@ function module_armbian_firmware() {
 			[[ -z "${KERNEL_TEST_TARGET}" ]] && KERNEL_TEST_TARGET="legacy,vendor,current,edge"
 
 			# show warning when packages are put on hold and ask to release it
-			if ${module_options["module_armbian_firmware,feature"]} ${commands[3]} "status"; then
+			if ${system_options["module_armbian_firmware,feature"]} ${commands[3]} "status"; then
 				if $DIALOG --title "Warning!" --yesno "Firmware upgrade is disabled. Release hold and proceed?" 7 60; then
-					${module_options["module_armbian_firmware,feature"]} ${commands[4]}
+					${system_options["module_armbian_firmware,feature"]} ${commands[4]}
 				else
 					exit 0
 				fi
@@ -98,7 +98,7 @@ function module_armbian_firmware() {
 					local branch=$(echo "${target_version}" | cut -d'-' -f3)
 					local linuxfamily=$(echo "${target_version}" | cut -d'-' -f4 | cut -d'=' -f1)
 					# call install function
-					${module_options["module_armbian_firmware,feature"]} ${commands[1]} "${branch}" "${target_version/*=/}" "" "" "${linuxfamily}"
+					${system_options["module_armbian_firmware,feature"]} ${commands[1]} "${branch}" "${target_version/*=/}" "" "" "${linuxfamily}"
 				fi
 			fi
 
@@ -125,7 +125,7 @@ function module_armbian_firmware() {
 			local linuxfamily=$6
 
 			# generate list
-			${module_options["module_armbian_firmware,feature"]} ${commands[2]} "${branch}" "${version}" "hide" "" "$headers" "$linuxfamily"
+			${system_options["module_armbian_firmware,feature"]} ${commands[2]} "${branch}" "${version}" "hide" "" "$headers" "$linuxfamily"
 
 			# purge and install
 			for pkg in ${packages[@]}; do
@@ -231,7 +231,7 @@ function module_armbian_firmware() {
 			local status=$2
 
 			# generate a list of packages
-			${module_options["module_armbian_firmware,feature"]} ${commands[2]} "" "" hide
+			${system_options["module_armbian_firmware,feature"]} ${commands[2]} "" "" hide
 
 			# we are only interested in which Armbian packages are put on hold
 			if [[ "$status" == "status" ]]; then
@@ -253,7 +253,7 @@ function module_armbian_firmware() {
 		"${commands[4]}")
 
 			# generate a list of packages
-			${module_options["module_armbian_firmware,feature"]} ${commands[2]} "" "" hide
+			${system_options["module_armbian_firmware,feature"]} ${commands[2]} "" "" hide
 
 			# release Armbian packages from hold
 			apt-mark unhold ${packages[@]} >/dev/null 2>&1
@@ -300,7 +300,7 @@ function module_armbian_firmware() {
 			fi
 
 			# if we are not only checking status, it reinstall firmware automatically
-			[[ "$status" != "status" ]] && ${module_options["module_armbian_firmware,feature"]} ${commands[1]} "${branch}" "" "" "" "${linuxfamily}"
+			[[ "$status" != "status" ]] && ${system_options["module_armbian_firmware,feature"]} ${commands[1]} "${branch}" "" "" "" "${linuxfamily}"
 		;;
 
 		# installs kernel headers
@@ -313,14 +313,14 @@ function module_armbian_firmware() {
 			if [[ "${command}" == "install" ]]; then
 				if [[ -f /etc/armbian-image-release ]]; then
 					# for armbian OS
-					${module_options["module_armbian_firmware,feature"]} ${commands[1]} "${BRANCH}" "${version}" "" "true" "${KERNELPKG_LINUXFAMILY}"
+					${system_options["module_armbian_firmware,feature"]} ${commands[1]} "${BRANCH}" "${version}" "" "true" "${KERNELPKG_LINUXFAMILY}"
 				else
 					# for non armbian builds
 					pkg_install "linux-headers-$(uname -r | sed 's/'-$(dpkg --print-architecture)'//')"
 				fi
 			elif [[ "${command}" == "remove" ]]; then
 				# remove headers packages
-				${module_options["module_armbian_firmware,feature"]} ${commands[2]} "${BRANCH}" "${version}" "hide" "" "true" "${KERNELPKG_LINUXFAMILY}"
+				${system_options["module_armbian_firmware,feature"]} ${commands[2]} "${BRANCH}" "${version}" "hide" "" "true" "${KERNELPKG_LINUXFAMILY}"
 				if [ "${#packages[@]}" -gt 0 ]; then
 					if dpkg -l | grep -qw ${packages[@]/=*/}; then
 						pkg_remove ${packages[@]/=*/}
@@ -328,7 +328,7 @@ function module_armbian_firmware() {
 				fi
 			else
 				# return 0 if packages are installed else 1
-				${module_options["module_armbian_firmware,feature"]} ${commands[2]} "${BRANCH}" "${version}" "hide" "" "true" "${KERNELPKG_LINUXFAMILY}"
+				${system_options["module_armbian_firmware,feature"]} ${commands[2]} "${BRANCH}" "${version}" "hide" "" "true" "${KERNELPKG_LINUXFAMILY}"
 				if pkg_installed ${packages[@]/=*/}; then
 					return 0
 				else
@@ -338,8 +338,8 @@ function module_armbian_firmware() {
 		;;
 
 		"${commands[7]}")
-			echo -e "\nUsage: ${module_options["module_armbian_firmware,feature"]} <command> <switches>"
-			echo -e "Commands:  ${module_options["module_armbian_firmware,options"]}"
+			echo -e "\nUsage: ${system_options["module_armbian_firmware,feature"]} <command> <switches>"
+			echo -e "Commands:  ${system_options["module_armbian_firmware,options"]}"
 			echo "Available commands:"
 			echo -e "\tselect    \t- TUI to select $title.              \t switches: [ stable | rolling ]"
 			echo -e "\tinstall   \t- Install $title.                    \t switches: [ \$branch | \$version ]"
@@ -351,7 +351,7 @@ function module_armbian_firmware() {
 			echo
 		;;
 		*)
-			${module_options["module_armbian_firmware,feature"]} ${commands[7]}
+			${system_options["module_armbian_firmware,feature"]} ${commands[7]}
 		;;
 	esac
 }

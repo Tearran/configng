@@ -1,4 +1,4 @@
-module_options+=(
+system_options+=(
 	["module_overlayfs,author"]="@igorpecovnik"
 	["module_overlayfs,maintainer"]="@igorpecovnik"
 	["module_overlayfs,feature"]="module_overlayfs"
@@ -18,7 +18,7 @@ function module_overlayfs() {
 
 	# Convert the example string to an array
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_overlayfs,options"]}"
+	IFS=' ' read -r -a commands <<< "${system_options["module_overlayfs,options"]}"
 
 	case "$1" in
 		"${commands[0]}")
@@ -46,8 +46,8 @@ function module_overlayfs() {
 			fi
 		;;
 		"${commands[3]}")
-			echo -e "\nUsage: ${module_options["module_overlayfs,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_overlayfs,options"]}"
+			echo -e "\nUsage: ${system_options["module_overlayfs,feature"]} <command>"
+			echo -e "Commands:  ${system_options["module_overlayfs,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tremove\t- Remove $title."
@@ -55,7 +55,7 @@ function module_overlayfs() {
 			echo
 		;;
 		*)
-			${module_options["module_overlayfs,feature"]} ${commands[3]}
+			${system_options["module_overlayfs,feature"]} ${commands[3]}
 		;;
 	esac
 }

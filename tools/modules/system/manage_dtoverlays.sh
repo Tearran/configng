@@ -1,5 +1,5 @@
 
-module_options+=(
+system_options+=(
 ["manage_dtoverlays,author"]="@viraniac"
 ["manage_dtoverlays,maintainer"]="@igorpecovnik,@The-Going"
 ["manage_dtoverlays,ref_link"]=""

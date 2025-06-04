@@ -1,5 +1,5 @@
 
-module_options+=(
+system_options+=(
 	["module_headers,feature"]="module_headers"
 	["module_headers,desc"]="Install headers container"
 	["module_headers,options"]="install remove status help"
@@ -27,7 +27,7 @@ function module_headers () {
 	fi
 
 	local commands
-	IFS=' ' read -r -a commands <<< "${module_options["module_headers,options"]}"
+	IFS=' ' read -r -a commands <<< "${system_options["module_headers,options"]}"
 
 	case "$1" in
 		"${commands[0]}")
@@ -41,8 +41,8 @@ function module_headers () {
 			pkg_installed ${install_pkg}
 		;;
 		"${commands[3]}")
-			echo -e "\nUsage: ${module_options["module_headers,feature"]} <command>"
-			echo -e "Commands:  ${module_options["module_headers,options"]}"
+			echo -e "\nUsage: ${system_options["module_headers,feature"]} <command>"
+			echo -e "Commands:  ${system_options["module_headers,options"]}"
 			echo "Available commands:"
 			echo -e "\tinstall\t- Install $title."
 			echo -e "\tstatus\t- Installation status $title."
@@ -50,7 +50,7 @@ function module_headers () {
 			echo
 		;;
 		*)
-			${module_options["module_headers,feature"]} ${commands[3]}
+			${system_options["module_headers,feature"]} ${commands[3]}
 		;;
 	esac
 }
