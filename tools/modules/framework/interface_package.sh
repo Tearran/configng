@@ -6,7 +6,7 @@ _pkg_have_stdin() { [[ -t 0 ]]; }
 framework_options+=(
 	["pkg_configure,author"]="@dimitry-ishenko"
 	["pkg_configure,desc"]="Configure an unconfigured package"
-	["pkg_configure,options"]="pkg_configure"
+	["pkg_configure,options"]="<apt package name>"
 	["pkg_configure,feature"]="pkg_configure"
 	["pkg_configure,group"]="Interface"
 )
