@@ -1,4 +1,4 @@
-module_options+=(
+network_options+=(
 	["connect_bt_interface,id"]="0170"
 	["connect_bt_interface,maintainer"]="Needed"
 	["connect_bt_interface,feature"]="connect_bt_interface"

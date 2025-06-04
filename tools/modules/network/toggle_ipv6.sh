@@ -1,5 +1,5 @@
 
-module_options+=(
+network_options+=(
 	["toggle_ipv6,author"]="@Tearran"
 	["toggle_ipv6,ref_link"]=""
 	["toggle_ipv6,feature"]="toggle_ipv6"

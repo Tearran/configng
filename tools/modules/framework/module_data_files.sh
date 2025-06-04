@@ -4,9 +4,10 @@ framework_options+=(
 	["module_data_files,feature"]="module_data_files"
 	["module_data_files,desc"]="Example module unattended interface."
 	["module_data_files,options"]="help array json dbt test all"
-	["module_data_files,doc_link"]="Missing"
+	["module_data_files,doc_link"]="false"
 	["module_data_files,author"]="@Tearran"
 	["module_data_files,group"]="Interface"
+	["module_data_files,arch"]="all"
 )
 #
 # Function to handle the module commands for 'module_data_files'
@@ -62,7 +63,7 @@ framework_options+=(
 	["generate_data_files,author"]="@Tearran"
 	["generate_data_files,group"]="Docs"
 	["generate_data_files,port"]=""
-	["generate_data_files,arch"]=""
+	["generate_data_files,arch"]="all"
 )
 # Use production array to verify a parent/group and subgroup/subsubgroup keys are valid
 # may be used to verify other keys if needed
